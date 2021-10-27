@@ -31,6 +31,9 @@ app.use('/', index);
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+const studentRoutes = require('./routes/student.routes');
+app.use('/api/student', studentRoutes);
+
 // To be used for reinitializing the DB after it is dropped
 app.use('/seed', require('./routes/seeds/seed-route'));
 
