@@ -20,7 +20,7 @@ const userSchema = new Schema({
   profilePic: { type: String, required: false },
   teachingExperience: { type: Number },
   time: [{ type: Schema.Types.ObjectId, ref: 'Timeslot' }],
-  course: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
+  courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
 });
 
 const User = model('User', userSchema);

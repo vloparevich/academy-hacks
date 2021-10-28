@@ -13,7 +13,6 @@ const courseSchema = new Schema({
       },
     },
   ],
-  //   description: { type: String },
 });
 
 const Course = model('Course', courseSchema);
