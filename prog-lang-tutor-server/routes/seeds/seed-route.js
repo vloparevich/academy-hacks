@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Tutor = require('../../models/Tutor.model');
+const User = require('../../models/User.model');
 const tutorsArray = require('../../bin/seeds');
 
 // ****************************************************************************************
@@ -9,7 +9,7 @@ const tutorsArray = require('../../bin/seeds');
 router.get('/seed-my-db', async (req, res, next) => {
   try {
     await tutorsArray.forEach((tutor) => {
-      Tutor.create(tutor);
+      User.create(tutor);
     });
     res.status(201).json({ success: true, message: 'DB has been seeded' });
   } catch (err) {

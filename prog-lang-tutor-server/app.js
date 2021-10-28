@@ -31,11 +31,16 @@ app.use('/', index);
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
-const studentRoutes = require('./routes/student.routes');
-app.use('/api/student', studentRoutes);
+// const studentRoutes = require('./routes/student.routes');
+// app.use('/api/student', studentRoutes);
+
+const userRoutes = require('./routes/user.routes');
+app.use('/api/user', userRoutes);
 
 // To be used for reinitializing the DB after it is dropped
 app.use('/seed', require('./routes/seeds/seed-route'));
+
+// app.use('/student', require('./routes/student.routes'));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
