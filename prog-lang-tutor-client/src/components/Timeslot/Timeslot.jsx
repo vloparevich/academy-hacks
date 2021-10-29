@@ -7,7 +7,7 @@ export default class Timeslot extends Component {
   state = {
     isTimeSlotChecked: new Array(24).fill(false),
     timeSlots: [],
-    value: new Date(),
+    calendarValue: new Date(),
   };
 
   handleChange = (position) => {
@@ -35,7 +35,7 @@ export default class Timeslot extends Component {
   };
 
   createTimeSlots = () => {
-    let slots = [];
+    const slots = [];
     for (let i = 0; i < 24; i++) {
       slots.push(
         <div key={i}>
@@ -57,8 +57,7 @@ export default class Timeslot extends Component {
   };
 
   onChange = (event) => {
-    console.log(event);
-    this.setState({ value: event }, () => console.log(this.state.value));
+    this.setState({ calendarValue: event });
   };
 
   render() {
@@ -66,10 +65,10 @@ export default class Timeslot extends Component {
       <div id='scheduler'>
         <Calendar
           onChange={(event) => this.onChange(event)}
-          value={this.state.value}
+          value={this.state.calendarValue}
           minDate={new Date()}
         />
-        {this.createTimeSlots().map((current, index) => current)}
+        {this.createTimeSlots().map((current) => current)}
       </div>
     );
   }
