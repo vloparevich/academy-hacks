@@ -52,6 +52,7 @@ router.post('/tutor', async (req, res, next) => {
     teachingExperience,
     courseName,
     description,
+    time,
   } = req.body;
 
   // let profilePic;
