@@ -10,8 +10,8 @@ router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   User.findById(id)
     .populate('courses')
-    .then((tutor) => {
-      res.status(200).json({ success: true, tutor });
+    .then((user) => {
+      res.status(200).json({ success: true, user });
     })
     .catch((err) => {
       res.status(500).json({
@@ -25,12 +25,10 @@ router.get('/:id', (req, res, next) => {
 // ****************************************************************************************
 // GET route to get all the tutors
 // ****************************************************************************************
-router.get('/tutor/:id', (req, res, next) => {
-  const { id } = req.params;
-  User.findById(id)
-    .populate('courses')
-    .then((tutor) => {
-      res.status(200).json({ success: true, tutor });
+router.get('/tutor/list', (req, res, next) => {
+  User.find({ isTutor: true })
+    .then((tutors) => {
+      res.status(200).json({ success: true, message: tutors });
     })
     .catch((err) => {
       res.status(500).json({
