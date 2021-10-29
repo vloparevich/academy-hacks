@@ -32,7 +32,14 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+#schedulers {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
