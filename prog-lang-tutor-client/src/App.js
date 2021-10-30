@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import Profile from './components/Profile/Profile';
 import Home from './components/Home/Home';
+import Navbar from './components/Navbar/Navbar';
 import { Switch, Route } from 'react-router-dom'
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
   render = () => {
     return (
       <div className='App'>
+        <Navbar></Navbar>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/user' component={Profile} />

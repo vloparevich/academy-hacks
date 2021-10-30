@@ -1,0 +1,19 @@
+.nav-style {
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: flex-start;
+}
+
+.nav-style li {
+  list-style: none;
+  display: inline;
+  margin: 0 10px;
+}
+
+.logo {
+  display: flex;
+  width: 10rem;
+  height: 10rem;
+  margin-left: 0;
+}
