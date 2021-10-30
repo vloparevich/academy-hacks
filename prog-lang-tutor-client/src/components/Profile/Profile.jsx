@@ -13,11 +13,11 @@ class Profile extends Component {
     }
 
     getUser = () => {
-        axios.get(`http://localhost:5000/api/user/tutor/617b378c30aceadaa78445fb`)
+        axios.get(`http://localhost:5000/api/user/617b378c30aceadaa78445fb`)
 
         .then(user => {
-            console.log(user.data.tutor)
-            this.setState({...user.data.tutor})
+            // console.log("USER", user.data.user)
+            this.setState({...user.data.user})
         })
     }
 
@@ -28,7 +28,7 @@ class Profile extends Component {
 
 
     render() {
-        console.log(this.state.firstName)
+        console.log(this.state)
         return (
             <div className="container">
             <div>Hello there, {this.state.lastName}...{this.state.firstName} {this.state.lastName}</div>

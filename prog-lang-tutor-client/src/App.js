@@ -1,5 +1,4 @@
 import './App.css';
-// import Timeslot from './components/Timeslot/Timeslot';
 import React from 'react';
 import Profile from './components/Profile/Profile';
 import Home from './components/Home/Home';
@@ -18,7 +17,6 @@ class App extends React.Component {
   render = () => {
     return (
       <div className='App'>
-        <Timeslot getTime={this.updateAvailAbility} />
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/user' component={Profile} />
