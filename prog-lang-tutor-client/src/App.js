@@ -18,9 +18,10 @@ class App extends React.Component {
   render = () => {
     return (
       <div className='App'>
+        <Timeslot getTime={this.updateAvailAbility} />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/user" component={Profile} />
+          <Route exact path='/' component={Home} />
+          <Route exact path='/user' component={Profile} />
         </Switch>
       </div>
     );
