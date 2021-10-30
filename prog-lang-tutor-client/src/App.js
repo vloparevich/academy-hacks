@@ -3,7 +3,8 @@ import './App.css';
 import React from 'react';
 import Profile from './components/Profile';
 import Home from './components/Home';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom';
+import Timeslot from './components/Timeslot/Timeslot';
 
 class App extends React.Component {
   state = {};
@@ -18,9 +19,10 @@ class App extends React.Component {
   render = () => {
     return (
       <div className='App'>
+        <Timeslot getTime={this.updateAvailAbility} />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/user" component={Profile} />
+          <Route exact path='/' component={Home} />
+          <Route exact path='/user' component={Profile} />
         </Switch>
       </div>
     );
