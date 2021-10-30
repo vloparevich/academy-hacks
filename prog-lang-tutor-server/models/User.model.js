@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema({
@@ -6,23 +6,23 @@ const userSchema = new Schema({
   email: {
     type: String,
     unique: true,
-    required: false,
+    required: true,
     lowercase: true,
     trim: true,
   },
   password: {
     type: String,
-    required: [false, 'Password is required'],
+    required: [true, "Password is required"],
   },
   firstName: { type: String, required: true },
-  lastName: { type: String },
+  lastName: { type: String, required: true },
   countryOfOrigin: { type: String },
   profilePic: { type: String, required: false },
   teachingExperience: { type: Number },
-  time: [{ type: Schema.Types.ObjectId, ref: 'Timeslot' }],
-  courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
+  time: [{ type: Schema.Types.ObjectId, ref: "Timeslot" }],
+  courses: [{ type: Schema.Types.ObjectId, ref: "Course" }],
 });
 
-const User = model('User', userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;
