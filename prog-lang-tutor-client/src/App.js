@@ -1,8 +1,8 @@
 import './App.css';
 // import Timeslot from './components/Timeslot/Timeslot';
 import React from 'react';
-import Profile from './components/Profile';
-import Home from './components/Home';
+import Profile from './components/Profile/Profile';
+import Home from './components/Home/Home';
 import { Switch, Route } from 'react-router-dom'
 
 class App extends React.Component {
