@@ -16,10 +16,6 @@ require("./db");
 // https://www.npmjs.com/package/express
 const express = require("express");
 
-// Handles the handlebars
-// https://www.npmjs.com/package/hbs
-const hbs = require("hbs");
-
 const app = express();
 
 // Session settings: allows our app to maintain the sessions and our users in it
