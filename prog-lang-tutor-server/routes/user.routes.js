@@ -4,14 +4,32 @@ const User = require('../models/User.model');
 const Course = require('../models/Course.model');
 
 // ****************************************************************************************
-// GET route to get a specific tutor/student
+// GET route to get all the tutors
 // ****************************************************************************************
-router.get('/:id', (req, res, next) => {
+router.get('/tutor/list', (req, res, next) => {
+  User.find({ isTutor: true })
+    .populate('coursesTaught')
+    .then((tutors) => {
+      res.status(200).json({ success: true, tutors });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: 'Tutors were not found',
+        err,
+      });
+    });
+});
+
+// ****************************************************************************************
+// GET route to get a specific tutor
+// ****************************************************************************************
+router.get('/tutor/:id', (req, res) => {
   const { id } = req.params;
   User.findById(id)
-    .populate('courses')
-    .then((user) => {
-      res.status(200).json({ success: true, user });
+    .populate('coursesTaught')
+    .then((tutor) => {
+      res.status(200).json({ success: true, tutor });
     })
     .catch((err) => {
       res.status(500).json({
@@ -23,18 +41,37 @@ router.get('/:id', (req, res, next) => {
 });
 
 // ****************************************************************************************
-// GET route to get all the tutors
+// GET route to get a specific student
 // ****************************************************************************************
-router.get('/tutor/list', (req, res, next) => {
-  User.find({ isTutor: true })
-    .then((tutors) => {
-      res.status(200).json({ success: true, message: tutors });
+router.get('/student/:id', (req, res) => {
+  const { id } = req.params;
+  User.findById(id)
+    .then((student) => {
+      return res.status(200).json({ success: true, student });
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: 'Tutors were not found',
-        err,
+        message: 'Tutor or Student was not found',
+        err: err,
+      });
+    });
+});
+
+// ****************************************************************************************
+// GET route to get a specific student/tutor
+// ****************************************************************************************
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
+  User.findById(id)
+    .then((user) => {
+      res.status(200).json({ success: true, user });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: 'User was not found',
+        err: err,
       });
     });
 });
@@ -53,6 +90,8 @@ router.post('/tutor', async (req, res, next) => {
     courseName,
     description,
     time,
+    timeAvailableInRange,
+    profilePic,
   } = req.body;
 
   // let profilePic;
@@ -64,7 +103,7 @@ router.post('/tutor', async (req, res, next) => {
   try {
     const user = await User.findOne({ email: email });
     if (user) {
-      return res.status(400).json({
+      res.status(400).json({
         success: false,
         message: 'User with this email is already regietered',
       });
@@ -77,6 +116,11 @@ router.post('/tutor', async (req, res, next) => {
       countryOfOrigin: countryOfOrigin,
       teachingExperience: teachingExperience,
       email: email,
+      profilePic: profilePic,
+      timeRangeOfAvailability: {
+        from: timeAvailableInRange.from,
+        to: timeAvailableInRange.to,
+      },
     });
 
     const createdCourse = await Course.create({
@@ -87,11 +131,11 @@ router.post('/tutor', async (req, res, next) => {
     const finalizedTutor = await User.findByIdAndUpdate(
       createdTutor._id,
       {
-        $push: { courses: createdCourse._id },
+        $push: { coursesTaught: createdCourse._id },
       },
       { new: true }
     );
-    res.status(201).json({ success: true, tutor: finalizedTutor });
+    return res.status(201).json({ success: true, tutor: finalizedTutor });
   } catch (err) {
     res.status(500).json({
       success: false,

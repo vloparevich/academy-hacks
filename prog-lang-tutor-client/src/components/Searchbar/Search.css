@@ -1,0 +1,20 @@
+input {
+    line-height: 2rem;
+    width: 83%;
+    border-style: solid;
+    border-color: #EEEEEE;
+    border-width: 1px;
+    border-radius: .3rem;
+}
+
+#checkboxlabel {
+    display: inline
+}
+
+#checkbox-instock {
+    width: 1.5rem;
+}
+
+#checkbox {
+    margin: 1rem 0;
+}

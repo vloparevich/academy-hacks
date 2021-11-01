@@ -20,7 +20,15 @@ const userSchema = new Schema({
   profilePic: { type: String, required: false },
   teachingExperience: { type: Number },
   time: [{ type: Schema.Types.ObjectId, ref: 'Timeslot' }],
-  courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],
+  timeRangeOfAvailability: {
+    from: {
+      type: Number,
+    },
+    to: {
+      type: Number,
+    },
+  },
+  coursesTaught: { type: Schema.Types.ObjectId, ref: 'Course' },
 });
 
 const User = model('User', userSchema);
