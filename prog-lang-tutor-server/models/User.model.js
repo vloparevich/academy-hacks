@@ -19,7 +19,7 @@ const userSchema = new Schema({
   countryOfOrigin: { type: String },
   profilePic: { type: String, required: false },
   teachingExperience: { type: Number },
-  time: [{ type: Schema.Types.ObjectId, ref: 'Timeslot' }],
+  mySchedule: { type: Schema.Types.ObjectId, ref: 'Timeslot' },
   timeRangeOfAvailability: {
     from: {
       type: Number,

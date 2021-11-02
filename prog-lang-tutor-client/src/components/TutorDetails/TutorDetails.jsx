@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 
 import USER_SERVICE from '../../services/UserServices';
+import BOOKING_SERVICE from '../../services/BookingServices';
 import Timeslot from '../Timeslot/Timeslot';
 
 export default class TutorDetails extends Component {
   state = { isScheduleShown: false, timeRange: {} };
+  tutorId = this.props.match.params;
 
   componentDidMount = () => {
     this.getTutorDetails();
@@ -28,6 +30,10 @@ export default class TutorDetails extends Component {
     });
   };
 
+  savingBookedTimeslots = (details) => {
+    BOOKING_SERVICE.updateMyAvailability(details, this.tutorId);
+  };
+
   render() {
     return (
       <div>
@@ -40,7 +46,11 @@ export default class TutorDetails extends Component {
           <button>Message</button>
         </div>
         {this.state.isScheduleShown && (
-          <Timeslot timeRange={this.state.timeRange} />
+          <Timeslot
+            timeRange={this.state.timeRange}
+            bookedTime={this.savingBookedTimeslots}
+            tutorId={this.tutorId.id}
+          />
         )}
       </div>
     );

@@ -3,6 +3,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './Timeslot.css';
 import moment from 'moment';
+import BOOKING_SERVICE from '../../services/BookingServices';
 
 export default class Timeslot extends Component {
   currentDate = new Date();
@@ -65,8 +66,14 @@ export default class Timeslot extends Component {
     return slots;
   };
 
-  onDateChange = (event) => {
+  onCalendarDateChange = (event) => {
     const shortDateValue = moment(event).format('MM/DD/YYYY');
+    BOOKING_SERVICE.getMyScheduleForThisDay(shortDateValue, this.props.tutorId)
+      .then((responseFromApi) => {
+        console.log('FRONT END just hit the backend', responseFromApi.data);
+      })
+      .catch((err) => console.log(err));
+
     this.setState({
       calendarValueLong: event,
       calendarValueShort: shortDateValue,
@@ -75,11 +82,15 @@ export default class Timeslot extends Component {
 
   handlePickedSlotsAndDate = () => {
     console.log('time slot state', {
-      pickedTimeSlot: this.state.pickedTimeSlot,
+      pickedTimeSlots: this.state.pickedTimeSlots,
       calendarValueShort: this.state.calendarValueShort,
     });
-    // this.props.getTime(this.state);
+    // !!! check on empty calendar date 'calendarValueShort'
+
+    this.props.bookedTime(this.state);
+
     //After the state is sent to the route to be stored in the DB resetting the state
+
     this.setState({
       isTimeSlotChecked: new Array(24).fill(false),
       calendarValueLong: new Date(),
@@ -92,12 +103,15 @@ export default class Timeslot extends Component {
     return (
       <div id='scheduler'>
         <Calendar
-          onChange={(event) => this.onDateChange(event)}
+          onChange={(event) => this.onCalendarDateChange(event)}
           value={this.state.calendarValueLong}
           minDate={new Date(this.currentDate.toUTCString())}
         />
         {this.createTimeSlots().map((current) => current)}
-        <button onClick={this.handlePickedSlotsAndDate} class='SaveTimeButton'>
+        <button
+          onClick={this.handlePickedSlotsAndDate}
+          className='SaveTimeButton'
+        >
           Save
         </button>
       </div>

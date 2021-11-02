@@ -89,7 +89,7 @@ router.post('/tutor', async (req, res, next) => {
     teachingExperience,
     courseName,
     description,
-    time,
+    mySchedule,
     timeAvailableInRange,
     profilePic,
   } = req.body;
