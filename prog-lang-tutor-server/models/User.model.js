@@ -18,6 +18,7 @@ const userSchema = new Schema({
   lastName: { type: String },
   countryOfOrigin: { type: String },
   profilePic: { type: String, required: false },
+  imageArray: { type: [String] },
   teachingExperience: { type: Number },
   time: [{ type: Schema.Types.ObjectId, ref: 'Timeslot' }],
   courses: [{ type: Schema.Types.ObjectId, ref: 'Course' }],

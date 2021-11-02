@@ -1,7 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
-import Timeslot from './components/Timeslot/Timeslot';
+// import Timeslot from './components/Timeslot/Timeslot';
 import React from 'react';
+import Profile from './components/Profile';
+import Home from './components/Home';
+import { Switch, Route } from 'react-router-dom'
 
 class App extends React.Component {
   state = {};
@@ -16,9 +18,10 @@ class App extends React.Component {
   render = () => {
     return (
       <div className='App'>
-        <div id='schedulers'>
-          <Timeslot getTime={this.updateAvailAbility} day={'MON'} />
-        </div>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/user" component={Profile} />
+        </Switch>
       </div>
     );
   };
