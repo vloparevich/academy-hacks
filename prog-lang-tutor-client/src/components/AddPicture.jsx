@@ -49,7 +49,6 @@ function AddPicture() {
 
     return (
         <div>
-
             <form onSubmit={handleSubmit}>
 
 
