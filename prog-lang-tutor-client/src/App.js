@@ -4,6 +4,7 @@ import Profile from './components/Profile/Profile';
 import Home from './components/Home/Home';
 import TutorDetails from './components/TutorDetails/TutorDetails';
 import { Switch, Route } from 'react-router-dom';
+import Navbar from './components/Navbar/Navbar';
 
 class App extends React.Component {
   state = {};
@@ -18,6 +19,7 @@ class App extends React.Component {
   render = () => {
     return (
       <div className='App'>
+        <Navbar></Navbar>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/user' component={Profile} />
