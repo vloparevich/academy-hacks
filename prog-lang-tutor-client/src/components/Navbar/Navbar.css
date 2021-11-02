@@ -1,6 +1,7 @@
 /*Green 300 #36B37E
 Green 200 #B1EC98
-900 Blue Grey Background: #102A43*/
+900 Blue Grey Background: #102A43
+#273D5*/
 
 
 .nav-style {
@@ -8,9 +9,11 @@ Green 200 #B1EC98
   flex-direction: row;
   justify-content:space-around;
   align-items: flex-start;
-   background-color: #273D54;
-   box-shadow: 0 2px 30px 0 rgb(177, 236, 152,1);
+   background-color:  #102A43;
+   /* box-shadow: 0 2px 30px 0 rgb(177, 236, 152,1); */
    /* border-bottom: 5px solid #B1EC98;  */
+   animation: animate 20s linear; 
+   animation-iteration-count:infinite;
   height: 12vh;
   width: 900vw;
 }
@@ -77,68 +80,81 @@ Green 200 #B1EC98
 margin-left: 0;
 }
 /*animate*/
-/* @keyframes animate{
+
+/* 
+@keyframes animate{
   0%{
-    box-shadow: 2px 2px 15px 3px green;
-  }
-   5%{
-      box-shadow: 2px 2px 16px 3px red;
-  }
-   10%{
-    box-shadow: 2px 2px 17px 3px Aquamarine;
-  }
-   15%{
-     box-shadow: 2px 2px 18px 3px seashell;
-  }
-   20%{
-     box-shadow: 2px 2px 19px 3px maroon;
+    box-shadow: 0 2px 30px 0 rgb(177, 236, 152,1);
   }
   25%{
-    box-shadow: 2px 2px 19px 3px green;
+    box-shadow: 0 2px 30px 0 rgb(41, 135, 63);
+  }
+  100%{
+    box-shadow: 0 2px 30px 0 rgb(104, 210, 59);
+  }
+} */
+ @keyframes animate{
+  0%{
+    box-shadow:  0 2px 30px 0  green;
+  }
+   5%{
+      box-shadow:  0 2px 30px 0 red;
+  }
+   10%{
+    box-shadow:  0 2px 30px 0 Aquamarine;
+  }
+   15%{
+     box-shadow: 0 2px 30px 0 seashell;
+  }
+   20%{
+     box-shadow:  0 2px 30px 0 maroon;
+  }
+  25%{
+    box-shadow: 0 2px 30px 0 green;
   }
    30%{
-    box-shadow: 2px 2px 18px 3px darkorange;
+    box-shadow: 0 2px 30px 0 darkorange;
   }
    35%{
-     box-shadow: 2px 2px 27px 3px deeppink;
+     box-shadow: 0 2px 30px 0 deeppink;
   }
    40%{
-     box-shadow: 2x 2px 16px 3px Snow;
+     box-shadow: 0 2px 30px 0 Snow;
   }
    45%{
-     box-shadow: 2px 2px 15px 3px IndianRed;
+     box-shadow:  0 2px 30px 0 IndianRed;
   }
   50%{
-     box-shadow: 2px 2px 16px 3px Cornsilk;
+     box-shadow:  0 2px 30px 0 Cornsilk;
   }
    55%{
-     box-shadow: 2px 2px 17px 3px GreenYellow;
+     box-shadow:  0 2px 30px 0 GreenYellow;
   }
    60%{
-     box-shadow: 2px 2px 18px 3px Teal;
+     box-shadow:  0 2px 30px 0 Teal;
   } 65%{
-     box-shadow: 2px 2px 19px 3px NavajoWhite;
+     box-shadow: 0 2px 30px 0 NavajoWhite;
   }
    70%{
-     box-shadow: 2px2px 18px 3px YellowGreen;
+     box-shadow:  0 2px 30px 0 YellowGreen;
   }
    75%{
-     box-shadow: 2px 2px 17px 3px DarkTurquoise;
+     box-shadow:  0 2px 30px 0 DarkTurquoise;
   }
    80%{
-    box-shadow: 2px 2px 16px 3px green;
+    box-shadow:  0 2px 30px 0 green;
   }
    85%{
-     box-shadow: 2px2px 15px 3px Plum;
+     box-shadow:  0 2px 30px 0 Plum;
   }
    90%{
-     box-shadow: 2px 2px 14px 3px ForestGreen;
+     box-shadow:  0 2px 30px 0 ForestGreen;
   }
    95%{
-     box-shadow: 2px 2px 13px 3px Purple;
+     box-shadow:  0 2px 30px 0 Purple;
   }
      100%{
-     box-shadow: 2px 2px 12px 3px white	;
+     box-shadow:  0 2px 30px 0 green	;
 }
   
-} */
+} 

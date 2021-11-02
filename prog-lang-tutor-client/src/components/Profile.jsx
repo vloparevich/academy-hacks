@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Timeslot from './Timeslot/Timeslot';
+// import Timeslot from './Timeslot/Timeslot';
 import AddPicture from './AddPicture/AddPicture';
 
 class Profile extends Component {
@@ -64,7 +64,7 @@ class Profile extends Component {
 
                 <form onSubmit={this.handleSubmit}>
                     <div className="userImage"><p>user image to go here</p></div>
-                    <input type="file" onChange={this.handleFileUpload} />
+                    <input type="file" onChange={this.handleUpload} />
 
                     <button type="submit">Save Profile Pic</button>
                 </form>

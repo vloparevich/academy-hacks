@@ -1,5 +1,5 @@
 
-// components/AddMovie/AddMovie.js
+
 
 import React, { useState } from "react";
 
@@ -8,7 +8,7 @@ import service from "../../api/service";
 
 function AddPicture() {
 
-    const [imageUrl, setImageUrl] = useState("");
+    const [profilePic, setProfilePic] = useState(" ");
 
     // ******** this method handles just the file upload ********
     const handleFileUpload = (e) => {
@@ -16,16 +16,14 @@ function AddPicture() {
 
         const uploadData = new FormData();
 
-        // imageUrl => this name has to be the same as in the model since we pass
-        // req.body to .create() method when creating a new movie in '/api/movies' POST route
-        uploadData.append("imageUrl", e.target.files[0]);
+
+        uploadData.append("profilePic", e.target.files[0]);
 
         service
-            .handleUpload(uploadData)
+            .handleFileUpload(uploadData)
             .then((response) => {
-                // console.log("response is: ", response);
-                // response carries "secure_url" which we can use to update the state
-                setImageUrl(response.secure_url);
+
+                setProfilePic(response.secure_url);
             })
             .catch((err) => console.log("Error while uploading the file: ", err));
     };
@@ -35,14 +33,14 @@ function AddPicture() {
         e.preventDefault();
 
         service
-            .saveNewPic({ imageUrl })
+            .saveNewPic({ profilePic })
             .then((res) => {
-                // console.log("added new movie: ", res);
-                // Reset the form
 
-                setImageUrl("");
 
-                // here you would redirect to some other page
+
+
+                setProfilePic("");
+
             })
             .catch((err) => console.log("Error while adding the new movie: ", err));
     };
