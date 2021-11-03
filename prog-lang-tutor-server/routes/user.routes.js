@@ -3,9 +3,7 @@ const router = new Router();
 const User = require('../models/User.model');
 const Course = require('../models/Course.model');
 const fileUploader = require('../config/cloudinary.config.js');
-
-
-
+const Timeslot = require('../models/Timeslot.model');
 
 // ****************************************************************************************
 // POST add Profile Pic
@@ -64,12 +62,12 @@ router.get('/tutor/list', (req, res, next) => {
 });
 
 // ****************************************************************************************
-// GET route to get a specific tutor
+// GET route to get the details of the specific tutor
 // ****************************************************************************************
 router.get('/tutor/:id', (req, res) => {
   const { id } = req.params;
   User.findById(id)
-    .populate('coursesTaught')
+    .populate('coursesTaught mySchedule')
     .then((tutor) => {
       res.status(200).json({ success: true, tutor });
     })
@@ -134,7 +132,6 @@ router.post('/tutor', async (req, res, next) => {
     description,
     mySchedule,
     timeAvailableInRange,
-
   } = req.body;
 
   // let profilePic;
@@ -195,8 +192,8 @@ router.delete('/tutor/:tutorId', async (req, res, next) => {
   const { tutorId } = req.params;
   try {
     const removedTutor = await User.findByIdAndRemove(tutorId);
-    console.log({ removedTutor: removedTutor });
     await Course.deleteMany({ user_id: removedTutor._id });
+    await Timeslot.findOneAndDelete({ user_id: removedTutor._id });
     res
       .status(200)
       .json({ success: true, message: { removedTutor: removedTutor } });

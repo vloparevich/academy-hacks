@@ -82,7 +82,7 @@ router.post('/calendar', (req, res) => {
   })
     .select({ bookedSlots: { $elemMatch: { date: thisDay } } })
     .then((thisDateWithBookings) => {
-      res.status(201).json({ data: thisDateWithBookings });
+      res.status(201).json({ thisDateWithBookings });
     })
     .catch((err) => {
       console.log({ err: err });

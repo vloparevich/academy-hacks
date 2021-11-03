@@ -10,6 +10,7 @@ export default class Timeslot extends Component {
 
   state = {
     isTimeSlotChecked: new Array(24).fill(false),
+    alreadyBookedSlots: [],
     calendarValueLong: new Date(),
     calendarValueShort: '',
     pickedTimeSlots: [],
@@ -18,9 +19,7 @@ export default class Timeslot extends Component {
   };
 
   componentDidMount = () => {
-
     const { timeRange } = this.props;
-    console.log("here", this.props);
 
     this.setState({
       from: timeRange.from,
@@ -50,6 +49,7 @@ export default class Timeslot extends Component {
   createTimeSlots = () => {
     const slots = [];
     for (let i = this.state.from; i < this.state.to; i++) {
+      if (this.state.alreadyBookedSlots.includes(i)) continue;
       slots.push(
         <div key={i}>
           <button
@@ -74,6 +74,19 @@ export default class Timeslot extends Component {
     BOOKING_SERVICE.getMyScheduleForThisDay(shortDateValue, this.props.tutorId)
       .then((responseFromApi) => {
         console.log('FRONT END just hit the backend', responseFromApi.data);
+
+        let singleDayBookings = [];
+        responseFromApi.data.thisDateWithBookings &&
+          (singleDayBookings =
+            responseFromApi.data.thisDateWithBookings?.bookedSlots[0]
+              .bookedTime);
+
+        this.setState(
+          {
+            alreadyBookedSlots: singleDayBookings,
+          },
+          () => console.log(this.state.alreadyBookedSlots)
+        );
       })
       .catch((err) => console.log(err));
 
@@ -91,12 +104,11 @@ export default class Timeslot extends Component {
     // !!! check on empty calendar date 'calendarValueShort'
 
     this.props.bookedTime(this.state);
-
     //After the state is sent to the route to be stored in the DB resetting the state
 
     this.setState({
       isTimeSlotChecked: new Array(24).fill(false),
-      calendarValueLong: new Date(),
+      // calendarValueLong: new Date(),
       calendarValueShort: '',
       pickedTimeSlots: [],
     });
@@ -104,19 +116,31 @@ export default class Timeslot extends Component {
 
   render() {
     return (
-      <div id='scheduler'>
-        <Calendar
-          onChange={(event) => this.onCalendarDateChange(event)}
-          value={this.state.calendarValueLong}
-          minDate={new Date(this.currentDate.toUTCString())}
-        />
-        {this.createTimeSlots().map((current) => current)}
-        <button
-          onClick={this.handlePickedSlotsAndDate}
-          className='SaveTimeButton'
-        >
-          Save
-        </button>
+      <div id='schedulerComponent'>
+        <div id='scheduler'>
+          <Calendar
+            onChange={(event) => this.onCalendarDateChange(event)}
+            value={this.state.calendarValueLong}
+            minDate={new Date(this.currentDate.toUTCString())}
+          />
+          <div className='timePicker'>
+            {this.createTimeSlots().map((current) => current)}
+          </div>
+        </div>
+        <div id='schedulerFooter'>
+          {this.createTimeSlots().length !== 0 ? (
+            <button
+              onClick={this.handlePickedSlotsAndDate}
+              className='SaveTimeButton'
+            >
+              Book
+            </button>
+          ) : (
+            <div id='NoLessonsLeftBanner'>
+              This date is sold, try a different one...
+            </div>
+          )}
+        </div>
       </div>
     );
   }
