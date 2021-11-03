@@ -5,13 +5,17 @@ export default class SearchBar extends Component {
   render() {
     return (
       <div>
-        <p>Search</p>
-        <input
-          name='searchInput'
-          onChange={(event) =>
-            this.props.onSearchQueryChange(event.target.value)
-          }
-        />
+        {/* <p>Search</p> */}
+        <fieldset>
+          <input
+            name='searchInput'
+            onChange={(event) =>
+              this.props.onSearchQueryChange(event.target.value)
+            }
+          />
+
+          <legend>SEARCH</legend>
+        </fieldset>
         {/* <div id="checkbox">
           <input
             id="checkbox-instock"

@@ -18,7 +18,10 @@ export default class Timeslot extends Component {
   };
 
   componentDidMount = () => {
+
     const { timeRange } = this.props;
+    console.log("here", this.props);
+
     this.setState({
       from: timeRange.from,
       to: timeRange.to,

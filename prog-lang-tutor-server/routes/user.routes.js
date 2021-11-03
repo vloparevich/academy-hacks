@@ -2,6 +2,48 @@ const { Router } = require('express');
 const router = new Router();
 const User = require('../models/User.model');
 const Course = require('../models/Course.model');
+const fileUploader = require('../config/cloudinary.config.js');
+
+
+
+
+// ****************************************************************************************
+// POST add Profile Pic
+// ****************************************************************************************
+router.post('/upload', fileUploader.single('profilePic'), (req, res, next) => {
+  // console.log('file is: ', req.file)
+
+  if (!req.file) {
+    next(new Error('No file uploaded!'));
+    return;
+  }
+  // get the URL of the uploaded file and send it as a response.
+  // 'secure_url' can be any name, just make sure you remember to use the same when accessing it on the frontend
+
+  res.json({ secure_url: req.file.path });
+});
+
+// Add Product (Create)
+// router.post("/add-profilePic", uploadCloud.single("profilePic"), (req, res, next) => {
+//   const picInputInfo = req.body;
+//   picInputInfo.profilePic = req.file.path;
+
+// productInputInfo.image = req.file.path;
+// use file.url when using regular cloudinary method to get image url
+// use file.path when using v2 cloudinary method to get image url
+
+//   User.create(picInputInfo)
+//     .then((newlyCreatedPic) => {
+//       res.json({ success: true, profilePic: newlyCreatedPic });
+//     })
+//     .catch((err) =>
+//       res.json({
+//         success: false,
+//         message: "There was an error while adding picture",
+//         err,
+//       })
+//     );
+// });
 
 // ****************************************************************************************
 // GET route to get all the tutors
@@ -83,6 +125,7 @@ router.post('/tutor', async (req, res, next) => {
   const {
     isTutor,
     email,
+    profilePic,
     firstName,
     lastName,
     countryOfOrigin,
@@ -91,7 +134,7 @@ router.post('/tutor', async (req, res, next) => {
     description,
     mySchedule,
     timeAvailableInRange,
-    profilePic,
+
   } = req.body;
 
   // let profilePic;
