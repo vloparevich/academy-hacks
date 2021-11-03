@@ -127,7 +127,7 @@ export default class Timeslot extends Component {
             {this.createTimeSlots().map((current) => current)}
           </div>
         </div>
-        <div>
+        <div id='schedulerFooter'>
           {this.createTimeSlots().length !== 0 ? (
             <button
               onClick={this.handlePickedSlotsAndDate}

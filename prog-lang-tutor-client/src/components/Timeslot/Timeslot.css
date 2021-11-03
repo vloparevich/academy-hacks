@@ -1,5 +1,6 @@
 #schedulerComponent {
     max-width: 475px;
+    min-height: 350px;
     display: flex;
     flex-direction: column;
     background-color: grey;
@@ -55,7 +56,6 @@
     text-align: center;
     padding: .5rem;
     background-color: bisque;
-
 }
 
 .SaveTimeButton {
@@ -100,4 +100,10 @@
 
 .timePicker button:focus {
     outline: none;
+}
+
+#schedulerFooter {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
 }
