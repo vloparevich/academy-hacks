@@ -16,8 +16,8 @@ router.post('/', async (req, res, next) => {
     pickedTimeSlots,
   } = req.body.data;
 
-  const { tutorId } = req.body;
-
+  let { tutorId } = req.body;
+  tutorId = mongoose.Types.ObjectId(tutorId.id);
   try {
     let timeSlotInDb = await Timeslot.findOne({ tutorId });
 
@@ -25,7 +25,6 @@ router.post('/', async (req, res, next) => {
       timeSlotInDb = await Timeslot.create({
         tutorId: tutorId,
       });
-
       await User.findByIdAndUpdate(
         tutorId,
         {
