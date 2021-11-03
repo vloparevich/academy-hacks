@@ -62,12 +62,12 @@ router.get('/tutor/list', (req, res, next) => {
 });
 
 // ****************************************************************************************
-// GET route to get a specific tutor
+// GET route to get the details of the specific tutor
 // ****************************************************************************************
 router.get('/tutor/:id', (req, res) => {
   const { id } = req.params;
   User.findById(id)
-    .populate('coursesTaught')
+    .populate('coursesTaught mySchedule')
     .then((tutor) => {
       res.status(200).json({ success: true, tutor });
     })
