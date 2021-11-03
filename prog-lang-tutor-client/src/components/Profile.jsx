@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Timeslot from './Timeslot/Timeslot';
+// import Timeslot from './Timeslot/Timeslot';
 import AddPicture from './AddPicture/AddPicture';
 
 class Profile extends Component {
