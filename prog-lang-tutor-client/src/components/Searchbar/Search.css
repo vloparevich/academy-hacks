@@ -1,0 +1,31 @@
+input {
+    line-height: 2rem;
+    width: 83%;
+    border-style: solid;
+    /* border-color: #EEEEEE; */
+    border-color: #B2E89A;
+    border-width: 2px;
+    border-radius: .3rem;
+    background-color:transparent;
+    color:#B2E89A;;
+margin-top: 35px;
+}
+fieldset {
+    border: 1px solid #B2E89A;
+
+}
+legend{
+    margin-right:50px ;
+}
+
+#checkboxlabel {
+    display: inline
+}
+
+#checkbox-instock {
+    width: 1.5rem;
+}
+
+#checkbox {
+    margin: 1rem 0;
+}

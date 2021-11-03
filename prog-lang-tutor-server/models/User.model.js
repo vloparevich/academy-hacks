@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema({
@@ -12,7 +12,7 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    required: [true, "Password is required"],
+    required: [true, 'Password is required'],
   },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
@@ -20,10 +20,18 @@ const userSchema = new Schema({
   profilePic: { type: String, required: false },
   imageArray: { type: [String] },
   teachingExperience: { type: Number },
-  time: [{ type: Schema.Types.ObjectId, ref: "Timeslot" }],
-  courses: [{ type: Schema.Types.ObjectId, ref: "Course" }],
+  mySchedule: { type: Schema.Types.ObjectId, ref: 'Timeslot' },
+  timeRangeOfAvailability: {
+    from: {
+      type: Number,
+    },
+    to: {
+      type: Number,
+    },
+  },
+  coursesTaught: { type: Schema.Types.ObjectId, ref: 'Course' },
 });
 
-const User = model("User", userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;

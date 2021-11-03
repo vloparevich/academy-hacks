@@ -56,6 +56,8 @@ app.use("/api/user", userRoutes);
 // To be used for reinitializing the DB after it is dropped
 app.use("/seed", require("./routes/seeds/seed-route"));
 
+app.use('/api/booking', require('./routes/booking.routes'));
+
 // app.use('/student', require('./routes/student.routes'));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

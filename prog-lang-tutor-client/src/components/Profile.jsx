@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import Timeslot from './Timeslot/Timeslot';
+import Timeslot from './Timeslot/Timeslot';
 import AddPicture from './AddPicture/AddPicture';
 
 class Profile extends Component {
     state = {
-        profilePic: '',
+        // profilePic: '',
         from: 0,
         to: 0,
     };
@@ -63,7 +63,7 @@ class Profile extends Component {
 
 
                 <form onSubmit={this.handleSubmit}>
-                    <div className="userImage"><p>user image to go here</p></div>
+                    <div className="userImage"></div>
                     <input type="file" onChange={this.handleUpload} />
 
                     <button type="submit">Save Profile Pic</button>
@@ -75,7 +75,7 @@ class Profile extends Component {
                     <li>Looking To Learn:</li>
                     <li>Days/Time Available</li>
                 </div>
-                <div className="bookedSessions"><p>sessions calendar to go here</p></div>
+                <div className="bookedSessions"></div>
                 <div>HELLO {this.state.firstName}</div>
 
 

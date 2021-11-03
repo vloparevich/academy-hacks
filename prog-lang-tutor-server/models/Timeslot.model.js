@@ -1,12 +1,13 @@
 const { Schema, model } = require('mongoose');
 
 const timeslotSchema = new Schema({
-  user_id: { type: Schema.Types.ObjectId, ref: 'User' },
-  timeslots: [{ type: Number }],
-  bookedTimeslots: [
+  tutorId: { type: Schema.Types.ObjectId, ref: 'User' },
+  bookedSlots: [
     {
-      type: Number,
-      course_id: { type: Schema.Types.ObjectId, ref: 'Courses' },
+      date: {
+        type: String,
+      },
+      bookedTime: [{ type: Number }],
     },
   ],
 });
