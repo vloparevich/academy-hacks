@@ -73,7 +73,7 @@
     /* border: .5px solid #FFA500; */
     font: 1rem Helvetica, "Lucida Grande", Arial, sans-serif;
     color: rgb(0, 0, 0);
-    box-shadow: 0 4px #01FF70;
+    box-shadow: 0 4px #1D1F25;
 }
 
 .SaveTimeButton:active {
@@ -89,7 +89,7 @@
 .timePicker button {
     font: .75rem Helvetica, "Lucida Grande", Arial, sans-serif;
     color: rgb(0, 0, 0);
-    box-shadow: 0 2px #01FF70;
+    box-shadow: 0 2px #1D1F25;
 }
 
 .timePicker button:active {
