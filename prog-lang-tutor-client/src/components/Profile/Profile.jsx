@@ -52,9 +52,7 @@ class Profile extends Component {
             {/* <button onClick={this.handleTimeRange}>Continue</button> */}
           </div>
           <div className='bookedSessions'>
-            <p>
-              <Timeslot />
-            </p>
+            <p>{/* <Timeslot /> */}</p>
           </div>
         </div>
       </div>
