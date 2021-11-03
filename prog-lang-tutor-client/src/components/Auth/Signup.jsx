@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import authInstance from "../Auth/auth-service";
+import authInstance from "../../services/auth-service";
 // import { Redirect } from "react-router-dom";
 
 export default class Signup extends Component {
