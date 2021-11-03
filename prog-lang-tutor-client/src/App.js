@@ -5,10 +5,19 @@ import Home from "./components/Home/Home";
 import TutorDetails from "./components/TutorDetails/TutorDetails";
 import Navbar from "./components/Navbar/Navbar";
 import Signup from "./components/Auth/Signup";
+import authService from "./services/auth-service";
 import { Switch, Route } from "react-router-dom";
 
 class App extends React.Component {
-  state = {};
+  state = {
+    user: null,
+  };
+
+  componentDidMount() {
+    authService.getSession().then((data) => {
+      console.log(data);
+    });
+  }
 
   updateAvailAbility = (slots) => {
     console.log("incoming slot", slots);
@@ -20,7 +29,7 @@ class App extends React.Component {
   render = () => {
     return (
       <div className="App">
-        <Navbar></Navbar>
+        <Navbar user={this.state.user} />
         <Switch>
           <Route
             exact
