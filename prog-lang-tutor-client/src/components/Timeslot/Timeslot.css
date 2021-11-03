@@ -1,24 +1,65 @@
-#scheduler {
+#schedulerComponent {
     display: flex;
     flex-direction: column;
+    background-color: grey;
+    width: 75%;
+    margin: 1rem auto 1rem;
+    padding: .25rem;
+    border-radius: 5px;
+}
+
+#scheduler {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin: 1px;
 }
 
 #scheduler button {
     width: 7rem;
     border: none;
+    border-radius: 5px;
+    height: 1.5rem;
+    margin: .1rem;
 }
 
+.react-calendar__month-view__days {
+    padding: .5rem;
+}
 
 .react-calendar {
     font-size: .75rem;
-    margin: 0 auto;
+    border-radius: 5px;
+    max-height: 300px;
 }
 
 .react-calendar button {
     font-size: .65rem;
+    border-radius: 5px;
+    padding: .5rem;
 }
 
 .SaveTimeButton {
-    margin: 2rem auto;
+    width: 7rem;
+    border: none;
+    border-radius: 5px;
+    height: 2rem;
+    margin: 1rem;
+}
+
+.timePicker {
+    margin-left: 1rem;
+    width: 306px;
+    text-align: left;
+}
+
+#NoLessonsLeftBanner {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    height: 3rem;
+    border-radius: 5px;
+    text-align: center;
+    padding: .5rem;
+
 }
