@@ -1,23 +1,81 @@
-.container {
+.profileContainer {
   display: flex;
   flex-direction: row;
+  color: #fff;
+  justify-content: space-around;
+}
+
+.imageSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.userDetailsSection {
+  display: flex;
+  flex-direction: column;
 }
 
 .userImage {
   display: flex;
-  padding: 10rem;
-  height: 10rem;
-  width: 10rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#profilePicture {
+  margin: 0 auto;
 }
 
 .userDetails {
-    display: flex;
-    padding: 10rem;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  padding: 10rem;
+  flex-direction: column;
+  align-items: flex-start;
 
 }
 
 .bookedSessions {
-    flex: 3;
+  flex: 3;
+}
+
+
+
+#imageInput {
+  display: none;
+  margin: 10px;
+}
+
+#imageInputLabel,
+#editMyDetailsButton,
+.formControlButtons {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 4px 32px;
+  background-color: #FFFFFF;
+  border: solid 1px #666F77;
+  border-radius: 6px;
+  color: #666F77;
+  max-height: 3rem;
+  font-size: .7rem;
+  margin: .5rem;
+}
+
+#imageInputLabel:active,
+#editMyDetailsButton:active,
+.formControlButtons:active {
+  background-image: none;
+  background-color: #2D6C7A;
+  color: #FFFFFF;
+}
+
+#profilePicture {
+  width: 250px;
+}
+
+form input,
+label {
+  display: block;
+}
+
+form input {
+  margin-top: .1rem;
 }
