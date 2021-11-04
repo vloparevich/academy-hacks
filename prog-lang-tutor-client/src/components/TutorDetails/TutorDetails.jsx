@@ -10,6 +10,7 @@ export default class TutorDetails extends Component {
   tutorId = this.props.match.params;
 
   componentDidMount = () => {
+    console.log('mounting');
     this.getTutorDetails();
   };
 
@@ -35,24 +36,31 @@ export default class TutorDetails extends Component {
   };
 
   render() {
+    console.log({ myObject: this.state.tutorDetails });
     return (
-      <div>
-        <div>
-          <b>All the details should parsed and structured: </b>
-          {JSON.stringify(this.state.tutorDetails)}
-        </div>
-        <div className='TutorActions'>
-          <button onClick={this.handleBookClick}>Book a lesson</button>
-          <button>Message</button>
-        </div>
-        {this.state.isScheduleShown && (
-          <Timeslot
-            timeRange={this.state.timeRange}
-            bookedTime={this.savingBookedTimeslots}
-            tutorId={this.tutorId.id}
-          />
+      <>
+        {this.state.tutorDetails?.firstName && (
+          <div>
+            <div>
+              <b>All the details should parsed and structured: </b>
+            </div>
+            <div className='tutorFirstName'>
+              {this.state.tutorDetails.firstName}
+            </div>
+            <div className='TutorActions'>
+              <button onClick={this.handleBookClick}>Book a lesson</button>
+              <button>Review</button>
+            </div>
+            {this.state.isScheduleShown && (
+              <Timeslot
+                timeRange={this.state.timeRange}
+                bookedTime={this.savingBookedTimeslots}
+                tutorId={this.tutorId.id}
+              />
+            )}
+          </div>
         )}
-      </div>
+      </>
     );
   }
 }
