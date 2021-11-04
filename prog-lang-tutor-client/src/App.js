@@ -11,11 +11,17 @@ import { Switch, Route } from "react-router-dom";
 class App extends React.Component {
   state = {
     user: null,
+    loading: true,
   };
 
   componentDidMount() {
     authService.getSession().then((data) => {
-      console.log(data);
+      // console.log(data);
+      const { user } = data;
+      this.setState({
+        user,
+        loading: false,
+      });
     });
   }
 
@@ -29,7 +35,7 @@ class App extends React.Component {
   render = () => {
     return (
       <div className="App">
-        <Navbar user={this.state.user} />
+        <Navbar user={this.state.user} loading={this.state.loading} />
         <Switch>
           <Route
             exact
