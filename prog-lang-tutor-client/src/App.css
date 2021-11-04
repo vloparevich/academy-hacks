@@ -1,7 +1,5 @@
 .App {
   text-align: center;
-  background-color: #1D2025;
-  color: #F0F4F8;
 }
 
 .App-logo {
@@ -16,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,10 +36,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-#schedulers {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
