@@ -44,8 +44,8 @@ app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 const index = require("./routes/index");
 app.use("/", index);
 
-const authRouter = require("./routes/auth.routes");
-app.use("/auth", authRouter);
+const authRoutes = require("./routes/auth.routes");
+app.use("/auth", authRoutes);
 
 // const studentRoutes = require('./routes/student.routes');
 // app.use('/api/student', studentRoutes);
@@ -56,7 +56,9 @@ app.use("/api/user", userRoutes);
 // To be used for reinitializing the DB after it is dropped
 app.use("/seed", require("./routes/seeds/seed-route"));
 
-app.use('/api/booking', require('./routes/booking.routes'));
+app.use("/api/booking", require("./routes/booking.routes"));
+
+app.use("/api", require("./routes/picture.routes"));
 
 // app.use('/student', require('./routes/student.routes'));
 
