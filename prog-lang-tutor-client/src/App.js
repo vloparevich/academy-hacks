@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import Profile from './components/Profile/Profile';
+import Profile from './components/Profile';
 import Home from './components/Home/Home';
 import TutorDetails from './components/TutorDetails/TutorDetails';
 import { Switch, Route } from 'react-router-dom';
