@@ -33,6 +33,9 @@ class Navbar extends Component {
                 <Link to="/user">Profile</Link>
               </li> */}
               <li>
+                <button onClick={this.props.handleLogout}>Logout</button>
+              </li>
+              <li>
                 <Link to="/user">{this.props.user?.firstName}</Link>
               </li>
             </>

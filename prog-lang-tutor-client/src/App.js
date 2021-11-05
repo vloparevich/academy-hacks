@@ -5,8 +5,11 @@ import Home from "./components/Home/Home";
 import TutorDetails from "./components/TutorDetails/TutorDetails";
 import Navbar from "./components/Navbar/Navbar";
 import Signup from "./components/Auth/Signup";
+import Login from "./components/Auth/Login";
+import NormalRoute from "./routing-components/NormalRoute";
 import authService from "./services/auth-service";
-import { Switch, Route } from "react-router-dom";
+import * as PATHS from "./utils/paths";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 class App extends React.Component {
   state = {
@@ -32,6 +35,12 @@ class App extends React.Component {
     });
   };
 
+  authenticate = (user) => {
+    this.setState({
+      user,
+    });
+  };
+
   render = () => {
     return (
       <div className="App">
@@ -42,8 +51,18 @@ class App extends React.Component {
             path="/auth/signup"
             render={(props) => <Signup {...props} />}
           />
+          <NormalRoute
+            exact
+            path={PATHS.LOGINPAGE}
+            authenticate={this.authenticate}
+            component={Login}
+          />
           <Route exact path="/" component={Home} />
-          <Route exact path="/user" component={Profile} />
+          {this.state.user ? (
+            <Route exact path="/user" component={Profile} />
+          ) : (
+            <Redirect to="/auth/signup" />
+          )}
           <Route exact path="/tutor/:id" component={TutorDetails} />
         </Switch>
       </div>
