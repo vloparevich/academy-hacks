@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import authInstance from "../../services/auth-service";
+import { signup } from "../../services/auth-service";
 // import { Redirect } from "react-router-dom";
 
 export default class Signup extends Component {
@@ -18,7 +18,7 @@ export default class Signup extends Component {
 
   handleSignup = (e) => {
     e.preventDefault();
-    authInstance.signup(this.state).then((data) => {
+    signup(this.state).then((data) => {
       console.log({ data });
       // upon successfull
       this.props.history.push("/");

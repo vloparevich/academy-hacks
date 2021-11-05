@@ -125,13 +125,24 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
 });
 
-router.get("/logout", isLoggedIn, (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ errorMessage: err.message });
-    }
-    res.json({ message: "user logged out" });
-  });
+// router.get("/logout", isLoggedIn, (req, res) => {
+//   req.session.destroy((err) => {
+//     if (err) {
+//       return res.status(500).json({ errorMessage: err.message });
+//     }
+//     res.json({ message: "user logged out" });
+//   });
+// });
+
+router.delete("/logout", isLoggedIn, (req, res) => {
+  Session.findByIdAndDelete(req.headers.authorization)
+    .then(() => {
+      res.status(200).json({ message: "User was logged out" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ errorMessage: err.message });
+    });
 });
 
 module.exports = router;
