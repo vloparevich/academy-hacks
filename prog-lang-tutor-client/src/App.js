@@ -58,11 +58,11 @@ class App extends React.Component {
             component={Login}
           />
           <Route exact path="/" component={Home} />
-          {this.state.user ? (
+          {/* {this.state.user ? (
             <Route exact path="/user" component={Profile} />
           ) : (
             <Redirect to="/auth/signup" />
-          )}
+          )} */}
           <Route exact path="/tutor/:id" component={TutorDetails} />
         </Switch>
       </div>
