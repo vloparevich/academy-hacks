@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import USER_SERVICE from '../../services/UserServices';
 import BOOKING_SERVICE from '../../services/BookingServices';
 import Timeslot from '../Timeslot/Timeslot';
+import '../TutorDetails/TutorDetails.css'
 
 export default class TutorDetails extends Component {
   state = { isScheduleShown: false, timeRange: {} };
@@ -17,12 +18,14 @@ export default class TutorDetails extends Component {
   getTutorDetails = () => {
     const { params } = this.props.match;
 
-    USER_SERVICE.getSpecificTutor(params.id).then((responseFromAPI) =>
+    USER_SERVICE.getSpecificTutor(params.id).then((responseFromAPI) => {
+    console.log({responseFromAPI:responseFromAPI})
       this.setState({
         tutorDetails: responseFromAPI.tutor,
         timeRange: responseFromAPI.tutor.timeRangeOfAvailability,
+        coursesTaught: responseFromAPI.tutor.coursesTaught.courses[0]
       })
-    );
+    });
   };
 
   handleBookClick = () => {
@@ -40,12 +43,16 @@ export default class TutorDetails extends Component {
     return (
       <>
         {this.state.tutorDetails?.firstName && (
-          <div>
-            <div>
-              <b>All the details should parsed and structured: </b>
+          <div className='TutorPage'>
+          <img className='TutorProfilePicture' src={this.state.tutorDetails.profilePic} alt="pic"/>
+            <div className='TutorInfo'>
+              <h1>{this.state.tutorDetails.firstName} {this.state.tutorDetails.lastName}</h1>
             </div>
-            <div className='tutorFirstName'>
-              {this.state.tutorDetails.firstName}
+            <div>
+              <h3>{this.state.tutorDetails.teachingExperience} years of experience!</h3>
+            </div>
+            <div>
+            <h2>{this.state.coursesTaught.courseName} : {this.state.coursesTaught.description}.</h2>
             </div>
             <div className='TutorActions'>
               <button onClick={this.handleBookClick}>Book a lesson</button>
