@@ -28,11 +28,11 @@ const instance = axios.create({
   withCredentials: true,
 });
 
-const authService = {
-  signup: (body) =>
-    instance.post("/signup", body).then((response) => response.data),
-  getSession: () => instance.get("/session").then((response) => response.data),
-};
+// const authService = {
+//   signup: (body) =>
+//     instance.post("/signup", body).then((response) => response.data),
+//   getSession: () => instance.get("/session").then((response) => response.data),
+// };
 
 export function login(credentials) {
   return instance
@@ -52,15 +52,22 @@ export function getLoggedIn() {
     .catch(internalServerError);
 }
 
+export function signup(credentials) {
+  return instance
+    .post("/signup", credentials)
+    .then(successStatus)
+    .catch(internalServerError);
+}
+
 export function logout() {
   return instance
     .delete("/logout", {
       headers: {
-        Authorization: USER_HELPERS.getUserToken(),
+        Authorization: USER_HELPERS.removeUserToken(),
       },
     })
     .then(successStatus)
     .catch(internalServerError);
 }
 
-export default authService;
+// export default authService;

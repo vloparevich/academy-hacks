@@ -1,6 +1,7 @@
 import * as CONSTS from "./consts";
 
 export function getUserToken() {
+  console.log({ localStorage });
   return localStorage.getItem(CONSTS.ACCESS_TOKEN);
 }
 export function setUserToken(value) {
