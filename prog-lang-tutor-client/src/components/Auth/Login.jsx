@@ -35,18 +35,21 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleFormSubmission}>
+      <form
+        onSubmit={this.handleFormSubmission}
+        className="auth-form-container"
+      >
         <input
           type="email"
           name="email"
-          placeholder="email"
+          placeholder="Enter your email"
           value={this.state.email}
           onChange={this.changeHandler}
         />
         <input
           type="password"
           name="password"
-          placeholder="password"
+          placeholder="Enter your password"
           autoComplete="current-password"
           value={this.state.password}
           onChange={this.changeHandler}
