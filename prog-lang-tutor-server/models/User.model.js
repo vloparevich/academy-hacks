@@ -20,6 +20,7 @@ const userSchema = new Schema({
   profilePic: { type: String, required: false },
   // imageArray: { type: [String] },
   teachingExperience: { type: Number },
+  reviews: [{type : String}],
   mySchedule: { type: Schema.Types.ObjectId, ref: 'Timeslot' },
   timeRangeOfAvailability: {
     from: {
