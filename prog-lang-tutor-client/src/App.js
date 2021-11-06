@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Signup from "./components/Auth/Signup";
 import authService from "./services/auth-service";
 import { Switch, Route } from "react-router-dom";
+import ReviewTutor from "./components/ReviewTutor/ReviewTutor";
 
 class App extends React.Component {
   state = {
@@ -45,6 +46,7 @@ class App extends React.Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/user" component={Profile} />
           <Route exact path="/tutor/:id" component={TutorDetails} />
+          <Route exact path="/tutor/review/:id" component={ReviewTutor} />
         </Switch>
       </div>
     );
