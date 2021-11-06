@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = new Router();
 const User = require("../models/User.model");
 const Course = require("../models/Course.model");
-const fileUploader = require("../config/cloudinary.config.js");
+const fileUploader = require("../config/cloudinary.setup.js");
 const Timeslot = require("../models/Timeslot.model");
 
 // ****************************************************************************************

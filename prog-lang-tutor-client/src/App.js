@@ -3,7 +3,7 @@ import React from "react";
 import Profile from "./components/Profile/Profile";
 import Home from "./components/Home/Home";
 import TutorDetails from "./components/TutorDetails/TutorDetails";
-import Navbar from "./components/Navbar/Navbar";
+// import NavBar from "./components/NavBar/NavBar";
 import Signup from "./components/Auth/Signup";
 import authService from "./services/auth-service";
 import { Switch, Route } from "react-router-dom";
@@ -35,7 +35,7 @@ class App extends React.Component {
   render = () => {
     return (
       <div className="App">
-        <Navbar user={this.state.user} loading={this.state.loading} />
+        {/* <NavBar user={this.state.user} loading={this.state.loading} /> */}
         <Switch>
           <Route
             exact

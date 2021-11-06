@@ -1,3 +1,67 @@
-body{
-    background-color: #1D2025;
+/*Green 300 #36B37E
+Green 200 #B1EC98
+dark blueBackGround Color:  #1d2025;
+900 Blue Grey NavBar color: #102A43
+Accent/borders Green colors: #36B37E
+
+*/
+
+body {
+  /* background-color: #1d2025; */
+  /* background-image: url(https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg);
+  background-size: cover;
+  background-repeat: no-repeat; */
+  background-color: #1d2025;
+
+  /* background-color: rgba(200, 100, 0, 0.5);  
+  background-blend-mode: multiply;  */
+  /* background-image: url(https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg); */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat;
+  height: 100vh; */
 }
+div {
+  height: 10vh;
+}
+@media only screen and (max-width: 600px) {
+}
+/* .landingPageImg { */
+/* background-image: url(https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg); */
+/* background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(87, 83, 79, 1);
+  background-blend-mode: multiply; */
+/* } */
+
+.titleHome {
+  font-size: 3rem;
+  width: 65vw;
+  position: absolute;
+  top: 250px;
+  left: 250px;
+  text-align: center;
+}
+
+.searchBar {
+  position: absolute;
+  top: 400px;
+  left: 300px;
+  margin: 5px;
+  margin-left: 50px;
+  width: 700px;
+  /* display: flex;
+  align-items: center; */
+}
+
+/* .footer {
+  position: absolute;
+  bottom: 0px;
+
+  background-color: #1d2025;
+} */
+/* 
+ .landingPageImg {
+  background-image: "url(https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg)";
+ height: "300px";
+  background-repeat: "no-repeat";
+} */

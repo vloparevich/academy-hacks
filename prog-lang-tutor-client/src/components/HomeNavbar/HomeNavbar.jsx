@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./NavBar.css";
+import "./HomeNavbar.css";
 
-class NavBar extends Component {
+class HomeNavbar extends Component {
   render() {
     if (this.props.loading) {
       return <div>Loaading...</div>;
     }
     return (
-      <nav className="navbar-style">
+      <nav className="nav-style">
         {/* <img className="logo" src="logo.png" alt="logo" /> */}
         {/* <img className="logo" src="logo.png" alt="logo" /> */}
         <ul>
@@ -44,4 +44,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default HomeNavbar;

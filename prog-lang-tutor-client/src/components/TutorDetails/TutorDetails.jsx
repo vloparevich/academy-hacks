@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import { Link } from 'react-router-dom';
-
-import USER_SERVICE from '../../services/UserServices';
-import BOOKING_SERVICE from '../../services/BookingServices';
-import Timeslot from '../Timeslot/Timeslot';
+// import NavBar from "./components/NavBar/NavBar";
+import USER_SERVICE from "../../services/UserServices";
+import BOOKING_SERVICE from "../../services/BookingServices";
+import Timeslot from "../Timeslot/Timeslot";
 
 export default class TutorDetails extends Component {
   state = { isScheduleShown: false, timeRange: {} };
   tutorId = this.props.match.params;
 
   componentDidMount = () => {
-    console.log('mounting');
+    console.log("mounting");
     this.getTutorDetails();
   };
 
@@ -39,15 +39,16 @@ export default class TutorDetails extends Component {
     console.log({ myObject: this.state.tutorDetails });
     return (
       <>
+        {/* <NavBar user={this.state.user} loading={this.state.loading} /> */}
         {this.state.tutorDetails?.firstName && (
           <div>
             <div>
               <b>All the details should parsed and structured: </b>
             </div>
-            <div className='tutorFirstName'>
+            <div className="tutorFirstName">
               {this.state.tutorDetails.firstName}
             </div>
-            <div className='TutorActions'>
+            <div className="TutorActions">
               <button onClick={this.handleBookClick}>Book a lesson</button>
               <button>Review</button>
             </div>

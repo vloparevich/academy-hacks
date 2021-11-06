@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import authInstance from "../../services/auth-service";
 // import { Redirect } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
 
 export default class Signup extends Component {
   state = {
@@ -27,38 +28,41 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSignup}>
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={this.state.firstName}
-          onChange={this.changeHandler}
-        />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={this.state.lastName}
-          onChange={this.changeHandler}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="email"
-          value={this.state.email}
-          onChange={this.changeHandler}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          autoComplete="current-password"
-          value={this.state.password}
-          onChange={this.changeHandler}
-        />
-        <input type="submit" value="Create account" />
-      </form>
+      <>
+        <NavBar />
+        <form onSubmit={this.handleSignup}>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={this.state.firstName}
+            onChange={this.changeHandler}
+          />
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={this.state.lastName}
+            onChange={this.changeHandler}
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            value={this.state.email}
+            onChange={this.changeHandler}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            autoComplete="current-password"
+            value={this.state.password}
+            onChange={this.changeHandler}
+          />
+          <input type="submit" value="Create account" />
+        </form>
+      </>
     );
   }
 }

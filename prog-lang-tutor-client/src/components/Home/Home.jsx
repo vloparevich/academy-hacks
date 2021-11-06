@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import './Home.css';
-import SearchBar from '../Searchbar/SearchBar';
-import USER_SERVICE from '../../services/UserServices';
-import TutorRow from '../TutorRow/TutorRow';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import "./Home.css";
+import SearchBar from "../Searchbar/SearchBar";
+import HomeNavbar from "../HomeNavbar/HomeNavbar";
+import USER_SERVICE from "../../services/UserServices";
+import TutorRow from "../TutorRow/TutorRow";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   state = {
@@ -39,7 +40,7 @@ class Home extends Component {
     searchInput && filteredTutors.length === 0 && (filteredTutors = []);
     searchInput.length === 0 && (filteredTutors = []);
 
-    console.log('after filtering', filteredTutors);
+    console.log("after filtering", filteredTutors);
     this.setState({
       filteredTutors: filteredTutors,
     });
@@ -48,12 +49,23 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <SearchBar onSearchQueryChange={this.onSearchInputChange} />
-        {this.state.filteredTutors.map((tutor) => (
-          <Link to={`/tutor/${tutor._id}`} key={tutor._id}>
-            <TutorRow tutor={tutor} />
-          </Link>
-        ))}
+        <HomeNavbar user={this.state.user} loading={this.state.loading} />
+        <div className="landingPageImg"></div>
+        <div className="titleHome">
+          Find the best online programming tutors
+          <br /> and learn to code confidently
+        </div>
+        <div className="searchBar">
+          <SearchBar onSearchQueryChange={this.onSearchInputChange} />
+          {this.state.filteredTutors.map((tutor) => (
+            <Link to={`/tutor/${tutor._id}`} key={tutor._id}>
+              <TutorRow tutor={tutor} />
+            </Link>
+          ))}
+        </div>
+
+        <div></div>
+        {/* <div className="footer">Hack Academy </div> */}
       </div>
     );
   }

@@ -6,20 +6,25 @@ Accent/borders Green colors: #36B37E
 
 */
 
-.navbar-style {
+.nav-style {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
-  background-color: #102a43;
+  background-image: url("https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg"); /* assuming img folder is one step back from css*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: rgba(87, 83, 79, 1); /* Tint color */
+  background-blend-mode: multiply;
+  /* background-color: #102a43; */
   /* box-shadow: 0 2px 30px 0 rgb(177, 236, 152,1); */
   /* border-bottom: 5px solid #B1EC98;  */
   animation: animate 20s linear;
   animation-iteration-count: infinite;
-  height: 12vh;
+  height: 90vh;
 }
 
-.navbar-style li {
+.nav-style li {
   color: #36b37e;
   display: flex;
   float: right;
@@ -27,7 +32,7 @@ Accent/borders Green colors: #36B37E
   font-size: 18px;
   justify-content: flex-end;
 }
-.navbar-style ul {
+.nav-style ul {
   height: 100px;
   width: 1200px;
   font-family: "levoto", sans-serif;
@@ -37,26 +42,25 @@ Accent/borders Green colors: #36B37E
   /* border-style: none; */
   border-radius: 20px;
 }
-.navbar-style a {
+.nav-style a {
   text-decoration: none;
   color: white;
 }
-.navbar-style a:hover {
+.nav-style a:hover {
   color: #36b37e;
   text-decoration: none;
-
   border-bottom: 3px solid #b1ec98;
-  /* background-color: transparent; */
+  background-color: transparent;
   /* border-radius: 10px; */
 }
-.navbar-style a.active {
+.nav-style a.active {
   border-bottom: 3px solid#B1EC98;
 }
 @media screen and (max-width: 600px) {
-  .navbar-style .responsive {
+  .nav-style .responsive {
     position: relative;
   }
-  .navbar-style .responsive .logo {
+  .nav-style .responsive .logo {
     position: absolute;
     right: 0;
     top: 0;
@@ -72,7 +76,7 @@ Accent/borders Green colors: #36B37E
   left: 110px;
   padding-left: 10px;
   padding-right: 10px;
-
+  background-color: rgb(54, 179, 126);
   margin-left: 0;
 }
 /*animate*/
