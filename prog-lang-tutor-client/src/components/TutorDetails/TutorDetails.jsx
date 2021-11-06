@@ -21,9 +21,9 @@ export default class TutorDetails extends Component {
     USER_SERVICE.getSpecificTutor(params.id).then((responseFromAPI) => {
       console.log({ responseFromAPI: responseFromAPI });
       this.setState({
-        tutorDetails: responseFromAPI.tutor,
-        timeRange: responseFromAPI.tutor.timeRangeOfAvailability,
-        coursesTaught: responseFromAPI.tutor.coursesTaught.courses[0],
+        tutorDetails: responseFromAPI.tutors,
+        timeRange: responseFromAPI.tutors.timeRangeOfAvailability,
+        coursesTaught: responseFromAPI.tutors.coursesTaught,
       });
     });
   };
