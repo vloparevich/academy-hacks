@@ -16,7 +16,7 @@ export default class TutorRow extends Component {
         <div className='TutorDescriptionBlock'>
           <div className='TutorShortDetails'>
             <div className='TutorName'>
-              {tutor.firstName} {tutor.lastName[0].toUpperCase()}.
+              {tutor.firstName} {tutor.lastName[0]?.toUpperCase()}.
             </div>
             <div className='CountryOfOrigin'>{tutor.countryOfOrigin}</div>
           </div>

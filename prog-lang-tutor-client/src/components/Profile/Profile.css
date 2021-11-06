@@ -1,18 +1,24 @@
 .profileContainer {
+  margin: 1.4rem;
   display: flex;
   flex-direction: row;
   color: #fff;
-  justify-content: space-around;
+  justify-content: center;
+  height: 100vh;
 }
 
 .imageSection {
   display: flex;
   flex-direction: column;
+  justify-content: start;
+  padding-top: 1rem;
 }
 
 .userDetailsSection {
   display: flex;
   flex-direction: column;
+  margin: 0 0 0 1rem;
+
 }
 
 .userImage {
@@ -23,6 +29,7 @@
 
 #profilePicture {
   margin: 0 auto;
+  border-radius: 5px;
 }
 
 .userDetails {
@@ -48,7 +55,6 @@
 #editMyDetailsButton,
 .formControlButtons {
   display: inline-block;
-  margin: 0 auto;
   padding: 4px 32px;
   background-color: #FFFFFF;
   border: solid 1px #666F77;
@@ -57,6 +63,7 @@
   max-height: 3rem;
   font-size: .7rem;
   margin: .5rem;
+  width: 150px;
 }
 
 #imageInputLabel:active,
@@ -67,8 +74,12 @@
   color: #FFFFFF;
 }
 
+#imageInputLabel {
+  margin: .5rem auto;
+}
+
 #profilePicture {
-  width: 250px;
+  width: 300px;
 }
 
 form input,
@@ -76,6 +87,48 @@ label {
   display: block;
 }
 
-form input {
+form input,
+.plainUserDetails input {
   margin-top: .1rem;
+  width: 375px;
+}
+
+.controlButtonsUserDetails {
+  width: 300px;
+  text-align: left;
+}
+
+label {
+  text-align: left;
+  font-size: .65rem;
+  margin-top: .5rem;
+  padding-left: .3rem;
+}
+
+.timeRangeInputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 385px;
+}
+
+.timeRangeInputs input {
+  width: 45%;
+}
+
+textarea {
+  line-height: 2rem;
+  width: 83%;
+  border-style: solid;
+  border-color: #B2E89A;
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #B2E89A;
+  margin-top: 35 px;
+}
+
+#cancelChangesButton {
+  color: red;
+
 }

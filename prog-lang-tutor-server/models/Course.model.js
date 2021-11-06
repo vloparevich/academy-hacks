@@ -7,9 +7,11 @@ const courseSchema = new Schema({
     {
       courseName: {
         type: String,
+        required: true,
       },
       description: {
         type: String,
+        required: true,
       },
     },
   ],

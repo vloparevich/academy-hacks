@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import authInstance from "../../services/auth-service";
+import React, { Component } from 'react';
+import authInstance from '../../services/auth-service';
 // import { Redirect } from "react-router-dom";
 
 export default class Signup extends Component {
   state = {
-    email: "",
-    password: "",
-    firstName: "",
-    lastName: "",
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
   };
 
   changeHandler = (e) => {
@@ -19,9 +19,9 @@ export default class Signup extends Component {
   handleSignup = (e) => {
     e.preventDefault();
     authInstance.signup(this.state).then((data) => {
-      console.log({ data });
+      console.log({ data: data });
       // upon successfull
-      this.props.history.push("/");
+      this.props.history.push('/');
     });
   };
 
@@ -29,35 +29,35 @@ export default class Signup extends Component {
     return (
       <form onSubmit={this.handleSignup}>
         <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
+          type='text'
+          name='firstName'
+          placeholder='First Name'
           value={this.state.firstName}
           onChange={this.changeHandler}
         />
         <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
+          type='text'
+          name='lastName'
+          placeholder='Last Name'
           value={this.state.lastName}
           onChange={this.changeHandler}
         />
         <input
-          type="email"
-          name="email"
-          placeholder="email"
+          type='email'
+          name='email'
+          placeholder='email'
           value={this.state.email}
           onChange={this.changeHandler}
         />
         <input
-          type="password"
-          name="password"
-          placeholder="password"
-          autoComplete="current-password"
+          type='password'
+          name='password'
+          placeholder='password'
+          autoComplete='current-password'
           value={this.state.password}
           onChange={this.changeHandler}
         />
-        <input type="submit" value="Create account" />
+        <input type='submit' value='Create account' />
       </form>
     );
   }

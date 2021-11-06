@@ -4,6 +4,7 @@ const User = require('../models/User.model');
 const Course = require('../models/Course.model');
 const fileUploader = require('../config/cloudinary.setup.js');
 const Timeslot = require('../models/Timeslot.model');
+const mongoose = require('mongoose');
 
 // ****************************************************************************************
 // POST route to add/update profile image
@@ -37,8 +38,55 @@ router.post(
 );
 
 // ****************************************************************************************
-// GET route to retrieve user details by its ID
+// PUT route to update tutor's details
 // ****************************************************************************************
-router.get('/');
+router.patch('/tutor/:userId', async (req, res) => {
+  const { userId } = req.params;
+  const dataToBeSaved = req.body;
+  try {
+    console.log('hitting backend', dataToBeSaved);
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        firstName: dataToBeSaved.firstName,
+        lastName: dataToBeSaved.lastName,
+        countryOfOrigin: dataToBeSaved.countryOfOrigin,
+        teachingExperience: dataToBeSaved.teachingExperience,
+        timeRangeOfAvailability: {
+          from: dataToBeSaved.from,
+          to: dataToBeSaved.to,
+        },
+      },
+      { new: true }
+    );
+    const currentCourseName = dataToBeSaved.prevCourseName;
+    const userIdPrepared = mongoose.Types.ObjectId(userId);
+    const updatedCourse = await Course.findOneAndUpdate(
+      {
+        $and: [
+          ({ user_id: userIdPrepared },
+          { 'courses.courseName': currentCourseName }),
+        ],
+      },
+      {
+        $set: {
+          'courses.$.courseName': dataToBeSaved.courseName,
+          'courses.$.description': dataToBeSaved.description,
+        },
+      },
+      { new: true }
+    );
+
+    console.log({ updatedCourse: updatedCourse });
+    return res.status(201).json({ success: true, updatedUser: updatedUser });
+  } catch (err) {
+    console.log({ err: err });
+    res.status(500).json({
+      success: false,
+      message: 'User details were not updated',
+      err,
+    });
+  }
+});
 
 module.exports = router;

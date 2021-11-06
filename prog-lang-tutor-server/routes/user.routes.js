@@ -69,6 +69,7 @@ router.get('/tutor/:id', (req, res) => {
   User.findById(id)
     .populate('coursesTaught mySchedule')
     .then((tutor) => {
+      console.log('Getting info of tutor', tutor);
       res.status(200).json({ success: true, tutor });
     })
     .catch((err) => {
@@ -104,6 +105,7 @@ router.get('/student/:id', (req, res) => {
 router.get('/:id', (req, res) => {
   const { id } = req.params;
   User.findById(id)
+    .populate('coursesTaught mySchedule')
     .then((user) => {
       res.status(200).json({ success: true, user });
     })
