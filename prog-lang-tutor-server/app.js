@@ -45,7 +45,7 @@ const index = require('./routes/index');
 app.use('/', index);
 
 const authRoutes = require('./routes/auth.routes');
-app.use('/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 
 // const studentRoutes = require('./routes/student.routes');
 // app.use('/api/student', studentRoutes);

@@ -28,7 +28,7 @@ router.post(
         .status(201)
         .json({ success: true, user: userWithAllTheDetails });
     } catch (err) {
-      res.status(500).json({
+      res.json({
         success: false,
         message: 'Profile picture was not updated',
         err,
@@ -81,7 +81,7 @@ router.patch('/tutor/:userId', async (req, res) => {
     return res.status(201).json({ success: true, updatedUser: updatedUser });
   } catch (err) {
     console.log({ err: err });
-    res.status(500).json({
+    res.json({
       success: false,
       message: 'User details were not updated',
       err,

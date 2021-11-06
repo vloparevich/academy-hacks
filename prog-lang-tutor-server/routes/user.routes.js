@@ -110,7 +110,7 @@ router.get('/:id', (req, res) => {
       res.status(200).json({ success: true, user });
     })
     .catch((err) => {
-      res.status(500).json({
+      res.json({
         success: false,
         message: 'User was not found',
         err: err,
@@ -179,7 +179,7 @@ router.post('/tutor', async (req, res, next) => {
     );
     return res.status(201).json({ success: true, tutor: finalizedTutor });
   } catch (err) {
-    res.status(500).json({
+    res.json({
       success: false,
       message: "Tutor's details were not updated",
       err,
@@ -200,7 +200,7 @@ router.delete('/tutor/:tutorId', async (req, res, next) => {
       .status(200)
       .json({ success: true, message: { removedTutor: removedTutor } });
   } catch (err) {
-    res.status(500).json({
+    res.json({
       success: false,
       message: 'Tutor has not been deleted',
       err,
