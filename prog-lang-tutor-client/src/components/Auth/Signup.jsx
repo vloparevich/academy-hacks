@@ -43,65 +43,71 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <div className="auth-container">
+      <>
         <Navbar />
-        <ul className="auth-top-bar">
-          <li onClick={this.handleStudentSelection}>Student</li>
-          <li onClick={this.handleTutorSelection}>Tutor</li>
-        </ul>
-        <form onSubmit={this.handleSignup} className="auth-form-container">
-          {!this.state.isTutor ? (
-            <>
-              <h3>Welcome to Academy Hacks!</h3>
-              <h3>Let's begin your next adventure</h3>
-            </>
-          ) : (
-            <>
-              <h3>Would you like to teach at Academy Hacks?</h3>
-              <h3>Sign up below!</h3>
-            </>
-          )}
-          <label>First Name</label>
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={this.state.firstName}
-            onChange={this.changeHandler}
-          />
+        <div className="auth-container">
+          <ul className="auth-top-bar">
+            <li onClick={this.handleStudentSelection}>Student</li>
+            <li onClick={this.handleTutorSelection}>Tutor</li>
+          </ul>
+          <form onSubmit={this.handleSignup} className="auth-form-container">
+            {!this.state.isTutor ? (
+              <>
+                <h3>Welcome to Academy Hacks!</h3>
+                <h3>Let's begin your next adventure</h3>
+              </>
+            ) : (
+              <>
+                <h3>Would you like to teach at Academy Hacks?</h3>
+                <h3>Sign up below!</h3>
+              </>
+            )}
+            <label>First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="First Name"
+              value={this.state.firstName}
+              onChange={this.changeHandler}
+            />
 
-          <label>Last Name</label>
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
-            value={this.state.lastName}
-            onChange={this.changeHandler}
-          />
+            <label>Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Last Name"
+              value={this.state.lastName}
+              onChange={this.changeHandler}
+            />
 
-          <label>Enter your email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            value={this.state.email}
-            onChange={this.changeHandler}
-          />
+            <label>Enter your email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              value={this.state.email}
+              onChange={this.changeHandler}
+            />
 
-          <label>Create a password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Create a password"
-            autoComplete="current-password"
-            value={this.state.password}
-            onChange={this.changeHandler}
-          />
-          <button type="submit" value="Create account" className="auth-button">
-            Create account
-          </button>
-        </form>
-      </div>
+            <label>Create a password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Create a password"
+              autoComplete="current-password"
+              value={this.state.password}
+              onChange={this.changeHandler}
+            />
+            <button
+              type="submit"
+              value="Create account"
+              className="auth-button"
+            >
+              Create account
+            </button>
+          </form>
+        </div>
+      </>
     );
   }
 }

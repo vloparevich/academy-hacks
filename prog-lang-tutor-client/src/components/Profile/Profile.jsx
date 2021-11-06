@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Timeslot from "../Timeslot/Timeslot";
+// import Timeslot from "../Timeslot/Timeslot";
 import "./Profile.css";
 import PROFILE_SERVICE from "../../services/ProfileServices";
 import Navbar from "../Navbar/Navbar";

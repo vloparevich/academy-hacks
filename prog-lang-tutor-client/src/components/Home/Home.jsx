@@ -52,10 +52,18 @@ class Home extends Component {
         <HomeNavbar user={this.state.user} loading={this.state.loading} />
         <div className="landingPageImg"></div>
         <div className="titleHome">
-          Find the best online programming tutors
-          <br /> and learn to code confidently
+          <h1>What are you going to learn today?</h1>
+          <p>
+            <h2>At Academy Hacks, we put you in control of your lessons...</h2>
+          </p>
         </div>
+        {/* <div>
+          ((Compliation of different coding languages to go below, each linking
+          to corresponding tutors))
+        </div> */}
+
         <div className="searchBar">
+          {/* <div className="footer">Hack Academy </div> */}
           <SearchBar onSearchQueryChange={this.onSearchInputChange} />
           {this.state.filteredTutors.map((tutor) => (
             <Link to={`/tutor/${tutor._id}`} key={tutor._id}>
@@ -63,27 +71,49 @@ class Home extends Component {
             </Link>
           ))}
         </div>
-
-        <div></div>
-        {/* <div className="footer">Hack Academy </div> */}
-        <SearchBar onSearchQueryChange={this.onSearchInputChange} />
-        {this.state.filteredTutors.map((tutor) => (
-          <Link to={`/tutor/${tutor._id}`} key={tutor._id}>
-            <TutorRow tutor={tutor} />
-          </Link>
-        ))}
-        <div>
-          <h1>What are you going to learn today?</h1>
+        <div className="tableContainer">
+          <div className="courseTable">
+            <table>
+              <tr>
+                <td>
+                  <Link to="/tutor/list">JavaScript</Link>
+                </td>
+                <td>
+                  <Link to="/tutor/list">Java</Link>
+                </td>
+                <td>
+                  <Link to="/tutor/list">PHP</Link>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Link to="/tutor/list"> C++</Link>
+                </td>
+                <td>
+                  <Link to="/tutor/list"> C#</Link>
+                </td>
+                <td>
+                  <Link to="/tutor/list"> Backend</Link>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Link to="`/tutor/list">Frontend</Link>
+                </td>
+                <td>
+                  <Link to="/tutorList">Json</Link>
+                </td>
+                <td>
+                  <Link to="/tutorList">HTML/CSS</Link>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
-        <div>
-          <p>
-            <h2>At Academy Hacks, we put you in control of your lessons...</h2>
-          </p>
-        </div>
-        <div>
-          ((Compliation of different coding languages to go below, each linking
-          to corresponding tutors))
-        </div>
+        <footer>
+          Academy Hacks, we put you in control of your lessons© 2021.
+          HackAcademy.com
+        </footer>
       </div>
     );
   }

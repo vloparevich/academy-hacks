@@ -3,6 +3,7 @@ import { login } from "../../services/auth-service";
 import "./Signup";
 import * as PATHS from "../../utils/paths";
 import * as USER_HELPERS from "../../utils/userToken";
+import Navbar from "../Navbar/Navbar";
 
 export default class Signup extends Component {
   state = {
@@ -35,27 +36,30 @@ export default class Signup extends Component {
 
   render() {
     return (
-      <form
-        onSubmit={this.handleFormSubmission}
-        className="auth-form-container"
-      >
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter your email"
-          value={this.state.email}
-          onChange={this.changeHandler}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-          autoComplete="current-password"
-          value={this.state.password}
-          onChange={this.changeHandler}
-        />
-        <input type="submit" value="Log In" />
-      </form>
+      <>
+        <Navbar />
+        <form
+          onSubmit={this.handleFormSubmission}
+          className="auth-form-container"
+        >
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            value={this.state.email}
+            onChange={this.changeHandler}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            autoComplete="current-password"
+            value={this.state.password}
+            onChange={this.changeHandler}
+          />
+          <input type="submit" value="Log In" />
+        </form>
+      </>
     );
   }
 }

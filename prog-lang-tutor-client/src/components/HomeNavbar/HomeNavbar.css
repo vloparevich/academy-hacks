@@ -16,9 +16,6 @@ Accent/borders Green colors: #36B37E
   background-repeat: no-repeat;
   background-color: rgba(87, 83, 79, 1); /* Tint color */
   background-blend-mode: multiply;
-  /* background-color: #102a43; */
-  /* box-shadow: 0 2px 30px 0 rgb(177, 236, 152,1); */
-  /* border-bottom: 5px solid #B1EC98;  */
   animation: animate 20s linear;
   animation-iteration-count: infinite;
   height: 90vh;
@@ -37,9 +34,6 @@ Accent/borders Green colors: #36B37E
   width: 1200px;
   font-family: "levoto", sans-serif;
   margin-bottom: 30px;
-  /* animation: animate 20s linear; */
-  /* box-shadow: 2px 2px 15px 0px #36B37E; */
-  /* border-style: none; */
   border-radius: 20px;
 }
 .nav-style a {

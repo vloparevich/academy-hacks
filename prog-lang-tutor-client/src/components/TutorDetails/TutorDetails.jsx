@@ -5,6 +5,7 @@ import USER_SERVICE from "../../services/UserServices";
 import BOOKING_SERVICE from "../../services/BookingServices";
 import Timeslot from "../Timeslot/Timeslot";
 import "../TutorDetails/TutorDetails.css";
+import Navbar from "../Navbar/Navbar";
 
 export default class TutorDetails extends Component {
   state = { isScheduleShown: false, timeRange: {} };
@@ -42,7 +43,7 @@ export default class TutorDetails extends Component {
     console.log({ myObject: this.state.tutorDetails });
     return (
       <>
-        {/* <NavBar user={this.state.user} loading={this.state.loading} /> */}
+        <Navbar user={this.state.user} loading={this.state.loading} />
         {this.state.tutorDetails?.firstName && (
           <div className="TutorPage">
             <img

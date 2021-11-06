@@ -3,7 +3,7 @@ import React from "react";
 import Profile from "./components/Profile/Profile";
 import Home from "./components/Home/Home";
 import TutorDetails from "./components/TutorDetails/TutorDetails";
-// import NavBar from "./components/NavBar/NavBar";
+// import Navbar from "./components/Navbar/Navbar";
 import Signup from "./components/Auth/Signup";
 import Login from "./components/Auth/Login";
 import NormalRoute from "./routing-components/NormalRoute";
@@ -11,6 +11,7 @@ import { logout, getLoggedIn } from "./services/auth-service";
 import * as PATHS from "./utils/paths";
 import * as USER_HELPERS from "./utils/userToken";
 import { Switch, Route, Redirect } from "react-router-dom";
+import TutorList from "./components/TutorList/TutorList";
 
 class App extends React.Component {
   state = {
@@ -102,7 +103,7 @@ class App extends React.Component {
   render = () => {
     return (
       <div className="App">
-        {/* <NavBar user={this.state.user} loading={this.state.loading} /> */}
+        {/* <Navbar user={this.state.user} loading={this.state.loading} /> */}
         {/* <Navbar
           user={this.state.user}
           handleLogout={this.handleLogout}
@@ -121,12 +122,14 @@ class App extends React.Component {
             component={Login}
           />
           <Route exact path="/" component={Home} />
+
           {/* {this.state.user ? (
             <Route exact path="/user" component={Profile} />
           ) : (
             <Redirect to="/auth/signup" />
           )} */}
           <Route exact path="/tutor/:id" component={TutorDetails} />
+          <Route exact path="tutor/list" component={TutorList} />
         </Switch>
       </div>
     );
