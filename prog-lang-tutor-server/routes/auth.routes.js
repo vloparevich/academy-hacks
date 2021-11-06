@@ -20,7 +20,7 @@ router.get("/session", (req, res) => {
 
 router.post("/signup", isLoggedOut, (req, res) => {
   const { firstName, lastName, email, password } = req.body;
-
+console.log('hello!')
   if (!email) {
     return res.status(400).json({ errorMessage: "Please provide your email." });
   }
@@ -92,11 +92,11 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
-  if (password.length < 8) {
-    return res.status(400).json({
-      errorMessage: "Your password needs to be at least 8 characters long.",
-    });
-  }
+  // if (password.length < 8) {
+  //   return res.status(400).json({
+  //     errorMessage: "Your password needs to be at least 8 characters long.",
+  //   });
+  // }
 
   // Search the database for a user with the email submitted in the form
   User.findOne({ email })
@@ -125,13 +125,24 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
 });
 
-router.get("/logout", isLoggedIn, (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      return res.status(500).json({ errorMessage: err.message });
-    }
-    res.json({ message: "user logged out" });
-  });
+// router.get("/logout", isLoggedIn, (req, res) => {
+//   req.session.destroy((err) => {
+//     if (err) {
+//       return res.status(500).json({ errorMessage: err.message });
+//     }
+//     res.json({ message: "user logged out" });
+//   });
+// });
+
+router.delete("/logout", isLoggedIn, (req, res) => {
+  Session.findByIdAndDelete(req.headers.authorization)
+    .then(() => {
+      res.status(200).json({ message: "User was logged out" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ errorMessage: err.message });
+    });
 });
 
 module.exports = router;

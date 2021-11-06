@@ -117,7 +117,7 @@ router.get("/:id", (req, res) => {
 });
 
 // ****************************************************************************************
-// POST route to add a tutor's details
+// POST route to create a tutor's account
 // ****************************************************************************************
 router.post("/tutor", async (req, res, next) => {
   const {

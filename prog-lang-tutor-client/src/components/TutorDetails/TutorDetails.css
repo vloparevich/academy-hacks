@@ -5,3 +5,17 @@ dark blueBackGround Color:  #1d2025;
 Accent/borders Green colors: #36B37E
 
 */
+.TutorPage {
+}
+
+.TutorProfilePicture {
+  display: flex;
+  margin-top: 5rem;
+  margin-left: 5rem;
+  width: 15rem;
+  align-self: left;
+}
+
+.TutorInfo {
+  margin-top: -17rem;
+}

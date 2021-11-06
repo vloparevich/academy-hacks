@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./NavBar.css";
+import "./Navbar.css";
 
-class NavBar extends Component {
+class Navbar extends Component {
   render() {
     if (this.props.loading) {
       return <div>Loaading...</div>;
@@ -33,15 +33,17 @@ class NavBar extends Component {
                 <Link to="/user">Profile</Link>
               </li> */}
               <li>
+                <button onClick={this.props.handleLogout}>Logout</button>
+              </li>
+              <li>
                 <Link to="/user">{this.props.user?.firstName}</Link>
               </li>
             </>
           )}
         </ul>
-        <hr></hr>
       </nav>
     );
   }
 }
 
-export default NavBar;
+export default Navbar;
