@@ -11,7 +11,17 @@ import ProtectedRoute from './routing-components/ProtectedRoute';
 import { getLoggedIn, logout } from './services/auth';
 import * as PATHS from './utils/paths';
 import * as CONSTS from './utils/consts';
+// import * as USER_HELPERS from './utils/userToken';
+import './App.css';
+import Profile from './components/Profile/Profile';
+import Home from './components/Home/Home';
+import TutorDetails from './components/TutorDetails/TutorDetails';
+
+// import Login from './components/Auth/Login';
+// import { logout, getLoggedIn } from './services/auth-service';
+// import * as PATHS from './utils/paths';
 import * as USER_HELPERS from './utils/userToken';
+// import { Switch, Route, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
   state = {

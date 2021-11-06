@@ -9,7 +9,6 @@ const NormalRoute = ({ exact, to, path, component, ...componentProps }) => {
       exact={exact}
       path={path || to}
       render={(props) => <Component {...componentProps} {...props} />}
-      // render={(props) => (<div><Component {...componentProps} {...props} /></div>)}
     />
   );
 };

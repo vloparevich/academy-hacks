@@ -1,0 +1,14 @@
+.TutorPage {
+}
+
+.TutorProfilePicture {
+    display: flex;
+    margin-top: 5rem;
+    margin-left: 5rem;
+    width:15rem;
+    align-self: left;
+}
+
+.TutorInfo {
+    margin-top: -17rem;
+}

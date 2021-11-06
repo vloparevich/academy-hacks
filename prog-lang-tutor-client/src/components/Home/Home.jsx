@@ -54,6 +54,11 @@ class Home extends Component {
             <TutorRow tutor={tutor} />
           </Link>
         ))}
+        <div><h1>What are you going to learn today?</h1></div>
+        <div>
+          <p><h2>At Academy Hacks, we put you in control of your lessons...</h2></p>
+        </div>
+        <div>((Compliation of different coding languages to go below, each linking to corresponding tutors))</div>
       </div>
     );
   }

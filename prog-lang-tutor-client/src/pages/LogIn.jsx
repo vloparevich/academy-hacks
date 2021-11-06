@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { login } from "../services/auth";
-import "./Signup";
-import * as PATHS from "../utils/paths";
-import * as USER_HELPERS from "../utils/userToken";
+import React, { Component } from 'react';
+import { login } from '../services/auth';
+import './Signup';
+import * as PATHS from '../utils/paths';
+import * as USER_HELPERS from '../utils/userToken';
 
 export default class Login extends Component {
   state = {
-    username: "",
-    password: "",
+    email: '',
+    password: '',
     error: null,
   };
 
@@ -22,7 +22,7 @@ export default class Login extends Component {
     event.preventDefault();
 
     const credentials = {
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password,
     };
     login(credentials).then((res) => {
@@ -39,38 +39,38 @@ export default class Login extends Component {
     return (
       <div>
         <h1>Log In</h1>
-        <form onSubmit={this.handleFormSubmission} className="signup__form">
-          <label htmlFor="input-username">Username</label>
+        <form onSubmit={this.handleFormSubmission} className='signup__form'>
+          <label htmlFor='input-username'>Username</label>
           <input
-            id="input-username"
-            type="text"
-            name="username"
-            placeholder="username"
-            value={this.state.username}
+            id='input-username'
+            type='text'
+            name='email'
+            placeholder='username'
+            value={this.state.email}
             onChange={this.handleInputChange}
             required
           />
 
-          <label htmlFor="input-password">Password</label>
+          <label htmlFor='input-password'>Password</label>
           <input
-            id="input-password"
-            type="password"
-            name="password"
-            placeholder="Password"
+            id='input-password'
+            type='password'
+            name='password'
+            placeholder='Password'
             value={this.state.password}
             onChange={this.handleInputChange}
             required
-            minLength="8"
+            minLength='8'
           />
 
           {this.state.error && (
-            <div className="error-block">
+            <div className='error-block'>
               <p>There was an error submiting the form:</p>
               <p>{this.state.error.message}</p>
             </div>
           )}
 
-          <button className="button__submit" type="submit">
+          <button className='button__submit' type='submit'>
             Submit
           </button>
         </form>

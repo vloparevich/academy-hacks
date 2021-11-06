@@ -35,9 +35,8 @@ router.get('/session', (req, res) => {
 });
 
 router.post('/signup', isLoggedOut, (req, res) => {
-  console.log('Hitting signup route');
   const { email, password } = req.body;
-
+  console.log('hello!');
   if (!email) {
     return res.status(400).json({ errorMessage: 'Please provide your email.' });
   }
@@ -113,11 +112,11 @@ router.post('/login', isLoggedOut, (req, res, next) => {
 
   // Here we use the same logic as above
   // - either length based parameters or we check the strength of a password
-  if (password.length < 8) {
-    return res.status(400).json({
-      errorMessage: 'Your password needs to be at least 8 characters long.',
-    });
-  }
+  // if (password.length < 8) {
+  //   return res.status(400).json({
+  //     errorMessage: "Your password needs to be at least 8 characters long.",
+  //   });
+  // }
 
   // Search the database for a user with the username submitted in the form
   User.findOne({ email })
