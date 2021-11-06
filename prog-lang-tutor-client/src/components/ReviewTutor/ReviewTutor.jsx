@@ -5,7 +5,7 @@ import '../ReviewTutor/ReviewTutor.css'
 class ReviewTutor extends Component {
 
     state = { 
-        review: '',
+        review: ' ',
       }
 
       componentDidMount = () => {
@@ -26,13 +26,24 @@ class ReviewTutor extends Component {
         });
       };
 
+      handleFormSubmit(event) {
+        // event.preventDefault();
+        // const data = new FormData(event.target);
+        
+        // fetch('/api/form-submit-url', {
+        //   method: 'POST',
+        //   body: data,
+        // });
+      }
+
     render() {
         return (
             <div>
             <h1>Review {this.state.tutorDetails?.firstName} {this.state.tutorDetails?.lastName}</h1>
-        <form onSubmit={this.handleFormSubmit}>
+        <form onSubmit={this.handleFormSubmit()}>
           <label></label>
-          <input type="text" name="Add your review here" value={this.state.review} />
+          <input id="review" name="review" placeholder="Add your review here" type="text" />
+          {/* value={this.state.review}  */}
           
           <button>Submit</button>
         </form>

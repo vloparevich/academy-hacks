@@ -61,6 +61,7 @@ export default class TutorDetails extends Component {
                   Review This Tutor
                 </button>
               </Link>
+            <div className='Reviews'>Reviews{this.state.tutorDetails.reviews}</div>
             </div>
             <div className='TutorActions'>
               <button onClick={this.handleBookClick}>Book a lesson</button>
