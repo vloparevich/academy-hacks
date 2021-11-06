@@ -15,6 +15,18 @@ body {
 div {
   height: 10vh;
 }
+.javsScLogo {
+  width: 2vw;
+  height: 2vh;
+}
+.javaLogo {
+  width: 3vw;
+  height: 3vh;
+}
+.phpLogo {
+  width: 3vw;
+  height: 3vh;
+}
 @media only screen and (max-width: 600px) {
 }
 /* .landingPageImg { */
@@ -26,14 +38,15 @@ div {
 /* } */
 
 .titleHome {
-  font-size: 20px;
+  font-size: 25px;
   width: 65vw;
   position: absolute;
   top: 250px;
   left: 250px;
   text-align: center;
+  padding-bottom: 50px;
 }
-.titleHome h2 {
+.titleHome p {
   font: 5px;
   font-family: sans-serif;
 }
@@ -88,6 +101,9 @@ a {
 a:hover {
   color: #36b37e;
 }
+td {
+  align-content: center;
+}
 .searchBar {
   position: absolute;
   top: 400px;
@@ -104,4 +120,5 @@ footer {
   height: 5vh;
   padding-top: 50px;
   background-color: rgba(23, 23, 23, 1);
+  font-size: 12px;
 }

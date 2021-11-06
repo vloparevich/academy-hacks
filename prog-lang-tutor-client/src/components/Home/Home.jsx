@@ -53,9 +53,7 @@ class Home extends Component {
         <div className="landingPageImg"></div>
         <div className="titleHome">
           <h1>What are you going to learn today?</h1>
-          <p>
-            <h2>At Academy Hacks, we put you in control of your lessons...</h2>
-          </p>
+          <p>At Academy Hacks, we put you in control of your lessons...</p>
         </div>
         {/* <div>
           ((Compliation of different coding languages to go below, each linking
@@ -76,35 +74,45 @@ class Home extends Component {
             <table>
               <tr>
                 <td>
-                  <Link to="/tutor/list">JavaScript</Link>
+                  <div className="javsScLogo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
+                  </div>
+
+                  <Link to="/tutor/list">JavaScript tutors</Link>
                 </td>
                 <td>
-                  <Link to="/tutor/list">Java</Link>
+                  <div className="javaLogo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg" />
+                  </div>
+                  <Link to="/tutor/list">Java tutors</Link>
                 </td>
                 <td>
-                  <Link to="/tutor/list">PHP</Link>
+                  <div className="phpLogo">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" />
+                  </div>
+                  <Link to="/tutor/list">PHP tutors</Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <Link to="/tutor/list"> C++</Link>
+                  <Link to="/tutor/list">C++ tutors</Link>
                 </td>
                 <td>
-                  <Link to="/tutor/list"> C#</Link>
+                  <Link to="/tutor/list">C# tutors</Link>
                 </td>
                 <td>
-                  <Link to="/tutor/list"> Backend</Link>
+                  <Link to="/tutor/list">Backend tutors</Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <Link to="`/tutor/list">Frontend</Link>
+                  <Link to="`/tutor/list">Frontend tutors</Link>
                 </td>
                 <td>
-                  <Link to="/tutorList">Json</Link>
+                  <Link to="/tutorList">Json tutors</Link>
                 </td>
                 <td>
-                  <Link to="/tutorList">HTML/CSS</Link>
+                  <Link to="/tutorList">HTML/CSS tutors</Link>
                 </td>
               </tr>
             </table>

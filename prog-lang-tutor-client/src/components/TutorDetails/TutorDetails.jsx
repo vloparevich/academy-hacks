@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 // import { Link } from 'react-router-dom';
-
 import USER_SERVICE from "../../services/UserServices";
 import BOOKING_SERVICE from "../../services/BookingServices";
 import Timeslot from "../Timeslot/Timeslot";

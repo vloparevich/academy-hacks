@@ -24,7 +24,9 @@ fieldset {
 legend {
   margin-right: 50px;
 }
-
+.searchContainer {
+  padding-top: 50px;
+}
 #checkboxlabel {
   display: inline;
 }

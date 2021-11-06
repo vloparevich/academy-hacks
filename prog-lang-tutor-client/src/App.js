@@ -103,12 +103,6 @@ class App extends React.Component {
   render = () => {
     return (
       <div className="App">
-        {/* <Navbar user={this.state.user} loading={this.state.loading} /> */}
-        {/* <Navbar
-          user={this.state.user}
-          handleLogout={this.handleLogout}
-          loading={this.state.loading}
-        /> */}
         <Switch>
           <Route
             exact

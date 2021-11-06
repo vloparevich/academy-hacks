@@ -4,7 +4,7 @@ import "./Search.css";
 export default class SearchBar extends Component {
   render() {
     return (
-      <div>
+      <div className="searchContainer">
         {/* <p>Search</p> */}
         <fieldset>
           <input
