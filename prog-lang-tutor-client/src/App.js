@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import LoadingComponent from './components/Loading';
 import Navbar from './components/Navbar/Navbar';
 import HomePage from './pages/HomePage';
@@ -22,6 +22,9 @@ import TutorDetails from './components/TutorDetails/TutorDetails';
 // import * as PATHS from './utils/paths';
 import * as USER_HELPERS from './utils/userToken';
 // import { Switch, Route, Redirect } from 'react-router-dom';
+import "./App.css";
+// import authService from "./services/auth-service";
+import ReviewTutor from "./components/ReviewTutor/ReviewTutor";
 
 class App extends React.Component {
   state = {
@@ -113,6 +116,10 @@ class App extends React.Component {
             component={ProtectedPage}
             user={this.state.user}
           />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/user" component={Profile} />
+          <Route exact path="/tutor/:id" component={TutorDetails} />
+          <Route exact path="/tutor/review/:id" component={ReviewTutor} />
         </Switch>
       </div>
     );

@@ -58,7 +58,7 @@ class Home extends Component {
         <div>
           <p><h2>At Academy Hacks, we put you in control of your lessons...</h2></p>
         </div>
-        <div>((Compliation of different coding languages to go below, each linking to corresponding tutors))</div>
+        <div>((Compilation of different coding languages to go below, each linking to corresponding tutors))</div>
       </div>
     );
   }
