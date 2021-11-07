@@ -14,7 +14,6 @@ import TutorProfile from './components/Profile/TutorProfile';
 import StudentProfile from './components/Profile/StudentProfile';
 import TutorDetails from './components/TutorDetails/TutorDetails';
 import * as USER_HELPERS from './utils/userToken';
-import './App.css';
 import ReviewTutor from './components/ReviewTutor/ReviewTutor';
 
 class App extends React.Component {
