@@ -147,7 +147,8 @@ router.post('/login', isLoggedOut, (req, res, next) => {
     });
 });
 
-router.delete('/logout', isLoggedIn, (req, res) => {
+router.delete('/logout', (req, res) => {
+  console.log('hit logout in backend', req.headers.authorization);
   Session.findByIdAndDelete(req.headers.authorization)
     .then(() => {
       res.status(200).json({ message: 'User was logged out' });

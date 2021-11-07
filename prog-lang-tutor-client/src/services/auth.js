@@ -54,6 +54,7 @@ export function signup(credentials) {
 }
 
 export function logout() {
+  console.log('Soemthing is wrong here', USER_HELPERS.getUserToken());
   return authService
     .delete('/logout', {
       headers: {

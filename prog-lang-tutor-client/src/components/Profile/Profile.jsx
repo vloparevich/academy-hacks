@@ -4,13 +4,25 @@ import './Profile.css';
 import PROFILE_SERVICE from '../../services/ProfileServices';
 
 class Profile extends Component {
-  state = { userId: '61855a7a83b48a46f6504971', isEditDetailsClicked: false };
+  state = { userId: '6186fe50cf33a3ed21dd1bc1', isEditDetailsClicked: false };
 
   componentDidMount() {
+    console.log('from the props in cdid mount', this.props.userId);
+    this.setState(
+      {
+        userId: this.props.userId,
+      },
+      () => {
+        console.log('from state', this.state.userId);
+        // this.getUser();
+      }
+    );
     this.getUser();
   }
 
   getUser = () => {
+    console.log('calling getUser');
+    console.log('in the getUser', this.state.userId);
     axios
       .get(`http://localhost:5000/api/user/${this.state.userId}`)
       .then((user) => {

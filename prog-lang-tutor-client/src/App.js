@@ -11,17 +11,12 @@ import ProtectedRoute from './routing-components/ProtectedRoute';
 import { getLoggedIn, logout } from './services/auth';
 import * as PATHS from './utils/paths';
 import * as CONSTS from './utils/consts';
-// import * as USER_HELPERS from './utils/userToken';
 import './App.css';
 import Profile from './components/Profile/Profile';
 import Home from './components/Home/Home';
 import TutorDetails from './components/TutorDetails/TutorDetails';
 
-// import Login from './components/Auth/Login';
-// import { logout, getLoggedIn } from './services/auth-service';
-// import * as PATHS from './utils/paths';
 import * as USER_HELPERS from './utils/userToken';
-// import { Switch, Route, Redirect } from 'react-router-dom';
 
 class App extends React.Component {
   state = {
@@ -52,6 +47,7 @@ class App extends React.Component {
 
   handleLogout = () => {
     const accessToken = USER_HELPERS.getUserToken();
+    console.log('hit logout', accessToken);
     if (!accessToken) {
       return this.setState({
         user: null,
@@ -68,7 +64,6 @@ class App extends React.Component {
             // deal with error here
             console.error('💡 SOMETHING HAPPENED THAT HAS TO DEALT WITH', res);
           }
-
           USER_HELPERS.removeUserToken();
           return this.setState({
             isLoading: false,
@@ -80,15 +75,20 @@ class App extends React.Component {
   };
 
   authenticate = (user) => {
-    this.setState({
-      user,
-    });
+    this.setState(
+      {
+        user,
+      },
+      () => console.log('User', this.state.user)
+    );
   };
 
   render() {
     if (this.state.isLoading) {
       return <LoadingComponent />;
     }
+
+    console.log('in main app.js component', this.state.user);
 
     return (
       <div className='App'>
@@ -107,12 +107,19 @@ class App extends React.Component {
             authenticate={this.authenticate}
             component={LogIn}
           />
-          <ProtectedRoute
+          <NormalRoute
+            exact
+            path={PATHS.TUTOR_PROFILE_PAGE}
+            // authenticate={this.authenticate}
+            component={Profile}
+            userId={this.state.user._id}
+          />
+          {/* <ProtectedRoute
             exact
             path={PATHS.PROTECTEDPAGE}
             component={ProtectedPage}
             user={this.state.user}
-          />
+          /> */}
         </Switch>
       </div>
     );
