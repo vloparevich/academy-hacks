@@ -14,24 +14,22 @@ export default class Signup extends Component {
   };
 
   changeHandler = (e) => {
-    this.setState(
-      {
-        [e.target.name]: e.target.value,
-      },
-      () => console.log('THE STATE AFTER CHANGING INPUTS', this.state)
-    );
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
   };
 
   handleFormSubmission = (event) => {
     event.preventDefault();
-    const credentials = {
+    const signingDetails = {
       email: this.state.email,
       password: this.state.password,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
+      isTutor: this.state.isTutor,
     };
 
-    signup(credentials).then((res) => {
+    signup(signingDetails).then((res) => {
       // successful signup
       console.log(res);
       if (!res.status) {
@@ -52,14 +50,12 @@ export default class Signup extends Component {
     this.setState({
       isTutor: true,
     });
-    console.log({ isTutor: this.state.isTutor });
   };
 
   handleStudentSelection = () => {
     this.setState({
       isTutor: false,
     });
-    console.log({ isTutor: this.state.isTutor });
   };
 
   render() {

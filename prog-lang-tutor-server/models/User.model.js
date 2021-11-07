@@ -17,7 +17,6 @@ const userSchema = new Schema({
   lastName: { type: String, required: false },
   countryOfOrigin: { type: String },
   profilePic: { type: String, required: false },
-  // imageArray: { type: [String] },
   teachingExperience: { type: Number },
   mySchedule: { type: Schema.Types.ObjectId, ref: 'Timeslot' },
   timeRangeOfAvailability: {

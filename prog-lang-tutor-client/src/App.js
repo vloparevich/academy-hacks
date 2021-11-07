@@ -10,7 +10,8 @@ import ProtectedRoute from './routing-components/ProtectedRoute';
 import { getLoggedIn, logout } from './services/auth';
 import * as PATHS from './utils/paths';
 import './App.css';
-import Profile from './components/Profile/Profile';
+import TutorProfile from './components/Profile/TutorProfile';
+import StudentProfile from './components/Profile/StudentProfile';
 import TutorDetails from './components/TutorDetails/TutorDetails';
 import * as USER_HELPERS from './utils/userToken';
 import './App.css';
@@ -105,10 +106,16 @@ class App extends React.Component {
             authenticate={this.authenticate}
             component={Login}
           />
+          <NormalRoute
+            exact
+            path={PATHS.TUTOR_DETAILS}
+            authenticate={this.authenticate}
+            component={TutorDetails}
+          />
           <ProtectedRoute
             exact
             path={PATHS.USER_DETAILS}
-            component={Profile}
+            component={this.state.user?.isTutor ? TutorProfile : StudentProfile}
             user={this.state.user}
           />
         </Switch>

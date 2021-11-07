@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Profile.css';
 import PROFILE_SERVICE from '../../services/ProfileServices';
 
-class Profile extends Component {
+class TutorProfile extends Component {
   state = {
     firstName: '',
     lastName: '',
@@ -362,4 +362,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default TutorProfile;
