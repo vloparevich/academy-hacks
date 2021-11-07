@@ -23,7 +23,7 @@ function successStatus(res) {
 }
 
 const instance = axios.create({
-  baseURL: 'http://localhost:5000/auth',
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/auth`,
   withCredentials: true,
 });
 
@@ -52,6 +52,7 @@ export function getLoggedIn() {
 }
 
 export function signup(credentials) {
+  console.log('in signup auth-service');
   return instance
     .post('/signup', credentials)
     .then(successStatus)

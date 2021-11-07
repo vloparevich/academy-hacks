@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 import React, { Component } from 'react';
-import authInstance from '../../services/auth-service';
-// import { Redirect } from "react-router-dom";
+import { signup } from '../../services/auth-service';
+import './Auth.css';
+import * as USER_HELPERS from '../../utils/userToken';
+import * as PATHS from '../../utils/paths';
 
 export default class Signup extends Component {
   state = {
@@ -9,38 +10,41 @@ export default class Signup extends Component {
     password: '',
     firstName: '',
     lastName: '',
-=======
-import React, { Component } from "react";
-import { signup } from "../../services/auth-service";
-import "./Auth.css";
-
-export default class Signup extends Component {
-  state = {
-    email: "",
-    password: "",
-    firstName: "",
-    lastName: "",
     isTutor: false,
->>>>>>> 8c011c22a2b9678e9c40fb96a1d454ddd1183325
   };
 
   changeHandler = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
+    this.setState(
+      {
+        [e.target.name]: e.target.value,
+      },
+      () => console.log('THE STATE AFTER CHANGING INPUTS', this.state)
+    );
   };
 
-  handleSignup = (e) => {
-    e.preventDefault();
-<<<<<<< HEAD
-    authInstance.signup(this.state).then((data) => {
-      console.log({ data: data });
-=======
-    signup(this.state).then((data) => {
-      console.log({ data });
->>>>>>> 8c011c22a2b9678e9c40fb96a1d454ddd1183325
-      // upon successfull
-      this.props.history.push('/');
+  handleFormSubmission = (event) => {
+    event.preventDefault();
+    const credentials = {
+      email: this.state.email,
+      password: this.state.password,
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+    };
+
+    signup(credentials).then((res) => {
+      // successful signup
+      console.log(res);
+      if (!res.status) {
+        // unsuccessful signup
+      }
+      console.log('the token', { token: res.data });
+
+      USER_HELPERS.setUserToken(res.data.accessToken);
+
+      console.log({ token: USER_HELPERS.getUserToken(res.data.accessToken) });
+
+      this.props.authenticate(res.data.user);
+      this.props.history.push(PATHS.HOMEPAGE);
     });
   };
 
@@ -60,46 +64,15 @@ export default class Signup extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <form onSubmit={this.handleSignup}>
-        <input
-          type='text'
-          name='firstName'
-          placeholder='First Name'
-          value={this.state.firstName}
-          onChange={this.changeHandler}
-        />
-        <input
-          type='text'
-          name='lastName'
-          placeholder='Last Name'
-          value={this.state.lastName}
-          onChange={this.changeHandler}
-        />
-        <input
-          type='email'
-          name='email'
-          placeholder='email'
-          value={this.state.email}
-          onChange={this.changeHandler}
-        />
-        <input
-          type='password'
-          name='password'
-          placeholder='password'
-          autoComplete='current-password'
-          value={this.state.password}
-          onChange={this.changeHandler}
-        />
-        <input type='submit' value='Create account' />
-      </form>
-=======
-      <div className="auth-container">
-        <ul className="auth-top-bar">
+      <div className='auth-container'>
+        <ul className='auth-top-bar'>
           <li onClick={this.handleStudentSelection}>Student</li>
           <li onClick={this.handleTutorSelection}>Tutor</li>
         </ul>
-        <form onSubmit={this.handleSignup} className="auth-form-container">
+        <form
+          onSubmit={this.handleFormSubmission}
+          className='auth-form-container'
+        >
           {!this.state.isTutor ? (
             <>
               <h3>Welcome to Academy Hacks!</h3>
@@ -113,46 +86,45 @@ export default class Signup extends Component {
           )}
           <label>First Name</label>
           <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
+            type='text'
+            name='firstName'
+            placeholder='First Name'
             value={this.state.firstName}
             onChange={this.changeHandler}
           />
 
           <label>Last Name</label>
           <input
-            type="text"
-            name="lastName"
-            placeholder="Last Name"
+            type='text'
+            name='lastName'
+            placeholder='Last Name'
             value={this.state.lastName}
             onChange={this.changeHandler}
           />
 
           <label>Enter your email</label>
           <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
+            type='email'
+            name='email'
+            placeholder='Enter your email'
             value={this.state.email}
             onChange={this.changeHandler}
           />
 
           <label>Create a password</label>
           <input
-            type="password"
-            name="password"
-            placeholder="Create a password"
-            autoComplete="current-password"
+            type='password'
+            name='password'
+            placeholder='Create a password'
+            autoComplete='current-password'
             value={this.state.password}
             onChange={this.changeHandler}
           />
-          <button type="submit" value="Create account" className="auth-button">
+          <button type='submit' value='Create account' className='auth-button'>
             Create account
           </button>
         </form>
       </div>
->>>>>>> 8c011c22a2b9678e9c40fb96a1d454ddd1183325
     );
   }
 }

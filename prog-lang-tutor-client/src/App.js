@@ -2,21 +2,19 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 import LoadingComponent from './components/Loading';
 import Navbar from './components/Navbar/Navbar';
-import HomePage from './pages/HomePage';
-import LogIn from './pages/LogIn';
-import ProtectedPage from './pages/ProtectedPage';
-import Signup from './pages/Signup';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
+import Home from './components/Home/Home';
 import NormalRoute from './routing-components/NormalRoute';
 import ProtectedRoute from './routing-components/ProtectedRoute';
 import { getLoggedIn, logout } from './services/auth';
 import * as PATHS from './utils/paths';
-import * as CONSTS from './utils/consts';
 import './App.css';
 import Profile from './components/Profile/Profile';
-import Home from './components/Home/Home';
 import TutorDetails from './components/TutorDetails/TutorDetails';
-
 import * as USER_HELPERS from './utils/userToken';
+import './App.css';
+import ReviewTutor from './components/ReviewTutor/ReviewTutor';
 
 class App extends React.Component {
   state = {
@@ -94,7 +92,7 @@ class App extends React.Component {
       <div className='App'>
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
-          <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+          <NormalRoute exact path={PATHS.HOMEPAGE} component={Home} />
           <NormalRoute
             exact
             path={PATHS.SIGNUPPAGE}
@@ -105,21 +103,14 @@ class App extends React.Component {
             exact
             path={PATHS.LOGINPAGE}
             authenticate={this.authenticate}
-            component={LogIn}
+            component={Login}
           />
-          <NormalRoute
+          <ProtectedRoute
             exact
             path={PATHS.TUTOR_PROFILE_PAGE}
-            // authenticate={this.authenticate}
             component={Profile}
-            userId={this.state.user._id}
-          />
-          {/* <ProtectedRoute
-            exact
-            path={PATHS.PROTECTEDPAGE}
-            component={ProtectedPage}
             user={this.state.user}
-          /> */}
+          />
         </Switch>
       </div>
     );

@@ -28,6 +28,7 @@ const userSchema = new Schema({
       type: Number,
     },
   },
+  reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
   coursesTaught: { type: Schema.Types.ObjectId, ref: 'Course' },
 });
 

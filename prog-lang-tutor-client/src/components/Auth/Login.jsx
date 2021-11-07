@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { login } from '../../services/auth-service';
-import './Signup';
 import * as PATHS from '../../utils/paths';
 import * as USER_HELPERS from '../../utils/userToken';
 
-export default class Signup extends Component {
+export default class Login extends Component {
   state = {
     email: '',
     password: '',
