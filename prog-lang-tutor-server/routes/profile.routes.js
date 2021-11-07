@@ -43,9 +43,11 @@ router.post(
 router.patch('/tutor/:userId', async (req, res) => {
   const { userId } = req.params;
   const dataToBeSaved = req.body;
+  const previousCourseName = dataToBeSaved.prevCourseName;
+  const userIdPrepared = mongoose.Types.ObjectId(userId);
+  let updatedUser;
   try {
-    console.log('hitting backend', dataToBeSaved);
-    const updatedUser = await User.findByIdAndUpdate(
+    updatedUser = await User.findByIdAndUpdate(
       userId,
       {
         firstName: dataToBeSaved.firstName,
@@ -59,13 +61,12 @@ router.patch('/tutor/:userId', async (req, res) => {
       },
       { new: true }
     );
-    const currentCourseName = dataToBeSaved.prevCourseName;
-    const userIdPrepared = mongoose.Types.ObjectId(userId);
+
     const updatedCourse = await Course.findOneAndUpdate(
       {
         $and: [
           ({ user_id: userIdPrepared },
-          { 'courses.courseName': currentCourseName }),
+          { 'courses.courseName': previousCourseName }),
         ],
       },
       {
@@ -76,9 +77,20 @@ router.patch('/tutor/:userId', async (req, res) => {
       },
       { new: true }
     );
-
-    console.log({ updatedCourse: updatedCourse });
-    return res.status(201).json({ success: true, updatedUser: updatedUser });
+    if (!updatedCourse) {
+      const newCourseName = dataToBeSaved.courseName;
+      const newCourse = await Course.create({
+        user_id: userIdPrepared,
+        courses: {
+          courseName: newCourseName,
+          description: dataToBeSaved.description,
+        },
+      });
+      updatedUser = await User.findByIdAndUpdate(userIdPrepared, {
+        coursesTaught: newCourse._id,
+      });
+    }
+    res.status(201).json({ success: true, updatedUser: updatedUser });
   } catch (err) {
     console.log({ err: err });
     res.json({

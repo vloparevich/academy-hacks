@@ -107,7 +107,7 @@ class App extends React.Component {
           />
           <ProtectedRoute
             exact
-            path={PATHS.TUTOR_PROFILE_PAGE}
+            path={PATHS.USER_DETAILS}
             component={Profile}
             user={this.state.user}
           />

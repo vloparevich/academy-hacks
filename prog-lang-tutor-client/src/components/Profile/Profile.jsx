@@ -4,48 +4,55 @@ import './Profile.css';
 import PROFILE_SERVICE from '../../services/ProfileServices';
 
 class Profile extends Component {
-  state = { userId: '6186fe50cf33a3ed21dd1bc1', isEditDetailsClicked: false };
+  state = {
+    firstName: '',
+    lastName: '',
+    profilePic: '',
+    countryOfOrigin: '',
+    teachingExperience: '',
+    timeRangeOfAvailability: '',
+    coursesTaught: '',
+    isEditDetailsClicked: false,
+    prevCourseName: '',
+  };
 
   componentDidMount() {
-    console.log('from the props in cdid mount', this.props.userId);
+    console.log('from the props in cdid mount', this.props.user._id);
     this.setState(
       {
-        userId: this.props.userId,
+        user: this.props.user,
       },
       () => {
-        console.log('from state', this.state.userId);
-        // this.getUser();
+        console.log('from state', this.state);
+        this.getUser();
       }
     );
-    this.getUser();
   }
 
   getUser = () => {
     console.log('calling getUser');
-    console.log('in the getUser', this.state.userId);
+    console.log('in the getUser', this.state);
     axios
-      .get(`http://localhost:5000/api/user/${this.state.userId}`)
-      .then((user) => {
-        const {
-          firstName,
-          lastName,
-          profilePic,
-          countryOfOrigin,
-          teachingExperience,
-          timeRangeOfAvailability,
-          coursesTaught,
-        } = user.data.user;
+      .get(`http://localhost:5000/api/user/${this.state.user._id}`)
+      .then((dataFromDb) => {
+        console.log('this is coming from BE', dataFromDb.data);
+        const { user } = dataFromDb.data;
+        console.log({ user: user });
         this.setState({
-          firstName: firstName,
-          lastName: lastName,
-          countryOfOrigin: countryOfOrigin,
-          profilePic: profilePic,
-          teachingExperience: teachingExperience,
-          from: timeRangeOfAvailability.from,
-          to: timeRangeOfAvailability.to,
-          courseName: coursesTaught.courses[0].courseName,
-          description: coursesTaught.courses[0].description,
-          prevCourseName: coursesTaught.courses[0].courseName,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          countryOfOrigin: user.countryOfOrigin,
+          profilePic: user.profilePic,
+          teachingExperience: user.teachingExperience,
+          from: user.timeRangeOfAvailability?.from
+            ? user.timeRangeOfAvailability?.from
+            : '00',
+          to: user.timeRangeOfAvailability?.to
+            ? user.timeRangeOfAvailability?.to
+            : '00',
+          courseName: user.coursesTaught?.courses[0].courseName,
+          description: user.coursesTaught?.courses[0].description,
+          prevCourseName: user.coursesTaught?.courses[0].courseName,
         });
       });
   };
@@ -54,7 +61,7 @@ class Profile extends Component {
     const file = event.target.files[0];
     const uploadData = new FormData();
     uploadData.append('profilePic', file);
-    PROFILE_SERVICE.handleUpload(uploadData, this.state.userId).then(
+    PROFILE_SERVICE.handleUpload(uploadData, this.state.user._id).then(
       (responseFromApi) => {
         this.setState(
           {
@@ -62,7 +69,6 @@ class Profile extends Component {
           },
           () => {
             this.getUser();
-            console.log('updated pic and user', this.state.user);
           }
         );
       }
@@ -86,10 +92,7 @@ class Profile extends Component {
 
   handleSavingChanges = (event) => {
     event.preventDefault();
-    PROFILE_SERVICE.handleUpdateTutorDetails(
-      this.state,
-      this.state.userId
-    ).then(() => {
+    PROFILE_SERVICE.handleUpdateTutorDetails(this.state).then(() => {
       this.setState(
         {
           isEditDetailsClicked: false,
