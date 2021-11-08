@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import "./TutorRow.css";
-// import Button from "react-bootstrap/Button";
-// import Card from "react-bootstrap/Card";
+import countries from "../../resources/countries.json";
 
 export default class TutorRow extends Component {
   render() {
     const { tutor } = this.props;
+    const nationalFlag = countries.find(
+      (country) => country.name.common === tutor.countryOfOrigin
+    ).flag;
+    console.log(nationalFlag);
     return (
       <div className="tutor-row">
         <div className="SearchCardAvatarWrapper">
@@ -20,8 +23,12 @@ export default class TutorRow extends Component {
             <div className="TutorName">
               {tutor.firstName} {tutor.lastName[0]?.toUpperCase()}.
             </div>
-            <div className="countryName">{tutor.countryOfOrigin}</div>
-            {/* <div className="TutorReviews">5 Stars</div> */}
+            <div className="CountryOfOrigin">
+              <p>
+                <span>{tutor.countryOfOrigin}</span>
+                <span> {nationalFlag}</span>
+              </p>
+            </div>
           </div>
         </div>
 

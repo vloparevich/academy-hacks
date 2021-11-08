@@ -6,6 +6,7 @@ import Timeslot from "../Timeslot/Timeslot";
 import ReviewTutor from "../ReviewTutor/ReviewTutor";
 import { Link } from "react-router-dom";
 import "../TutorDetails/TutorDetails.css";
+import countries from "../../resources/countries.json";
 import Navbar from "../Navbar/Navbar";
 
 export default class TutorDetails extends Component {
@@ -21,11 +22,10 @@ export default class TutorDetails extends Component {
     const { params } = this.props.match;
 
     USER_SERVICE.getSpecificTutor(params.id).then((responseFromAPI) => {
-      console.log({ responseFromAPI: responseFromAPI });
       this.setState({
-        tutorDetails: responseFromAPI.tutors,
-        timeRange: responseFromAPI.tutors.timeRangeOfAvailability,
-        coursesTaught: responseFromAPI.tutors.coursesTaught,
+        tutorDetails: responseFromAPI.tutor,
+        timeRange: responseFromAPI.tutor.timeRangeOfAvailability,
+        coursesTaught: responseFromAPI.tutor.coursesTaught.courses[0],
       });
     });
   };
@@ -41,7 +41,11 @@ export default class TutorDetails extends Component {
   };
 
   render() {
-    console.log({ myObject: this.state.tutorDetails });
+    console.log(this.state.tutorDetails);
+    const nationalFlag = countries.find(
+      (country) =>
+        country.name.common === this.state.tutorDetails?.countryOfOrigin
+    )?.flag;
     return (
       <>
         <Navbar user={this.state.user} loading={this.state.loading} />
@@ -59,10 +63,13 @@ export default class TutorDetails extends Component {
                 {this.state.tutorDetails.firstName}{" "}
                 {this.state.tutorDetails.lastName}
               </h1>
-
               <h3>
                 {this.state.tutorDetails.teachingExperience} years of
                 experience!
+                <p>
+                  Country: {this.state.tutorDetails?.countryOfOrigin}
+                  <span> {nationalFlag}</span>
+                </p>
               </h3>
 
               <h2>
