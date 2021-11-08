@@ -97,7 +97,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
               'Username need to be unique. The username you chose is already in use.',
           });
         }
-        return res.status(500).json({ errorMessage: error.message });
+        return res.json({ errorMessage: error.message });
       });
   });
 });
