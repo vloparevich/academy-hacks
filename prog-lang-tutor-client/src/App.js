@@ -123,6 +123,12 @@ class App extends React.Component {
             authenticate={this.authenticate}
             component={TutorDetails}
           />
+          <NormalRoute
+            exact
+            path={PATHS.TUTOR_REVIEW}
+            authenticate={this.authenticate}
+            component={ReviewTutor}
+          />
           <ProtectedRoute
             exact
             path={PATHS.USER_DETAILS}
