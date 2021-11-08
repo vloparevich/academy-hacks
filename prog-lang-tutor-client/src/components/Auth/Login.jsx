@@ -31,7 +31,11 @@ export default class Login extends Component {
       if (res.data?.accessToken) {
         USER_HELPERS.setUserToken(res.data.accessToken);
         this.props.authenticate(res.data.user);
-        this.props.history.push(PATHS.HOMEPAGE);
+        this.props.location.toBeRedirectedBack.pathname
+          ? this.props.history.push(
+              this.props.location.toBeRedirectedBack.pathname
+            )
+          : this.props.history.push(PATHS.HOMEPAGE);
       } else {
         this.setState({ invalidCredentials: true });
       }
