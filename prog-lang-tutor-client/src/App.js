@@ -13,7 +13,6 @@ import * as PATHS from "./utils/paths";
 import * as CONSTS from "./utils/consts";
 // import * as USER_HELPERS from './utils/userToken';
 import "./App.css";
-import Profile from "./components/Profile/Profile";
 import Home from "./components/Home/Home";
 import TutorDetails from "./components/TutorDetails/TutorDetails";
 
@@ -22,6 +21,12 @@ import TutorDetails from "./components/TutorDetails/TutorDetails";
 // import * as PATHS from './utils/paths';
 import * as USER_HELPERS from "./utils/userToken";
 // import { Switch, Route, Redirect } from 'react-router-dom';
+import Navbar from "./components/Navbar/Navbar";
+import Login from "./components/Auth/Login";
+import "./App.css";
+import TutorProfile from "./components/Profile/TutorProfile";
+import StudentProfile from "./components/Profile/StudentProfile";
+import ReviewTutor from "./components/ReviewTutor/ReviewTutor";
 
 class App extends React.Component {
   state = {
@@ -52,6 +57,7 @@ class App extends React.Component {
 
   handleLogout = () => {
     const accessToken = USER_HELPERS.getUserToken();
+    console.log("hit logout", accessToken);
     if (!accessToken) {
       return this.setState({
         user: null,
@@ -68,7 +74,6 @@ class App extends React.Component {
             // deal with error here
             console.error("💡 SOMETHING HAPPENED THAT HAS TO DEALT WITH", res);
           }
-
           USER_HELPERS.removeUserToken();
           return this.setState({
             isLoading: false,
@@ -80,9 +85,12 @@ class App extends React.Component {
   };
 
   authenticate = (user) => {
-    this.setState({
-      user,
-    });
+    this.setState(
+      {
+        user,
+      },
+      () => console.log("User", this.state.user)
+    );
   };
 
   render() {
@@ -90,11 +98,13 @@ class App extends React.Component {
       return <LoadingComponent />;
     }
 
+    console.log("in main app.js component", this.state.user);
+
     return (
       <div className="App">
         {/* <HomeNavbar handleLogout={this.handleLogout} user={this.state.user} /> */}
         <Switch>
-          <NormalRoute exact path={PATHS.HOMEPAGE} component={HomePage} />
+          <NormalRoute exact path={PATHS.HOMEPAGE} component={Home} />
           <NormalRoute
             exact
             path={PATHS.SIGNUPPAGE}
@@ -105,12 +115,18 @@ class App extends React.Component {
             exact
             path={PATHS.LOGINPAGE}
             authenticate={this.authenticate}
-            component={LogIn}
+            component={Login}
+          />
+          <NormalRoute
+            exact
+            path={PATHS.TUTOR_DETAILS}
+            authenticate={this.authenticate}
+            component={TutorDetails}
           />
           <ProtectedRoute
             exact
-            path={PATHS.PROTECTEDPAGE}
-            component={ProtectedPage}
+            path={PATHS.USER_DETAILS}
+            component={this.state.user?.isTutor ? TutorProfile : StudentProfile}
             user={this.state.user}
           />
         </Switch>

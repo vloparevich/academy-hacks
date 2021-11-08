@@ -66,6 +66,7 @@ router.get("/student/:id", (req, res) => {
 // ****************************************************************************************
 router.get("/:id", (req, res) => {
   const { id } = req.params;
+  console.log('HIT USER');
   User.findById(id)
     .populate('coursesTaught mySchedule')
     .then((user) => {

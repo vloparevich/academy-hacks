@@ -15,8 +15,8 @@ const PROFILE_SERVICE = {
       );
   },
   handleUpdateTutorDetails: (updatedData) => {
+    console.log('from the component:', { updatedData: updatedData });
     const {
-      userId,
       firstName,
       lastName,
       countryOfOrigin,
@@ -27,9 +27,11 @@ const PROFILE_SERVICE = {
       to,
       prevCourseName,
     } = updatedData;
+
+    console.log('previous course name', prevCourseName);
+    console.log('previous course name', courseName);
     return service
-      .patch(`tutor/${updatedData.userId}`, {
-        userId,
+      .patch(`tutor/${updatedData.user._id}`, {
         firstName,
         lastName,
         countryOfOrigin,

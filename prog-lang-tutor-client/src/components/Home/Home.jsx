@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Home.css";
 import SearchBar from "../Searchbar/SearchBar";
-import HomeNavbar from "../HomeNavbar/HomeNavbar";
 import USER_SERVICE from "../../services/UserServices";
+import HomeNavbar from "../HomeNavbar/HomeNavbar";
 import TutorRow from "../TutorRow/TutorRow";
 import { Link } from "react-router-dom";
 
@@ -122,6 +122,22 @@ class Home extends Component {
           Academy Hacks, we put you in control of your lessons© 2021.
           HackAcademy.com
         </footer>
+        <SearchBar onSearchQueryChange={this.onSearchInputChange} />
+        {this.state.filteredTutors.map((tutor) => (
+          <Link to={`/tutor/${tutor._id}`} key={tutor._id}>
+            <TutorRow tutor={tutor} />
+          </Link>
+        ))}
+        <div>
+          <h1>What are you going to learn today?</h1>
+        </div>
+        <div>
+          <h2>At Academy Hacks, we put you in control of your lessons...</h2>
+        </div>
+        <div>
+          ((Compilation of different coding languages to go below, each linking
+          to corresponding tutors))
+        </div>
       </div>
     );
   }

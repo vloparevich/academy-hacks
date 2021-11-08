@@ -3,37 +3,56 @@ import axios from "axios";
 import "./Profile.css";
 import PROFILE_SERVICE from "../../services/ProfileServices";
 
-class Profile extends Component {
-  state = { userId: "61855a7a83b48a46f6504971", isEditDetailsClicked: false };
+class TutorProfile extends Component {
+  state = {
+    firstName: "",
+    lastName: "",
+    profilePic: "",
+    countryOfOrigin: "",
+    teachingExperience: "",
+    timeRangeOfAvailability: "",
+    coursesTaught: "",
+    isEditDetailsClicked: false,
+    prevCourseName: "",
+  };
 
   componentDidMount() {
-    this.getUser();
+    console.log("from the props in cdid mount", this.props.user._id);
+    this.setState(
+      {
+        user: this.props.user,
+      },
+      () => {
+        console.log("from state", this.state);
+        this.getUser();
+      }
+    );
   }
 
   getUser = () => {
+    console.log("calling getUser");
+    console.log("in the getUser", this.state);
     axios
-      .get(`http://localhost:5000/api/user/${this.state.userId}`)
-      .then((user) => {
-        const {
-          firstName,
-          lastName,
-          profilePic,
-          countryOfOrigin,
-          teachingExperience,
-          timeRangeOfAvailability,
-          coursesTaught,
-        } = user.data.user;
+      .get(`http://localhost:5000/api/user/${this.state.user._id}`)
+      .then((dataFromDb) => {
+        console.log("this is coming from BE", dataFromDb.data);
+        const { user } = dataFromDb.data;
+        console.log({ user: user });
         this.setState({
-          firstName: firstName,
-          lastName: lastName,
-          countryOfOrigin: countryOfOrigin,
-          profilePic: profilePic,
-          teachingExperience: teachingExperience,
-          from: timeRangeOfAvailability.from,
-          to: timeRangeOfAvailability.to,
-          courseName: coursesTaught.courses[0].courseName,
-          description: coursesTaught.courses[0].description,
-          prevCourseName: coursesTaught.courses[0].courseName,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          countryOfOrigin: user.countryOfOrigin,
+          profilePic: user.profilePic,
+          teachingExperience: user.teachingExperience,
+          from: user.timeRangeOfAvailability?.from
+            ? user.timeRangeOfAvailability?.from
+            : "00",
+          to: user.timeRangeOfAvailability?.to
+            ? user.timeRangeOfAvailability?.to
+            : "00",
+          courseName: user.coursesTaught?.courses[0].courseName,
+          description: user.coursesTaught?.courses[0].description,
+          prevCourseName: user.coursesTaught?.courses[0].courseName,
         });
       });
   };
@@ -42,7 +61,7 @@ class Profile extends Component {
     const file = event.target.files[0];
     const uploadData = new FormData();
     uploadData.append("profilePic", file);
-    PROFILE_SERVICE.handleUpload(uploadData, this.state.userId).then(
+    PROFILE_SERVICE.handleUpload(uploadData, this.state.user._id).then(
       (responseFromApi) => {
         this.setState(
           {
@@ -50,7 +69,6 @@ class Profile extends Component {
           },
           () => {
             this.getUser();
-            console.log("updated pic and user", this.state.user);
           }
         );
       }
@@ -74,10 +92,7 @@ class Profile extends Component {
 
   handleSavingChanges = (event) => {
     event.preventDefault();
-    PROFILE_SERVICE.handleUpdateTutorDetails(
-      this.state,
-      this.state.userId
-    ).then(() => {
+    PROFILE_SERVICE.handleUpdateTutorDetails(this.state).then(() => {
       this.setState(
         {
           isEditDetailsClicked: false,
@@ -176,51 +191,6 @@ class Profile extends Component {
                       )}
                     </div>
                     <div>
-                      <label>Teaching experience (years)</label>
-                      <input
-                        min="1"
-                        type="number"
-                        name="teachingExperience"
-                        id="experience"
-                        value={this.state.teachingExperience}
-                        onChange={this.handleFormInput}
-                      />
-                    </div>
-                    <label className="timeRangeLabel">
-                      Time range of availability
-                    </label>
-                    <div className="timeRangeInputs">
-                      <input
-                        type="number"
-                        min="0"
-                        max="23"
-                        placeholder="From"
-                        name="from"
-                        id="from_input"
-                        value={this.state.from}
-                        onChange={this.handleFormInput}
-                      />
-                      <input
-                        type="number"
-                        min="0"
-                        max="23"
-                        placeholder="To"
-                        name="to"
-                        id="to"
-                        value={this.state.to}
-                        onChange={this.handleFormInput}
-                      />
-                    </div>
-                    <div>
-                      <label>Programming language</label>
-                      <input
-                        name="courseName"
-                        id="courseName"
-                        value={this.state.courseName}
-                        onChange={this.handleFormInput}
-                      />
-                    </div>
-                    <div>
                       <label>Description (max 200 characters)</label>
                       <textarea
                         maxLength="200"
@@ -274,48 +244,6 @@ class Profile extends Component {
                       defaultValue={this.state.countryOfOrigin}
                     />
                   </div>
-                  <div>
-                    <label>Teaching experience (years)</label>
-                    <input
-                      disabled
-                      name="experience"
-                      id="experience"
-                      defaultValue={this.state.teachingExperience}
-                    />
-                  </div>
-
-                  <label className="timeRangeLabel">
-                    Time range of availability
-                  </label>
-                  <div className="timeRangeInputs">
-                    <input
-                      disabled
-                      type="text"
-                      placeholder="From"
-                      name="from"
-                      id="from_input"
-                      value={`From ${this.state.from}:00`}
-                    />
-                    <input
-                      disabled
-                      type="text"
-                      placeholder="To"
-                      name="to_input"
-                      id="to"
-                      value={`To ${this.state.to}:00`}
-                    />
-                  </div>
-
-                  <div>
-                    <label>Programming language</label>
-                    <input
-                      disabled
-                      name="programmingLanguage"
-                      id="programmingLanguage"
-                      value={this.state.courseName}
-                      onChange={this.handleFormInput}
-                    />
-                  </div>
 
                   <div>
                     <label>Description</label>
@@ -347,4 +275,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default TutorProfile;
