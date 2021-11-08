@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './TutorRow.css';
-import countries from '../../resources/countries.json';
+import React, { Component } from "react";
+import "./TutorRow.css";
+import countries from "../../resources/countries.json";
 
 export default class TutorRow extends Component {
   render() {
@@ -10,20 +10,20 @@ export default class TutorRow extends Component {
     ).flag;
     console.log(nationalFlag);
     return (
-      <div className='tutor-row'>
-        <div className='SearchCardAvatarWrapper'>
+      <div className="tutor-row">
+        <div className="SearchCardAvatarWrapper">
           <img
-            className='RowProfilePicture'
+            className="RowProfilePicture"
             src={tutor.profilePic}
-            alt='tutor-small-img'
+            alt="tutor-small-img"
           />
         </div>
-        <div className='TutorDescriptionBlock'>
-          <div className='TutorShortDetails'>
-            <div className='TutorName'>
+        <div className="TutorDescriptionBlock">
+          <div className="TutorShortDetails">
+            <div className="TutorName">
               {tutor.firstName} {tutor.lastName[0]?.toUpperCase()}.
             </div>
-            <div className='CountryOfOrigin'>
+            <div className="CountryOfOrigin">
               <p>
                 <span>{tutor.countryOfOrigin}</span>
                 <span> {nationalFlag}</span>
@@ -31,8 +31,9 @@ export default class TutorRow extends Component {
             </div>
           </div>
         </div>
-        <div className='SearchCardActions'>
-          <div className='TutorReviews'>5 Stars</div>
+
+        <div className="SearchCardActions">
+          <div className="TutorReviews">5 Stars</div>
         </div>
       </div>
     );

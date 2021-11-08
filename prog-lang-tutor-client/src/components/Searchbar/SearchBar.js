@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
-import './Search.css';
+import React, { Component } from "react";
+import "./Search.css";
 
 export default class SearchBar extends Component {
   render() {
     return (
-      <div>
+      <div className="searchContainer">
         {/* <p>Search</p> */}
         <fieldset>
           <input
-            name='searchInput'
+            name="searchInput"
+            placeholder="Search"
             onChange={(event) =>
               this.props.onSearchQueryChange(event.target.value)
             }
@@ -16,16 +17,6 @@ export default class SearchBar extends Component {
 
           <legend>SEARCH</legend>
         </fieldset>
-        {/* <div id="checkbox">
-          <input
-            id="checkbox-instock"
-            type="checkbox"
-            onChange={(event) => {
-              this.props.onCheckboxInStockChange(event.target.checked);
-            }}
-          />
-          <p id="checkboxlabel">Only show products on stock</p>
-        </div> */}
       </div>
     );
   }

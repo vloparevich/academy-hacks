@@ -1,31 +1,40 @@
+/*Green 300 #36B37E
+Green 200 #B1EC98
+dark blueBackGround Color:  #1d2025;
+900 Blue Grey NavBar color: #102A43
+Accent/borders Green colors: #36B37E
+
+*/
+
 input {
-    line-height: 2rem;
-    width: 83%;
-    border-style: solid;
-    /* border-color: #EEEEEE; */
-    border-color: #B2E89A;
-    border-width: 2px;
-    border-radius: .3rem;
-    background-color:transparent;
-    color:#B2E89A;;
-margin-top: 35px;
+  line-height: 2rem;
+  width: 83%;
+  border-style: solid;
+  /* border-color: #EEEEEE; */
+  border-color: #b2e89a;
+  border-width: 2px;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  color: #b2e89a;
+  margin-top: 35px;
 }
 fieldset {
-    border: 1px solid #B2E89A;
-
+  border: 1px solid #b2e89a;
 }
-legend{
-    margin-right:50px ;
+legend {
+  margin-right: 50px;
 }
-
+.searchContainer {
+  padding-top: 50px;
+}
 #checkboxlabel {
-    display: inline
+  display: inline;
 }
 
 #checkbox-instock {
-    width: 1.5rem;
+  width: 1.5rem;
 }
 
 #checkbox {
-    margin: 1rem 0;
+  margin: 1rem 0;
 }
