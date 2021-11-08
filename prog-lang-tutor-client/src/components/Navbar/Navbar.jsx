@@ -8,7 +8,7 @@ class Navbar extends Component {
       return <div>Loading...</div>;
     }
     return (
-      <nav className="nav-style">
+      <navbar className="navbar-style">
         <Link to="/">
           <img className="logo" src="../logo.png" alt="logo" />
         </Link>
@@ -42,7 +42,7 @@ class Navbar extends Component {
           )}
         </ul>
         <hr></hr>
-      </nav>
+      </navbar>
     );
   }
 }

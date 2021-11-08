@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import { signup } from "../../services/auth-service";
 import "./Auth.css";
-<<<<<<< HEAD
 import Navbar from "../Navbar/Navbar";
-=======
 import * as USER_HELPERS from "../../utils/userToken";
 import * as PATHS from "../../utils/paths";
->>>>>>> 0b53b29e4addc7c5497764dd24ec28fb3e4945fe
 
 export default class Signup extends Component {
   state = {
@@ -66,7 +63,6 @@ export default class Signup extends Component {
 
   render() {
     return (
-
       <>
         <Navbar />
         <div className="auth-container">
@@ -95,258 +91,209 @@ export default class Signup extends Component {
               onChange={this.changeHandler}
             />
 
-      <form onSubmit={this.handleSignup}>
-        <input
-          type='text'
-          name='firstName'
-          placeholder='First Name'
-          value={this.state.firstName}
-          onChange={this.changeHandler}
-        />
-        <input
-          type='text'
-          name='lastName'
-          placeholder='Last Name'
-          value={this.state.lastName}
-          onChange={this.changeHandler}
-        />
-        <input
-          type='email'
-          name='email'
-          placeholder='email'
-          value={this.state.email}
-          onChange={this.changeHandler}
-        />
-        <input
-          type='password'
-          name='password'
-          placeholder='password'
-          autoComplete='current-password'
-          value={this.state.password}
-          onChange={this.changeHandler}
-        />
-        <input type='submit' value='Create account' />
-      </form>
-
-      <div className="auth-container">
-        <ul className="auth-top-bar">
-          {!this.state.isTutor ? (
-            <>
-              <button
-                onClick={this.handleStudentSelection}
-                id="active-student-signup-toggle"
+            <div className="auth-container">
+              <ul className="auth-top-bar">
+                {!this.state.isTutor ? (
+                  <>
+                    <button
+                      onClick={this.handleStudentSelection}
+                      id="active-student-signup-toggle"
+                    >
+                      Student
+                    </button>
+                    <button
+                      onClick={this.handleTutorSelection}
+                      id="inactive-student-signup-toggle"
+                    >
+                      Tutor
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={this.handleStudentSelection}
+                      id="inactive-student-signup-toggle"
+                    >
+                      Student
+                    </button>
+                    <button
+                      onClick={this.handleTutorSelection}
+                      id="active-tutor-signup-toggle"
+                    >
+                      Tutor
+                    </button>
+                  </>
+                )}
+              </ul>
+              <form
+                onSubmit={this.handleFormSubmission}
+                className="auth-form-container"
               >
-                Student
-              </button>
-              <button
-                onClick={this.handleTutorSelection}
-                id="inactive-student-signup-toggle"
-              >
-                Tutor
-              </button>
-            </>
-          ) : (
-            <>
-              <button
-                onClick={this.handleStudentSelection}
-                id="inactive-student-signup-toggle"
-              >
-                Student
-              </button>
-              <button
-                onClick={this.handleTutorSelection}
-                id="active-tutor-signup-toggle"
-              >
-                Tutor
-              </button>
-            </>
-          )}
-        </ul>
-        <form
-          onSubmit={this.handleFormSubmission}
-          className="auth-form-container"
-        >
-          {!this.state.isTutor ? (
-            <>
-              <h3>Sign up as a student</h3>
-              <h2>Let's begin your next adventure</h2>
-              <label>First Name</label>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={this.state.firstName}
-                onChange={this.changeHandler}
-              />
+                {!this.state.isTutor ? (
+                  <>
+                    <h3>Sign up as a student</h3>
+                    <h2>Let's begin your next adventure</h2>
+                    <label>First Name</label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      placeholder="First Name"
+                      value={this.state.firstName}
+                      onChange={this.changeHandler}
+                    />
 
-              <label>Last Name</label>
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={this.state.lastName}
-                onChange={this.changeHandler}
-              />
+                    <label>Last Name</label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      placeholder="Last Name"
+                      value={this.state.lastName}
+                      onChange={this.changeHandler}
+                    />
 
-              <label>Enter your email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={this.state.email}
-                onChange={this.changeHandler}
-              />
+                    <label>Enter your email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Enter your email"
+                      value={this.state.email}
+                      onChange={this.changeHandler}
+                    />
 
-              <label>Create a password</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Create a password"
-                autoComplete="current-password"
-                value={this.state.password}
-                onChange={this.changeHandler}
-              />
-              <button
-                type="submit"
-                value="Create account"
-                className="auth-button"
-              >
-                Create a student account
-              </button>
-            </>
-          ) : (
-            <>
-              <h3>Sign up as a programming tutor</h3>
-              <h2>Start a rewarding career!</h2>
-              <label>First Name</label>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={this.state.firstName}
-                onChange={this.changeHandler}
-              />
+                    <label>Create a password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Create a password"
+                      autoComplete="current-password"
+                      value={this.state.password}
+                      onChange={this.changeHandler}
+                    />
+                    <button
+                      type="submit"
+                      value="Create account"
+                      className="auth-button"
+                    >
+                      Create a student account
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <h3>Sign up as a programming tutor</h3>
+                    <h2>Start a rewarding career!</h2>
+                    <label>First Name</label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      placeholder="First Name"
+                      value={this.state.firstName}
+                      onChange={this.changeHandler}
+                    />
 
-              <label>Last Name</label>
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Last Name"
-                value={this.state.lastName}
-                onChange={this.changeHandler}
-              />
+                    <label>Last Name</label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      placeholder="Last Name"
+                      value={this.state.lastName}
+                      onChange={this.changeHandler}
+                    />
 
-              <label>How many years have you been teaching?</label>
-              <input
-                type="number"
-                name="teachingExperience"
-                min="1"
-                // placeholder="How many years have you been teaching?"
-                value={this.state.teachingExperience}
-                onChange={this.changeHandler}
-              />
+                    <label>How many years have you been teaching?</label>
+                    <input
+                      type="number"
+                      name="teachingExperience"
+                      min="1"
+                      // placeholder="How many years have you been teaching?"
+                      value={this.state.teachingExperience}
+                      onChange={this.changeHandler}
+                    />
 
-              <label>What country are you from?</label>
-              <input
-                type="text"
-                name="countryOfOrigin"
-                placeholder="What country are you from?"
-                value={this.state.countryOfOrigin}
-                onChange={this.changeHandler}
-              />
+                    <label>What country are you from?</label>
+                    <input
+                      type="text"
+                      name="countryOfOrigin"
+                      placeholder="What country are you from?"
+                      value={this.state.countryOfOrigin}
+                      onChange={this.changeHandler}
+                    />
 
-              <label>Enter your email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                value={this.state.email}
-                onChange={this.changeHandler}
-              />
+                    <label>Enter your email</label>
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Enter your email"
+                      value={this.state.email}
+                      onChange={this.changeHandler}
+                    />
 
-              <label>Create a password</label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Create a password"
-                autoComplete="current-password"
-                value={this.state.password}
-                onChange={this.changeHandler}
-              />
-              <button
-                type="submit"
-                value="Create account"
-                className="auth-button"
-              >
-                Create a tutor account
-              </button>
-            </>
-          )}
+                    <label>Create a password</label>
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Create a password"
+                      autoComplete="current-password"
+                      value={this.state.password}
+                      onChange={this.changeHandler}
+                    />
+                    <button
+                      type="submit"
+                      value="Create account"
+                      className="auth-button"
+                    >
+                      Create a tutor account
+                    </button>
+                  </>
+                )}
 
-          <label>First Name</label>
-          <input
-            type="text"
-            name="firstName"
-            placeholder="First Name"
-            value={this.state.firstName}
-            onChange={this.changeHandler}
-          />
+                <label>First Name</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={this.state.firstName}
+                  onChange={this.changeHandler}
+                />
 
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={this.state.lastName}
+                  onChange={this.changeHandler}
+                />
 
-            <label>Last Name</label>
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={this.state.lastName}
-              onChange={this.changeHandler}
-            />
+                <label>Enter your email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={this.state.email}
+                  onChange={this.changeHandler}
+                />
 
-            <label>Enter your email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              value={this.state.email}
-              onChange={this.changeHandler}
-            />
-
-
-            <label>Create a password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Create a password"
-              autoComplete="current-password"
-              value={this.state.password}
-              onChange={this.changeHandler}
-            />
-            <button
-              type="submit"
-              value="Create account"
-              className="auth-button"
-            >
-              Create account
-            </button>
-          
+                <label>Create a password</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Create a password"
+                  autoComplete="current-password"
+                  value={this.state.password}
+                  onChange={this.changeHandler}
+                />
+                <button
+                  type="submit"
+                  value="Create account"
+                  className="auth-button"
+                >
+                  Create account
+                </button>
+              </form>
+            </div>
+          </form>
+        </div>
       </>
-
-          <label>Create a password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Create a password"
-            autoComplete="current-password"
-            value={this.state.password}
-            onChange={this.changeHandler}
-          />
-          <button type="submit" value="Create account" className="auth-button">
-            Create account
-          </button>
-        </form>
-      </div>
-
-      
     );
   }
 }
