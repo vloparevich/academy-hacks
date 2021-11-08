@@ -7,7 +7,8 @@ import ReviewTutor from '../ReviewTutor/ReviewTutor';
 import { Link } from 'react-router-dom';
 import '../TutorDetails/TutorDetails.css';
 import countries from '../../resources/countries.json';
-
+import { Redirect } from 'react-router-dom';
+import * as PATHS from '../../utils/paths';
 export default class TutorDetails extends Component {
   state = { isScheduleShown: false, timeRange: {} };
   tutorId = this.props.match.params;
@@ -84,6 +85,14 @@ export default class TutorDetails extends Component {
             <div className='TutorActions'>
               <button onClick={this.handleBookClick}>Book a lesson</button>
             </div>
+            {!this.props.user && this.state.isScheduleShown && (
+              <Redirect
+                to={{
+                  pathname: PATHS.LOGINPAGE,
+                  toBeRedirectedBack: this.props.location,
+                }}
+              />
+            )}
             {this.state.isScheduleShown && (
               <Timeslot
                 timeRange={this.state.timeRange}
