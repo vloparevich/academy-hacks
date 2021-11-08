@@ -20,7 +20,6 @@ router.get('/session', (req, res) => {
   if (!req.headers.authorization) {
     return res.json(null);
   }
-
   // accessToken is being sent on every request in the headers
   const accessToken = req.headers.authorization;
 
@@ -40,11 +39,11 @@ router.post('/signup', isLoggedOut, (req, res) => {
     return res.status(400).json({ errorMessage: 'Please provide your email.' });
   }
 
-  if (password.length < 8) {
-    return res.status(400).json({
-      errorMessage: 'Your password needs to be at least 8 characters long.',
-    });
-  }
+  // if (password.length < 8) {
+  //   return res.status(400).json({
+  //     errorMessage: "Your password needs to be at least 8 characters long.",
+  //   });
+  // }
 
   //   ! This use case is using a regular expression to control for special characters and min length
   /*
@@ -80,10 +79,12 @@ router.post('/signup', isLoggedOut, (req, res) => {
         });
       })
       .then((user) => {
+        console.log({ user: user });
         Session.create({
           user: user._id,
           createdAt: Date.now(),
         }).then((session) => {
+          console.log({ session: session });
           res.status(201).json({ user, accessToken: session._id });
         });
       })
