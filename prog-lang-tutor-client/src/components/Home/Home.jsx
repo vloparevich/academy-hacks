@@ -27,7 +27,9 @@ class Home extends Component {
     let filteredTutors = [];
     console.log(this.state.tutorsFromApi);
     for (let i = 0; i < this.state.tutorsFromApi.length; i++) {
-      const courses = this.state.tutorsFromApi[i].coursesTaught.courses;
+      const courses = this.state.tutorsFromApi[i].coursesTaught?.courses
+        ? this.state.tutorsFromApi[i].coursesTaught?.courses
+        : 0;
       for (let j = 0; j < courses.length; j++) {
         courses[j].courseName
           .toLowerCase()
