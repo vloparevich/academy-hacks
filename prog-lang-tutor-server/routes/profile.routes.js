@@ -4,6 +4,7 @@ const User = require('../models/User.model');
 const Course = require('../models/Course.model');
 const fileUploader = require('../config/cloudinary.setup.js');
 const Timeslot = require('../models/Timeslot.model');
+const mongoose = require('mongoose');
 
 // ****************************************************************************************
 // POST route to add/update profile image
@@ -27,7 +28,7 @@ router.post(
         .status(201)
         .json({ success: true, user: userWithAllTheDetails });
     } catch (err) {
-      res.status(500).json({
+      res.json({
         success: false,
         message: 'Profile picture was not updated',
         err,
@@ -37,8 +38,67 @@ router.post(
 );
 
 // ****************************************************************************************
-// GET route to retrieve user details by its ID
+// PUT route to update tutor's details
 // ****************************************************************************************
-router.get('/');
+router.patch('/tutor/:userId', async (req, res) => {
+  const { userId } = req.params;
+  const dataToBeSaved = req.body;
+  const previousCourseName = dataToBeSaved.prevCourseName;
+  const userIdPrepared = mongoose.Types.ObjectId(userId);
+  let updatedUser;
+  try {
+    updatedUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        firstName: dataToBeSaved.firstName,
+        lastName: dataToBeSaved.lastName,
+        countryOfOrigin: dataToBeSaved.countryOfOrigin,
+        teachingExperience: dataToBeSaved.teachingExperience,
+        timeRangeOfAvailability: {
+          from: dataToBeSaved.from,
+          to: dataToBeSaved.to,
+        },
+      },
+      { new: true }
+    );
+
+    const updatedCourse = await Course.findOneAndUpdate(
+      {
+        $and: [
+          ({ user_id: userIdPrepared },
+          { 'courses.courseName': previousCourseName }),
+        ],
+      },
+      {
+        $set: {
+          'courses.$.courseName': dataToBeSaved.courseName,
+          'courses.$.description': dataToBeSaved.description,
+        },
+      },
+      { new: true }
+    );
+    if (!updatedCourse) {
+      const newCourseName = dataToBeSaved.courseName;
+      const newCourse = await Course.create({
+        user_id: userIdPrepared,
+        courses: {
+          courseName: newCourseName,
+          description: dataToBeSaved.description,
+        },
+      });
+      updatedUser = await User.findByIdAndUpdate(userIdPrepared, {
+        coursesTaught: newCourse._id,
+      });
+    }
+    res.status(201).json({ success: true, updatedUser: updatedUser });
+  } catch (err) {
+    console.log({ err: err });
+    res.json({
+      success: false,
+      message: 'User details were not updated',
+      err,
+    });
+  }
+});
 
 module.exports = router;

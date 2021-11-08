@@ -1,18 +1,50 @@
+/*
+Green 300: #36B37E
+Green 200: #B1EC98
+=======================
+=======================
+Blue Grey
+50 = #F0F4F8 <== lightest
+100 = #D9E2EC
+200 = #BCCCDC
+300 = #9FB3C8
+400 = #829AB1
+500 = #627D98 <== main
+600 = #486581
+700 = #334E68
+800 = #243B53
+900 = #102A43 <== darkest
+*/
+
+h3 {
+  color: #f0f4f8;
+}
+
 .profileContainer {
+  background-color: #102a43;
+  border-radius: 0.5rem;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
+  margin: 4rem 16rem;
   display: flex;
   flex-direction: row;
   color: #fff;
-  justify-content: space-around;
+  justify-content: center;
+  height: 100vh;
 }
 
 .imageSection {
   display: flex;
   flex-direction: column;
+  justify-content: start;
+  padding-top: 1rem;
 }
 
 .userDetailsSection {
   display: flex;
   flex-direction: column;
+  margin: 0 0 0 1rem;
 }
 
 .userImage {
@@ -23,6 +55,7 @@
 
 #profilePicture {
   margin: 0 auto;
+  border-radius: 5px;
 }
 
 .userDetails {
@@ -30,14 +63,11 @@
   padding: 10rem;
   flex-direction: column;
   align-items: flex-start;
-
 }
 
 .bookedSessions {
   flex: 3;
 }
-
-
 
 #imageInput {
   display: none;
@@ -48,27 +78,31 @@
 #editMyDetailsButton,
 .formControlButtons {
   display: inline-block;
-  margin: 0 auto;
   padding: 4px 32px;
-  background-color: #FFFFFF;
-  border: solid 1px #666F77;
+  background-color: #ffffff;
+  border: solid 1px #666f77;
   border-radius: 6px;
-  color: #666F77;
+  color: #666f77;
   max-height: 3rem;
-  font-size: .7rem;
-  margin: .5rem;
+  font-size: 0.7rem;
+  margin: 0.5rem;
+  width: 150px;
 }
 
 #imageInputLabel:active,
 #editMyDetailsButton:active,
 .formControlButtons:active {
   background-image: none;
-  background-color: #2D6C7A;
-  color: #FFFFFF;
+  background-color: #2d6c7a;
+  color: #ffffff;
+}
+
+#imageInputLabel {
+  margin: 0.5rem auto;
 }
 
 #profilePicture {
-  width: 250px;
+  width: 300px;
 }
 
 form input,
@@ -76,6 +110,73 @@ label {
   display: block;
 }
 
-form input {
-  margin-top: .1rem;
+form input,
+.plainUserDetails input {
+  margin-top: 0.1rem;
+  width: 375px;
+}
+
+.profile-tabs {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  align-content: center;
+  margin: 0rem 2rem 2rem 0rem;
+  padding: 3rem auto;
+}
+
+.profile-tabs li {
+  padding-right: 4rem;
+  font-weight: bold;
+  background-color: #243B53;
+}
+
+.profile-tabs li:hover {
+  background-color: #243B53;
+}
+
+.div-line {
+  border-top: "2px solid #fff ";
+}
+
+.controlButtonsUserDetails {
+  margin: 0rem 2rem 2rem 2rem;
+  width: 400px;
+  text-align: left;
+}
+
+label {
+  text-align: left;
+  font-size: 0.65rem;
+  margin-top: 0.5rem;
+  padding-left: 0.3rem;
+}
+
+.timeRangeInputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 385px;
+}
+
+.timeRangeInputs input {
+  width: 45%;
+}
+
+textarea {
+  line-height: 2rem;
+  width: 83%;
+  border-style: solid;
+  border-color: #b2e89a;
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #b2e89a;
+  margin-top: 35 px;
+}
+
+#cancelChangesButton {
+  color: red;
 }

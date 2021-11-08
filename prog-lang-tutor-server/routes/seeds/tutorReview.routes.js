@@ -24,18 +24,18 @@ router.post('/tutor/review', isLoggedIn, async (req, res) => {
     let { _id, firstName, lastName, reviews } = req.session.user;
     const user_id = mongoose.Types.ObjectId(_id);
     try {
-        const dealerInDb = await Dealer.findOne({ dealerName: dealerName });
+        const tutorInDb = await Tutor.findOne({ dealerName: dealerName });
         const createdReviewInDb = await Review.create({
             reviewContent,
             user_id,
         });
-        if (!dealerInDb) {
-            await Dealer.create({ dealerName: dealerName });
+        if (!tutorInDb) {
+            await Tutor.create({ dealerName: dealerName });
         }
-        await Dealer.findByIdAndUpdate(dealerInDb._id, {
+        await Tutor.findByIdAndUpdate(tutorInDb._id, {
             $push: { reviews: createdReviewInDb._id },
         });
-        res.redirect(307, `/vehicles/details/${vin}`);
+        res.redirect(307, `/tutor/:id/`);
     } catch (err) {
         console.log('Soemthing went wrong while posting the review:', err);
     }

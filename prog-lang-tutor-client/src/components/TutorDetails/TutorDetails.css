@@ -1,17 +1,22 @@
-.TutorPage {
-}
+/*Green 300 #36B37E
+Green 200 #B1EC98
+dark blueBackGround Color:  #1d2025;
+900 Blue Grey NavBar color: #102A43
+Accent/borders Green colors: #36B37E
+
+*/
 
 .TutorProfilePicture {
-    display: flex;
-    margin-top: 5rem;
-    margin-left: 5rem;
-    width:15rem;
-    align-self: left;
+  display: flex;
+  margin-top: 5rem;
+  margin-left: 5rem;
+  width: 15rem;
+  align-self: left;
 }
 
 .TutorInfo {
-    margin-left: 20rem;
-    margin-bottom: 6rem;
-    text-align: left;
-    margin-top: -17rem;
+  margin-left: 20rem;
+  margin-bottom: 6rem;
+  text-align: left;
+  margin-top: -17rem;
 }

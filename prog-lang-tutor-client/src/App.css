@@ -1,5 +1,16 @@
+/*Green 300 #36B37E
+Green 200 #B1EC98
+dark blueBackGround Color:  #1d2025;
+900 Blue Grey NavBar color: #102A43
+Accent/borders Green colors: #36B37E
+
+*/
+
 .App {
   text-align: center;
+  color: white;
+  height: 100%;
+  width: 100%;
 }
 
 .App-logo {
