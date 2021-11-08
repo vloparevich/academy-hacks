@@ -1,18 +1,16 @@
-import * as CONSTS from "./consts";
-
+import * as CONSTS from './consts';
 export function getUserToken() {
-  console.log({ localStorage });
   return localStorage.getItem(CONSTS.ACCESS_TOKEN);
 }
 export function setUserToken(value) {
-  return localStorage.setItem(CONSTS.ACCESS_TOKEN, JSON.stringify(value));
+  return localStorage.setItem(CONSTS.ACCESS_TOKEN, value);
 }
 export function removeUserToken() {
   return localStorage.removeItem(CONSTS.ACCESS_TOKEN);
 }
-const userHelpers = {
-  getUserToken: getUserToken,
+const USER_HELPERS = {
+  getUserToken,
   setUserToken,
   removeUserToken,
 };
-export default userHelpers;
+export default USER_HELPERS;

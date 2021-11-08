@@ -14,6 +14,35 @@ const PROFILE_SERVICE = {
         console.log('Picture has not been uploaded', { err: err })
       );
   },
+  handleUpdateTutorDetails: (updatedData) => {
+    const {
+      userId,
+      firstName,
+      lastName,
+      countryOfOrigin,
+      teachingExperience,
+      courseName,
+      description,
+      from,
+      to,
+      prevCourseName,
+    } = updatedData;
+    return service
+      .patch(`tutor/${updatedData.userId}`, {
+        userId,
+        firstName,
+        lastName,
+        countryOfOrigin,
+        teachingExperience,
+        courseName,
+        description,
+        from,
+        to,
+        prevCourseName,
+      })
+      .then((responseFromApi) => responseFromApi.data)
+      .catch((err) => console.log("Tutor's data was not updated", err));
+  },
 };
 
 export default PROFILE_SERVICE;

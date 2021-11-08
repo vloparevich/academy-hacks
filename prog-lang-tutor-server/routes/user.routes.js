@@ -31,6 +31,7 @@ router.get("/tutor/:id", (req, res) => {
   User.findById(id)
     .populate("coursesTaught mySchedule")
     .then((tutor) => {
+      console.log('Getting info of tutor', tutor);
       res.status(200).json({ success: true, tutor });
     })
     .catch((err) => {
@@ -66,11 +67,12 @@ router.get("/student/:id", (req, res) => {
 router.get("/:id", (req, res) => {
   const { id } = req.params;
   User.findById(id)
+    .populate('coursesTaught mySchedule')
     .then((user) => {
       res.status(200).json({ success: true, user });
     })
     .catch((err) => {
-      res.status(500).json({
+      res.json({
         success: false,
         message: "User was not found",
         err: err,
@@ -139,7 +141,7 @@ router.post("/tutor", async (req, res, next) => {
     );
     return res.status(201).json({ success: true, tutor: finalizedTutor });
   } catch (err) {
-    res.status(500).json({
+    res.json({
       success: false,
       message: "Tutor's details were not updated",
       err,
@@ -160,7 +162,7 @@ router.delete("/tutor/:tutorId", async (req, res, next) => {
       .status(200)
       .json({ success: true, message: { removedTutor: removedTutor } });
   } catch (err) {
-    res.status(500).json({
+    res.json({
       success: false,
       message: "Tutor has not been deleted",
       err,

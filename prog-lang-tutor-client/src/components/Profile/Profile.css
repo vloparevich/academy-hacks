@@ -1,26 +1,23 @@
-/*Green 300 #36B37E
-Green 200 #B1EC98
-dark blueBackGround Color:  #1d2025;
-900 Blue Grey NavBar color: #102A43
-Accent/borders Green colors: #36B37E
-
-*/
-
-.container {
+.profileContainer {
+  margin: 1.4rem;
   display: flex;
   flex-direction: row;
   color: #fff;
-  justify-content: space-around;
+  justify-content: center;
+  height: 100vh;
 }
 
 .imageSection {
   display: flex;
   flex-direction: column;
+  justify-content: start;
+  padding-top: 1rem;
 }
 
 .userDetailsSection {
   display: flex;
   flex-direction: column;
+  margin: 0 0 0 1rem;
 }
 
 .userImage {
@@ -31,6 +28,7 @@ Accent/borders Green colors: #36B37E
 
 #profilePicture {
   margin: 0 auto;
+  border-radius: 5px;
 }
 
 .userDetails {
@@ -53,7 +51,6 @@ Accent/borders Green colors: #36B37E
 #editMyDetailsButton,
 .formControlButtons {
   display: inline-block;
-  margin: 0 auto;
   padding: 4px 32px;
   background-color: #ffffff;
   border: solid 1px #666f77;
@@ -62,6 +59,7 @@ Accent/borders Green colors: #36B37E
   max-height: 3rem;
   font-size: 0.7rem;
   margin: 0.5rem;
+  width: 150px;
 }
 
 #imageInputLabel:active,
@@ -72,8 +70,12 @@ Accent/borders Green colors: #36B37E
   color: #ffffff;
 }
 
+#imageInputLabel {
+  margin: 0.5rem auto;
+}
+
 #profilePicture {
-  width: 250px;
+  width: 300px;
 }
 
 form input,
@@ -81,6 +83,47 @@ label {
   display: block;
 }
 
-form input {
+form input,
+.plainUserDetails input {
   margin-top: 0.1rem;
+  width: 375px;
+}
+
+.controlButtonsUserDetails {
+  width: 300px;
+  text-align: left;
+}
+
+label {
+  text-align: left;
+  font-size: 0.65rem;
+  margin-top: 0.5rem;
+  padding-left: 0.3rem;
+}
+
+.timeRangeInputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 385px;
+}
+
+.timeRangeInputs input {
+  width: 45%;
+}
+
+textarea {
+  line-height: 2rem;
+  width: 83%;
+  border-style: solid;
+  border-color: #b2e89a;
+  border-width: 2px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #b2e89a;
+  margin-top: 35 px;
+}
+
+#cancelChangesButton {
+  color: red;
 }

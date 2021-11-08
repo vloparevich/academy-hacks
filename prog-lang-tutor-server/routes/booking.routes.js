@@ -62,7 +62,7 @@ router.post('/', async (req, res, next) => {
 
     res.status(201).json({ updatedAvailability: 'test' });
   } catch (err) {
-    res.status(500).json({
+    res.json({
       success: false,
       message:
         "The class was not scheduled and tutor's availability was not updated",
@@ -86,7 +86,7 @@ router.post('/calendar', (req, res) => {
     })
     .catch((err) => {
       console.log({ err: err });
-      res.status(500).json({ success: false, error: err });
+      res.json({ success: false, error: err });
     });
 });
 

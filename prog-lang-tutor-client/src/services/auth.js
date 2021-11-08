@@ -3,6 +3,7 @@ import USER_HELPERS from '../utils/userToken';
 
 // here we are just maing our code look more DRY. With every backend call we must deal with errors and success states. The idea of creating these kinds of services is to make our lives easier in the components
 function internalServerError(err) {
+  console.log('err:', err.response.data);
   if (err.response && err.response.data && err.response.data.errorMessage) {
     return {
       status: false,
@@ -22,26 +23,20 @@ function successStatus(res) {
   };
 }
 
-const instance = axios.create({
-  baseURL: 'http://localhost:5000/auth',
-  withCredentials: true,
+// creates a basic url for every request in this file
+const authService = axios.create({
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/auth`,
 });
 
-// const authService = {
-//   signup: (body) =>
-//     instance.post("/signup", body).then((response) => response.data),
-//   getSession: () => instance.get("/session").then((response) => response.data),
-// };
-
 export function login(credentials) {
-  return instance
+  return authService
     .post('/login', credentials)
     .then(successStatus)
     .catch(internalServerError);
 }
 
 export function getLoggedIn() {
-  return instance
+  return authService
     .get(`/session`, {
       headers: {
         authorization: USER_HELPERS.getUserToken(),
@@ -52,21 +47,19 @@ export function getLoggedIn() {
 }
 
 export function signup(credentials) {
-  return instance
+  return authService
     .post('/signup', credentials)
     .then(successStatus)
     .catch(internalServerError);
 }
 
 export function logout() {
-  return instance
+  return authService
     .delete('/logout', {
       headers: {
-        authorization: USER_HELPERS.removeUserToken(),
+        authorization: USER_HELPERS.getUserToken(),
       },
     })
     .then(successStatus)
     .catch(internalServerError);
 }
-
-// export default authService;
