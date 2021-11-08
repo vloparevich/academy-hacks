@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import './Home.css';
-import SearchBar from '../Searchbar/SearchBar';
-import USER_SERVICE from '../../services/UserServices';
-import TutorRow from '../TutorRow/TutorRow';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import "./Home.css";
+import SearchBar from "../Searchbar/SearchBar";
+import USER_SERVICE from "../../services/UserServices";
+import TutorRow from "../TutorRow/TutorRow";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
   state = {
@@ -39,7 +39,7 @@ class Home extends Component {
     searchInput && filteredTutors.length === 0 && (filteredTutors = []);
     searchInput.length === 0 && (filteredTutors = []);
 
-    console.log('after filtering', filteredTutors);
+    console.log("after filtering", filteredTutors);
     this.setState({
       filteredTutors: filteredTutors,
     });
@@ -54,11 +54,16 @@ class Home extends Component {
             <TutorRow tutor={tutor} />
           </Link>
         ))}
-        <div><h1>What are you going to learn today?</h1></div>
         <div>
-          <p><h2>At Academy Hacks, we put you in control of your lessons...</h2></p>
+          <h1>What are you going to learn today?</h1>
         </div>
-        <div>((Compilation of different coding languages to go below, each linking to corresponding tutors))</div>
+        <div>
+          <h2>At Academy Hacks, we put you in control of your lessons...</h2>
+        </div>
+        <div>
+          ((Compilation of different coding languages to go below, each linking
+          to corresponding tutors))
+        </div>
       </div>
     );
   }

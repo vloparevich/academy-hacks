@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 class Navbar extends Component {
   render() {
@@ -8,26 +8,26 @@ class Navbar extends Component {
       return <div>Loading...</div>;
     }
     return (
-      <nav className='nav-style'>
-        <Link to='/'>
-          <img className='logo' src='../logo.png' alt='logo' />
+      <nav className="nav-style">
+        <Link to="/">
+          <img className="logo" src="../logo.png" alt="logo" />
         </Link>
         <ul>
           {!this.props.user ? (
             <>
-              <li>
+              {/* <li>
                 <Link
                   to={{ pathname: 'https://car-american.herokuapp.com/' }}
                   target='_blank'
                 >
                   Buy a Car?
                 </Link>
+              </li> */}
+              <li>
+                <Link to="/auth/signup">Sign Up</Link>
               </li>
               <li>
-                <Link to='/auth/signup'>Sign Up</Link>
-              </li>
-              <li>
-                <Link to='/auth/login'>Login</Link>
+                <Link to="/auth/login">Login</Link>
               </li>
             </>
           ) : (
@@ -36,7 +36,7 @@ class Navbar extends Component {
                 <button onClick={this.props.handleLogout}>Logout</button>
               </li>
               <li>
-                <Link to='/user'>{this.props.user.firstName}</Link>
+                <Link to="/user">{this.props.user.firstName}</Link>
               </li>
             </>
           )}
