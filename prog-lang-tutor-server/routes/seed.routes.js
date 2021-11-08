@@ -11,7 +11,7 @@ const saltRounds = 10;
 // ****************************************************************************************
 router.get('/seed-my-db', async (req, res, next) => {
   try {
-    await tutorsArray.forEach(async (tutor) => {
+    const allTheTutorsCreated = await tutorsArray.map(async (tutor) => {
       const {
         isTutor,
         email,
@@ -25,7 +25,6 @@ router.get('/seed-my-db', async (req, res, next) => {
         timeAvailableInRange,
         password,
       } = tutor;
-
       const hashedPassword = await bcrypt
         .genSalt(saltRounds)
         .then((salt) => bcrypt.hash(password, salt));
@@ -47,16 +46,21 @@ router.get('/seed-my-db', async (req, res, next) => {
         user_id: createdTutor._id,
         courses: { courseName: courseName, description: description },
       });
-      const finalizedTutor = await User.findByIdAndUpdate(
+      const updatedTutor = await User.findByIdAndUpdate(
         createdTutor._id,
         {
           $push: { coursesTaught: createdCourse._id },
         },
         { new: true }
       );
-      return res.status(201).json({ success: true, tutor: finalizedTutor });
+      return updatedTutor;
+    });
+
+    Promise.all(allTheTutorsCreated).then((tutors) => {
+      res.status(200).json({ success: true, tutor: tutors });
     });
   } catch (err) {
+    console.log('ERROR', { err: err });
     res.json(
       { success: false, message: 'Error while trying to seed the database' },
       err
