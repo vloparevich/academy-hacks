@@ -12,15 +12,12 @@ import countries from '../../resources/countries.json';
 export default class TutorDetails extends Component {
   state = { isScheduleShown: false, timeRange: {} };
   tutorId = this.props.match.params;
-
   componentDidMount = () => {
     console.log('mounting');
     this.getTutorDetails();
   };
-
   getTutorDetails = () => {
     const { params } = this.props.match;
-
     USER_SERVICE.getSpecificTutor(params.id).then((responseFromAPI) => {
       this.setState({
         tutorDetails: responseFromAPI.tutor,
@@ -29,17 +26,14 @@ export default class TutorDetails extends Component {
       });
     });
   };
-
   handleBookClick = () => {
     this.setState({
       isScheduleShown: !this.state.isScheduleShown,
     });
   };
-
   savingBookedTimeslots = (details) => {
     BOOKING_SERVICE.updateMyAvailability(details, this.tutorId);
   };
-
   render() {
     const nationalFlag = countries.find(
       (country) =>
@@ -69,7 +63,6 @@ export default class TutorDetails extends Component {
                   <span> {nationalFlag}</span>
                 </p>
               </h3>
-
               <h2>
                 {this.state.coursesTaught.courseName} :{' '}
                 {this.state.coursesTaught.description}.

@@ -60,6 +60,8 @@ app.use('/api/booking', require('./routes/booking.routes'));
 
 app.use('/api/profile', require('./routes/profile.routes'));
 
+app.use('/api/lesson', require('./routes/lesson.routes'));
+
 // app.use('/student', require('./routes/student.routes'));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes

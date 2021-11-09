@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './Profile.css';
 import PROFILE_SERVICE from '../../services/ProfileServices';
+import * as PATHS from '../../utils/paths.js';
 
-class TutorProfile extends Component {
+class StudentProfile extends Component {
   state = {
     firstName: '',
     lastName: '',
@@ -35,25 +37,27 @@ class TutorProfile extends Component {
     axios
       .get(`http://localhost:5000/api/user/${this.state.user._id}`)
       .then((dataFromDb) => {
-        console.log('this is coming from BE', dataFromDb.data);
         const { user } = dataFromDb.data;
         console.log({ user: user });
-        this.setState({
-          firstName: user.firstName,
-          lastName: user.lastName,
-          countryOfOrigin: user.countryOfOrigin,
-          profilePic: user.profilePic,
-          teachingExperience: user.teachingExperience,
-          from: user.timeRangeOfAvailability?.from
-            ? user.timeRangeOfAvailability?.from
-            : '00',
-          to: user.timeRangeOfAvailability?.to
-            ? user.timeRangeOfAvailability?.to
-            : '00',
-          courseName: user.coursesTaught?.courses[0].courseName,
-          description: user.coursesTaught?.courses[0].description,
-          prevCourseName: user.coursesTaught?.courses[0].courseName,
-        });
+        this.setState(
+          {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            countryOfOrigin: user.countryOfOrigin,
+            profilePic: user.profilePic,
+            teachingExperience: user.teachingExperience,
+            from: user.timeRangeOfAvailability?.from
+              ? user.timeRangeOfAvailability?.from
+              : '00',
+            to: user.timeRangeOfAvailability?.to
+              ? user.timeRangeOfAvailability?.to
+              : '00',
+            courseName: user.coursesTaught?.courses[0].courseName,
+            description: user.coursesTaught?.courses[0].description,
+            prevCourseName: user.coursesTaught?.courses[0].courseName,
+          },
+          () => console.log({ state: this.state })
+        );
       });
   };
 
@@ -117,7 +121,11 @@ class TutorProfile extends Component {
     return (
       <>
         {/* {this.state.firstName && ( */}
+
         <div className='profileContainer'>
+          <Link to={`/student/lessons/${this.state.user?._id}`}>
+            My Scheduled Lessons
+          </Link>
           <div className='imageSection'>
             {this.state.profilePic && (
               <img
@@ -275,4 +283,4 @@ class TutorProfile extends Component {
   }
 }
 
-export default TutorProfile;
+export default StudentProfile;

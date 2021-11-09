@@ -73,7 +73,7 @@ router.get('/tutor/:id', (req, res) => {
       res.status(200).json({ success: true, tutor });
     })
     .catch((err) => {
-      res.status(500).json({
+      res.json({
         success: false,
         message: 'Tutor or Student was not found',
         err: err,
@@ -91,7 +91,7 @@ router.get('/student/:id', (req, res) => {
       return res.status(200).json({ success: true, student });
     })
     .catch((err) => {
-      res.status(500).json({
+      res.json({
         success: false,
         message: 'Tutor or Student was not found',
         err: err,

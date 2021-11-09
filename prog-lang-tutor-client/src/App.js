@@ -15,6 +15,7 @@ import StudentProfile from './components/Profile/StudentProfile';
 import TutorDetails from './components/TutorDetails/TutorDetails';
 import * as USER_HELPERS from './utils/userToken';
 import ReviewTutor from './components/ReviewTutor/ReviewTutor';
+import MyLessons from './components/MyLessons/MyLessons';
 
 class App extends React.Component {
   state = {
@@ -116,6 +117,12 @@ class App extends React.Component {
             exact
             path={PATHS.USER_DETAILS}
             component={this.state.user?.isTutor ? TutorProfile : StudentProfile}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.STUDENT_LESSONS}
+            component={MyLessons}
             user={this.state.user}
           />
         </Switch>
