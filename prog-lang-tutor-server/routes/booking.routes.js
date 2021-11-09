@@ -60,8 +60,7 @@ router.post('/', async (req, res, next) => {
         }
       );
     }
-
-    res.status(201).json({ updatedAvailability: 'test' });
+    res.status(201).json({ success: true });
   } catch (err) {
     res.json({
       success: false,

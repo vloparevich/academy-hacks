@@ -49,7 +49,24 @@ export default class Timeslot extends Component {
   createTimeSlots = () => {
     const slots = [];
     for (let i = this.state.from; i < this.state.to; i++) {
-      if (this.state.alreadyBookedSlots.includes(i)) continue;
+      if (this.state.alreadyBookedSlots.includes(i)) {
+        slots.push(
+          <div key={i}>
+            <button
+              disabled
+              name={i}
+              onClick={() => this.handleTimePickerChange(i)}
+              style={{
+                backgroundColor: '#696969',
+                color: '#2F4F4F',
+              }}
+            >
+              {i}:00-{i + 1}:00
+            </button>
+          </div>
+        );
+        continue;
+      }
       slots.push(
         <div key={i}>
           <button
@@ -105,12 +122,22 @@ export default class Timeslot extends Component {
 
     this.props.bookedTime(this.state);
     //After the state is sent to the route to be stored in the DB resetting the state
-
-    this.setState({
-      isTimeSlotChecked: new Array(24).fill(false),
-      // calendarValueLong: new Date(),
-      calendarValueShort: '',
-      pickedTimeSlots: [],
+    const calendarDate = this.state.calendarValueShort;
+    const pickedTimeslots = this.state.pickedTimeSlots;
+    const studentId = this.props.studentId;
+    const tutorId = this.props.tutorId;
+    console.log('studentId, tutorId', studentId, tutorId);
+    BOOKING_SERVICE.createBookingsOnStudent(
+      calendarDate,
+      pickedTimeslots,
+      studentId,
+      tutorId
+    ).then(() => {
+      this.setState({
+        isTimeSlotChecked: new Array(24).fill(false),
+        calendarValueShort: '',
+        pickedTimeSlots: [],
+      });
     });
   };
 
