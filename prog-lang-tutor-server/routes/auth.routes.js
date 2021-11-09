@@ -34,7 +34,17 @@ router.get('/session', (req, res) => {
 });
 
 router.post('/signup', isLoggedOut, (req, res) => {
-  const { firstName, lastName, email, password, isTutor } = req.body;
+  // const { firstName, lastName, email, password, isTutor } = req.body;
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    isTutor,
+    countryOfOrigin,
+    teachingExperience,
+  } = req.body;
+
   if (!email) {
     return res.status(400).json({ errorMessage: 'Please provide your email.' });
   }
@@ -71,11 +81,13 @@ router.post('/signup', isLoggedOut, (req, res) => {
       .then((hashedPassword) => {
         // Create a user and save it in the database
         return User.create({
+          isTutor: isTutor,
           firstName: firstName,
           lastName: lastName,
           email: email,
           password: hashedPassword,
-          isTutor: isTutor,
+          countryOfOrigin: countryOfOrigin,
+          teachingExperience: teachingExperience,
         });
       })
       .then((user) => {

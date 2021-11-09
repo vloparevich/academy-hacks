@@ -122,6 +122,7 @@ class App extends React.Component {
             path={PATHS.TUTOR_DETAILS}
             authenticate={this.authenticate}
             component={TutorDetails}
+            user={this.state.user}
           />
           <NormalRoute
             exact

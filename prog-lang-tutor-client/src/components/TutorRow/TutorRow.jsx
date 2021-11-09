@@ -7,7 +7,7 @@ export default class TutorRow extends Component {
     const { tutor } = this.props;
     const nationalFlag = countries.find(
       (country) => country.name.common === tutor.countryOfOrigin
-    ).flag;
+    )?.flag;
     console.log(nationalFlag);
     return (
       <div className="tutor-row">
