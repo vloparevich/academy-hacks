@@ -17,6 +17,17 @@ const BOOKING_SERVICE = {
       .then((responseFromApi) => responseFromApi)
       .catch((err) => console.log(err));
   },
+  createBookingsOnStudent: (date, pickedSlots, studentId, tutorId) => {
+    return service
+      .post('/saveBookingsOnStudent', {
+        date: date,
+        pickedSlots: pickedSlots,
+        studentId: studentId,
+        tutorId: tutorId,
+      })
+      .then((responseFromApi) => responseFromApi)
+      .catch((err) => console.log(err));
+  },
 };
 
 export default BOOKING_SERVICE;
