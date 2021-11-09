@@ -26,8 +26,8 @@ export default class TutorDetails extends Component {
     USER_SERVICE.getSpecificTutor(params.id).then((responseFromAPI) => {
       this.setState({
         tutorDetails: responseFromAPI.tutor,
-        timeRange: responseFromAPI.tutor.timeRangeOfAvailability,
-        coursesTaught: responseFromAPI.tutor.coursesTaught.courses[0],
+        timeRange: responseFromAPI.tutor?.timeRangeOfAvailability,
+        coursesTaught: responseFromAPI.tutor?.coursesTaught.courses[0],
       });
     });
   };
@@ -43,8 +43,11 @@ export default class TutorDetails extends Component {
   };
 
   render() {
+<<<<<<< HEAD
     console.log(this.state.tutorDetails);
     console.log('from app user', this.props.user);
+=======
+>>>>>>> 8a3439a... Impl StudentBooking model and corresponding route to update the record
     const nationalFlag = countries.find(
       (country) =>
         country.name.common === this.state.tutorDetails?.countryOfOrigin
@@ -102,6 +105,7 @@ export default class TutorDetails extends Component {
                 timeRange={this.state.timeRange}
                 bookedTime={this.savingBookedTimeslots}
                 tutorId={this.tutorId.id}
+                studentId={this.props.user._id}
               />
             )}
           </div>
