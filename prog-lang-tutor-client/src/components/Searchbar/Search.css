@@ -22,11 +22,12 @@ fieldset {
   border: 1px solid #b2e89a;
 }
 legend {
-  margin-right: 50px;
+  margin-right: 50%;
 }
 .searchContainer {
   padding-top: 50px;
 }
+
 #checkboxlabel {
   display: inline;
 }

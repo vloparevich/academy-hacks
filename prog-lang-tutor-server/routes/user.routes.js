@@ -8,7 +8,7 @@ const Timeslot = require("../models/Timeslot.model");
 // ****************************************************************************************
 // GET route to get all the tutors
 // ****************************************************************************************
-router.get("/tutor/list", (req, res, next) => {
+router.get("/tutor", (req, res, next) => {
   User.find({ isTutor: true })
     .populate("coursesTaught")
     .then((tutors) => {
@@ -31,7 +31,7 @@ router.get("/tutor/:id", (req, res) => {
   User.findById(id)
     .populate("coursesTaught mySchedule")
     .then((tutor) => {
-      console.log('Getting info of tutor', tutor);
+      console.log("Getting info of tutor", tutor);
       res.status(200).json({ success: true, tutor });
     })
     .catch((err) => {
@@ -66,9 +66,9 @@ router.get("/student/:id", (req, res) => {
 // ****************************************************************************************
 router.get("/:id", (req, res) => {
   const { id } = req.params;
-  console.log('HIT USER');
+  console.log("HIT USER");
   User.findById(id)
-    .populate('coursesTaught mySchedule')
+    .populate("coursesTaught mySchedule")
     .then((user) => {
       res.status(200).json({ success: true, user });
     })

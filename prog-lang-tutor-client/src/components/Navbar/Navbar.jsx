@@ -41,7 +41,6 @@ class Navbar extends Component {
             </>
           )}
         </ul>
-        <hr></hr>
       </navbar>
     );
   }

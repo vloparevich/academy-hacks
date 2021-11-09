@@ -27,6 +27,7 @@ import "./App.css";
 import TutorProfile from "./components/Profile/TutorProfile";
 import StudentProfile from "./components/Profile/StudentProfile";
 import ReviewTutor from "./components/ReviewTutor/ReviewTutor";
+import TutorList from "./components/TutorList/TutorList";
 
 class App extends React.Component {
   state = {
@@ -123,6 +124,12 @@ class App extends React.Component {
             authenticate={this.authenticate}
             component={TutorDetails}
           />
+          <NormalRoute
+            exact
+            path={PATHS.LIST}
+            // authenticate={this.authenticate}
+            component={TutorList}
+          />
           <ProtectedRoute
             exact
             path={PATHS.USER_DETAILS}
@@ -130,7 +137,6 @@ class App extends React.Component {
             user={this.state.user}
           />
         </Switch>
-        {/* <Route exact path="tutor/list" component={TutorList} /> */}
       </div>
     );
   }
