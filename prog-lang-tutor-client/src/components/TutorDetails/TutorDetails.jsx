@@ -43,11 +43,6 @@ export default class TutorDetails extends Component {
   };
 
   render() {
-<<<<<<< HEAD
-    console.log(this.state.tutorDetails);
-    console.log('from app user', this.props.user);
-=======
->>>>>>> 8a3439a... Impl StudentBooking model and corresponding route to update the record
     const nationalFlag = countries.find(
       (country) =>
         country.name.common === this.state.tutorDetails?.countryOfOrigin
