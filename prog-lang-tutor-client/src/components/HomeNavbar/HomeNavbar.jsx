@@ -16,8 +16,16 @@ class HomeNavbar extends Component {
             <img className="logo" src="logo.png" alt="logo" />
           </Link>
           <li>
+                <Link
+                  to={{ pathname: 'https://car-american.herokuapp.com/' }}
+                  target='_blank'
+                >
+                  Need a Car?
+                </Link>
+              </li>
+          {/* <li>
             <Link to="/">Academy Hacks</Link>
-          </li>
+          </li> */}
           {!this.props.user ? (
             <>
               <li>
