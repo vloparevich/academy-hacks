@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router-dom';
 import USER_SERVICE from '../../services/UserServices';
 import BOOKING_SERVICE from '../../services/BookingServices';
+import * as PATHS from '../../utils/paths';
 import Timeslot from '../Timeslot/Timeslot';
 import ReviewTutor from '../ReviewTutor/ReviewTutor';
 import { Link } from 'react-router-dom';
 import '../TutorDetails/TutorDetails.css';
 import countries from '../../resources/countries.json';
-import { Redirect } from 'react-router-dom';
-import * as PATHS from '../../utils/paths';
+
 export default class TutorDetails extends Component {
   state = { isScheduleShown: false, timeRange: {} };
   tutorId = this.props.match.params;
