@@ -3,44 +3,44 @@ const router = new Router();
 const User = require('../models/User.model');
 const Review = require('../models/Review.model');
 
-// ****************************************************************************************
-// GET route to render the form for adding review about a tutor
-// ****************************************************************************************
-router.post('/tutor/review/:id', isLoggedIn, (req, res) => {
-    const { tutorLink } = req.body;
-    req.session.tutorLinkFromGlobalScope = tutorLink;
-    const { tutor, id } = req.params;
-    res.render('/tutor/:id', {
-        tutor,
-        id
-    });
-});
 
 // ****************************************************************************************
 // POST route to post a review
 // ****************************************************************************************
-router.post('/tutor/review', isLoggedIn, async (req, res) => {
-    const { reviewContent } = req.body;
-    let { _id, firstName, lastName, reviews } = req.session.user;
-    const user_id = mongoose.Types.ObjectId(_id);
+router.post('/tutor/review', async (req, res) => {
+    
+    const { userId, reviewContent, tutorId } = req.body;
     try {
-        const tutorInDb = await Tutor.findOne({ dealerName: dealerName });
-        const createdReviewInDb = await Review.create({
-            reviewContent,
-            user_id,
-        });
-        if (!tutorInDb) {
-            await Tutor.create({ dealerName: dealerName });
-        }
-        await Tutor.findByIdAndUpdate(tutorInDb._id, {
-            $push: { reviews: createdReviewInDb._id },
-        });
-        res.redirect(307, `/tutor/:id/`);
+        const review = await Review.create({ user_id: userId, reviewContent: reviewContent, tutor_id: tutorId });
+        const userWithReview = await User.findByIdAndUpdate(userId, {
+            $push: { reviews: review._id }
+        }, { new: true });
+        const tutorWithReview = await User.findByIdAndUpdate(tutorId, {
+            $push: { tutorReviews: review._id }
+        }, { new: true });
+        Promise.all([review, userWithReview, tutorWithReview]).then(reviewAndUsers => {
+            res.status(200).json({success:true, reviewAndUsers:reviewAndUsers})
+        })
     } catch (err) {
-        console.log('Soemthing went wrong while posting the review:', err);
+        res.json({success:false, message:'Review not created', err:err})
     }
 });
 
+
+
+
+// ****************************************************************************************
+// POST route to render the form for adding review about a tutor
+// ****************************************************************************************
+// router.post('/tutor/review/:userId', (req, res) => {
+//     const { tutorLink } = req.body;
+//     req.session.tutorLinkFromGlobalScope = tutorLink;
+//     const { tutor, id } = req.params;
+//     res.render('/tutor/:id', {
+//         tutor,
+//         id
+//     });
+// });
 // ****************************************************************************************
 // GET route to delete a review if it belongs to this user
 // ****************************************************************************************
