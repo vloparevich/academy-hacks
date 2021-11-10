@@ -8,7 +8,7 @@ const Timeslot = require("../models/Timeslot.model");
 // ****************************************************************************************
 // GET route to get all the tutors
 // ****************************************************************************************
-router.get("/tutor", (req, res, next) => {
+router.get("/tutor/list", (req, res, next) => {
   User.find({ isTutor: true })
     .populate("coursesTaught")
     .then((tutors) => {
