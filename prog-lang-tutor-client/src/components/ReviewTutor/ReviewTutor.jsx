@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from '../Navbar/Navbar';
 import USER_SERVICE from '../../services/UserServices';
 import '../ReviewTutor/ReviewTutor.css'
 
@@ -26,7 +27,11 @@ class ReviewTutor extends Component {
         });
       };
 
-      handleFormSubmit(event) {
+      handleChange(event) {
+        this.setState({value: event.target.value});
+      }
+
+      handleSubmit(event) {
         // event.preventDefault();
         // const data = new FormData(event.target);
         
@@ -39,8 +44,9 @@ class ReviewTutor extends Component {
     render() {
         return (
             <div>
+            <Navbar/>
             <h1>Review {this.state.tutorDetails?.firstName} {this.state.tutorDetails?.lastName}</h1>
-        <form onSubmit={this.handleFormSubmit()}>
+        <form onSubmit={this.handleSubmit()}>
           <label></label>
           <input id="review" name="review" placeholder="Add your review here" type="text" />
           {/* value={this.state.review}  */}

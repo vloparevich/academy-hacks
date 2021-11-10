@@ -29,18 +29,7 @@ router.post('/tutor/review', async (req, res) => {
 
 
 
-// ****************************************************************************************
-// POST route to render the form for adding review about a tutor
-// ****************************************************************************************
-// router.post('/tutor/review/:userId', (req, res) => {
-//     const { tutorLink } = req.body;
-//     req.session.tutorLinkFromGlobalScope = tutorLink;
-//     const { tutor, id } = req.params;
-//     res.render('/tutor/:id', {
-//         tutor,
-//         id
-//     });
-// });
+
 // ****************************************************************************************
 // GET route to delete a review if it belongs to this user
 // ****************************************************************************************
