@@ -29,6 +29,7 @@ const userSchema = new Schema({
   },
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
   coursesTaught: { type: Schema.Types.ObjectId, ref: 'Course' },
+  myBookings: [{ type: Schema.Types.ObjectId, ref: 'StudentBooking' }],
 });
 
 const User = model('User', userSchema);

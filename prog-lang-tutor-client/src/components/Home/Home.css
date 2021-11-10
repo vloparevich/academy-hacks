@@ -27,8 +27,8 @@ div {
   width: 3vw;
   height: 3vh;
 }
-@media only screen and (max-width: 600px) {
-}
+/* @media only screen and (max-width: 600px) {
+} */
 /* .landingPageImg { */
 /* background-image: url(https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg); */
 /* background-size: cover;
@@ -36,7 +36,20 @@ div {
   background-color: rgba(87, 83, 79, 1);
   background-blend-mode: multiply; */
 /* } */
+@media (max-width: 480px) {
+  .searchBar .courseTable {
+    top: 50%; /* IMPORTANT */
+    left: 50%; /* IMPORTANT */
+    display: block;
+    position: absolute;
 
+    width: 750px;
+    height: 417px;
+
+    margin-top: -208.5px; /* HALF OF THE HEIGHT */
+    margin-left: -375px; /* HALF OF THE WIDTH */
+  }
+}
 .titleHome {
   font-size: 25px;
   width: 65vw;

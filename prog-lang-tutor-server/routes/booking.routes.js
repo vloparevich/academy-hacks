@@ -3,6 +3,7 @@ const router = new Router();
 const User = require('../models/User.model');
 const Course = require('../models/Course.model');
 const Timeslot = require('../models/Timeslot.model');
+const StudentBooking = require('../models/StudentBooking.model');
 const mongoose = require('mongoose');
 
 // ****************************************************************************************
@@ -88,6 +89,45 @@ router.post('/calendar', (req, res) => {
       console.log({ err: err });
       res.json({ success: false, error: err });
     });
+});
+
+// ****************************************************************************************
+// POST route to add more lessons on a student's bookings or create a new booking
+// ****************************************************************************************
+router.post('/saveBookingsOnStudent', async (req, res) => {
+  const { date, pickedSlots, studentId, tutorId } = req.body;
+  preparedStudentId = mongoose.Types.ObjectId(studentId);
+
+  let booking;
+  let updatedUser;
+  try {
+    booking = await StudentBooking.findOneAndUpdate(
+      {
+        $and: [{ date: date }, { studentId: preparedStudentId }],
+      },
+      { $push: { pickedSlots: pickedSlots } },
+      { new: true }
+    );
+
+    if (!booking) {
+      booking = await StudentBooking.create({
+        date,
+        pickedSlots,
+        studentId,
+        tutorId,
+      });
+
+      updatedUser = await User.findByIdAndUpdate(
+        studentId,
+        { $push: { myBookings: booking._id } },
+        { new: true }
+      );
+    }
+
+    res
+      .status(200)
+      .json({ success: true, booking: booking, updatedUser: updatedUser });
+  } catch (err) {}
 });
 
 module.exports = router;

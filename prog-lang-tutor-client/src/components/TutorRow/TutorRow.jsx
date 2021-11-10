@@ -44,7 +44,7 @@ export default class TutorRow extends Component {
 
     const nationalFlag = countries.find(
       (country) => country.name.common === tutor.countryOfOrigin
-    ).flag;
+    )?.flag;
     console.log(nationalFlag);
     return (
       <div className="tutor-row">
@@ -58,7 +58,7 @@ export default class TutorRow extends Component {
         <div className="TutorDescriptionBlock">
           <div className="TutorShortDetails">
             <div className="TutorName">
-              {/* {tutor.firstName} {tutor.lastName[0]?.toUpperCase()}. */}
+              {tutor.firstName} {tutor.lastName[0]?.toUpperCase()}.
               <p>
                 <span>
                   {/* hi {tutor.courseName} {tutor.description} */}
