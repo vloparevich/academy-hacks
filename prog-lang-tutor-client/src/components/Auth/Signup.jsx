@@ -37,16 +37,13 @@ export default class Signup extends Component {
       // successful signup
       console.log(res);
       if (!res.status) {
-        // unsuccessful signup
+        console.log('REDIRECTING to SIGNUPPAGE');
+        this.props.history.push(PATHS.SIGNUPPAGE);
+      } else {
+        USER_HELPERS.setUserToken(res.data.accessToken);
+        this.props.authenticate(res.data?.user);
+        this.props.history.push(PATHS.HOMEPAGE);
       }
-      console.log('the token', { token: res.data });
-
-      USER_HELPERS.setUserToken(res.data.accessToken);
-
-      console.log({ token: USER_HELPERS.getUserToken(res.data.accessToken) });
-
-      this.props.authenticate(res.data.user);
-      this.props.history.push(PATHS.HOMEPAGE);
     });
   };
 

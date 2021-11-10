@@ -39,6 +39,8 @@ export default class TutorDetails extends Component {
       (country) =>
         country.name.common === this.state.tutorDetails?.countryOfOrigin
     )?.flag;
+
+    console.log(!this.props.user, this.state.isScheduleShown);
     return (
       <>
         {this.state.tutorDetails?.firstName && (
@@ -90,7 +92,7 @@ export default class TutorDetails extends Component {
                 timeRange={this.state.timeRange}
                 bookedTime={this.savingBookedTimeslots}
                 tutorId={this.tutorId.id}
-                studentId={this.props.user._id}
+                studentId={this.props.user?._id}
               />
             )}
           </div>
