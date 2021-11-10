@@ -115,3 +115,7 @@ Accent/borders Green colors: #36B37E
   justify-content: center;
   margin-top: 1.25rem;
 }
+
+#bookedSlot {
+  font-size: 5px;
+}
