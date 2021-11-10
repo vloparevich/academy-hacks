@@ -1,66 +1,70 @@
-import React, { Component } from "react";
-import axios from "axios";
-import "./Profile.css";
-import PROFILE_SERVICE from "../../services/ProfileServices";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import './Profile.css';
+import PROFILE_SERVICE from '../../services/ProfileServices';
+import * as PATHS from '../../utils/paths.js';
 
-class TutorProfile extends Component {
+class StudentProfile extends Component {
   state = {
-    firstName: "",
-    lastName: "",
-    profilePic: "",
-    countryOfOrigin: "",
-    teachingExperience: "",
-    timeRangeOfAvailability: "",
-    coursesTaught: "",
+    firstName: '',
+    lastName: '',
+    profilePic: '',
+    countryOfOrigin: '',
+    teachingExperience: '',
+    timeRangeOfAvailability: '',
+    coursesTaught: '',
     isEditDetailsClicked: false,
-    prevCourseName: "",
+    prevCourseName: '',
   };
 
   componentDidMount() {
-    console.log("from the props in cdid mount", this.props.user._id);
+    console.log('from the props in cdid mount', this.props.user._id);
     this.setState(
       {
         user: this.props.user,
       },
       () => {
-        console.log("from state", this.state);
+        console.log('from state', this.state);
         this.getUser();
       }
     );
   }
 
   getUser = () => {
-    console.log("calling getUser");
-    console.log("in the getUser", this.state);
+    console.log('calling getUser');
+    console.log('in the getUser', this.state);
     axios
       .get(`http://localhost:5000/api/user/${this.state.user._id}`)
       .then((dataFromDb) => {
-        console.log("this is coming from BE", dataFromDb.data);
         const { user } = dataFromDb.data;
         console.log({ user: user });
-        this.setState({
-          firstName: user.firstName,
-          lastName: user.lastName,
-          countryOfOrigin: user.countryOfOrigin,
-          profilePic: user.profilePic,
-          teachingExperience: user.teachingExperience,
-          from: user.timeRangeOfAvailability?.from
-            ? user.timeRangeOfAvailability?.from
-            : "00",
-          to: user.timeRangeOfAvailability?.to
-            ? user.timeRangeOfAvailability?.to
-            : "00",
-          courseName: user.coursesTaught?.courses[0].courseName,
-          description: user.coursesTaught?.courses[0].description,
-          prevCourseName: user.coursesTaught?.courses[0].courseName,
-        });
+        this.setState(
+          {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            countryOfOrigin: user.countryOfOrigin,
+            profilePic: user.profilePic,
+            teachingExperience: user.teachingExperience,
+            from: user.timeRangeOfAvailability?.from
+              ? user.timeRangeOfAvailability?.from
+              : '00',
+            to: user.timeRangeOfAvailability?.to
+              ? user.timeRangeOfAvailability?.to
+              : '00',
+            courseName: user.coursesTaught?.courses[0].courseName,
+            description: user.coursesTaught?.courses[0].description,
+            prevCourseName: user.coursesTaught?.courses[0].courseName,
+          },
+          () => console.log({ state: this.state })
+        );
       });
   };
 
   getUserWithUpdatedProfilePicture = (event) => {
     const file = event.target.files[0];
     const uploadData = new FormData();
-    uploadData.append("profilePic", file);
+    uploadData.append('profilePic', file);
     PROFILE_SERVICE.handleUpload(uploadData, this.state.user._id).then(
       (responseFromApi) => {
         this.setState(
@@ -117,21 +121,25 @@ class TutorProfile extends Component {
     return (
       <>
         {/* {this.state.firstName && ( */}
-        <div className="profileContainer">
-          <div className="imageSection">
+
+        <div className='profileContainer'>
+          <Link to={`/student/lessons/${this.state.user?._id}`}>
+            My Scheduled Lessons
+          </Link>
+          <div className='imageSection'>
             {this.state.profilePic && (
               <img
-                id="profilePicture"
+                id='profilePicture'
                 src={this.state.profilePic}
-                alt="profile pic"
+                alt='profile pic'
               />
             )}
-            <label id="imageInputLabel">
+            <label id='imageInputLabel'>
               Add/Update profile picture
               <input
-                id="imageInput"
-                type="file"
-                name="profilePic"
+                id='imageInput'
+                type='file'
+                name='profilePic'
                 onChange={(event) =>
                   this.getUserWithUpdatedProfilePicture(event)
                 }
@@ -139,25 +147,25 @@ class TutorProfile extends Component {
               />
             </label>
           </div>
-          <div className="userDetailsSection">
-            <div className="controlButtonsUserDetails">
+          <div className='userDetailsSection'>
+            <div className='controlButtonsUserDetails'>
               {this.state.isEditDetailsClicked ? (
                 <>
                   <form
                     onSubmit={(event) => this.handleSavingChanges(event)}
-                    autoComplete="off"
+                    autoComplete='off'
                   >
                     <div>
                       <label>First name</label>
                       <input
                         autoFocus
-                        name="firstName"
-                        id="firstName"
+                        name='firstName'
+                        id='firstName'
                         value={this.state.firstName}
                         onChange={this.handleFormInput}
                       />
                       {!this.state.firstName && (
-                        <span className="requiredField">
+                        <span className='requiredField'>
                           This field is required
                         </span>
                       )}
@@ -165,13 +173,13 @@ class TutorProfile extends Component {
                     <div>
                       <label>Last name</label>
                       <input
-                        name="lastName"
-                        id="lastName"
+                        name='lastName'
+                        id='lastName'
                         value={this.state.lastName}
                         onChange={this.handleFormInput}
                       />
                       {!this.state.lastName && (
-                        <span className="requiredField">
+                        <span className='requiredField'>
                           This field is required
                         </span>
                       )}
@@ -179,13 +187,13 @@ class TutorProfile extends Component {
                     <div>
                       <label>Country</label>
                       <input
-                        name="countryOfOrigin"
-                        id="country"
+                        name='countryOfOrigin'
+                        id='country'
                         value={this.state.countryOfOrigin}
                         onChange={this.handleFormInput}
                       />
                       {!this.state.countryOfOrigin && (
-                        <span className="requiredField">
+                        <span className='requiredField'>
                           This field is required
                         </span>
                       )}
@@ -193,36 +201,36 @@ class TutorProfile extends Component {
                     <div>
                       <label>Description (max 200 characters)</label>
                       <textarea
-                        maxLength="200"
-                        name="description"
-                        id="description"
+                        maxLength='200'
+                        name='description'
+                        id='description'
                         value={this.state.description}
                         onChange={this.handleFormInput}
                       />
                     </div>
                     <button
                       disabled={this.state.error}
-                      className="formControlButtons"
+                      className='formControlButtons'
                     >
                       Save
                     </button>
                   </form>
                   <button
-                    id="cancelChangesButton"
+                    id='cancelChangesButton'
                     onClick={this.handleCancelOfUpdate}
-                    className="formControlButtons"
+                    className='formControlButtons'
                   >
                     Cancel
                   </button>
                 </>
               ) : (
-                <div className="plainUserDetails">
+                <div className='plainUserDetails'>
                   <div>
                     <label>First name</label>
                     <input
                       disabled
-                      name="firstName"
-                      id="firstName"
+                      name='firstName'
+                      id='firstName'
                       defaultValue={this.state.firstName}
                     />
                   </div>
@@ -230,8 +238,8 @@ class TutorProfile extends Component {
                     <label>Last name</label>
                     <input
                       disabled
-                      name="lastName"
-                      id="lastName"
+                      name='lastName'
+                      id='lastName'
                       defaultValue={this.state.lastName}
                     />
                   </div>
@@ -239,8 +247,8 @@ class TutorProfile extends Component {
                     <label>Country</label>
                     <input
                       disabled
-                      name="country"
-                      id="country"
+                      name='country'
+                      id='country'
                       defaultValue={this.state.countryOfOrigin}
                     />
                   </div>
@@ -249,9 +257,9 @@ class TutorProfile extends Component {
                     <label>Description</label>
                     <textarea
                       disabled
-                      maxLength="200"
-                      name="description"
-                      id="description"
+                      maxLength='200'
+                      name='description'
+                      id='description'
                       value={this.state.description}
                       onChange={this.handleFormInput}
                     />
@@ -260,7 +268,7 @@ class TutorProfile extends Component {
               )}
               {!this.state.isEditDetailsClicked && (
                 <button
-                  id="editMyDetailsButton"
+                  id='editMyDetailsButton'
                   onClick={this.handleEditButton}
                 >
                   Edit my details
@@ -275,4 +283,4 @@ class TutorProfile extends Component {
   }
 }
 
-export default TutorProfile;
+export default StudentProfile;

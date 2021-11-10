@@ -1,32 +1,21 @@
 import React from "react";
 import { Switch } from "react-router-dom";
 import LoadingComponent from "./components/Loading";
-// import HomeNavbar from "./components/HomeNavbar/HomeNavbar";
-// import HomePage from "./pages/HomePage";
-// import LogIn from "./pages/LogIn";
-// import ProtectedPage from "./pages/ProtectedPage";
-// import Signup from "./pages/Signup";
+import Navbar from "./components/Navbar/Navbar";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
+import Home from "./components/Home/Home";
 import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/auth";
 import * as PATHS from "./utils/paths";
-import * as CONSTS from "./utils/consts";
-// import * as USER_HELPERS from './utils/userToken';
-import "./App.css";
-import Home from "./components/Home/Home";
-import TutorDetails from "./components/TutorDetails/TutorDetails";
-import Signup from "../src/components/Auth/Signup";
-// import Login from './components/Auth/Login';
-// import { logout, getLoggedIn } from './services/auth-service';
-// import * as PATHS from './utils/paths';
-import * as USER_HELPERS from "./utils/userToken";
-// import { Switch, Route, Redirect } from 'react-router-dom';
-import Navbar from "./components/Navbar/Navbar";
-import Login from "./components/Auth/Login";
 import "./App.css";
 import TutorProfile from "./components/Profile/TutorProfile";
 import StudentProfile from "./components/Profile/StudentProfile";
+import TutorDetails from "./components/TutorDetails/TutorDetails";
+import * as USER_HELPERS from "./utils/userToken";
 import ReviewTutor from "./components/ReviewTutor/ReviewTutor";
+import MyLessons from "./components/MyLessons/MyLessons";
 import TutorList from "./components/TutorList/TutorList";
 
 class App extends React.Component {
@@ -141,6 +130,12 @@ class App extends React.Component {
             exact
             path={PATHS.USER_DETAILS}
             component={this.state.user?.isTutor ? TutorProfile : StudentProfile}
+            user={this.state.user}
+          />
+          <ProtectedRoute
+            exact
+            path={PATHS.STUDENT_LESSONS}
+            component={MyLessons}
             user={this.state.user}
           />
         </Switch>
