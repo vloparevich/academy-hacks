@@ -40,6 +40,8 @@ export default class TutorDetails extends Component {
       (country) =>
         country.name.common === this.state.tutorDetails?.countryOfOrigin
     )?.flag;
+
+    console.log(!this.props.user, this.state.isScheduleShown);
     return (
       <>
         <Navbar user={this.state.user} loading={this.state.loading} />
@@ -92,7 +94,7 @@ export default class TutorDetails extends Component {
                 timeRange={this.state.timeRange}
                 bookedTime={this.savingBookedTimeslots}
                 tutorId={this.tutorId.id}
-                studentId={this.props.user._id}
+                studentId={this.props.user?._id}
               />
             )}
           </div>

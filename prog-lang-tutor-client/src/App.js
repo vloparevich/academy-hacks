@@ -1,21 +1,21 @@
+import "./App.css";
 import React from "react";
 import { Switch } from "react-router-dom";
+import NormalRoute from "./routing-components/NormalRoute";
+import { getLoggedIn, logout } from "./services/auth";
 import LoadingComponent from "./components/Loading";
-import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Auth/Login";
 import Signup from "./components/Auth/Signup";
 import Home from "./components/Home/Home";
-import NormalRoute from "./routing-components/NormalRoute";
 import ProtectedRoute from "./routing-components/ProtectedRoute";
-import { getLoggedIn, logout } from "./services/auth";
-import * as PATHS from "./utils/paths";
-import "./App.css";
 import TutorProfile from "./components/Profile/TutorProfile";
 import StudentProfile from "./components/Profile/StudentProfile";
 import TutorDetails from "./components/TutorDetails/TutorDetails";
-import * as USER_HELPERS from "./utils/userToken";
 import ReviewTutor from "./components/ReviewTutor/ReviewTutor";
 import MyLessons from "./components/MyLessons/MyLessons";
+import TutorList from "./components/TutorList/TutorList";
+import * as USER_HELPERS from "./utils/userToken";
+import * as PATHS from "./utils/paths";
 
 class App extends React.Component {
   state = {
@@ -119,6 +119,12 @@ class App extends React.Component {
             authenticate={this.authenticate}
             component={ReviewTutor}
           />
+          <NormalRoute
+            exact
+            path={PATHS.TUTOR_LIST}
+            authenticate={this.authenticate}
+            component={TutorList}
+          />
           <ProtectedRoute
             exact
             path={PATHS.USER_DETAILS}
@@ -132,7 +138,6 @@ class App extends React.Component {
             user={this.state.user}
           />
         </Switch>
-        {/* <Route exact path="tutor/list" component={TutorList} /> */}
       </div>
     );
   }

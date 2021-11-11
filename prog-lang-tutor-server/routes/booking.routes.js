@@ -99,10 +99,19 @@ router.post('/saveBookingsOnStudent', async (req, res) => {
 
   let booking;
   let updatedUser;
+  console.log(
+    'debug booking',
+    { date: date },
+    { studentId: preparedStudentId }
+  );
   try {
     booking = await StudentBooking.findOneAndUpdate(
       {
-        $and: [{ date: date }, { studentId: preparedStudentId }],
+        $and: [
+          { date: date },
+          { studentId: preparedStudentId },
+          { tutorId: tutorId },
+        ],
       },
       { $push: { pickedSlots: pickedSlots } },
       { new: true }
@@ -123,9 +132,14 @@ router.post('/saveBookingsOnStudent', async (req, res) => {
       );
     }
 
-    res
-      .status(200)
-      .json({ success: true, booking: booking, updatedUser: updatedUser });
+    const tutorDetails = await User.findById(tutorId);
+
+    res.status(200).json({
+      success: true,
+      booking: booking,
+      updatedUser: updatedUser,
+      tutor: tutorDetails,
+    });
   } catch (err) {}
 });
 

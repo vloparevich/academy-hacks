@@ -36,10 +36,11 @@ export default class MyLessons extends Component {
         tutorFullName: `${el.tutorId.firstName} ${el.tutorId.lastName}`,
         studentBookingId: el._id,
         tutorId: el.tutorId._id,
+        courseName: el.tutorId.coursesTaught.courses[0].courseName,
       });
     });
-    console.log('data', data);
-    return data;
+    const sortedByDate = [...data].sort((a, b) => (a.date > b.date ? 1 : -1));
+    return sortedByDate;
   };
 
   handleLessonDeletion = (
@@ -49,14 +50,6 @@ export default class MyLessons extends Component {
     studentId,
     tutorId
   ) => {
-    console.log(
-      'my params',
-      studentBookingId,
-      date,
-      scheduledHour,
-      studentId,
-      tutorId
-    );
     STUDENT_LESSON_SERVICE.cancelStudentBooking(
       studentBookingId,
       date,
@@ -70,16 +63,20 @@ export default class MyLessons extends Component {
 
   render() {
     return (
-      <>
+      <div id='myLessonsCmp'>
         {this.getMyBookings()?.map((el) => (
-          <div key={el.studentBookingId}>
-            <p>{el.tutorFullName}</p>
+          <div className='myLessonCard' key={el.studentBookingId}>
             <p>{el.date}</p>
+            <p id='myLessonCourseName'>
+              <span id='myLessonSubjectName'>{el.courseName}</span>
+            </p>
+            <p id='myLessonTutorName'>{el.tutorFullName}</p>
             <ul>
               {el.pickedSlots.map((scheduledHour, i) => (
                 <li key={i}>
                   {scheduledHour}:00{' '}
                   <button
+                    className='myLesson_cancel_btn'
                     onClick={() =>
                       this.handleLessonDeletion(
                         el.studentBookingId,
@@ -97,7 +94,7 @@ export default class MyLessons extends Component {
             </ul>
           </div>
         ))}
-      </>
+      </div>
     );
   }
 }
