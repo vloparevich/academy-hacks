@@ -4,6 +4,9 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 
+const nodemailer = require('nodemailer');
+const templates = require('../templates/template');
+
 // How many rounds should bcrypt run the salt (default [10 - 12 rounds])
 const saltRounds = 10;
 
@@ -91,7 +94,6 @@ router.post('/signup', isLoggedOut, (req, res) => {
         });
       })
       .then((user) => {
-        console.log({ user: user });
         Session.create({
           user: user._id,
           createdAt: Date.now(),
@@ -99,6 +101,33 @@ router.post('/signup', isLoggedOut, (req, res) => {
           console.log({ session: session });
           res.status(201).json({ user, accessToken: session._id });
         });
+      })
+      .then(() => {
+        let transporter = nodemailer.createTransport({
+          service: 'Gmail',
+          auth: {
+            user: process.env.NODEMAILER_ACC,
+            pass: process.env.NODEMAILER_PASS,
+          },
+        });
+
+        transporter
+          .sendMail({
+            from: `Acaddemy Hacks <${process.env.NODEMAILER_ACC}>`,
+            to: email,
+            subject: 'Congrats, you are registered on Academy Hacks',
+            text: 'Academy Hacks',
+            html: templates.templateExample(`${firstName} ${lastName}`),
+          })
+          .then((info) => {
+            console.log('Info from nodeamailer', info);
+            res.redirect('/');
+          })
+          .catch((error) =>
+            console.log(
+              `Something went wrong during sending the email to the user: ${error}`
+            )
+          );
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
