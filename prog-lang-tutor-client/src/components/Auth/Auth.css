@@ -44,7 +44,8 @@ h3 {
     flex-direction: column;
     align-content: center;
     max-width: 35rem;
-    margin: 3rem auto;
+    margin: 5rem auto;
+    height: 1140%;
 }
 
 .auth-top-bar {

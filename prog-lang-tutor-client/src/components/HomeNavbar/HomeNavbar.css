@@ -11,7 +11,8 @@ Accent/borders Green colors: #36B37E
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
-  background-image: url("https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg"); /* assuming img folder is one step back from css*/
+  background-image: url("https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg"); 
+  /* assuming img folder is one step back from css*/
   background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(87, 83, 79, 1); /* Tint color */

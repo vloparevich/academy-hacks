@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { signup } from '../../services/auth-service';
-import './Auth.css';
-import Navbar from '../Navbar/Navbar';
-import * as USER_HELPERS from '../../utils/userToken';
-import * as PATHS from '../../utils/paths';
+import React, { Component } from "react";
+import { signup } from "../../services/auth-service";
+import "./Auth.css";
+import Navbar from "../Navbar/Navbar";
+import * as USER_HELPERS from "../../utils/userToken";
+import * as PATHS from "../../utils/paths";
 
 export default class Signup extends Component {
   state = {
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    countryOfOrigin: '',
-    teachingExperience: '',
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    countryOfOrigin: "",
+    teachingExperience: "",
     isTutor: false,
   };
 
@@ -40,7 +40,7 @@ export default class Signup extends Component {
       if (!res.status) {
         // unsuccessful signup
       }
-      console.log('the token', { token: res.data });
+      console.log("the token", { token: res.data });
 
       USER_HELPERS.setUserToken(res.data.accessToken);
 
@@ -66,233 +66,161 @@ export default class Signup extends Component {
   render() {
     return (
       <>
-        <Navbar />
-        <div className='auth-container'>
-          <ul className='auth-top-bar'>
-            <li onClick={this.handleStudentSelection}>Student</li>
-            <li onClick={this.handleTutorSelection}>Tutor</li>
-          </ul>
-          <form onSubmit={this.handleSignup} className='auth-form-container'>
+        {" "}
+        <div className="auth-container">
+          <ul className="auth-top-bar">
             {!this.state.isTutor ? (
               <>
-                <h3>Welcome to Academy Hacks!</h3>
-                <h3>Let's begin your next adventure</h3>
+                <button
+                  onClick={this.handleStudentSelection}
+                  id="active-student-signup-toggle"
+                >
+                  Student
+                </button>
+                <button
+                  onClick={this.handleTutorSelection}
+                  id="inactive-student-signup-toggle"
+                >
+                  Tutor
+                </button>
               </>
             ) : (
               <>
-                <h3>Would you like to teach at Academy Hacks?</h3>
-                <h3>Sign up below!</h3>
+                <button
+                  onClick={this.handleStudentSelection}
+                  id="inactive-student-signup-toggle"
+                >
+                  Student
+                </button>
+                <button
+                  onClick={this.handleTutorSelection}
+                  id="active-tutor-signup-toggle"
+                >
+                  Tutor
+                </button>
               </>
             )}
-            <label>First Name</label>
-            <input
-              type='text'
-              name='firstName'
-              placeholder='First Name'
-              value={this.state.firstName}
-              onChange={this.changeHandler}
-            />
-
-            <div className='auth-container'>
-              <ul className='auth-top-bar'>
-                {!this.state.isTutor ? (
-                  <>
-                    <button
-                      onClick={this.handleStudentSelection}
-                      id='active-student-signup-toggle'
-                    >
-                      Student
-                    </button>
-                    <button
-                      onClick={this.handleTutorSelection}
-                      id='inactive-student-signup-toggle'
-                    >
-                      Tutor
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      onClick={this.handleStudentSelection}
-                      id='inactive-student-signup-toggle'
-                    >
-                      Student
-                    </button>
-                    <button
-                      onClick={this.handleTutorSelection}
-                      id='active-tutor-signup-toggle'
-                    >
-                      Tutor
-                    </button>
-                  </>
-                )}
-              </ul>
-              <form
-                onSubmit={this.handleFormSubmission}
-                className='auth-form-container'
-              >
-                {!this.state.isTutor ? (
-                  <>
-                    <h3>Sign up as a student</h3>
-                    <h2>Let's begin your next adventure</h2>
-                    <label>First Name</label>
-                    <input
-                      type='text'
-                      name='firstName'
-                      placeholder='First Name'
-                      value={this.state.firstName}
-                      onChange={this.changeHandler}
-                    />
-
-                    <label>Last Name</label>
-                    <input
-                      type='text'
-                      name='lastName'
-                      placeholder='Last Name'
-                      value={this.state.lastName}
-                      onChange={this.changeHandler}
-                    />
-
-                    <label>Enter your email</label>
-                    <input
-                      type='email'
-                      name='email'
-                      placeholder='Enter your email'
-                      value={this.state.email}
-                      onChange={this.changeHandler}
-                    />
-
-                    <label>Create a password</label>
-                    <input
-                      type='password'
-                      name='password'
-                      placeholder='Create a password'
-                      autoComplete='current-password'
-                      value={this.state.password}
-                      onChange={this.changeHandler}
-                    />
-                    <button
-                      type='submit'
-                      value='Create account'
-                      className='auth-button'
-                    >
-                      Create a student account
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <h3>Sign up as a programming tutor</h3>
-                    <h2>Start a rewarding career!</h2>
-                    <label>First Name</label>
-                    <input
-                      type='text'
-                      name='firstName'
-                      placeholder='First Name'
-                      value={this.state.firstName}
-                      onChange={this.changeHandler}
-                    />
-
-                    <label>Last Name</label>
-                    <input
-                      type='text'
-                      name='lastName'
-                      placeholder='Last Name'
-                      value={this.state.lastName}
-                      onChange={this.changeHandler}
-                    />
-
-                    <label>How many years have you been teaching?</label>
-                    <input
-                      type='number'
-                      name='teachingExperience'
-                      min='1'
-                      // placeholder="How many years have you been teaching?"
-                      value={this.state.teachingExperience}
-                      onChange={this.changeHandler}
-                    />
-
-                    <label>What country are you from?</label>
-                    <input
-                      type='text'
-                      name='countryOfOrigin'
-                      placeholder='What country are you from?'
-                      value={this.state.countryOfOrigin}
-                      onChange={this.changeHandler}
-                    />
-
-                    <label>Enter your email</label>
-                    <input
-                      type='email'
-                      name='email'
-                      placeholder='Enter your email'
-                      value={this.state.email}
-                      onChange={this.changeHandler}
-                    />
-
-                    <label>Create a password</label>
-                    <input
-                      type='password'
-                      name='password'
-                      placeholder='Create a password'
-                      autoComplete='current-password'
-                      value={this.state.password}
-                      onChange={this.changeHandler}
-                    />
-                    <button
-                      type='submit'
-                      value='Create account'
-                      className='auth-button'
-                    >
-                      Create a tutor account
-                    </button>
-                  </>
-                )}
-
+          </ul>
+          <form
+            onSubmit={this.handleFormSubmission}
+            className="auth-form-container"
+          >
+            {!this.state.isTutor ? (
+              <>
+                <h3>Sign up as a student</h3>
+                <h2>Let's begin your next adventure</h2>
                 <label>First Name</label>
                 <input
-                  type='text'
-                  name='firstName'
-                  placeholder='First Name'
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
                   value={this.state.firstName}
                   onChange={this.changeHandler}
                 />
 
                 <label>Last Name</label>
                 <input
-                  type='text'
-                  name='lastName'
-                  placeholder='Last Name'
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
                   value={this.state.lastName}
                   onChange={this.changeHandler}
                 />
 
                 <label>Enter your email</label>
                 <input
-                  type='email'
-                  name='email'
-                  placeholder='Enter your email'
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
                   value={this.state.email}
                   onChange={this.changeHandler}
                 />
 
                 <label>Create a password</label>
                 <input
-                  type='password'
-                  name='password'
-                  placeholder='Create a password'
-                  autoComplete='current-password'
+                  type="password"
+                  name="password"
+                  placeholder="Create a password"
+                  autoComplete="current-password"
                   value={this.state.password}
                   onChange={this.changeHandler}
                 />
                 <button
-                  type='submit'
-                  value='Create account'
-                  className='auth-button'
+                  type="submit"
+                  value="Create account"
+                  className="auth-button"
                 >
-                  Create account
+                  Create a student account
                 </button>
-              </form>
-            </div>
+              </>
+            ) : (
+              <>
+                <h3>Sign up as a programming tutor</h3>
+                <h2>Start a rewarding career!</h2>
+                <label>First Name</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  value={this.state.firstName}
+                  onChange={this.changeHandler}
+                />
+
+                <label>Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                  value={this.state.lastName}
+                  onChange={this.changeHandler}
+                />
+
+                <label>How many years have you been teaching?</label>
+                <input
+                  type="number"
+                  name="teachingExperience"
+                  min="1"
+                  // placeholder="How many years have you been teaching?"
+                  value={this.state.teachingExperience}
+                  onChange={this.changeHandler}
+                />
+
+                <label>What country are you from?</label>
+                <input
+                  type="text"
+                  name="countryOfOrigin"
+                  placeholder="What country are you from?"
+                  value={this.state.countryOfOrigin}
+                  onChange={this.changeHandler}
+                />
+
+                <label>Enter your email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={this.state.email}
+                  onChange={this.changeHandler}
+                />
+
+                <label>Create a password</label>
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Create a password"
+                  autoComplete="current-password"
+                  value={this.state.password}
+                  onChange={this.changeHandler}
+                />
+                <button
+                  type="submit"
+                  value="Create account"
+                  className="auth-button"
+                >
+                  Create a tutor account
+                </button>
+              </>
+            )}
           </form>
         </div>
       </>
