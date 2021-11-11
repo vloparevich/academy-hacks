@@ -1,21 +1,21 @@
-const router = require('express').Router();
+const router = require("express").Router();
 
 // ℹ️ Handles password encryption
-const bcrypt = require('bcryptjs');
-const mongoose = require('mongoose');
+const bcrypt = require("bcryptjs");
+const mongoose = require("mongoose");
 
 // How many rounds should bcrypt run the salt (default [10 - 12 rounds])
 const saltRounds = 10;
 
 // Require the User model in order to interact with the database
-const User = require('../models/User.model');
-const Session = require('../models/Session.model');
+const User = require("../models/User.model");
+const Session = require("../models/Session.model");
 
 // Require necessary (isLoggedOut and isLiggedIn) middleware in order to control access to specific routes
-const isLoggedOut = require('../middleware/isLoggedOut');
-const isLoggedIn = require('../middleware/isLoggedIn');
+const isLoggedOut = require("../middleware/isLoggedOut");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
-router.get('/session', (req, res) => {
+router.get("/session", (req, res) => {
   // we dont want to throw an error, and just maintain the user as null
   if (!req.headers.authorization) {
     return res.json(null);
@@ -24,16 +24,16 @@ router.get('/session', (req, res) => {
   const accessToken = req.headers.authorization;
 
   Session.findById(accessToken)
-    .populate('user')
+    .populate("user")
     .then((session) => {
       if (!session) {
-        return res.status(404).json({ errorMessage: 'Session does not exist' });
+        return res.status(404).json({ errorMessage: "Session does not exist" });
       }
       return res.status(200).json(session);
     });
 });
 
-router.post('/signup', isLoggedOut, (req, res) => {
+router.post("/signup", isLoggedOut, (req, res) => {
   // const { firstName, lastName, email, password, isTutor } = req.body;
   const {
     firstName,
@@ -46,7 +46,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
   } = req.body;
 
   if (!email) {
-    return res.status(400).json({ errorMessage: 'Please provide your email.' });
+    return res.status(400).json({ errorMessage: "Please provide your email." });
   }
 
   // if (password.length < 8) {
@@ -67,11 +67,11 @@ router.post('/signup', isLoggedOut, (req, res) => {
   }
   */
 
-  // Search the database for a user with the username submitted in the form
+  // Search the database for a user with the email submitted in the form
   User.findOne({ email }).then((found) => {
-    // If the user is found, send the message username is taken
+    // If the user is found, send the message email is taken
     if (found) {
-      return res.status(400).json({ errorMessage: 'Username already taken.' });
+      return res.status(400).json({ errorMessage: "email already taken." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -107,7 +107,7 @@ router.post('/signup', isLoggedOut, (req, res) => {
         if (error.code === 11000) {
           return res.status(400).json({
             errorMessage:
-              'Username need to be unique. The username you chose is already in use.',
+              "Email need to be unique. The email you chose is already in use.",
           });
         }
         return res.json({ errorMessage: error.message });
@@ -115,13 +115,11 @@ router.post('/signup', isLoggedOut, (req, res) => {
   });
 });
 
-router.post('/login', isLoggedOut, (req, res, next) => {
+router.post("/login", isLoggedOut, (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email) {
-    return res
-      .status(400)
-      .json({ errorMessage: 'Please provide your username.' });
+    return res.status(400).json({ errorMessage: "Please provide your email." });
   }
 
   // Here we use the same logic as above
@@ -132,18 +130,18 @@ router.post('/login', isLoggedOut, (req, res, next) => {
   //   });
   // }
 
-  // Search the database for a user with the username submitted in the form
+  // Search the database for a user with the email submitted in the form
   User.findOne({ email })
     .then((user) => {
       // If the user isn't found, send the message that user provided wrong credentials
       if (!user) {
-        return res.status(400).json({ errorMessage: 'Wrong credentials.' });
+        return res.status(400).json({ errorMessage: "Wrong credentials." });
       }
 
-      // If user is found based on the username, check if the in putted password matches the one saved in the database
+      // If user is found based on the email, check if the in putted password matches the one saved in the database
       bcrypt.compare(password, user.password).then((isSamePassword) => {
         if (!isSamePassword) {
-          return res.status(400).json({ errorMessage: 'Wrong credentials.' });
+          return res.status(400).json({ errorMessage: "Wrong credentials." });
         }
         Session.create({ user: user._id, createdAt: Date.now() }).then(
           (session) => {
@@ -161,10 +159,10 @@ router.post('/login', isLoggedOut, (req, res, next) => {
     });
 });
 
-router.delete('/logout', (req, res) => {
+router.delete("/logout", (req, res) => {
   Session.findByIdAndDelete(req.headers.authorization)
     .then(() => {
-      res.status(200).json({ message: 'User was logged out' });
+      res.status(200).json({ message: "User was logged out" });
     })
     .catch((err) => {
       res.status(500).json({ errorMessage: err.message });
