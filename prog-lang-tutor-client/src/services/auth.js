@@ -1,9 +1,9 @@
-import axios from 'axios';
-import USER_HELPERS from '../utils/userToken';
+import axios from "axios";
+import USER_HELPERS from "../utils/userToken";
 
 // here we are just maing our code look more DRY. With every backend call we must deal with errors and success states. The idea of creating these kinds of services is to make our lives easier in the components
 function internalServerError(err) {
-  console.log('err:', err.response.data);
+  // console.log('err:', err.response.data);
   if (err.response && err.response.data && err.response.data.errorMessage) {
     return {
       status: false,
@@ -12,7 +12,7 @@ function internalServerError(err) {
   }
   return {
     status: false,
-    errorMessage: 'Internal server error. Please check your server',
+    errorMessage: "Internal server error. Please check your server",
   };
 }
 
@@ -30,7 +30,7 @@ const authService = axios.create({
 
 export function login(credentials) {
   return authService
-    .post('/login', credentials)
+    .post("/login", credentials)
     .then(successStatus)
     .catch(internalServerError);
 }
@@ -48,15 +48,15 @@ export function getLoggedIn() {
 
 export function signup(credentials) {
   return authService
-    .post('/signup', credentials)
+    .post("/signup", credentials)
     .then(successStatus)
     .catch(internalServerError);
 }
 
 export function logout() {
-  console.log('Soemthing is wrong here', USER_HELPERS.getUserToken());
+  console.log("Soemthing is wrong here", USER_HELPERS.getUserToken());
   return authService
-    .delete('/logout', {
+    .delete("/logout", {
       headers: {
         authorization: USER_HELPERS.getUserToken(),
       },
