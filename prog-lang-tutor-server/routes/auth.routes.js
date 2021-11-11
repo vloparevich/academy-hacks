@@ -121,7 +121,6 @@ router.post('/signup', isLoggedOut, (req, res) => {
           })
           .then((info) => {
             console.log('Info from nodeamailer', info);
-            res.redirect('/');
           })
           .catch((error) =>
             console.log(
