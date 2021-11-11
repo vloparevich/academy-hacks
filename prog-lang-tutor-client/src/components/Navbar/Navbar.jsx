@@ -9,20 +9,12 @@ class Navbar extends Component {
       return <div>Loading...</div>;
     }
     return (
-      <navbar className='nav-style'>
-        <Time />
+      <navbar id='mainNavComponent'>
         <Link to='/'>
-          <img className='logo' src='../logo.png' alt='logo' />
+          <img id='logo' src='../logo.png' alt='logo' />
         </Link>
+        <Time />
         <ul>
-          <li>
-            <Link
-              to={{ pathname: 'https://car-american.herokuapp.com/' }}
-              target='_blank'
-            >
-              Need a Car?
-            </Link>
-          </li>
           {!this.props.user ? (
             <>
               <li>
@@ -35,15 +27,22 @@ class Navbar extends Component {
           ) : (
             <>
               <li>
-                <button onClick={this.props.handleLogout}>Logout</button>
-              </li>
-              <li>
                 <Link to='/user'>{this.props.user.firstName}</Link>
+              </li>
+              <li id='logoutBtn' onClick={this.props.handleLogout}>
+                Logout
               </li>
             </>
           )}
+          <li>
+            <Link
+              to={{ pathname: 'https://car-american.herokuapp.com/' }}
+              target='_blank'
+            >
+              Need a Car?
+            </Link>
+          </li>
         </ul>
-        <hr></hr>
       </navbar>
     );
   }
