@@ -51,7 +51,6 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <div className="landingPageImg"></div>
         <div className="titleHome">
           <h1>What are you going to learn today?</h1>
