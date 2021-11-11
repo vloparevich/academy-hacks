@@ -21,7 +21,7 @@ Blue Grey
 900 = #102A43 <== darkest
 */
 
-.navbar-style {
+.nav-style {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -39,7 +39,7 @@ Blue Grey
   height: 12vh;
 }
 
-.navbar-style li {
+.nav-style li {
   color: #36b37e;
   display: flex;
   float: right;
@@ -47,7 +47,7 @@ Blue Grey
   font-size: 18px;
   justify-content: flex-end;
 }
-.navbar-style ul {
+.nav-style ul {
   height: 100px;
   width: 1200px;
   font-family: "levoto", sans-serif;
@@ -57,11 +57,11 @@ Blue Grey
   /* border-style: none; */
   border-radius: 20px;
 }
-.navbar-style a {
+.nav-style a {
   text-decoration: none;
   color: white;
 }
-.navbar-style a:hover {
+.nav-style a:hover {
   color: #36b37e;
   text-decoration: none;
 
@@ -69,14 +69,14 @@ Blue Grey
   /* background-color: transparent; */
   /* border-radius: 10px; */
 }
-.navbar-style a.active {
+.nav-style a.active {
   border-bottom: 3px solid#B1EC98;
 }
 @media screen and (max-width: 600px) {
-  .navbar-style .responsive {
+  .nav-style .responsive {
     position: relative;
   }
-  .navbar-style .responsive .logo {
+  .nav-style .responsive .logo {
     position: absolute;
     right: 0;
     top: 0;

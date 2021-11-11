@@ -50,7 +50,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className="homepage-container">
         <div className="landingPageImg"></div>
         <div className="titleHome">
           <h1>What are you going to learn today?</h1>
