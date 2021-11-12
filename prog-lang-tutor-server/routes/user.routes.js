@@ -1,23 +1,24 @@
-const { Router } = require("express");
+const { Router } = require('express');
 const router = new Router();
-const User = require("../models/User.model");
-const Course = require("../models/Course.model");
-const fileUploader = require("../config/cloudinary.setup.js");
-const Timeslot = require("../models/Timeslot.model");
+const User = require('../models/User.model');
+const Course = require('../models/Course.model');
+const fileUploader = require('../config/cloudinary.setup.js');
+const Timeslot = require('../models/Timeslot.model');
 
 // ****************************************************************************************
 // GET route to get all the tutors
 // ****************************************************************************************
-router.get("/tutor/list", (req, res, next) => {
+router.get('/tutor/list', (req, res, next) => {
+  console.log('HI');
   User.find({ isTutor: true })
-    .populate("coursesTaught")
+    .populate('coursesTaught')
     .then((tutors) => {
       res.status(200).json({ success: true, tutors });
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: "Tutors were not found",
+        message: 'Tutors were not found',
         err,
       });
     });
@@ -26,10 +27,10 @@ router.get("/tutor/list", (req, res, next) => {
 // ****************************************************************************************
 // GET route to get the details of the specific tutor
 // ****************************************************************************************
-router.get("/tutor/:id", (req, res) => {
+router.get('/tutor/:id', (req, res) => {
   const { id } = req.params;
   User.findById(id)
-    .populate("coursesTaught mySchedule")
+    .populate('coursesTaught mySchedule')
     .then((tutor) => {
       console.log('Getting info of tutor', tutor);
       res.status(200).json({ success: true, tutor });
@@ -37,7 +38,7 @@ router.get("/tutor/:id", (req, res) => {
     .catch((err) => {
       res.json({
         success: false,
-        message: "Tutor or Student was not found",
+        message: 'Tutor or Student was not found',
         err: err,
       });
     });
@@ -46,7 +47,7 @@ router.get("/tutor/:id", (req, res) => {
 // ****************************************************************************************
 // GET route to get a specific student
 // ****************************************************************************************
-router.get("/student/:id", (req, res) => {
+router.get('/student/:id', (req, res) => {
   const { id } = req.params;
   User.findById(id)
     .then((student) => {
@@ -55,7 +56,7 @@ router.get("/student/:id", (req, res) => {
     .catch((err) => {
       res.json({
         success: false,
-        message: "Tutor or Student was not found",
+        message: 'Tutor or Student was not found',
         err: err,
       });
     });
@@ -64,7 +65,7 @@ router.get("/student/:id", (req, res) => {
 // ****************************************************************************************
 // GET route to get a specific student/tutor
 // ****************************************************************************************
-router.get("/:id", (req, res) => {
+router.get('/:id', (req, res) => {
   const { id } = req.params;
   console.log('HIT USER');
   User.findById(id)
@@ -75,7 +76,7 @@ router.get("/:id", (req, res) => {
     .catch((err) => {
       res.json({
         success: false,
-        message: "User was not found",
+        message: 'User was not found',
         err: err,
       });
     });
@@ -84,7 +85,7 @@ router.get("/:id", (req, res) => {
 // ****************************************************************************************
 // POST route to create a tutor's account
 // ****************************************************************************************
-router.post("/tutor", async (req, res, next) => {
+router.post('/tutor', async (req, res, next) => {
   const {
     isTutor,
     email,
@@ -110,7 +111,7 @@ router.post("/tutor", async (req, res, next) => {
     if (user) {
       res.status(400).json({
         success: false,
-        message: "User with this email is already regietered",
+        message: 'User with this email is already regietered',
       });
     }
 
@@ -153,7 +154,7 @@ router.post("/tutor", async (req, res, next) => {
 // ****************************************************************************************
 // DELETE route to remove tutor and its courses
 // ****************************************************************************************
-router.delete("/tutor/:tutorId", async (req, res, next) => {
+router.delete('/tutor/:tutorId', async (req, res, next) => {
   const { tutorId } = req.params;
   try {
     const removedTutor = await User.findByIdAndRemove(tutorId);
@@ -165,7 +166,7 @@ router.delete("/tutor/:tutorId", async (req, res, next) => {
   } catch (err) {
     res.json({
       success: false,
-      message: "Tutor has not been deleted",
+      message: 'Tutor has not been deleted',
       err,
     });
   }

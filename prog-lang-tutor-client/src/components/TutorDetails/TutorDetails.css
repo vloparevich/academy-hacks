@@ -12,6 +12,7 @@ Accent/borders Green colors: #36B37E
   margin-left: 5rem;
   width: 15rem;
   align-self: left;
+  border-radius: 5px;
 }
 
 .TutorInfo {

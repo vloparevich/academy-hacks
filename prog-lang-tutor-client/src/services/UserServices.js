@@ -7,6 +7,7 @@ const service = axios.create({
 const USER_SERVICE = {
   getAllTutors: () => {
     return service.get('/tutor/list').then((tutors) => {
+      console.log('server side', tutors);
       return tutors.data.tutors;
     });
   },

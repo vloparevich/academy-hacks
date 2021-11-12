@@ -10,10 +10,13 @@ import CountryFlag from '../CountryFlag/CountryFlag';
 
 export default class TutorDetails extends Component {
   state = { isScheduleShown: false, timeRange: {} };
+
   tutorId = this.props.match.params;
+
   componentDidMount = () => {
     console.log('mounting');
     this.getTutorDetails();
+    this.setCurrentUSerDetails();
   };
   getTutorDetails = () => {
     const { params } = this.props.match;
@@ -25,6 +28,11 @@ export default class TutorDetails extends Component {
       });
     });
   };
+
+  setCurrentUSerDetails = () => {
+    this.setState({ currentUser: this.props.user });
+  };
+
   handleBookClick = () => {
     this.setState({
       isScheduleShown: !this.state.isScheduleShown,
@@ -34,6 +42,7 @@ export default class TutorDetails extends Component {
     BOOKING_SERVICE.updateMyAvailability(details, this.tutorId);
   };
   render() {
+    console.log('details state', this.state.currentUser?.isTutor);
     return (
       <>
         {this.state.tutorDetails?.firstName && (
@@ -64,15 +73,24 @@ export default class TutorDetails extends Component {
                 {this.state.coursesTaught.courseName} :{' '}
                 {this.state.coursesTaught.description}.
               </h2>
-              <Link to={`/tutor/review/${this.state.tutorDetails._id}`}>
-                <button type='button'>Review This Tutor</button>
-              </Link>
-              <div className='Reviews'>
-                Reviews{this.state.tutorDetails.reviews}
-              </div>
             </div>
-            <div className='TutorActions'>
-              <button onClick={this.handleBookClick}>Book a lesson</button>
+            {!this.state.currentUser?.isTutor ? (
+              <>
+                <Link to={`/tutor/review/${this.state.tutorDetails._id}`}>
+                  <button type='button'>Review This Tutor</button>
+                </Link>
+                <div className='TutorActions'>
+                  <button onClick={this.handleBookClick}>Book a lesson</button>
+                </div>
+              </>
+            ) : (
+              <div>
+                To schedule a lesson or leave a review you need to be logged in
+                as a student...
+              </div>
+            )}
+            <div className='Reviews'>
+              Reviews{this.state.tutorDetails.reviews}
             </div>
             {!this.props.user && this.state.isScheduleShown && (
               <Redirect

@@ -15,14 +15,14 @@ class HomeNavbar extends Component {
           <Link to="/">
             <img className="logo" src="logo.png" alt="logo" />
           </Link>
-          <li>
+          {/* <li>
                 <Link
                   to={{ pathname: 'https://car-american.herokuapp.com/' }}
                   target='_blank'
                 >
                   Need a Car?
                 </Link>
-              </li>
+              </li> */}
           {/* <li>
             <Link to="/">Academy Hacks</Link>
           </li> */}
@@ -46,7 +46,6 @@ class HomeNavbar extends Component {
             </>
           )}
         </ul>
-        <hr></hr>
       </nav>
     );
   }
