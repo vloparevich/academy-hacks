@@ -38,7 +38,7 @@ router.post(
 );
 
 // ****************************************************************************************
-// PUT route to update tutor's details
+// PATCH route to update tutor's details
 // ****************************************************************************************
 router.patch('/tutor/:userId', async (req, res) => {
   const { userId } = req.params;
@@ -91,6 +91,37 @@ router.patch('/tutor/:userId', async (req, res) => {
       });
     }
     res.status(201).json({ success: true, updatedUser: updatedUser });
+  } catch (err) {
+    console.log({ err: err });
+    res.json({
+      success: false,
+      message: 'User details were not updated',
+      err,
+    });
+  }
+});
+
+// ****************************************************************************************
+// PATCH route to update student's details
+// ****************************************************************************************
+router.patch('/student/:userId', async (req, res) => {
+  console.log('STUDENT IS BEING UPDATED');
+  const { userId } = req.params;
+  const dataToBeSaved = req.body;
+  const userIdPrepared = mongoose.Types.ObjectId(userId);
+  let updatedStudent;
+  try {
+    updatedStudent = await User.findByIdAndUpdate(
+      userIdPrepared,
+      {
+        firstName: dataToBeSaved.firstName,
+        lastName: dataToBeSaved.lastName,
+        countryOfOrigin: dataToBeSaved.countryOfOrigin,
+        aboutMe: dataToBeSaved.aboutMe,
+      },
+      { new: true }
+    );
+    res.status(201).json({ success: true, updatedUser: updatedStudent });
   } catch (err) {
     console.log({ err: err });
     res.json({

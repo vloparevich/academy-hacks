@@ -34,6 +34,7 @@ const userSchema = new Schema({
     autopopulate: true,
   },
   myBookings: [{ type: Schema.Types.ObjectId, ref: 'StudentBooking' }],
+  aboutMe: { type: String },
 });
 
 userSchema.plugin(require('mongoose-autopopulate'));

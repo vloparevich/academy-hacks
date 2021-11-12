@@ -89,8 +89,6 @@ class App extends React.Component {
       return <LoadingComponent />;
     }
 
-    console.log('in main app.js component', this.state.user);
-
     return (
       <div className='App'>
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
@@ -131,12 +129,6 @@ class App extends React.Component {
             exact
             path={PATHS.USER_DETAILS}
             component={this.state.user?.isTutor ? TutorProfile : StudentProfile}
-            user={this.state.user}
-          />
-          <ProtectedRoute
-            exact
-            path={PATHS.STUDENT_LESSONS}
-            component={MyLessons}
             user={this.state.user}
           />
         </Switch>
