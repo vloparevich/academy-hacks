@@ -62,7 +62,7 @@ export default class TutorRow extends Component {
               <p>
                 <span>
                   {/* hi {tutor.courseName} {tutor.description} */}
-                  {this.state.coursesTaught}hi
+                  {this.state.coursesTaught}
                 </span>
               </p>
             </div>

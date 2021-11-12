@@ -43,6 +43,7 @@ export default class TutorDetails extends Component {
     return (
       <>
         <Navbar user={this.state.user} loading={this.state.loading} />
+
         {this.state.tutorDetails?.firstName && (
           <div className="TutorPage">
             <div>

@@ -1,12 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
 const service = axios.create({
-  baseURL: 'http://localhost:5000/api/user',
+  baseURL: "http://localhost:5000/api/user",
 });
 
 const USER_SERVICE = {
   getAllTutors: () => {
-    return service.get('/tutor/list').then((tutors) => {
+    return service.get("/tutor/list").then((tutors) => {
       return tutors.data.tutors;
     });
   },

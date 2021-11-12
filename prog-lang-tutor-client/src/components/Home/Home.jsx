@@ -80,30 +80,30 @@ class Home extends Component {
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
                   </div>
 
-                  <Link to="/tutor/list">JavaScript tutors</Link>
+                  <Link to="/tutor">JavaScript tutors</Link>
                 </td>
                 <td>
                   <div className="javaLogo">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg" />
                   </div>
-                  <Link to="/tutor/list">Java tutors</Link>
+                  <Link to="/tutor">Java tutors</Link>
                 </td>
                 <td>
                   <div className="phpLogo">
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" />
                   </div>
-                  <Link to="/tutor/list">PHP tutors</Link>
+                  <Link to="/tutor">PHP tutors</Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <Link to="/tutor/list">C++ tutors</Link>
+                  <Link to="/tutor">C++ tutors</Link>
                 </td>
                 <td>
-                  <Link to="/tutor/list">C# tutors</Link>
+                  <Link to="/tutor">C# tutors</Link>
                 </td>
                 <td>
-                  <Link to="/tutor/list">Backend tutors</Link>
+                  <Link to="/tutor">Backend tutors</Link>
                 </td>
               </tr>
               <tr>

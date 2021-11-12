@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 const service = axios.create({
-  baseURL: 'http://localhost:5000/api/profile',
+  baseURL: "http://localhost:5000/api/profile",
   // withCredentials: true // => you might need this when having the users in the app
 });
 
@@ -11,11 +11,11 @@ const PROFILE_SERVICE = {
       .post(`/profileImage/${userId}`, profilePic)
       .then((responseFromApi) => responseFromApi.data)
       .catch((err) =>
-        console.log('Picture has not been uploaded', { err: err })
+        console.log("Picture has not been uploaded", { err: err })
       );
   },
   handleUpdateTutorDetails: (updatedData) => {
-    console.log('from the component:', { updatedData: updatedData });
+    console.log("from the component:", { updatedData: updatedData });
     const {
       firstName,
       lastName,
@@ -28,8 +28,8 @@ const PROFILE_SERVICE = {
       prevCourseName,
     } = updatedData;
 
-    console.log('previous course name', prevCourseName);
-    console.log('previous course name', courseName);
+    console.log("previous course name", prevCourseName);
+    console.log("previous course name", courseName);
     return service
       .patch(`tutor/${updatedData.user._id}`, {
         firstName,

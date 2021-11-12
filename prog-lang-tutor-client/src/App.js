@@ -122,9 +122,10 @@ class App extends React.Component {
           />
           <NormalRoute
             exact
-            path={PATHS.LIST}
-            authenticate={this.authenticate}
+            path={PATHS.TUTOR_LIST}
+            // authenticate={this.authenticate}
             component={TutorList}
+            user={this.state.user}
           />
           <ProtectedRoute
             exact
