@@ -4,11 +4,9 @@ import USER_SERVICE from '../../services/UserServices';
 import BOOKING_SERVICE from '../../services/BookingServices';
 import * as PATHS from '../../utils/paths';
 import Timeslot from '../Timeslot/Timeslot';
-import ReviewTutor from '../ReviewTutor/ReviewTutor';
-import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
 import '../TutorDetails/TutorDetails.css';
-import countries from '../../resources/countries.json';
+import CountryFlag from '../CountryFlag/CountryFlag';
 
 export default class TutorDetails extends Component {
   state = { isScheduleShown: false, timeRange: {} };
@@ -36,15 +34,8 @@ export default class TutorDetails extends Component {
     BOOKING_SERVICE.updateMyAvailability(details, this.tutorId);
   };
   render() {
-    const nationalFlag = countries.find(
-      (country) =>
-        country.name.common === this.state.tutorDetails?.countryOfOrigin
-    )?.flag;
-
-    console.log(!this.props.user, this.state.isScheduleShown);
     return (
       <>
-        <Navbar user={this.state.user} loading={this.state.loading} />
         {this.state.tutorDetails?.firstName && (
           <div className='TutorPage'>
             <div>
@@ -64,7 +55,9 @@ export default class TutorDetails extends Component {
                 experience!
                 <p>
                   Country: {this.state.tutorDetails?.countryOfOrigin}
-                  <span> {nationalFlag}</span>
+                  <CountryFlag
+                    countryOfOrigin={this.state.tutorDetails?.countryOfOrigin}
+                  />
                 </p>
               </h3>
               <h2>

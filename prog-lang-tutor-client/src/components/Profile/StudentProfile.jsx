@@ -4,6 +4,7 @@ import axios from 'axios';
 import './Profile.css';
 import PROFILE_SERVICE from '../../services/ProfileServices';
 import * as PATHS from '../../utils/paths.js';
+import CountryFlag from '../CountryFlag/CountryFlag';
 
 class StudentProfile extends Component {
   state = {
@@ -120,11 +121,9 @@ class StudentProfile extends Component {
   render() {
     return (
       <>
-        {/* {this.state.firstName && ( */}
-
         <div className='profileContainer'>
           <Link to={`/student/lessons/${this.state.user?._id}`}>
-            My Scheduled Lessons
+            Show my bookings
           </Link>
           <div className='imageSection'>
             {this.state.profilePic && (
@@ -251,8 +250,8 @@ class StudentProfile extends Component {
                       id='country'
                       defaultValue={this.state.countryOfOrigin}
                     />
+                    <CountryFlag countryOfOrigin={this.state.countryOfOrigin} />
                   </div>
-
                   <div>
                     <label>Description</label>
                     <textarea
@@ -277,7 +276,6 @@ class StudentProfile extends Component {
             </div>
           </div>
         </div>
-        {/* )} */}
       </>
     );
   }
