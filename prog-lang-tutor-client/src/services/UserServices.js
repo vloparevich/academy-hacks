@@ -12,7 +12,10 @@ const USER_SERVICE = {
     });
   },
   getSpecificTutor: (id) => {
-    return service.get(`/tutor/${id}`).then((tutor) => tutor.data);
+    return service.get(`/tutor/${id}`).then((tutor) => {
+      console.log('my tutor is back from backend', tutor);
+      return tutor.data;
+    });
   },
   getSpecificStudent: (id) => {
     return service.get(`/${id}`).then((dataFromDb) => dataFromDb.data);

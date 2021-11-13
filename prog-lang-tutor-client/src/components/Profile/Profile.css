@@ -222,3 +222,18 @@ textarea {
   padding: 1rem 0;
   max-width: 60rem;
 }
+
+.tutorScheduleListElement {
+  display: flex;
+  flex-direction: row;
+}
+
+#myScheduleCmp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #D3D3D3;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
