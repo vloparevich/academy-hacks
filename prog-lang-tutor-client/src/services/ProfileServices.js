@@ -15,7 +15,6 @@ const PROFILE_SERVICE = {
       );
   },
   handleUpdateTutorDetails: (updatedData) => {
-    console.log('from the component:', { updatedData: updatedData });
     const {
       firstName,
       lastName,
@@ -28,8 +27,6 @@ const PROFILE_SERVICE = {
       prevCourseName,
     } = updatedData;
 
-    console.log('previous course name', prevCourseName);
-    console.log('previous course name', courseName);
     return service
       .patch(`tutor/${updatedData.user._id}`, {
         firstName,
@@ -44,6 +41,22 @@ const PROFILE_SERVICE = {
       })
       .then((responseFromApi) => responseFromApi.data)
       .catch((err) => console.log("Tutor's data was not updated", err));
+  },
+  handleUpdateStudentDetails: (updatedData) => {
+    console.log('updating STUDENTfrom the component:', {
+      updatedData: updatedData,
+    });
+    const { firstName, lastName, countryOfOrigin, aboutMe } = updatedData;
+
+    return service
+      .patch(`student/${updatedData.user._id}`, {
+        firstName,
+        lastName,
+        countryOfOrigin,
+        aboutMe,
+      })
+      .then((responseFromApi) => responseFromApi.data)
+      .catch((err) => console.log("Student's data was not updated", err));
   },
 };
 

@@ -5,6 +5,7 @@
     color: #D3D3D3;
     width: 90%;
     margin: 0 auto;
+    padding-top: 1rem;
 }
 
 .myLessonCard li {
@@ -27,7 +28,6 @@
 .myLessonCard ul {
     padding: 0;
 }
-
 
 .myLessonCard ul li {
     display: flex;

@@ -1,22 +1,23 @@
-import "./App.css";
-import React from "react";
-import { Switch } from "react-router-dom";
-import NormalRoute from "./routing-components/NormalRoute";
-import { getLoggedIn, logout } from "./services/auth";
-import LoadingComponent from "./components/Loading";
-import Login from "./components/Auth/Login";
-import Signup from "./components/Auth/Signup";
-import Home from "./components/Home/Home";
-import Navbar from "./components/Navbar/Navbar";
-import ProtectedRoute from "./routing-components/ProtectedRoute";
-import TutorProfile from "./components/Profile/TutorProfile";
-import StudentProfile from "./components/Profile/StudentProfile";
-import TutorDetails from "./components/TutorDetails/TutorDetails";
-import ReviewTutor from "./components/ReviewTutor/ReviewTutor";
-import MyLessons from "./components/MyLessons/MyLessons";
-import TutorList from "./components/TutorList/TutorList";
-import * as USER_HELPERS from "./utils/userToken";
-import * as PATHS from "./utils/paths";
+import './App.css';
+import React from 'react';
+import { Switch } from 'react-router-dom';
+import NormalRoute from './routing-components/NormalRoute';
+import { getLoggedIn, logout } from './services/auth';
+import LoadingComponent from './components/Loading';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
+import Home from './components/Home/Home';
+import Navbar from './components/Navbar/Navbar';
+import ProtectedRoute from './routing-components/ProtectedRoute';
+import TutorProfile from './components/Profile/TutorProfile';
+import StudentProfile from './components/Profile/StudentProfile';
+import TutorDetails from './components/TutorDetails/TutorDetails';
+import ReviewTutor from './components/ReviewTutor/ReviewTutor';
+import MyLessons from './components/MyLessons/MyLessons';
+import TutorList from './components/TutorList/TutorList';
+import Footer from './components/Footer/Footer';
+import * as USER_HELPERS from './utils/userToken';
+import * as PATHS from './utils/paths';
 
 class App extends React.Component {
   state = {
@@ -47,7 +48,7 @@ class App extends React.Component {
 
   handleLogout = () => {
     const accessToken = USER_HELPERS.getUserToken();
-    console.log("hit logout", accessToken);
+    console.log('hit logout', accessToken);
     if (!accessToken) {
       return this.setState({
         user: null,
@@ -62,7 +63,7 @@ class App extends React.Component {
         logout(accessToken).then((res) => {
           if (!res.status) {
             // deal with error here
-            console.error("💡 SOMETHING HAPPENED THAT HAS TO DEALT WITH", res);
+            console.error('💡 SOMETHING HAPPENED THAT HAS TO DEALT WITH', res);
           }
           USER_HELPERS.removeUserToken();
           return this.setState({
@@ -79,7 +80,7 @@ class App extends React.Component {
       {
         user,
       },
-      () => console.log("User", this.state.user)
+      () => console.log('User', this.state.user)
     );
   };
 
@@ -88,10 +89,8 @@ class App extends React.Component {
       return <LoadingComponent />;
     }
 
-    console.log("in main app.js component", this.state.user);
-
     return (
-      <div className="App">
+      <div className='App'>
         <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
           <NormalRoute exact path={PATHS.HOMEPAGE} component={Home} />
@@ -123,8 +122,8 @@ class App extends React.Component {
           <NormalRoute
             exact
             path={PATHS.TUTOR_LIST}
-            authenticate={this.authenticate}
             component={TutorList}
+            user={this.state.user}
           />
           <ProtectedRoute
             exact
@@ -132,13 +131,8 @@ class App extends React.Component {
             component={this.state.user?.isTutor ? TutorProfile : StudentProfile}
             user={this.state.user}
           />
-          <ProtectedRoute
-            exact
-            path={PATHS.STUDENT_LESSONS}
-            component={MyLessons}
-            user={this.state.user}
-          />
         </Switch>
+        <Footer />
       </div>
     );
   }

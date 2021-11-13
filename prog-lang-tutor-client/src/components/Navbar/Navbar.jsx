@@ -34,14 +34,6 @@ class Navbar extends Component {
               </li>
             </>
           )}
-          <li>
-            <Link
-              to={{ pathname: 'https://car-american.herokuapp.com/' }}
-              target='_blank'
-            >
-              Need a Car?
-            </Link>
-          </li>
         </ul>
       </navbar>
     );

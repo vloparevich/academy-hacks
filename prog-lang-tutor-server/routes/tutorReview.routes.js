@@ -1,45 +1,35 @@
 const { Router } = require('express');
 const router = new Router();
+const mongoose = require('mongoose');
 const User = require('../models/User.model');
 const Review = require('../models/Review.model');
 
-// ****************************************************************************************
-// GET route to render the form for adding review about a tutor
-// ****************************************************************************************
-router.post('/tutor/review/:id', isLoggedIn, (req, res) => {
-    const { tutorLink } = req.body;
-    req.session.tutorLinkFromGlobalScope = tutorLink;
-    const { tutor, id } = req.params;
-    res.render('/tutor/:id', {
-        tutor,
-        id
-    });
-});
 
 // ****************************************************************************************
 // POST route to post a review
 // ****************************************************************************************
-router.post('/tutor/review', isLoggedIn, async (req, res) => {
-    const { reviewContent } = req.body;
-    let { _id, firstName, lastName, reviews } = req.session.user;
-    const user_id = mongoose.Types.ObjectId(_id);
+router.post('/tutor/review', async (req, res) => {
+    const { studentId, tutorId, reviewContent } = req.body;
     try {
-        const tutorInDb = await Tutor.findOne({ dealerName: dealerName });
-        const createdReviewInDb = await Review.create({
-            reviewContent,
-            user_id,
-        });
-        if (!tutorInDb) {
-            await Tutor.create({ dealerName: dealerName });
-        }
-        await Tutor.findByIdAndUpdate(tutorInDb._id, {
-            $push: { reviews: createdReviewInDb._id },
-        });
-        res.redirect(307, `/tutor/:id/`);
+        const preparedTutorId = mongoose.Types.ObjectId(tutorId);
+        const preparedStudentId = mongoose.Types.ObjectId(studentId);
+        const review = await Review.create({ student_id: preparedStudentId, tutor_id: preparedTutorId, reviewContent: reviewContent });
+        const studentWithReview = await User.findByIdAndUpdate(studentId, {
+            $push: { reviews: review._id }
+        }, { new: true });
+        const tutorWithReview = await User.findByIdAndUpdate(tutorId, {
+            $push: { reviews: review._id }
+        }, { new: true });
+        const allReviews = await Review.find({ tutor_id: preparedTutorId }).populate('student_id');
+        res.status(201).json({ success: true, allReviews: allReviews });
     } catch (err) {
-        console.log('Soemthing went wrong while posting the review:', err);
+        res.json({ success: false, message: 'Review not created', err: err })
     }
 });
+
+
+
+
 
 // ****************************************************************************************
 // GET route to delete a review if it belongs to this user
