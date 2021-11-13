@@ -1,4 +1,4 @@
-#myLessonsCmp {
+#myScheduleCmp {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -20,8 +20,6 @@
     background-color: #102a43;
     border-radius: 0.5rem;
     border-color: #627d98;
-    border-style: solid;
-    border-width: 0.01rem;
     width: 9rem;
 }
 

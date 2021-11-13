@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Home.css';
 import SearchBar from '../Searchbar/SearchBar';
 import USER_SERVICE from '../../services/UserServices';
-import Navbar from '../HomeNavbar/HomeNavbar';
 import TutorRow from '../TutorRow/TutorRow';
 import { Link } from 'react-router-dom';
 
@@ -60,13 +59,7 @@ class Home extends Component {
           <h1>What are you going to learn today?</h1>
           <p>At Academy Hacks, we put you in control of your lessons...</p>
         </div>
-        {/* <div>
-          ((Compliation of different coding languages to go below, each linking
-          to corresponding tutors))
-        </div> */}
-
         <div className='searchBar'>
-          {/* <div className="footer">Hack Academy </div> */}
           <SearchBar onSearchQueryChange={this.onSearchInputChange} />
           {this.state.filteredTutors.map((tutor) => (
             <Link to={`/tutor/${tutor._id}`} key={tutor._id}>

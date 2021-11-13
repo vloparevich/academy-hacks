@@ -12,10 +12,25 @@ const USER_SERVICE = {
     });
   },
   getSpecificTutor: (id) => {
-    return service.get(`/tutor/${id}`).then((tutor) => tutor.data);
+    return service.get(`/tutor/${id}`).then((tutor) => {
+      console.log('my tutor is back from backend', tutor);
+      return tutor.data;
+    });
   },
   getSpecificStudent: (id) => {
-    return service.get(`/${id}`).then((student) => student.data);
+    return service.get(`/${id}`).then((dataFromDb) => dataFromDb.data);
+  },
+  deleteTutor: (id) => {
+    return service.delete(`/tutor/${id}`).then((respnseFromApi) => {
+      console.log(respnseFromApi);
+      return respnseFromApi.data;
+    });
+  },
+  deleteStudent: (id) => {
+    return service.delete(`/student/${id}`).then((respnseFromApi) => {
+      console.log(respnseFromApi);
+      return respnseFromApi.data;
+    });
   },
 };
 

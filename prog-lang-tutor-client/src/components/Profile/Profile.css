@@ -16,35 +16,42 @@ Blue Grey
 900 = #102A43 <== darkest
 */
 
-h3 {
-  color: #f0f4f8;
-}
-
 .profileContainer {
-  background-color: #102a43;
-  border-radius: 0.5rem;
-  border-color: #627d98;
-  border-style: solid;
-  border-width: 0.01rem;
-  margin: 4rem 16rem;
+  background-color: #243B53;
+  border-radius: 5px;
   display: flex;
   flex-direction: row;
-  color: #fff;
   justify-content: center;
-  height: 100vh;
+  height: auto;
+  /* max-width: 80%; */
+  min-height: 24.5rem;
+  margin: 3rem 3rem 1.5rem 3rem;
 }
+
+@media screen and (max-width: 1000px) {
+  .profileContainer {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  #myClassesSection {
+    width: 90%;
+  }
+}
+
 
 .imageSection {
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  padding-top: 1rem;
+  justify-content: center;
+  /* padding-top: 1rem; */
+  margin: 1rem;
 }
 
 .userDetailsSection {
   display: flex;
   flex-direction: column;
-  margin: 0 0 0 1rem;
+  margin: 0;
 }
 
 .userImage {
@@ -54,8 +61,9 @@ h3 {
 }
 
 #profilePicture {
-  margin: 0 auto;
+  margin: .7rem auto auto;
   border-radius: 5px;
+  max-width: 17rem;
 }
 
 .userDetails {
@@ -76,6 +84,9 @@ h3 {
 
 #imageInputLabel,
 #editMyDetailsButton,
+#showMyBookingsButton,
+#editMyProfileButton,
+#deleteProfileButton,
 .formControlButtons {
   display: inline-block;
   padding: 4px 32px;
@@ -91,19 +102,36 @@ h3 {
 
 #imageInputLabel:active,
 #editMyDetailsButton:active,
-.formControlButtons:active {
+#showMyBookingsButton:active,
+#editMyProfileButton:active,
+.formControlButtons:active,
+#deleteProfileButton:active {
   background-image: none;
   background-color: #2d6c7a;
   color: #ffffff;
+}
+
+#showMyBookingsButton {
+  margin: 0 auto;
+}
+
+#editMyProfileButton {
+  margin-left: auto;
+  height: 3rem;
+  width: 7rem;
+  background-color: #b2e89a;
+}
+
+#deleteProfileButton {
+  background-color: #DC143C;
+  color: #fff;
 }
 
 #imageInputLabel {
   margin: 0.5rem auto;
 }
 
-#profilePicture {
-  width: 300px;
-}
+
 
 form input,
 label {
@@ -143,7 +171,6 @@ form input,
 
 .controlButtonsUserDetails {
   margin: 0rem 2rem 2rem 2rem;
-  width: 400px;
   text-align: left;
 }
 
@@ -179,4 +206,30 @@ textarea {
 
 #cancelChangesButton {
   color: red;
+}
+
+#myClassesSection {
+  display: flex;
+  flex-direction: column;
+  background-color: #274F5A;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 5px;
+  padding: 1rem 0;
+  max-width: 60rem;
+}
+
+.tutorScheduleListElement {
+  display: flex;
+  flex-direction: row;
+}
+
+#myScheduleCmp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #D3D3D3;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 1rem;
 }

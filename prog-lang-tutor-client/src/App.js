@@ -80,7 +80,7 @@ class App extends React.Component {
       {
         user,
       },
-      () => console.log('User', this.state.user)
+      () => console.log('User on App.js', this.state.user)
     );
   };
 
@@ -88,8 +88,6 @@ class App extends React.Component {
     if (this.state.isLoading) {
       return <LoadingComponent />;
     }
-
-    console.log('in main app.js component', this.state.user);
 
     return (
       <div className='App'>
@@ -132,12 +130,7 @@ class App extends React.Component {
             path={PATHS.USER_DETAILS}
             component={this.state.user?.isTutor ? TutorProfile : StudentProfile}
             user={this.state.user}
-          />
-          <ProtectedRoute
-            exact
-            path={PATHS.STUDENT_LESSONS}
-            component={MyLessons}
-            user={this.state.user}
+            handleLogout={this.handleLogout}
           />
         </Switch>
         <Footer />
