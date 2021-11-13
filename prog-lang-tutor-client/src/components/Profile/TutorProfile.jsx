@@ -344,21 +344,22 @@ class TutorProfile extends Component {
                     )}
                 </div>
               )}
-              {this.state.isMyScheduleShownClicked && (
-                <div>
+              {this.state.isMyScheduleShownClicked &&
+                !this.state.isEditProfileClicked && (
                   <div>
-                    <p className='timeRangeLabel'>
-                      My availability:{' '}
-                      <b>
-                        {`${this.state.from}:00`}
-                        {' - '}
-                        {`${this.state.to}:00`}{' '}
-                      </b>
-                    </p>
+                    <div>
+                      <p className='timeRangeLabel'>
+                        My availability:{' '}
+                        <b>
+                          {`${this.state.from}:00`}
+                          {' - '}
+                          {`${this.state.to}:00`}{' '}
+                        </b>
+                      </p>
+                    </div>
+                    <div id='tutorClasses'></div>
                   </div>
-                  <div id='tutorClasses'></div>
-                </div>
-              )}
+                )}
             </div>
           </div>
           <button
