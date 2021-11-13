@@ -58,7 +58,7 @@ export default class Timeslot extends Component {
               onClick={() => this.handleTimePickerChange(i)}
               style={{
                 backgroundColor: '#696969',
-                color: '#2F4F4F',
+                color: 'blue',
               }}
             >
               {i}:00-{i + 1}:00
@@ -74,8 +74,9 @@ export default class Timeslot extends Component {
             onClick={() => this.handleTimePickerChange(i)}
             style={{
               backgroundColor: this.state.isTimeSlotChecked[i]
-                ? '#01FF70'
-                : '#39CCCC',
+                ? '#36B37E'
+                : '#627D98',
+              color: this.state.isTimeSlotChecked[i] ? 'white' : 'black',
             }}
           >
             {i}:00-{i + 1}:00

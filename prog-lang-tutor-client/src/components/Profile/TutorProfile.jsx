@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Profile.css';
 import PROFILE_SERVICE from '../../services/ProfileServices';
+import USER_SERVICE from '../../services/UserServices';
 import CountryFlag from '../CountryFlag/CountryFlag';
+import * as PATHS from '../../utils/paths';
+import MySchedule from './../MySchedule/MySchedule';
 
 class TutorProfile extends Component {
   state = {
@@ -41,43 +44,49 @@ class TutorProfile extends Component {
     }
   };
 
+  handleDeleteButton = () => {
+    USER_SERVICE.deleteTutor(this.state.user._id).then((responseFromApi) => {
+      this.props.history.push(PATHS.HOMEPAGE);
+    });
+    this.props.handleLogout();
+  };
+
   componentDidMount() {
     this.setState(
       {
         user: this.props.user,
       },
       () => {
-        console.log('from state', this.state);
         this.getUser();
       }
     );
   }
 
   getUser = () => {
-    console.log('in the getUser', this.state);
-    axios
-      .get(`http://localhost:5000/api/user/${this.state.user._id}`)
-      .then((dataFromDb) => {
-        console.log('this is coming from BE', dataFromDb.data);
-        const { user } = dataFromDb.data;
-        console.log({ user: user });
+    USER_SERVICE.getSpecificTutor(this.state.user._id).then(
+      (responseFromApi) => {
+        console.log('this is coming from BE', responseFromApi.tutor);
+        const { tutor } = responseFromApi;
+        console.log({ user: tutor });
         this.setState({
-          firstName: user.firstName,
-          lastName: user.lastName,
-          countryOfOrigin: user.countryOfOrigin,
-          profilePic: user.profilePic,
-          teachingExperience: user.teachingExperience,
-          from: user.timeRangeOfAvailability?.from
-            ? user.timeRangeOfAvailability?.from
+          firstName: tutor.firstName,
+          lastName: tutor.lastName,
+          countryOfOrigin: tutor.countryOfOrigin,
+          profilePic: tutor.profilePic,
+          teachingExperience: tutor.teachingExperience,
+          from: tutor.timeRangeOfAvailability?.from
+            ? tutor.timeRangeOfAvailability?.from
             : '00',
-          to: user.timeRangeOfAvailability?.to
-            ? user.timeRangeOfAvailability?.to
+          to: tutor.timeRangeOfAvailability?.to
+            ? tutor.timeRangeOfAvailability?.to
             : '00',
-          courseName: user.coursesTaught?.courses[0].courseName,
-          description: user.coursesTaught?.courses[0].description,
-          prevCourseName: user.coursesTaught?.courses[0].courseName,
+          courseName: tutor.coursesTaught?.courses[0].courseName,
+          description: tutor.coursesTaught?.courses[0].description,
+          prevCourseName: tutor.coursesTaught?.courses[0].courseName,
+          mySchedule: tutor.mySchedule,
         });
-      });
+      }
+    );
   };
 
   getUserWithUpdatedProfilePicture = (event) => {
@@ -139,7 +148,6 @@ class TutorProfile extends Component {
   render() {
     return (
       <>
-        {/* {this.state.firstName && ( */}
         <div className='profileContainer'>
           <div className='imageSection'>
             {this.state.profilePic && (
@@ -320,30 +328,45 @@ class TutorProfile extends Component {
                   )}
                   {this.state.isEditProfileClicked &&
                     !this.state.isEditDetailsClicked && (
-                      <button
-                        id='editMyDetailsButton'
-                        onClick={this.handleEditButton}
-                      >
-                        Edit my details
-                      </button>
+                      <>
+                        <button
+                          id='editMyDetailsButton'
+                          onClick={this.handleEditButton}
+                        >
+                          Edit my details
+                        </button>
+                        <button
+                          id='deleteProfileButton'
+                          onClick={this.handleDeleteButton}
+                        >
+                          Delete my profile
+                        </button>
+                      </>
                     )}
                 </div>
               )}
-              {this.state.isMyScheduleShownClicked && (
-                <div>
-                  <div>
-                    <p className='timeRangeLabel'>
-                      My availability:{' '}
-                      <b>
-                        {`${this.state.from}:00`}
-                        {' - '}
-                        {`${this.state.to}:00`}{' '}
-                      </b>
-                    </p>
-                  </div>
-                  <div id='tutorClasses'></div>
-                </div>
-              )}
+              {this.state.isMyScheduleShownClicked &&
+                !this.state.isEditProfileClicked && (
+                  <>
+                    <div>
+                      <div>
+                        <p className='timeRangeLabel'>
+                          My availability:{' '}
+                          <b>
+                            {`${this.state.from}:00`}
+                            {' - '}
+                            {`${this.state.to}:00`}{' '}
+                          </b>
+                        </p>
+                        <div id='myScheduleCmp'>
+                          <MySchedule
+                            mySchedule={this.state.mySchedule.bookedSlots}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
             </div>
           </div>
           <button

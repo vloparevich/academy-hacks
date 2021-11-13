@@ -1,9 +1,10 @@
 const { Router } = require('express');
 const router = new Router();
+const mongoose = require('mongoose');
 const User = require('../models/User.model');
 const Course = require('../models/Course.model');
-const fileUploader = require('../config/cloudinary.setup.js');
 const Timeslot = require('../models/Timeslot.model');
+const StudentBooking = require('../models/StudentBooking.model');
 
 // ****************************************************************************************
 // GET route to get all the tutors
@@ -32,7 +33,6 @@ router.get('/tutor/:id', (req, res) => {
   User.findById(id)
     .populate('coursesTaught mySchedule')
     .then((tutor) => {
-      console.log('Getting info of tutor', tutor);
       res.status(200).json({ success: true, tutor });
     })
     .catch((err) => {
@@ -155,17 +155,59 @@ router.post('/tutor', async (req, res, next) => {
 // ****************************************************************************************
 router.delete('/tutor/:tutorId', async (req, res, next) => {
   const { tutorId } = req.params;
+  const prepearedTutorId = mongoose.Types.ObjectId(tutorId);
   try {
     const removedTutor = await User.findByIdAndRemove(tutorId);
-    await Course.deleteMany({ user_id: removedTutor._id });
-    await Timeslot.findOneAndDelete({ user_id: removedTutor._id });
-    res
-      .status(200)
-      .json({ success: true, message: { removedTutor: removedTutor } });
+    const removedCourses = await Course.deleteMany({
+      user_id: removedTutor._id,
+    });
+    const removedTimeslot = await Timeslot.findOneAndDelete({
+      user_id: removedTutor._id,
+    });
+
+    const removedStudentBookings = await StudentBooking.findOneAndDelete({
+      tutorId: prepearedTutorId,
+    });
+    res.status(200).json({
+      success: true,
+      message: {
+        removedTutor: removedTutor,
+        removedCourses: removedCourses,
+        removedTimeslot: removedTimeslot,
+        removedStudentBookings: removedStudentBookings,
+      },
+    });
   } catch (err) {
     res.json({
       success: false,
       message: 'Tutor has not been deleted',
+      err,
+    });
+  }
+});
+
+// ****************************************************************************************
+// DELETE route to remove student
+// ****************************************************************************************
+router.delete('/student/:studentId', async (req, res) => {
+  const { studentId } = req.params;
+  const prepearedStudentId = mongoose.Types.ObjectId(studentId);
+  try {
+    const removedStudent = await User.findByIdAndRemove(prepearedStudentId);
+    const removedBookings = await StudentBooking.findOneAndDelete({
+      studentId: prepearedStudentId,
+    });
+    res.status(200).json({
+      success: true,
+      message: {
+        removedStudent: removedStudent,
+        removedBookings: removedBookings,
+      },
+    });
+  } catch (err) {
+    res.json({
+      success: false,
+      message: 'Student has not been deleted',
       err,
     });
   }

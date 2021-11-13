@@ -16,20 +16,16 @@ Blue Grey
 900 = #102A43 <== darkest
 */
 
-h3 {
-  color: #f0f4f8;
-}
-
 .profileContainer {
-  background-color: #264C59;
+  background-color: #243B53;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   height: auto;
-  max-width: 60rem;
+  /* max-width: 80%; */
   min-height: 24.5rem;
-  margin: 3rem auto 1.5rem auto;
+  margin: 3rem 3rem 1.5rem 3rem;
 }
 
 @media screen and (max-width: 1000px) {
@@ -90,6 +86,7 @@ h3 {
 #editMyDetailsButton,
 #showMyBookingsButton,
 #editMyProfileButton,
+#deleteProfileButton,
 .formControlButtons {
   display: inline-block;
   padding: 4px 32px;
@@ -107,7 +104,8 @@ h3 {
 #editMyDetailsButton:active,
 #showMyBookingsButton:active,
 #editMyProfileButton:active,
-.formControlButtons:active {
+.formControlButtons:active,
+#deleteProfileButton:active {
   background-image: none;
   background-color: #2d6c7a;
   color: #ffffff;
@@ -122,6 +120,11 @@ h3 {
   height: 3rem;
   width: 7rem;
   background-color: #b2e89a;
+}
+
+#deleteProfileButton {
+  background-color: #DC143C;
+  color: #fff;
 }
 
 #imageInputLabel {
@@ -214,4 +217,19 @@ textarea {
   border-radius: 5px;
   padding: 1rem 0;
   max-width: 60rem;
+}
+
+.tutorScheduleListElement {
+  display: flex;
+  flex-direction: row;
+}
+
+#myScheduleCmp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #D3D3D3;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 1rem;
 }
