@@ -86,6 +86,7 @@ Blue Grey
 #editMyDetailsButton,
 #showMyBookingsButton,
 #editMyProfileButton,
+#deleteProfileButton,
 .formControlButtons {
   display: inline-block;
   padding: 4px 32px;
@@ -103,7 +104,8 @@ Blue Grey
 #editMyDetailsButton:active,
 #showMyBookingsButton:active,
 #editMyProfileButton:active,
-.formControlButtons:active {
+.formControlButtons:active,
+#deleteProfileButton:active {
   background-image: none;
   background-color: #2d6c7a;
   color: #ffffff;
@@ -118,6 +120,11 @@ Blue Grey
   height: 3rem;
   width: 7rem;
   background-color: #b2e89a;
+}
+
+#deleteProfileButton {
+  background-color: #DC143C;
+  color: #fff;
 }
 
 #imageInputLabel {
@@ -210,4 +217,19 @@ textarea {
   border-radius: 5px;
   padding: 1rem 0;
   max-width: 60rem;
+}
+
+.tutorScheduleListElement {
+  display: flex;
+  flex-direction: row;
+}
+
+#myScheduleCmp {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: #D3D3D3;
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 1rem;
 }
