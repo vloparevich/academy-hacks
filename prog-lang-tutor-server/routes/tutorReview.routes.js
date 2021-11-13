@@ -35,7 +35,7 @@ router.get('/reviews/:tutorId', (req, res) => {
     const { tutorId } = req.params;
     console.log({tutorId:tutorId}) 
     const preparedTutorId = mongoose.Types.ObjectId(tutorId);
-    Review.find({tutor_Id:preparedTutorId}).then(reviewsFromDb => {
+    Review.find({tutor_Id:preparedTutorId}).populate('student_id').then(reviewsFromDb => {
         console.log({reviewsFromDb:reviewsFromDb})
         res.status(200).json({ success:true, reviewsFromDb: reviewsFromDb })
     }).catch(err => {

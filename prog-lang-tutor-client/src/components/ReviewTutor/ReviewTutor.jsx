@@ -5,7 +5,7 @@ import '../ReviewTutor/ReviewTutor.css'
 
 class ReviewTutor extends Component {
     state = {
-        review: ' ',
+        review: '',
     };
 
     state = { showing: false }
@@ -17,10 +17,10 @@ class ReviewTutor extends Component {
 
     getReviews = () => {
         REVIEW_SERVICE.getAllReviews(this.props.tutorId).then((reviews) => {
-            console.log('reviews befor setting state', reviews.reviewsFromDb)
+            console.log('reviews before setting state', reviews)
             this.setState({
                 reviews: reviews.reviewsFromDb
-            }, ()=> console.log('my reviews', this.state.reviews));
+            }, () => console.log('my reviews', this.state.reviews));
         })
     }
 
@@ -39,6 +39,7 @@ class ReviewTutor extends Component {
         REVIEW_SERVICE.createReview(studentId, tutorId, reviewContent).then(() => {
             this.getReviews();
         })
+        this.setState({review : '', showing: !this.state.showing})
 
     }
 
@@ -48,15 +49,16 @@ class ReviewTutor extends Component {
             <div>
                 <h1>Reviews</h1>
                 <button onClick={() => this.setState({ showing: !showing })}>Add Your Review</button>
-                {showing?this.props.studentId && (
+                {showing ? this.props.studentId && (
                     <form onSubmit={(e) => this.handleFormSubmit(e)}>
-                        <input id="review" name="review" placeholder="Add review here" type="text" value={this.state.review} onChange={(e) => this.handleInputChange(e)} required/>
-                        <button onSubmit={() => this.setState({showing: false})}>Submit</button>
-                    </form>) : null }
+                        <textarea id="review" name="review" placeholder="Add review here" type="text" value={this.state.review} onChange={(e) => 
+                        this.handleInputChange(e)} required />
+                        <button>Submit</button>
+                    </form>) : null}
                 <ul>
                     {this.state.reviews?.map((review) => {
                         return (
-                            <li key={review._id}>{review.student_id} : "{review.reviewContent}"</li>
+                            <li key={review._id}>{review.student_id.firstName} {review.student_id.lastName}: "{review.reviewContent}"</li>
                         )
                     })
                     }
