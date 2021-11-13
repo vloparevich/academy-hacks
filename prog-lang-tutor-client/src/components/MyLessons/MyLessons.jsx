@@ -11,7 +11,9 @@ export default class MyLessons extends Component {
   };
 
   getStudentWithLessons = () => {
-    const studentId = this.props.match.params.id;
+    const studentId = this.props.match?.params.id
+      ? this.props.match.params.id
+      : this.props.studentId;
     STUDENT_LESSON_SERVICE.getStudentAndLessons(studentId)
       .then((responseFromApi) => {
         this.setState(

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import countries from '../../resources/countries.json';
+import './CountryFlag.css';
 
 export default class CountryFlag extends Component {
   getCountryFlag = () => {
@@ -11,6 +12,6 @@ export default class CountryFlag extends Component {
   };
 
   render() {
-    return <span>{this.getCountryFlag()}</span>;
+    return <span id='countryFlag'>{this.getCountryFlag()}</span>;
   }
 }

@@ -4,6 +4,9 @@ import REVIEW_SERVICE from '../../services/ReviewService';
 import '../ReviewTutor/ReviewTutor.css'
 
 class ReviewTutor extends Component {
+  state = {
+    review: ' ',
+  };
 
     state = {}
 
