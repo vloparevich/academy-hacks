@@ -1,60 +1,55 @@
 import React, { Component } from 'react';
 import USER_SERVICE from '../../services/UserServices';
-import '../ReviewTutor/ReviewTutor.css';
+import REVIEW_SERVICE from '../../services/ReviewService';
+import '../ReviewTutor/ReviewTutor.css'
 
 class ReviewTutor extends Component {
   state = {
     review: ' ',
   };
 
-  componentDidMount = () => {
-    this.getTutorDetails();
-  };
+    state = {}
 
-  getTutorDetails = () => {
-    const { params } = this.props.match;
+    componentDidMount = () => {
+        console.log('mounting');
+    };
 
-    USER_SERVICE.getSpecificTutor(params.id).then((responseFromAPI) => {
-      console.log({ responseFromAPI: responseFromAPI });
-      this.setState({
-        tutorDetails: responseFromAPI.tutor,
-        timeRange: responseFromAPI.tutor.timeRangeOfAvailability,
-        coursesTaught: responseFromAPI.tutor.coursesTaught.courses[0],
-      });
-    });
-  };
+    handleInputChange = (e) => {
+        this.setState({
+            review: e.target.value
+        })
+    }
 
-  handleFormSubmit(event) {
-    // event.preventDefault();
-    // const data = new FormData(event.target);
-    // fetch('/api/form-submit-url', {
-    //   method: 'POST',
-    //   body: data,
-    // });
-  }
+    handleFormSubmit = (e) => {
+        e.preventDefault();
+        console.log('hitting review service')
+        const { studentId, tutorId } = this.props;
+        console.log('details of users', studentId, tutorId)
+        const reviewContent = this.state.review;
+        REVIEW_SERVICE.createReview(studentId, tutorId, reviewContent).then(reviews => {
+            console.log('getting reviews', reviews)
+            this.setState({
+                reviews: reviews
+            })
+        })
+    }
 
-  render() {
-    return (
-      <div>
-        <h1>
-          Review {this.state.tutorDetails?.firstName}{' '}
-          {this.state.tutorDetails?.lastName}
-        </h1>
-        <form onSubmit={this.handleFormSubmit()}>
-          <label></label>
-          <input
-            id='review'
-            name='review'
-            placeholder='Add your review here'
-            type='text'
-          />
-          {/* value={this.state.review}  */}
-
-          <button>Submit</button>
-        </form>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <h1>Review {this.state.tutorDetails?.firstName} {this.state.tutorDetails?.lastName}</h1>
+                {this.props.studentId && (
+                    <form onSubmit={(e)=>this.handleFormSubmit(e)}>
+                        <label></label>
+                        <input id="review" name="review" placeholder="Add review here" type="text" value={this.state.review} onChange={(e) => this.handleInputChange(e)} />
+                        <button>Submit</button>
+                    </form>)}
+                <ul>
+                    <li>Review 1</li>
+                </ul>
+            </div>
+        );
+    }
 }
 
 export default ReviewTutor;

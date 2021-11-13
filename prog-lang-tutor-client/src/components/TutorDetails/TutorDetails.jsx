@@ -4,6 +4,7 @@ import USER_SERVICE from '../../services/UserServices';
 import BOOKING_SERVICE from '../../services/BookingServices';
 import * as PATHS from '../../utils/paths';
 import Timeslot from '../Timeslot/Timeslot';
+import ReviewTutor from '../ReviewTutor/ReviewTutor';
 import { Link } from 'react-router-dom';
 import '../TutorDetails/TutorDetails.css';
 import CountryFlag from '../CountryFlag/CountryFlag';
@@ -73,12 +74,19 @@ export default class TutorDetails extends Component {
                 {this.state.coursesTaught.courseName} :{' '}
                 {this.state.coursesTaught.description}.
               </h2>
+              {/* <Link to={`/tutor/review/${this.state.tutorDetails._id}`}>
+                <button type='button'>Review This Tutor</button>
+              </Link> */}
+              <ReviewTutor
+                tutorId={this.tutorId.id}
+                studentId={this.props.user?._id}
+              />
             </div>
             {!this.state.currentUser?.isTutor ? (
               <>
-                <Link to={`/tutor/review/${this.state.tutorDetails._id}`}>
+                {/* <Link to={`/tutor/review/${this.state.tutorDetails._id}`}>
                   <button type='button'>Review This Tutor</button>
-                </Link>
+                </Link> */}
                 <div className='TutorActions'>
                   <button onClick={this.handleBookClick}>Book a lesson</button>
                 </div>
