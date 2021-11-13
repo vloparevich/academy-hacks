@@ -1,4 +1,4 @@
-const { Router } = require('express');
+const { Router, response } = require('express');
 const router = new Router();
 const mongoose = require('mongoose');
 const User = require('../models/User.model');
@@ -27,6 +27,21 @@ router.post('/tutor/review', async (req, res) => {
     }
 });
 
+
+// ****************************************************************************************
+// GET route to get all reviews
+// ****************************************************************************************
+router.get('/reviews/:tutorId', (req, res) => {
+    const { tutorId } = req.params;
+    console.log({tutorId:tutorId}) 
+    const preparedTutorId = mongoose.Types.ObjectId(tutorId);
+    Review.find({tutor_Id:preparedTutorId}).then(reviewsFromDb => {
+        console.log({reviewsFromDb:reviewsFromDb})
+        res.status(200).json({ success:true, reviewsFromDb: reviewsFromDb })
+    }).catch(err => {
+        res.json({ success: false, message: "Reviews not retrieved", err: err})
+    }) 
+})
 
 
 

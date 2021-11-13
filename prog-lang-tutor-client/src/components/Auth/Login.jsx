@@ -50,7 +50,6 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-      <Navbar/>
         <div className='auth-container'>
           <h2>Sign in to Academy Hacks</h2>
           <form
