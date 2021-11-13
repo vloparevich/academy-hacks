@@ -6,17 +6,14 @@ import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
 
 class TutorList extends Component {
-  state = {
-    filteredTutors: [],
-    tutorsFromApi: [],
-    showing: true,
-  };
+  state = { courseName: this.props.location.courseName };
 
   fetchTutors = () => {
-    console.log('fetch tutors');
     USER_SERVICE.getAllTutors()
       .then((tutors) => {
-        this.setState({ tutorsFromApi: tutors });
+        this.setState({ tutorsFromApi: tutors }, () => {
+          this.getTutorsbyCoursename(this.props.location.courseName);
+        });
       })
       .catch((err) => console.log(err));
   };
@@ -25,36 +22,38 @@ class TutorList extends Component {
     this.fetchTutors();
   };
 
-  handleCategoryClick = (e) => {
-    console.log(e.target.value);
+  getTutorsbyCoursename = (searchInput) => {
+    let filteredTutors = [];
+
+    for (let i = 0; i < this.state.tutorsFromApi?.length; i++) {
+      const courses = this.state.tutorsFromApi[i].coursesTaught?.courses
+        ? this.state.tutorsFromApi[i].coursesTaught?.courses
+        : 0;
+      for (let j = 0; j < courses.length; j++) {
+        courses[j].courseName
+          .toLowerCase()
+          .includes(searchInput.toLowerCase()) &&
+          filteredTutors.push(this.state.tutorsFromApi[i]);
+      }
+    }
+
+    searchInput && filteredTutors.length === 0 && (filteredTutors = []);
+    searchInput.length === 0 && (filteredTutors = []);
+
     this.setState({
-      isCategoryShown: !this.state.isCategoryShown,
+      filteredTutors: filteredTutors,
     });
   };
-  // const [categoryName, setCategoryName] = useState(yourDefaultCategory)
+
   render() {
-    const { showing } = this.state;
-    console.log(this.state.tutorsFromApi[0]);
-
     return (
-      <div>
+      <div className='tutorList'>
         <h1>Courses</h1>
-        <div className='category'>
-          <button onClick={() => this.setState({ showing: !showing })}>
-            All
-          </button>
-
-          <a href='#' data-filter='all'>
-            All
-          </a>
-          <button>Java</button>
-          <button>JavaScript</button>
-        </div>
 
         <div>
-          {this.state.tutorsFromApi.map((tutorInfo) => (
+          {this.state.filteredTutors?.map((tutorInfo) => (
             <>
-              <div style={{ display: showing ? 'block' : 'none' }}>
+              <div>
                 <img
                   className='tutorListPic'
                   src={tutorInfo.profilePic}
@@ -66,9 +65,10 @@ class TutorList extends Component {
                 </p>
               </div>
               <h3>
-                {tutorInfo.coursesTaught.courses[0].courseName} :{' '}
+                Courses: {tutorInfo.coursesTaught.courses[0].courseName}{' '}
                 {tutorInfo.description}
               </h3>
+              <h3> Teaching Experince: {tutorInfo.teachingExperience}</h3>{' '}
             </>
           ))}
         </div>
