@@ -7,14 +7,14 @@ const service = axios.create({
 
 const REVIEW_SERVICE = {
     createReview: (studentId, tutorId, reviewContent) => {
-        return service.post('/tutor/review', {studentId, tutorId, reviewContent}).then((responseFromApi) => {
-            console.log(responseFromApi);
+        return service.post('/tutor/review', {studentId, tutorId, reviewContent}).then((responseFromApi) => {           
             return responseFromApi.data;
         }).catch(err => 
             console.log('error', err)
         )
     },
     getAllReviews: (tutorId) => {
+        console.log('service tutorId', tutorId)
         return service.get(`/reviews/${tutorId}`).then((responseFromApi) => {
             console.log(responseFromApi);
             return responseFromApi.data;

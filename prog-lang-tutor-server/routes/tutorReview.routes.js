@@ -33,14 +33,15 @@ router.post('/tutor/review', async (req, res) => {
 // ****************************************************************************************
 router.get('/reviews/:tutorId', (req, res) => {
     const { tutorId } = req.params;
-    console.log({tutorId:tutorId}) 
+    console.log('tutorID in the ROUTE', { tutorId: tutorId })
     const preparedTutorId = mongoose.Types.ObjectId(tutorId);
-    Review.find({tutor_Id:preparedTutorId}).populate('student_id').then(reviewsFromDb => {
-        console.log({reviewsFromDb:reviewsFromDb})
-        res.status(200).json({ success:true, reviewsFromDb: reviewsFromDb })
+    console.log('preparedTutorId in the ROUTE', { tutorId: preparedTutorId })
+    Review.find({ tutor_id: preparedTutorId }).populate('student_id').then(reviewsFromDb => {
+        console.log('getting this for ', { tutor_Id: preparedTutorId }, { reviewsFromDb: reviewsFromDb })
+        res.status(200).json({ success: true, reviewsFromDb: reviewsFromDb })
     }).catch(err => {
-        res.json({ success: false, message: "Reviews not retrieved", err: err})
-    }) 
+        res.json({ success: false, message: "Reviews not retrieved", err: err })
+    })
 })
 
 

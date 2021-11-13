@@ -73,17 +73,11 @@ export default class TutorDetails extends Component {
                   {this.state.coursesTaught.description}.
                 </h2>
               </div>
-              <div className='TutorReviews'>
-                <ReviewTutor
-                  tutorId={this.tutorId.id}
-                  studentId={this.props.user?._id}
-                />
-              </div>
             </div>
             {!this.state.currentUser?.isTutor ? (
               <>
                 <div className='TutorActions'>
-                  <button onClick={this.handleBookClick}>Book a lesson</button>
+                  <button id='bookLessonButton' onClick={this.handleBookClick}>Book a lesson</button>
                 </div>
               </>
             ) : (
@@ -108,6 +102,12 @@ export default class TutorDetails extends Component {
                 studentId={this.props.user?._id}
               />
             )}
+              <div className='TutorReviews'>
+                <ReviewTutor
+                  tutorId={this.tutorId.id}
+                  studentId={this.props.user?._id}
+                />
+              </div>
           </div>
         )}
       </>

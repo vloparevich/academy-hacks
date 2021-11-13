@@ -36,6 +36,12 @@ Accent/borders Green colors: #36B37E
 
 .TutorReviews {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   
+}
+
+#bookLessonButton {
+  height: 3rem;
+  width: 7rem;
+  background-color: #b2e89a;
 }

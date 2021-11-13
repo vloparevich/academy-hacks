@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import USER_SERVICE from '../../services/UserServices';
 import REVIEW_SERVICE from '../../services/ReviewService';
 import '../ReviewTutor/ReviewTutor.css'
 
@@ -12,12 +11,14 @@ class ReviewTutor extends Component {
 
     componentDidMount = () => {
         console.log('mounting');
+        this.setState({ reviews: [] })
         this.getReviews();
+
     };
 
     getReviews = () => {
         REVIEW_SERVICE.getAllReviews(this.props.tutorId).then((reviews) => {
-            console.log('reviews before setting state', reviews)
+            console.log('tutor', this.props.tutorId)
             this.setState({
                 reviews: reviews.reviewsFromDb
             }, () => console.log('my reviews', this.state.reviews));
@@ -39,32 +40,53 @@ class ReviewTutor extends Component {
         REVIEW_SERVICE.createReview(studentId, tutorId, reviewContent).then(() => {
             this.getReviews();
         })
-        this.setState({review : '', showing: !this.state.showing})
+        this.setState({ review: '', showing: !this.state.showing })
 
     }
 
     render() {
         const { showing } = this.state;
         return (
-            <div>
+            <div className='reviewArea'>
                 <h1>Reviews</h1>
-                <button onClick={() => this.setState({ showing: !showing })}>Add Your Review</button>
+                <button id="addReviewButton" onClick={() => this.setState({ showing: !showing })}>Add Your Review</button>
                 {showing ? this.props.studentId && (
                     <form onSubmit={(e) => this.handleFormSubmit(e)}>
-                        <textarea id="review" name="review" placeholder="Add review here" type="text" value={this.state.review} onChange={(e) => 
-                        this.handleInputChange(e)} required />
+                        <textarea name="review" placeholder="Add review here" type="text" value={this.state.review} onChange={(e) =>
+                            this.handleInputChange(e)} required />
                         <button>Submit</button>
                     </form>) : null}
-                <ul>
-                    {this.state.reviews?.map((review) => {
-                        return (
-                            <li key={review._id}>{review.student_id.firstName} {review.student_id.lastName}: "{review.reviewContent}"</li>
+                {/* 
+                {this.state.reviews?.map((review) => {
+                    return (
+                        <div className='reviewList'>
+                            <ul key={review._id}>
+                                <li>
+                                    <h2>{review.student_id.firstName} {review.student_id.lastName}</h2>
+                                    <h3>- "{review.reviewContent}"</h3>
+                                </li>
+                            </ul>
+                        </div>
+                    )
+                })
+                } */}
+                <div className='reviewList'>
+                    <ul>
+                        {this.state.reviews?.map((review) =>
+                        (<>
+                            <li>
+                                <h2>{review.student_id.firstName} {review.student_id.lastName}</h2>
+                                <h3>- "{review.reviewContent}"</h3>
+                            </li>
+                            <hr />
+                        </>
                         )
-                    })
-                    }
-                </ul>
+                        )
+                        }
+                    </ul>
+                </div>
             </div>
-        );
+        )
     }
 }
 
