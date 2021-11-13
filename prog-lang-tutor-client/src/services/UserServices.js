@@ -17,21 +17,18 @@ const USER_SERVICE = {
   getSpecificStudent: (id) => {
     return service.get(`/${id}`).then((dataFromDb) => dataFromDb.data);
   },
+  deleteTutor: (id) => {
+    return service.delete(`/tutor/${id}`).then((respnseFromApi) => {
+      console.log(respnseFromApi);
+      return respnseFromApi.data;
+    });
+  },
+  deleteStudent: (id) => {
+    return service.delete(`/student/${id}`).then((respnseFromApi) => {
+      console.log(respnseFromApi);
+      return respnseFromApi.data;
+    });
+  },
 };
 
 export default USER_SERVICE;
-
-// getUser = () => {
-//   axios
-//     .get(`http://localhost:5000/api/user/${this.state.user._id}`)
-//     .then((dataFromDb) => {
-//       const { user } = dataFromDb.data;
-//       this.setState({
-//         firstName: user.firstName,
-//         lastName: user.lastName,
-//         countryOfOrigin: user.countryOfOrigin,
-//         profilePic: user.profilePic,
-//         aboutMe: user.aboutMe,
-//       });
-//     });
-// };

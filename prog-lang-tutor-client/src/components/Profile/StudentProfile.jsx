@@ -48,6 +48,14 @@ class StudentProfile extends Component {
     });
   };
 
+  handleDeleteButton = () => {
+    USER_SERVICE.deleteStudent(this.state.user._id).then((responseFromApi) => {
+      console.log('Student after deletion', responseFromApi);
+      this.props.history.push(PATHS.HOMEPAGE);
+    });
+    this.props.handleLogout();
+  };
+
   getUserWithUpdatedProfilePicture = (event) => {
     const file = event.target.files[0];
     const uploadData = new FormData();
@@ -238,12 +246,20 @@ class StudentProfile extends Component {
                 )}
                 {this.state.isEditProfileClicked &&
                   !this.state.isEditDetailsClicked && (
-                    <button
-                      id='editMyDetailsButton'
-                      onClick={this.handleEditButton}
-                    >
-                      Edit my details
-                    </button>
+                    <>
+                      <button
+                        id='editMyDetailsButton'
+                        onClick={this.handleEditButton}
+                      >
+                        Edit my details
+                      </button>
+                      <button
+                        id='deleteProfileButton'
+                        onClick={this.handleDeleteButton}
+                      >
+                        Delete my profile
+                      </button>
+                    </>
                   )}
               </div>
             </div>

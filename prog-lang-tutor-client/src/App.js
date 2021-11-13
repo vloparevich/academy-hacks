@@ -80,7 +80,7 @@ class App extends React.Component {
       {
         user,
       },
-      () => console.log('User', this.state.user)
+      () => console.log('User on App.js', this.state.user)
     );
   };
 
@@ -130,6 +130,7 @@ class App extends React.Component {
             path={PATHS.USER_DETAILS}
             component={this.state.user?.isTutor ? TutorProfile : StudentProfile}
             user={this.state.user}
+            handleLogout={this.handleLogout}
           />
         </Switch>
         <Footer />

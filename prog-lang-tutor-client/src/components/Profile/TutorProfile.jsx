@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Profile.css';
 import PROFILE_SERVICE from '../../services/ProfileServices';
+import USER_SERVICE from '../../services/UserServices';
 import CountryFlag from '../CountryFlag/CountryFlag';
+import * as PATHS from '../../utils/paths';
 
 class TutorProfile extends Component {
   state = {
@@ -41,13 +43,19 @@ class TutorProfile extends Component {
     }
   };
 
+  handleDeleteButton = () => {
+    USER_SERVICE.deleteTutor(this.state.user._id).then((responseFromApi) => {
+      this.props.history.push(PATHS.HOMEPAGE);
+    });
+    this.props.handleLogout();
+  };
+
   componentDidMount() {
     this.setState(
       {
         user: this.props.user,
       },
       () => {
-        console.log('from state', this.state);
         this.getUser();
       }
     );
@@ -139,7 +147,6 @@ class TutorProfile extends Component {
   render() {
     return (
       <>
-        {/* {this.state.firstName && ( */}
         <div className='profileContainer'>
           <div className='imageSection'>
             {this.state.profilePic && (
@@ -320,12 +327,20 @@ class TutorProfile extends Component {
                   )}
                   {this.state.isEditProfileClicked &&
                     !this.state.isEditDetailsClicked && (
-                      <button
-                        id='editMyDetailsButton'
-                        onClick={this.handleEditButton}
-                      >
-                        Edit my details
-                      </button>
+                      <>
+                        <button
+                          id='editMyDetailsButton'
+                          onClick={this.handleEditButton}
+                        >
+                          Edit my details
+                        </button>
+                        <button
+                          id='deleteProfileButton'
+                          onClick={this.handleDeleteButton}
+                        >
+                          Delete my profile
+                        </button>
+                      </>
                     )}
                 </div>
               )}
