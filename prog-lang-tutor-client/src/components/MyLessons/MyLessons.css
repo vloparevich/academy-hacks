@@ -1,0 +1,90 @@
+#myLessonsCmp {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #D3D3D3;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.myLessonCard li {
+    list-style-type: none;
+}
+
+.myLessonCard {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: .25rem;
+    background-color: #102a43;
+    border-radius: 0.5rem;
+    border-color: #627d98;
+    border-style: solid;
+    border-width: 0.01rem;
+    width: 9rem;
+}
+
+.myLessonCard ul {
+    padding: 0;
+}
+
+
+.myLessonCard ul li {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.myLessonCard p {
+    text-align: center;
+    font-weight: 200 !important;
+}
+
+#myLessonTutorName {
+    margin-top: 2px;
+    font-size: 1.2rem;
+    font-weight: 400 !important;
+}
+
+#myLessonCourseName {
+    margin-bottom: 0;
+}
+
+#myLessonSubjectName {
+    font-weight: 600 !important;
+    color: #13aa52;
+}
+
+.myLesson_cancel_btn {
+
+    background-color: #13aa52;
+    border: 1px solid #13aa52;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    outline: none;
+    outline: 0;
+    padding: 3px 10px;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform 150ms, box-shadow 150ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: .1rem;
+}
+
+.button-37:hover {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+    .button-37 {
+        padding: 10px 30px;
+    }
+}

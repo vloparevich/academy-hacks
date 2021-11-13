@@ -1,32 +1,22 @@
+import "./App.css";
 import React from "react";
 import { Switch } from "react-router-dom";
-import LoadingComponent from "./components/Loading";
-// import HomeNavbar from "./components/HomeNavbar/HomeNavbar";
-// import HomePage from "./pages/HomePage";
-// import LogIn from "./pages/LogIn";
-// import ProtectedPage from "./pages/ProtectedPage";
-// import Signup from "./pages/Signup";
 import NormalRoute from "./routing-components/NormalRoute";
-import ProtectedRoute from "./routing-components/ProtectedRoute";
 import { getLoggedIn, logout } from "./services/auth";
-import * as PATHS from "./utils/paths";
-import * as CONSTS from "./utils/consts";
-// import * as USER_HELPERS from './utils/userToken';
-import "./App.css";
-import Home from "./components/Home/Home";
-import TutorDetails from "./components/TutorDetails/TutorDetails";
-import Signup from "../src/components/Auth/Signup";
-// import Login from './components/Auth/Login';
-// import { logout, getLoggedIn } from './services/auth-service';
-// import * as PATHS from './utils/paths';
-import * as USER_HELPERS from "./utils/userToken";
-// import { Switch, Route, Redirect } from 'react-router-dom';
-import Navbar from "./components/Navbar/Navbar";
+import LoadingComponent from "./components/Loading";
 import Login from "./components/Auth/Login";
-import "./App.css";
+import Signup from "./components/Auth/Signup";
+import Home from "./components/Home/Home";
+import Navbar from "./components/Navbar/Navbar";
+import ProtectedRoute from "./routing-components/ProtectedRoute";
 import TutorProfile from "./components/Profile/TutorProfile";
 import StudentProfile from "./components/Profile/StudentProfile";
+import TutorDetails from "./components/TutorDetails/TutorDetails";
 import ReviewTutor from "./components/ReviewTutor/ReviewTutor";
+import MyLessons from "./components/MyLessons/MyLessons";
+import TutorList from "./components/TutorList/TutorList";
+import * as USER_HELPERS from "./utils/userToken";
+import * as PATHS from "./utils/paths";
 
 class App extends React.Component {
   state = {
@@ -102,7 +92,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        {/* <HomeNavbar handleLogout={this.handleLogout} user={this.state.user} /> */}
+        <Navbar handleLogout={this.handleLogout} user={this.state.user} />
         <Switch>
           <NormalRoute exact path={PATHS.HOMEPAGE} component={Home} />
           <NormalRoute
@@ -130,14 +120,25 @@ class App extends React.Component {
             authenticate={this.authenticate}
             component={ReviewTutor}
           />
+          <NormalRoute
+            exact
+            path={PATHS.TUTOR_LIST}
+            authenticate={this.authenticate}
+            component={TutorList}
+          />
           <ProtectedRoute
             exact
             path={PATHS.USER_DETAILS}
             component={this.state.user?.isTutor ? TutorProfile : StudentProfile}
             user={this.state.user}
           />
+          <ProtectedRoute
+            exact
+            path={PATHS.STUDENT_LESSONS}
+            component={MyLessons}
+            user={this.state.user}
+          />
         </Switch>
-        {/* <Route exact path="tutor/list" component={TutorList} /> */}
       </div>
     );
   }

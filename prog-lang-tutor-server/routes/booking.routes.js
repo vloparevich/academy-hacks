@@ -3,6 +3,7 @@ const router = new Router();
 const User = require('../models/User.model');
 const Course = require('../models/Course.model');
 const Timeslot = require('../models/Timeslot.model');
+const StudentBooking = require('../models/StudentBooking.model');
 const mongoose = require('mongoose');
 
 // ****************************************************************************************
@@ -59,8 +60,7 @@ router.post('/', async (req, res, next) => {
         }
       );
     }
-
-    res.status(201).json({ updatedAvailability: 'test' });
+    res.status(201).json({ success: true });
   } catch (err) {
     res.json({
       success: false,
@@ -88,6 +88,59 @@ router.post('/calendar', (req, res) => {
       console.log({ err: err });
       res.json({ success: false, error: err });
     });
+});
+
+// ****************************************************************************************
+// POST route to add more lessons on a student's bookings or create a new booking
+// ****************************************************************************************
+router.post('/saveBookingsOnStudent', async (req, res) => {
+  const { date, pickedSlots, studentId, tutorId } = req.body;
+  preparedStudentId = mongoose.Types.ObjectId(studentId);
+
+  let booking;
+  let updatedUser;
+  console.log(
+    'debug booking',
+    { date: date },
+    { studentId: preparedStudentId }
+  );
+  try {
+    booking = await StudentBooking.findOneAndUpdate(
+      {
+        $and: [
+          { date: date },
+          { studentId: preparedStudentId },
+          { tutorId: tutorId },
+        ],
+      },
+      { $push: { pickedSlots: pickedSlots } },
+      { new: true }
+    );
+
+    if (!booking) {
+      booking = await StudentBooking.create({
+        date,
+        pickedSlots,
+        studentId,
+        tutorId,
+      });
+
+      updatedUser = await User.findByIdAndUpdate(
+        studentId,
+        { $push: { myBookings: booking._id } },
+        { new: true }
+      );
+    }
+
+    const tutorDetails = await User.findById(tutorId);
+
+    res.status(200).json({
+      success: true,
+      booking: booking,
+      updatedUser: updatedUser,
+      tutor: tutorDetails,
+    });
+  } catch (err) {}
 });
 
 module.exports = router;

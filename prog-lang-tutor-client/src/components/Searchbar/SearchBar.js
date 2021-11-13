@@ -8,13 +8,13 @@ export default class SearchBar extends Component {
         {/* <p>Search</p> */}
         <fieldset>
           <input
+            autoComplete="off"
             name="searchInput"
-            placeholder="Search"
+            placeholder="Search for the langugae you are willing to learn"
             onChange={(event) =>
               this.props.onSearchQueryChange(event.target.value)
             }
           />
-
           <legend>SEARCH</legend>
         </fieldset>
       </div>

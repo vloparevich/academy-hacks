@@ -1,57 +1,49 @@
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router-dom';
 import USER_SERVICE from '../../services/UserServices';
 import BOOKING_SERVICE from '../../services/BookingServices';
+import * as PATHS from '../../utils/paths';
 import Timeslot from '../Timeslot/Timeslot';
 import ReviewTutor from '../ReviewTutor/ReviewTutor';
 import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
 import '../TutorDetails/TutorDetails.css';
 import countries from '../../resources/countries.json';
-import { Redirect } from 'react-router-dom';
-import * as PATHS from '../../utils/paths';
 
 export default class TutorDetails extends Component {
   state = { isScheduleShown: false, timeRange: {} };
   tutorId = this.props.match.params;
-
   componentDidMount = () => {
     console.log('mounting');
     this.getTutorDetails();
   };
-
   getTutorDetails = () => {
     const { params } = this.props.match;
-
     USER_SERVICE.getSpecificTutor(params.id).then((responseFromAPI) => {
       this.setState({
         tutorDetails: responseFromAPI.tutor,
-        timeRange: responseFromAPI.tutor.timeRangeOfAvailability,
-        coursesTaught: responseFromAPI.tutor.coursesTaught.courses[0],
+        timeRange: responseFromAPI.tutor?.timeRangeOfAvailability,
+        coursesTaught: responseFromAPI.tutor?.coursesTaught.courses[0],
       });
     });
   };
-
   handleBookClick = () => {
     this.setState({
       isScheduleShown: !this.state.isScheduleShown,
     });
   };
-
   savingBookedTimeslots = (details) => {
     BOOKING_SERVICE.updateMyAvailability(details, this.tutorId);
   };
-
   render() {
-    console.log(this.state.tutorDetails);
-    console.log('from app user', this.props.user);
     const nationalFlag = countries.find(
       (country) =>
         country.name.common === this.state.tutorDetails?.countryOfOrigin
     )?.flag;
+
+    console.log(!this.props.user, this.state.isScheduleShown);
     return (
       <>
-        <Navbar user={this.state.user} loading={this.state.loading} />
         {this.state.tutorDetails?.firstName && (
           <div className='TutorPage'>
             <div>
@@ -74,7 +66,6 @@ export default class TutorDetails extends Component {
                   <span> {nationalFlag}</span>
                 </p>
               </h3>
-
               <h2>
                 {this.state.coursesTaught.courseName} :{' '}
                 {this.state.coursesTaught.description}.
@@ -82,9 +73,10 @@ export default class TutorDetails extends Component {
               <Link to={`/tutor/review/${this.state.tutorDetails._id}`}>
                 <button type='button'>Review This Tutor</button>
               </Link>
-              <div className='Reviews'>
-                Reviews{this.state.tutorDetails.reviews}
-              </div>
+              <ReviewTutor
+                tutorId={this.tutorId.id}
+                studentId={this.props.user?._id}
+              />
             </div>
             <div className='TutorActions'>
               <button onClick={this.handleBookClick}>Book a lesson</button>
@@ -102,6 +94,7 @@ export default class TutorDetails extends Component {
                 timeRange={this.state.timeRange}
                 bookedTime={this.savingBookedTimeslots}
                 tutorId={this.tutorId.id}
+                studentId={this.props.user?._id}
               />
             )}
           </div>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./Home.css";
 import SearchBar from "../Searchbar/SearchBar";
 import USER_SERVICE from "../../services/UserServices";
-import HomeNavbar from "../HomeNavbar/HomeNavbar";
+import Navbar from "../HomeNavbar/HomeNavbar";
 import TutorRow from "../TutorRow/TutorRow";
 import { Link } from "react-router-dom";
 
@@ -50,8 +50,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <HomeNavbar user={this.state.user} loading={this.state.loading} />
+      <div className="homepage-container">
         <div className="landingPageImg"></div>
         <div className="titleHome">
           <h1>What are you going to learn today?</h1>

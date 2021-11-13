@@ -20,12 +20,16 @@ input {
 }
 fieldset {
   border: 1px solid #b2e89a;
+  width: 64rem;
 }
 legend {
   margin-right: 50px;
 }
 .searchContainer {
   padding-top: 50px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 #checkboxlabel {
   display: inline;

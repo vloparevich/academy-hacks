@@ -28,10 +28,14 @@ const userSchema = new Schema({
     },
   },
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
-  tutorReviews: [{ type: Schema.Types.ObjectId, ref: 'Review'}],
-  coursesTaught: { type: Schema.Types.ObjectId, ref: 'Course' },
+  coursesTaught: {
+    type: Schema.Types.ObjectId,
+    ref: 'Course',
+    autopopulate: true,
+  },
+  myBookings: [{ type: Schema.Types.ObjectId, ref: 'StudentBooking' }],
 });
 
+userSchema.plugin(require('mongoose-autopopulate'));
 const User = model('User', userSchema);
-
 module.exports = User;

@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const router = new Router();
+const mongoose = require('mongoose');
 const User = require('../models/User.model');
 const Review = require('../models/Review.model');
 
@@ -8,21 +9,21 @@ const Review = require('../models/Review.model');
 // POST route to post a review
 // ****************************************************************************************
 router.post('/tutor/review', async (req, res) => {
-    
-    const { userId, reviewContent, tutorId } = req.body;
+    const { studentId, tutorId, reviewContent } = req.body;
     try {
-        const review = await Review.create({ user_id: userId, reviewContent: reviewContent, tutor_id: tutorId });
-        const userWithReview = await User.findByIdAndUpdate(userId, {
+        const preparedTutorId = mongoose.Types.ObjectId(tutorId);
+        const preparedStudentId = mongoose.Types.ObjectId(studentId);
+        const review = await Review.create({ student_id: preparedStudentId, tutor_id: preparedTutorId, reviewContent: reviewContent });
+        const studentWithReview = await User.findByIdAndUpdate(studentId, {
             $push: { reviews: review._id }
         }, { new: true });
         const tutorWithReview = await User.findByIdAndUpdate(tutorId, {
-            $push: { tutorReviews: review._id }
+            $push: { reviews: review._id }
         }, { new: true });
-        Promise.all([review, userWithReview, tutorWithReview]).then(reviewAndUsers => {
-            res.status(200).json({success:true, reviewAndUsers:reviewAndUsers})
-        })
+        const allReviews = await Review.find({ tutor_id: preparedTutorId }).populate('student_id');
+        res.status(201).json({ success: true, allReviews: allReviews });
     } catch (err) {
-        res.json({success:false, message:'Review not created', err:err})
+        res.json({ success: false, message: 'Review not created', err: err })
     }
 });
 
