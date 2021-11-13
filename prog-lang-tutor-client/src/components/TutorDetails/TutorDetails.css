@@ -6,6 +6,13 @@ Accent/borders Green colors: #36B37E
 
 */
 
+.TutorPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 15rem;
+}
+
 .TutorProfilePicture {
   display: flex;
   margin-top: 5rem;

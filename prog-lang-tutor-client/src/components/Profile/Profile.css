@@ -16,20 +16,16 @@ Blue Grey
 900 = #102A43 <== darkest
 */
 
-h3 {
-  color: #f0f4f8;
-}
-
 .profileContainer {
-  background-color: #264C59;
+  background-color: #243B53;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   height: auto;
-  max-width: 60rem;
+  /* max-width: 80%; */
   min-height: 24.5rem;
-  margin: 3rem auto 1.5rem auto;
+  margin: 3rem 3rem 1.5rem 3rem;
 }
 
 @media screen and (max-width: 1000px) {
