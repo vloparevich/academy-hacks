@@ -1,12 +1,7 @@
-/*Green 300 #36B37E
-Green 200 #B1EC98
-dark blueBackGround Color:  #1d2025;
-900 Blue Grey NavBar color: #102A43
-Accent/borders Green colors: #36B37E
 /*
 Green 300: #36B37E
-Green 200: #B1EC98
 =======================
+Black Background: #1D1F25
 =======================
 Blue Grey
 50 = #F0F4F8 <== lightest
@@ -42,7 +37,7 @@ Blue Grey
   flex-direction: row;
   justify-content: end;
   align-items: center;
-  font-family: "levoto", sans-serif;
+  font-family: 'levoto', sans-serif;
   height: 100%;
   width: 35%;
   margin: 0;
@@ -53,6 +48,15 @@ Blue Grey
   margin: 0 1rem;
   font-size: 18px;
   justify-content: flex-end;
+}
+
+.navbarSignupBorder {
+  background-color: #102a43;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
 }
 
 #mainNavComponent a,

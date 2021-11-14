@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { signup } from '../../services/auth-service';
 import './Auth.css';
-import Navbar from '../Navbar/Navbar';
 import * as USER_HELPERS from '../../utils/userToken';
 import * as PATHS from '../../utils/paths';
+import { Link } from 'react-router-dom';
 
 export default class Signup extends Component {
   state = {
@@ -218,6 +218,12 @@ export default class Signup extends Component {
               </>
             )}
           </form>
+        </div>
+        <div className='authCreateAccountContainer'>
+          Already have an Academy Hacks account?{' '}
+          <Link to='/auth/login'>
+            <b>Log In</b>
+          </Link>
         </div>
       </>
     );

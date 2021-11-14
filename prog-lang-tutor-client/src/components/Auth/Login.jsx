@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { login } from '../../services/auth-service';
 import * as PATHS from '../../utils/paths';
 import * as USER_HELPERS from '../../utils/userToken';
-import Navbar from '../Navbar/Navbar';
 import './Auth.css';
+import { Link } from 'react-router-dom';
 
 export default class Login extends Component {
   state = {
@@ -98,6 +98,12 @@ export default class Login extends Component {
               </div>
             )}
           </form>
+        </div>
+        <div className='authCreateAccountContainer'>
+          New to Academy Hacks?{' '}
+          <Link to='/auth/signup'>
+            <b>Create an account</b>
+          </Link>
         </div>
       </div>
     );
