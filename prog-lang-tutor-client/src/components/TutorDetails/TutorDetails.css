@@ -1,30 +1,88 @@
-/*Green 300 #36B37E
-Green 200 #B1EC98
-dark blueBackGround Color:  #1d2025;
-900 Blue Grey NavBar color: #102A43
-Accent/borders Green colors: #36B37E
-
+/*
+Green 300: #36B37E
+=======================
+Black Background: #1D1F25
+=======================
+Blue Grey
+50 = #F0F4F8 <== lightest
+100 = #D9E2EC
+200 = #BCCCDC
+300 = #9FB3C8
+400 = #829AB1
+500 = #627D98 <== main
+600 = #486581
+700 = #334E68
+800 = #243B53
+900 = #102A43 <== darkest
 */
 
-.TutorPage {
+.TutorContainer {
+  /* background-color: #102A43; */
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 15rem;
+  height: auto;
+  margin: 5rem 30rem 1.5rem 30rem;
 }
 
 .TutorProfilePicture {
-  display: flex;
-  margin-top: 5rem;
-  margin-left: 5rem;
-  width: 15rem;
-  align-self: left;
+  max-width: 15rem;
+  max-height: 10rem;
   border-radius: 5px;
+  align-self: left;
+  padding: 1rem 0;
 }
 
 .TutorInfo {
-  margin-left: 20rem;
-  margin-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
   text-align: left;
-  margin-top: -17rem;
+  margin-left: 2rem;
+}
+
+.TutorDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  background-color: #1d1f25;
+  width: 80rem;
+}
+
+.TutorDetailsDescription {
+  padding: 0 2rem 2rem 2rem;
+  text-align: left;
+  background-color: #243b53;
+  margin: 1rem 0;
+}
+
+.TutorDetailsScheduleContainer {
+  padding: 0 2rem 2rem 2rem;
+  text-align: left;
+  background-color: #243b53;
+  margin: 1rem 0;
+}
+
+.TutorDetailsScheduleNotLoggedIn {
+  margin: 1rem 0;
+}
+
+.TutorDetailsScheduleNotLoggedIn span {
+  padding: 1rem;
+  color: rgb(72, 72, 72);
+  background-color: darkgrey;
+  border-radius: 5px;
+}
+
+.TutorReviews {
+  padding: 0 2rem 2rem 2rem;
+  text-align: left;
+  background-color: #243b53;
+  margin: 1rem 0;
+}
+
+#bookLessonButton {
+  height: 3rem;
+  width: 7rem;
+  background-color: #b2e89a;
 }

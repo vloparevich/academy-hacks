@@ -1,7 +1,7 @@
 /*
 Green 300: #36B37E
-Green 200: #B1EC98
 =======================
+Black Background: #1D1F25
 =======================
 Blue Grey
 50 = #F0F4F8 <== lightest
@@ -43,7 +43,7 @@ h3 {
   flex-direction: column;
   align-content: center;
   max-width: 35rem;
-  margin: 5rem auto;
+  margin: 5rem auto 2rem auto;
   height: 1140%;
 }
 
@@ -56,6 +56,7 @@ h3 {
   list-style: none;
   margin: 0;
   padding: 0;
+  border-radius: 7px;
 }
 
 #active-student-signup-toggle {
@@ -79,6 +80,7 @@ h3 {
   align-items: left;
   align-content: left;
   text-decoration: none;
+  border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
   border-color: #627d98;
   border-style: solid;
@@ -169,4 +171,15 @@ h3 {
 
 .invalidCredentials {
   color: #dc143c;
+}
+
+.authCreateAccountContainer {
+  background-color: #1d1f25;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
+  max-width: 35rem;
+  margin: 0 auto 2rem auto;
+  border-radius: 0.5rem;
+  padding: 1rem;
 }

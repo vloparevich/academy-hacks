@@ -18,10 +18,10 @@ class Navbar extends Component {
           {!this.props.user ? (
             <>
               <li>
-                <Link to='/auth/signup'>Sign Up</Link>
-              </li>
-              <li>
                 <Link to='/auth/login'>Login</Link>
+              </li>
+              <li className='navbarSignupBorder'>
+                <Link to='/auth/signup'>Sign Up</Link>
               </li>
             </>
           ) : (

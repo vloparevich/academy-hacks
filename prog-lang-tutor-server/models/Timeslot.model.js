@@ -13,5 +13,4 @@ const timeslotSchema = new Schema({
 });
 
 const Timeslot = model('Timeslot', timeslotSchema);
-
 module.exports = Timeslot;

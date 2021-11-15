@@ -1,0 +1,21 @@
+.reviewArea {
+  display: flex;
+  flex-direction: column;
+}
+
+#addReviewButton {
+  margin-left: 4rem;
+  height: 3rem;
+  width: 7rem;
+  background-color: #b2e89a;
+}
+
+.reviewList {
+    display:flex;
+    flex-direction: center;
+}
+
+.reviewList ul > * {
+    text-align: left;
+    list-style-type: none;
+}
