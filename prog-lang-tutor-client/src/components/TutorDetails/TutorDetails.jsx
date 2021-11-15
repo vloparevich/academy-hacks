@@ -5,10 +5,7 @@ import BOOKING_SERVICE from '../../services/BookingServices';
 import * as PATHS from '../../utils/paths';
 import Timeslot from '../Timeslot/Timeslot';
 import ReviewTutor from '../ReviewTutor/ReviewTutor';
-import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
-import '../TutorDetails/TutorDetails.css';
-import countries from '../../resources/countries.json';
 import '../TutorDetails/TutorDetails.css';
 import CountryFlag from '../CountryFlag/CountryFlag';
 

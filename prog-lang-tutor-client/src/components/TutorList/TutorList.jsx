@@ -4,6 +4,7 @@ import './TutorList.css';
 import USER_SERVICE from '../../services/UserServices';
 import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
+import CountryFlag from '../CountryFlag/CountryFlag';
 
 class TutorList extends Component {
   state = { courseName: this.props.location.courseName };
@@ -30,9 +31,7 @@ class TutorList extends Component {
         ? this.state.tutorsFromApi[i].coursesTaught?.courses
         : 0;
       for (let j = 0; j < courses.length; j++) {
-        courses[j].courseName
-          .toLowerCase()
-          .includes(searchInput.toLowerCase()) &&
+        courses[j].courseName.toLowerCase() === searchInput.toLowerCase() &&
           filteredTutors.push(this.state.tutorsFromApi[i]);
       }
     }
@@ -53,22 +52,31 @@ class TutorList extends Component {
         <div>
           {this.state.filteredTutors?.map((tutorInfo) => (
             <>
-              <div>
-                <img
-                  className='tutorListPic'
-                  src={tutorInfo.profilePic}
-                  alt='profile'
-                ></img>
-
-                <p>
-                  {tutorInfo.firstName} {tutorInfo.lastName}{' '}
-                </p>
+              <div className='tutorListContainer'>
+                <div className='tutorlistInfo'>
+                  <img
+                    className='tutorListPic'
+                    src={tutorInfo.profilePic}
+                    alt='profile'
+                  ></img>
+                  <div className='tutorDescription'>
+                    <h2>
+                      {tutorInfo.firstName} {tutorInfo.lastName}{' '}
+                      {tutorInfo.countryOfOrigin}
+                      <CountryFlag
+                        countryOfOrigin={this.state.tutorInfo?.countryOfOrigin}
+                      />
+                    </h2>
+                    <h3>
+                      Courses: {tutorInfo.coursesTaught.courses[0].courseName}{' '}
+                      {/* {tutorInfo.reviews} */}
+                    </h3>
+                    <h3> Teaching Experince: {tutorInfo.teachingExperience}</h3>{' '}
+                    <h3>{tutorInfo.coursesTaught.courses[0].description}</h3>
+                    {/* <button href='tutor/:id'>Book Lesson</button> */}
+                  </div>
+                </div>
               </div>
-              <h3>
-                Courses: {tutorInfo.coursesTaught.courses[0].courseName}{' '}
-                {tutorInfo.description}
-              </h3>
-              <h3> Teaching Experince: {tutorInfo.teachingExperience}</h3>{' '}
             </>
           ))}
         </div>

@@ -55,15 +55,16 @@ Blue Grey
   height: 3vh;
 }
 
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+}
 
-/* .landingPageImg { */
-/* background-image: url(https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg); */
-/* background-size: cover;
+.landingPageImg {
+  background-image: url(https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg);
+  background-size: cover;
   background-repeat: no-repeat;
   background-color: rgba(87, 83, 79, 1);
-  background-blend-mode: multiply; */
-/* } */
+  background-blend-mode: multiply;
+}
 
 .searchBar {
   display: flex;
@@ -125,7 +126,7 @@ table {
 
 a {
   text-decoration: none;
-  /* color: white; */
+  color: white;
 }
 
 a:hover {
