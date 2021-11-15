@@ -48,6 +48,10 @@ class Home extends Component {
   };
 
   render() {
+    const javascript = {
+      pathname: '/tutor/list/courses',
+      courseName: 'javascript',
+    };
     return (
       <div className='homepage-container'>
         <div className='landingPageImg'></div>
@@ -63,53 +67,119 @@ class Home extends Component {
             </Link>
           ))}
         </div>
-        {/* <div className='tableContainer'> */}
-        <div className='courseTable'>
-          <table>
-            <tr>
-              <td>
-                <div className='javsScLogo'>
-                  <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' />
-                </div>
+        <div className='tableContainer'>
+          <div className='courseTable'>
+            <table>
+              <tr>
+                <td>
+                  <div className='javsScLogo'>
+                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' />
+                  </div>
 
-                <Link to='/tutor/list/courses'>JavaScript tutors</Link>
-              </td>
-              <td>
-                <div className='javaLogo'>
-                  <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' />
-                </div>
-                <Link to='/tutor/list/courses'>Java tutors</Link>
-              </td>
-              <td>
-                <div className='phpLogo'>
-                  <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' />
-                </div>
-                <Link to='/tutor/list/courses'>PHP tutors</Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link to='/tutor/list/courses'>C++ tutors</Link>
-              </td>
-              <td>
-                <Link to='/tutor/list/courses'>C# tutors</Link>
-              </td>
-              <td>
-                <Link to='/tutor/list/courses'>Backend tutors</Link>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <Link to='/tutor/list/courses'>Frontend tutors</Link>
-              </td>
-              <td>
-                <Link to='/tutor/list/courses'>Json tutors</Link>
-              </td>
-              <td>
-                <Link to='/tutor/list/courses'>HTML/CSS tutors</Link>
-              </td>
-            </tr>
-          </table>
+                  <Link
+                    to={javascript}
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'javascript',
+                    }}
+                  >
+                    JavaScript tutors
+                  </Link>
+                </td>
+                <td>
+                  <div className='javaLogo'>
+                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' />
+                  </div>
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'java',
+                    }}
+                  >
+                    Java tutors
+                  </Link>
+                </td>
+                <td>
+                  <div className='phpLogo'>
+                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' />
+                  </div>
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'php',
+                    }}
+                  >
+                    PHP tutors
+                  </Link>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'c',
+                    }}
+                  >
+                    C tutors
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'ruby',
+                    }}
+                  >
+                    Ruby tutors
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'swift',
+                    }}
+                  >
+                    SWIFT tutors
+                  </Link>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'fortran',
+                    }}
+                  >
+                    Fortran tutors
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'kotlin',
+                    }}
+                  >
+                    Kotlin tutors
+                  </Link>
+                </td>
+                <td>
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'scala',
+                    }}
+                  >
+                    {' '}
+                    Scala tutors
+                  </Link>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
         {/* </div> */}
       </div>
