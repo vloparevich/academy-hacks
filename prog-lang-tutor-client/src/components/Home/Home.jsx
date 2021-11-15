@@ -51,9 +51,9 @@ class Home extends Component {
     return (
       <div className='homepage-container'>
         <div className='landingPageImg'></div>
-        <div className='titleHome'>
-          <h1>What are you going to learn today?</h1>
-          <p>At Academy Hacks, we put you in control of your lessons...</p>
+        <div className='text-gradient-mint-blue-dark'>
+          <h1 className='home-page-h1'>What are you going to learn today?</h1>
+          <h2>At Academy Hacks, we put you in control of your lessons →</h2>
         </div>
         <div className='searchBar'>
           <SearchBar onSearchQueryChange={this.onSearchInputChange} />
@@ -63,55 +63,55 @@ class Home extends Component {
             </Link>
           ))}
         </div>
-        <div className='tableContainer'>
-          <div className='courseTable'>
-            <table>
-              <tr>
-                <td>
-                  <div className='javsScLogo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' />
-                  </div>
+        {/* <div className='tableContainer'> */}
+        <div className='courseTable'>
+          <table>
+            <tr>
+              <td>
+                <div className='javsScLogo'>
+                  <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' />
+                </div>
 
-                  <Link to='/tutor/list/courses'>JavaScript tutors</Link>
-                </td>
-                <td>
-                  <div className='javaLogo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' />
-                  </div>
-                  <Link to='/tutor/list/courses'>Java tutors</Link>
-                </td>
-                <td>
-                  <div className='phpLogo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' />
-                  </div>
-                  <Link to='/tutor/list/courses'>PHP tutors</Link>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Link to='/tutor/list/courses'>C++ tutors</Link>
-                </td>
-                <td>
-                  <Link to='/tutor/list/courses'>C# tutors</Link>
-                </td>
-                <td>
-                  <Link to='/tutor/list/courses'>Backend tutors</Link>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Link to='/tutor/list/courses'>Frontend tutors</Link>
-                </td>
-                <td>
-                  <Link to='/tutor/list/courses'>Json tutors</Link>
-                </td>
-                <td>
-                  <Link to='/tutor/list/courses'>HTML/CSS tutors</Link>
-                </td>
-              </tr>
-            </table>
-          </div>
+                <Link to='/tutor/list/courses'>JavaScript tutors</Link>
+              </td>
+              <td>
+                <div className='javaLogo'>
+                  <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' />
+                </div>
+                <Link to='/tutor/list/courses'>Java tutors</Link>
+              </td>
+              <td>
+                <div className='phpLogo'>
+                  <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' />
+                </div>
+                <Link to='/tutor/list/courses'>PHP tutors</Link>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Link to='/tutor/list/courses'>C++ tutors</Link>
+              </td>
+              <td>
+                <Link to='/tutor/list/courses'>C# tutors</Link>
+              </td>
+              <td>
+                <Link to='/tutor/list/courses'>Backend tutors</Link>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Link to='/tutor/list/courses'>Frontend tutors</Link>
+              </td>
+              <td>
+                <Link to='/tutor/list/courses'>Json tutors</Link>
+              </td>
+              <td>
+                <Link to='/tutor/list/courses'>HTML/CSS tutors</Link>
+              </td>
+            </tr>
+          </table>
         </div>
+        {/* </div> */}
       </div>
     );
   }
