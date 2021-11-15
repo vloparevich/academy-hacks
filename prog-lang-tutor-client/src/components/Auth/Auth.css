@@ -83,6 +83,7 @@ h3 {
     align-content: left;
     text-decoration: none;
     border-top-right-radius: .5rem;
+    border-top-left-radius: .5rem;
     border-color: #627D98;
     border-style: solid;
     border-width: .01rem;
