@@ -19,9 +19,11 @@ Blue Grey
 .searchContainer {
   display: flex;
   width: 60rem;
+  padding: .5rem;
+  margin-bottom: 5rem;
 }
 
-input {
+.searchContainer input {
   width: 100%;
   height: 3rem;
   border-style: solid;
@@ -30,6 +32,7 @@ input {
   border-radius: 0.3rem;
   background-color: transparent;
   color: #b2e89a;
+  box-shadow: 3px 3px 3px #36b37f3a;
 }
 
 /* fieldset {

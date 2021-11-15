@@ -136,8 +136,11 @@ h3 {
 .auth-form-container input {
   background-color: #102a43;
   margin: 0.5rem;
-  color: red;
-  border-color: #627d98;
+  color: #F0F4F8;
+  border-radius: 0.3rem;
+  border-color: #334E68;
+  border-style: solid;
+  border-width: 0.01rem;
   font-weight: bold;
   padding: 0.5rem;
 }
@@ -146,8 +149,7 @@ h3 {
   margin-top: 2rem;
   font-family: monospace;
   font-size: large;
-  font-weight: bold;
-  color: #36b37e;
+  color: #627D98;
 }
 
 .auth-form-container h3 {
