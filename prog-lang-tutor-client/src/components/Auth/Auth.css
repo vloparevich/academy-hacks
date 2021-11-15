@@ -57,6 +57,8 @@ h3 {
     list-style: none;
     margin: 0;
     padding: 0;
+    border-radius: 7px;
+    ;
 }
 
 #active-student-signup-toggle {
@@ -80,7 +82,7 @@ h3 {
     align-items: left;
     align-content: left;
     text-decoration: none;
-    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
     border-color: #627D98;
     border-style: solid;
     border-width: .01rem;
