@@ -57,10 +57,9 @@ class Home extends Component {
       <div className='homepage-container'>
         {/* <HomeNavbar user={this.state.user} loading={this.state.loading} /> */}
         <div className='landingPageImg'></div>
-
-        <div className='titleHome'>
-          <h1>What are you going to learn today?</h1>
-          <p>At Academy Hacks, we put you in control of your lessons...</p>
+        <div className='text-gradient-mint-blue-dark'>
+          <h1 className='home-page-h1'>What are you going to learn today?</h1>
+          <h2>At Academy Hacks, we put you in control of your lessons →</h2>
         </div>
         <div className='searchBar'>
           <SearchBar onSearchQueryChange={this.onSearchInputChange} />
@@ -211,6 +210,7 @@ class Home extends Component {
             </table>
           </div>
         </div>
+        {/* </div> */}
       </div>
     );
   }

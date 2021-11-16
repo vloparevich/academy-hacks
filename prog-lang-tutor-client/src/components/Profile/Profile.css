@@ -1,7 +1,7 @@
 /*
 Green 300: #36B37E
-Green 200: #B1EC98
 =======================
+Black Background: #1D1F25
 =======================
 Blue Grey
 50 = #F0F4F8 <== lightest
@@ -211,7 +211,8 @@ textarea {
 #myClassesSection {
   display: flex;
   flex-direction: column;
-  background-color: #274F5A;
+  background-color: #243B53;
+
   height: auto;
   margin: 0 auto;
   border-radius: 5px;

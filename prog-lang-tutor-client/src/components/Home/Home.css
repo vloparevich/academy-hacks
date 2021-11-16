@@ -1,7 +1,7 @@
 /*
 Green 300: #36B37E
-Green 200: #B1EC98
 =======================
+Black Background: #1D1F25
 =======================
 Blue Grey
 50 = #F0F4F8 <== lightest
@@ -11,33 +11,33 @@ Blue Grey
 400 = #829AB1
 500 = #627D98 <== main
 600 = #486581
-700 = #334E68
 800 = #243B53
 900 = #102A43 <== darkest
 */
 
-/* body {
-  background-color: #1d2025;
-} */
-
 .homepage-container {
   display: flex;
   flex-direction: column;
-  background-color: #1d2025;
+  align-items: center;
+  justify-content: center;
+  margin: auto 20rem;
 }
 
-.titleHome {
-  font-size: 25px;
-  width: 65vw;
+.text-gradient-mint-blue-dark {
+  background: -webkit-linear-gradient(-70deg, #d9e2ec 0%, #36b37e 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: flex;
   flex-direction: column;
-  margin: 2rem auto;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 8rem auto;
 }
 
-.titleHome p {
-  font: 5px;
-  font-family: sans-serif;
+.home-page-h1 {
+  font-size: 72px;
+  margin-bottom: 0;
 }
 
 .logo {
@@ -64,16 +64,16 @@ Blue Grey
   margin: 1rem auto;
 }
 
-.tableContainer {
+/* .tableContainer {
   margin: 5rem 0;
   display: flex;
   flex-direction: column;
-}
+} */
 
 .courseTable {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 5rem auto;
 }
 
 table,
