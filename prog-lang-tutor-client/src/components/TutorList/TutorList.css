@@ -35,17 +35,21 @@ Blue Grey
   border-radius: 15%;
 }
 .tutorList {
-  background-color: #1d2025;
+  /* background-color: #1d2025; */
 }
 
 .tutorlistInfo {
   display: flex;
   justify-content: space-evenly;
   width: 50vw;
-  background-color: #243b53;
-  border-radius: 2%;
+  /* background-color: #243b53; */
+  /* border-radius: 2%; */
   color: white;
-  border: solid #36b37e;
+  /* border: solid #36b37e; */
+  border-width: 3px;
+  border-style: solid;
+  border-image: linear-gradient(to bottom, #36b37e, rgba(0, 0, 0, 0)) 1 100%;
+  line-height: 0.05vh;
 }
 .tutorListContainer {
   display: flex;

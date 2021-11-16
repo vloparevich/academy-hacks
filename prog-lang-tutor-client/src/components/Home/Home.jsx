@@ -4,6 +4,7 @@ import SearchBar from '../Searchbar/SearchBar';
 import USER_SERVICE from '../../services/UserServices';
 import TutorRow from '../TutorRow/TutorRow';
 import { Link } from 'react-router-dom';
+// import HomeNavbar from '../HomeNavbar/HomeNavbar';
 
 class Home extends Component {
   state = {
@@ -54,7 +55,9 @@ class Home extends Component {
     };
     return (
       <div className='homepage-container'>
+        {/* <HomeNavbar user={this.state.user} loading={this.state.loading} /> */}
         <div className='landingPageImg'></div>
+
         <div className='titleHome'>
           <h1>What are you going to learn today?</h1>
           <p>At Academy Hacks, we put you in control of your lessons...</p>
@@ -72,110 +75,137 @@ class Home extends Component {
             <table>
               <tr>
                 <td>
-                  <div className='javsScLogo'>
+                  <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' />
-                  </div>
 
-                  <Link
-                    // to={javascript}
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'javascript',
-                    }}
-                  >
-                    JavaScript tutors
-                  </Link>
+                    <Link
+                      // to={javascript}
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'javascript',
+                      }}
+                    >
+                      JavaScript tutors
+                    </Link>
+                  </div>
                 </td>
                 <td>
-                  <div className='javaLogo'>
+                  <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' />
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'java',
+                      }}
+                    >
+                      Java tutors
+                    </Link>
                   </div>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'java',
-                    }}
-                  >
-                    Java tutors
-                  </Link>
                 </td>
                 <td>
-                  <div className='phpLogo'>
+                  <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' />
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'php',
+                      }}
+                    >
+                      PHP tutors
+                    </Link>
                   </div>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'php',
-                    }}
-                  >
-                    PHP tutors
-                  </Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'c',
-                    }}
-                  >
-                    C tutors
-                  </Link>
+                  <div className='logo'>
+                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg' />
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'c',
+                      }}
+                    >
+                      C tutors
+                    </Link>
+                  </div>
+                </td>
+
+                <td>
+                  <div className='logo'>
+                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg' />
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'ruby',
+                      }}
+                    >
+                      Ruby tutors
+                    </Link>
+                  </div>
                 </td>
                 <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'ruby',
-                    }}
-                  >
-                    Ruby tutors
-                  </Link>
-                </td>
-                <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'swift',
-                    }}
-                  >
-                    SWIFT tutors
-                  </Link>
+                  <div className='logo'>
+                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg' />
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'swift',
+                      }}
+                    >
+                      SWIFT tutors
+                    </Link>
+                  </div>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'fortran',
-                    }}
-                  >
-                    Fortran tutors
-                  </Link>
+                  <div className='logo'>
+                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg' />
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'rails',
+                      }}
+                    >
+                      Rails tutors
+                    </Link>
+                  </div>
                 </td>
                 <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'kotlin',
-                    }}
-                  >
-                    Kotlin tutors
-                  </Link>
+                  <div className='logo'>
+                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg' />
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'kotlin',
+                      }}
+                    >
+                      Kotlin tutors
+                    </Link>
+                  </div>
                 </td>
                 <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'scala',
-                    }}
-                  >
-                    {' '}
-                    Scala tutors
-                  </Link>
+                  <div className='logo'>
+                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg' />
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'scala',
+                      }}
+                    >
+                      {' '}
+                      Scala tutors
+                    </Link>
+                  </div>
                 </td>
               </tr>
             </table>

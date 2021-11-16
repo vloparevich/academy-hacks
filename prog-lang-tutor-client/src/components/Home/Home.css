@@ -40,19 +40,11 @@ Blue Grey
   font-family: sans-serif;
 }
 
-.javsScLogo {
-  width: 2vw;
-  height: 2vh;
-}
-
-.javaLogo {
-  width: 3vw;
+.logo {
+  width: 15vw;
   height: 3vh;
-}
-
-.phpLogo {
-  width: 3vw;
-  height: 3vh;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 @media only screen and (max-width: 600px) {
