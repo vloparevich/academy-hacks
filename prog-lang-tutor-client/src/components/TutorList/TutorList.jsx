@@ -47,8 +47,9 @@ class TutorList extends Component {
   render() {
     return (
       <div className='tutorList'>
-        <h1>Courses</h1>
-
+        <div className='title-list'>
+          <h1>Courses</h1>
+        </div>
         <div>
           {this.state.filteredTutors?.map((tutorInfo) => (
             <>
@@ -60,18 +61,19 @@ class TutorList extends Component {
                     alt='profile'
                   ></img>
                   <div className='tutorDescription'>
-                    <h2>
+                    <h1>
                       {tutorInfo.firstName} {tutorInfo.lastName}{' '}
-                      {tutorInfo.countryOfOrigin}
                       <CountryFlag
-                        countryOfOrigin={this.state.tutorInfo?.countryOfOrigin}
+                        countryOfOrigin={tutorInfo?.countryOfOrigin}
                       />
-                    </h2>
+                    </h1>
                     <h3>
-                      Courses: {tutorInfo.coursesTaught.courses[0].courseName}{' '}
-                      {/* {tutorInfo.reviews} */}
+                      Course(s): {tutorInfo.coursesTaught.courses[0].courseName}{' '}
                     </h3>
-                    <h3> Teaching Experince: {tutorInfo.teachingExperience}</h3>{' '}
+                    <h3>
+                      {' '}
+                      Teaching Experince: {tutorInfo.teachingExperience} years
+                    </h3>{' '}
                     <h3>{tutorInfo.coursesTaught.courses[0].description}</h3>
                     {/* <button href='tutor/:id'>Book Lesson</button> */}
                   </div>

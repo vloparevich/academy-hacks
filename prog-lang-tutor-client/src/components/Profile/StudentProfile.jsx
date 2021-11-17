@@ -7,6 +7,7 @@ import * as PATHS from '../../utils/paths.js';
 import CountryFlag from '../CountryFlag/CountryFlag';
 import MyLessons from '../MyLessons/MyLessons';
 import USER_SERVICE from '../../services/UserServices.js';
+import Modal from '../Modal/Modal';
 
 class StudentProfile extends Component {
   state = {
@@ -21,6 +22,13 @@ class StudentProfile extends Component {
     isEditDetailsClicked: false,
     isShowMyBookingsClicked: false,
     prevCourseName: '',
+    show: false,
+  };
+
+  showModal = (e) => {
+    this.setState({
+      show: !this.state.show,
+    });
   };
 
   componentDidMount() {
@@ -98,7 +106,6 @@ class StudentProfile extends Component {
 
   handleFormInput = (event) => {
     const { name, value } = event.target;
-    console.log(name, value);
     this.setState({ [name]: value });
   };
 
@@ -253,12 +260,16 @@ class StudentProfile extends Component {
                       >
                         Edit my details
                       </button>
-                      <button
-                        id='deleteProfileButton'
-                        onClick={this.handleDeleteButton}
-                      >
-                        Delete my profile
+                      <button id='deleteProfileButton' onClick={this.showModal}>
+                        Delete profile
                       </button>
+                      <Modal
+                        onClose={this.showModal}
+                        show={this.state.show}
+                        onConfirm={this.handleDeleteButton}
+                      >
+                        Are you sure you want to delete your profile?
+                      </Modal>
                     </>
                   )}
               </div>

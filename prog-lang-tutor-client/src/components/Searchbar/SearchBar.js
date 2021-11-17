@@ -8,6 +8,7 @@ export default class SearchBar extends Component {
         {/* <p>Search</p> */}
         {/* <fieldset> */}
         <input
+          autoFocus
           autoComplete='off'
           name='searchInput'
           placeholder='Search for the langugae you are willing to learn'
