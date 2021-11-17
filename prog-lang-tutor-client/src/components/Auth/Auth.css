@@ -17,171 +17,171 @@ Blue Grey
 */
 
 h1 {
-    /* font-family: monospace; */
-    color: #F0F4F8;
+  /* font-family: monospace; */
+  color: #f0f4f8;
 }
 
 h2 {
-    /* font-family: monospace; */
-    color: #F0F4F8;
+  /* font-family: monospace; */
+  color: #f0f4f8;
 }
 
 h3 {
-    /* font-family: monospace; */
-    color: #829AB1;
+  /* font-family: monospace; */
+  /* color: #829AB1; */
 }
 
-
 .auth-container {
-    background-color: #102A43;
-    color: #627D98;
-    border-radius: .5rem;
-    border-color: #627D98;
-    border-style: solid;
-    border-width: .01rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-content: center;
-    max-width: 35rem;
-    margin: 5rem auto 2rem auto;
-    height: 1140%;
+  background-color: #102a43;
+  color: #627d98;
+  border-radius: 0.5rem;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  max-width: 35rem;
+  margin: 5rem auto 2rem auto;
+  height: 1140%;
 }
 
 .auth-top-bar {
-    background-color: #627D98;
-    color: #102A43;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border-radius: 7px;
-    ;
+  background-color: #627d98;
+  color: #102a43;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-radius: 7px;
 }
 
 #active-student-signup-toggle {
-    background-color: #36B37E;
-    font-weight: bold;
-    color: #F0F4F8;
-    align-items: left;
-    align-content: left;
-    text-decoration: none;
-    border-top-left-radius: .5rem;
-    border-color: #627D98;
-    border-style: solid;
-    border-width: .01rem;
-    padding: 1rem;
-    font-size: large;
-    width: 50%
+  background-color: #36b37e;
+  font-weight: bold;
+  color: #f0f4f8;
+  align-items: left;
+  align-content: left;
+  text-decoration: none;
+  border-top-left-radius: 0.5rem;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
+  padding: 1rem;
+  font-size: large;
+  width: 50%;
 }
 
 #inactive-student-signup-toggle {
-    background-color: #627D98;
-    align-items: left;
-    align-content: left;
-    text-decoration: none;
-    border-top-right-radius: .5rem;
-    border-top-left-radius: .5rem;
-    border-color: #627D98;
-    border-style: solid;
-    border-width: .01rem;
-    padding: 1rem;
-    font-size: large;
-    width: 50%
+  background-color: #627d98;
+  align-items: left;
+  align-content: left;
+  text-decoration: none;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
+  padding: 1rem;
+  font-size: large;
+  width: 50%;
 }
 
 #active-tutor-signup-toggle {
-    background-color: #36B37E;
-    font-weight: bold;
-    color: #F0F4F8;
-    align-items: right;
-    align-content: right;
-    text-decoration: none;
-    border-top-right-radius: .5rem;
-    border-color: #627D98;
-    border-style: solid;
-    border-width: .01rem;
-    padding: 1rem;
-    font-size: large;
-    width: 50%
+  background-color: #36b37e;
+  font-weight: bold;
+  color: #f0f4f8;
+  align-items: right;
+  align-content: right;
+  text-decoration: none;
+  border-top-right-radius: 0.5rem;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
+  padding: 1rem;
+  font-size: large;
+  width: 50%;
 }
 
 #inactive-tutor-signup-toggle {
-    background-color: #627D98;
-    align-items: right;
-    align-content: right;
-    text-decoration: none;
-    border-top-right-radius: .5rem;
-    border-color: #627D98;
-    border-style: solid;
-    border-width: .01rem;
-    padding: 1rem;
-    font-size: large;
-    width: 50%
+  background-color: #627d98;
+  align-items: right;
+  align-content: right;
+  text-decoration: none;
+  border-top-right-radius: 0.5rem;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
+  padding: 1rem;
+  font-size: large;
+  width: 50%;
 }
 
 .auth-form-container {
-    color: #627D98;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-content: center;
-    max-width: 35rem;
-    margin: 3rem auto;
-    align-items: center;
-    padding: 1rem;
-    padding-bottom: 2rem;
+  color: #627d98;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  max-width: 35rem;
+  margin: 3rem auto;
+  align-items: center;
+  padding: 1rem;
+  padding-bottom: 2rem;
 }
 
 .auth-form-container input {
-    background-color: #102A43;
-    margin: .5rem;
-    color: red;
-    border-color: #627D98;
-    font-weight: bold;
-    padding: .5rem;
+  background-color: #102a43;
+  margin: 0.5rem;
+  color: #F0F4F8;
+  border-radius: 0.3rem;
+  border-color: #334E68;
+  border-style: solid;
+  border-width: 0.01rem;
+  font-weight: bold;
+  padding: 0.5rem;
 }
 
 .auth-form-container label {
-    margin-top: 2rem;
-    font-family: monospace;
-    font-size: large;
-    font-weight: bold;
-    color: #36B37E;
+  margin-top: 2rem;
+  font-family: monospace;
+  font-size: large;
+  color: #627D98;
 }
 
 .auth-form-container h3 {
-    margin: 0.2rem
+  margin: 0.2rem;
 }
 
 .auth-button {
-    background-color: #36B37E;
-    color: #F0F4F8;
-    border-radius: .5rem;
-    border-color: #627D98;
-    border-style: solid;
-    border-width: 0rem;
-    font-weight: bold;
-    width: 85%;
-    align-items: center;
-    padding: 1rem 1rem;
-    margin: 1rem 4rem;
-    font-size: large;
+  background-color: #36b37e;
+  color: #f0f4f8;
+  border-radius: 0.5rem;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0rem;
+  font-weight: bold;
+  width: 85%;
+  align-items: center;
+  padding: 1rem 1rem;
+  margin: 1rem 4rem;
+  font-size: large;
 }
 
 .invalidCredentials {
-    color: #DC143C;
+  color: #dc143c;
 }
 
 .authCreateAccountContainer {
-    background-color: #1D1F25;
-    border-color: #627D98;
-    border-style: solid;
-    border-width: .01rem;
-    max-width: 35rem;
-    margin: 0 auto 2rem auto;
-    border-radius: .5rem;
-    padding: 1rem;
+  background-color: #1d1f25;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
+  max-width: 35rem;
+  margin: 0 auto 2rem auto;
+  border-radius: 0.5rem;
+  padding: 1rem;
 }
