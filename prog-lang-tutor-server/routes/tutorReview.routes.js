@@ -44,29 +44,23 @@ router.get('/reviews/:tutorId', (req, res) => {
     })
 })
 
-
-
-
 // ****************************************************************************************
 // POST route to delete a review if it belongs to this user
 // ****************************************************************************************
-// router.post('/reviews/delete', (req, res) => {
-//     const { studentId, tutorId, reviewContent } = req.body;
-//     try {
-//         const preparedTutorId = mongoose.Types.ObjectId(tutorId);
-//         const preparedStudentId = mongoose.Types.ObjectId(studentId);
-//         const review = await Review.deleteOne({ student_id: preparedStudentId, tutor_id: preparedTutorId, reviewContent: reviewContent });
-//         const studentWithReview = await User.findOneAndDelete(studentId, {
-//             $pull: { reviews: review._id }
-//         }, { new: true });
-//         const tutorWithReview = await User.findOneAndDelete(tutorId, {
-//             $pull: { reviews: review._id }
-//         }, { new: true });
-//         const allReviews = await Review.find({ tutor_id: preparedTutorId }).populate('student_id');
-//         res.status(201).json({ success: true, allReviews: allReviews });
-//     } catch (err) {
-//         res.json({ success: false, message: 'Review not deleted', err: err })
-//     }
-// })
+router.post('/delete', async (req, res) => {
+    const { studentId, reviewId } = req.body;
+    try {
+        const preparedStudentId = mongoose.Types.ObjectId(studentId);
+        const preparedReviewId = mongoose.Types.ObjectId(reviewId);
+        const thisReview = Review.findById({review_id: preparedReviewId});
+        if(thisReview.student_id === studentId) {
+            console.log("IDs", thisReview.student_id === studentId)
+            await Review.findByIdAndDelete(preparedReviewId)
+        };
+        res.status(201).json({ success: true, message: "Review Deleted" });
+    } catch (err) {
+        res.json({ success: false, message: 'Review not deleted', err: err })
+    }
+})
 
 module.exports = router;

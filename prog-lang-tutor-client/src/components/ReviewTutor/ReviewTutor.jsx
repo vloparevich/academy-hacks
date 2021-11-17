@@ -44,32 +44,27 @@ class ReviewTutor extends Component {
 
     }
 
+    handleDelete = (review_id) => {
+        REVIEW_SERVICE.deleteReview(review_id).then(() => {
+            this.getReviews();
+        })
+    }
+
     render() {
+        console.log("STATE", this.state)
         const { showing } = this.state;
         return (
             <div className='reviewArea'>
                 <h1>Reviews</h1>
                 <button id="addReviewButton" onClick={() => this.setState({ showing: !showing })}>Add Your Review</button>
+
+
                 {showing ? this.props.studentId && (
                     <form onSubmit={(e) => this.handleFormSubmit(e)}>
                         <textarea name="review" placeholder="Add review here" type="text" value={this.state.review} onChange={(e) =>
                             this.handleInputChange(e)} required />
                         <button>Submit</button>
                     </form>) : null}
-                {/* 
-                {this.state.reviews?.map((review) => {
-                    return (
-                        <div className='reviewList'>
-                            <ul key={review._id}>
-                                <li>
-                                    <h2>{review.student_id.firstName} {review.student_id.lastName}</h2>
-                                    <h3>- "{review.reviewContent}"</h3>
-                                </li>
-                            </ul>
-                        </div>
-                    )
-                })
-                } */}
                 <div className='reviewList'>
                     <ul>
                         {this.state.reviews?.map((review) =>
@@ -77,6 +72,7 @@ class ReviewTutor extends Component {
                             <li>
                                 <h2>{review.student_id.firstName} {review.student_id.lastName}</h2>
                                 <h3>- "{review.reviewContent}"</h3>
+                                {this.props.studentId === review.student_id._id && <button id="deleteReviewButton" onClick={() => this.handleDelete(review._id)}>Delete Review</button>}
                             </li>
                             <hr />
                         </>
