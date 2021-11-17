@@ -1,0 +1,99 @@
+.modal {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    padding-top: 300px;
+    background-color: black;
+    background-color: rgba(119, 136, 153, 0.95);
+    -webkit-transition: 0.5s;
+    overflow: auto;
+    transition: all 0.3s linear;
+    text-align: center;
+}
+
+.controlButtons {
+    text-align: center;
+
+}
+
+.modal.off {
+    opacity: 0;
+    visibility: hidden;
+    filter: blur(8px);
+    transform: scale(0.33);
+    box-shadow: 1rem 0 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.modal h2 {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+    margin: 0;
+}
+
+.modal .content {
+    padding: 1rem;
+    text-align: center;
+}
+
+.modal .actions {
+    border-top: 1px solid #ccc;
+    background: #eee;
+    padding: 0.5rem 1rem;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.modal .actions button {
+    border: 0;
+    background: #78f89f;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    line-height: 1;
+}
+
+#centered-toggle-button {
+    position: absolute;
+}
+
+
+#deleteProfileButtonCOnfirmModal,
+#cancelChangesButtonModal {
+    display: inline-block;
+    padding: 4px 32px;
+    background-color: #ffffff;
+    border: solid 1px #666f77;
+    border-radius: 6px;
+    color: #666f77;
+    max-height: 3rem;
+    font-size: 0.7rem;
+    margin: 0.5rem;
+    width: 150px;
+}
+
+#deleteProfileButtonCOnfirmModal:active,
+#cancelChangesButtonModal:active {
+    background-image: none;
+    background-color: #2d6c7a;
+    color: #ffffff;
+}
+
+
+#cancelChangesButtonModal {
+    margin-left: auto;
+    height: 3rem;
+    width: 7rem;
+    background-color: #b2e89a;
+}
+
+#deleteProfileButtonCOnfirmModal {
+    background-color: #DC143C;
+    color: #fff;
+    height: 3rem;
+
+}
