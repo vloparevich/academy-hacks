@@ -47,8 +47,7 @@ Blue Grey
   justify-content: space-evenly;
 }
 
-@media only screen and (max-width: 600px) {
-}
+@media only screen and (max-width: 600px) {}
 
 .landingPageImg {
   background-image: url(https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg);
@@ -61,14 +60,7 @@ Blue Grey
 .searchBar {
   display: flex;
   flex-direction: column;
-  margin: 1rem auto;
 }
-
-/* .tableContainer {
-  margin: 5rem 0;
-  display: flex;
-  flex-direction: column;
-} */
 
 .courseTable {
   display: flex;
@@ -81,9 +73,6 @@ th,
 td {
   width: 60vw;
   height: 10vh;
-  /* border: 1px solid grey; */
-  /* background-color: rgba(23, 23, 23, 0.5);
-  border-radius: 50px; */
   border-collapse: collapse;
 }
 
