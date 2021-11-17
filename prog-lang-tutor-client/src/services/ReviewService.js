@@ -19,21 +19,13 @@ const REVIEW_SERVICE = {
             console.log(responseFromApi);
             return responseFromApi.data;
         })
+    },
+    deleteReview: (reviewId) => {
+        return service.post(`/delete`, {reviewId:reviewId}).then(() => {
+            return 
+        } )
     }
 };
 
-// const USER_SERVICE = {
-//     getAllTutors: () => {
-//       return service.get('/tutor/list').then((tutors) => {
-//         return tutors.data.tutors;
-//       });
-//     },
-//     getSpecificTutor: (id) => {
-//       return service.get(`/tutor/${id}`).then((tutor) => tutor.data);
-//     },
-//     getSpecificStudent: (id) => {
-//       return service.get(`/${id}`).then((student) => student.data);
-//     },
-//   };
 
 export default REVIEW_SERVICE;

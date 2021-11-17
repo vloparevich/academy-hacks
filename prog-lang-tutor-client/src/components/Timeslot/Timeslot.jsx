@@ -88,6 +88,7 @@ export default class Timeslot extends Component {
   };
 
   onCalendarDateChange = (event) => {
+    this.setState({ event: event });
     const shortDateValue = moment(event).format('MM/DD/YYYY');
     BOOKING_SERVICE.getMyScheduleForThisDay(shortDateValue, this.props.tutorId)
       .then((responseFromApi) => {
@@ -139,6 +140,8 @@ export default class Timeslot extends Component {
         calendarValueShort: '',
         pickedTimeSlots: [],
       });
+      this.onCalendarDateChange(this.state.event);
+      this.setState({ event: '' });
     });
   };
 

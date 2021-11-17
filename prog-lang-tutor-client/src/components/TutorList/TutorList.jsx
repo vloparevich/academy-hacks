@@ -31,13 +31,13 @@ class TutorList extends Component {
         ? this.state.tutorsFromApi[i].coursesTaught?.courses
         : 0;
       for (let j = 0; j < courses.length; j++) {
-        courses[j].courseName.toLowerCase() === searchInput.toLowerCase() &&
+        courses[j].courseName?.toLowerCase() === searchInput?.toLowerCase() &&
           filteredTutors.push(this.state.tutorsFromApi[i]);
       }
     }
 
     searchInput && filteredTutors.length === 0 && (filteredTutors = []);
-    searchInput.length === 0 && (filteredTutors = []);
+    searchInput?.length === 0 && (filteredTutors = []);
 
     this.setState({
       filteredTutors: filteredTutors,
@@ -48,7 +48,8 @@ class TutorList extends Component {
     return (
       <div className='tutorList'>
         <div className='title-list'>
-          <h1>Courses</h1>
+          <div class='floating'></div>
+          <div className='text-gradient-mint-blue-dark'></div>
         </div>
         <div>
           {this.state.filteredTutors?.map((tutorInfo) => (
@@ -60,22 +61,27 @@ class TutorList extends Component {
                     src={tutorInfo.profilePic}
                     alt='profile'
                   ></img>
-                  <div className='tutorDescription'>
+                  <div>
                     <h1>
                       {tutorInfo.firstName} {tutorInfo.lastName}{' '}
                       <CountryFlag
                         countryOfOrigin={tutorInfo?.countryOfOrigin}
                       />
                     </h1>
-                    <h3>
-                      Course(s): {tutorInfo.coursesTaught.courses[0].courseName}{' '}
-                    </h3>
-                    <h3>
-                      {' '}
-                      Teaching Experince: {tutorInfo.teachingExperience} years
-                    </h3>{' '}
-                    <h3>{tutorInfo.coursesTaught.courses[0].description}</h3>
-                    {/* <button href='tutor/:id'>Book Lesson</button> */}
+                    <div className='tutorDescription'>
+                      <p>
+                        Course(s):{' '}
+                        {tutorInfo.coursesTaught.courses[0].courseName}{' '}
+                      </p>
+                      <p>
+                        {' '}
+                        Teaching Experince: {tutorInfo.teachingExperience} years
+                      </p>{' '}
+                      <p className='descriptionTutorList'>
+                        {tutorInfo.coursesTaught.courses[0].description}
+                      </p>
+                      <Link to={`/tutor/${tutorInfo._id}`}>Book Lesson</Link>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -55,8 +55,6 @@ app.use("/api/lesson", require("./routes/lesson.routes"));
 
 app.use('/api/review', require('./routes/tutorReview.routes'));
 
-app.use('/api/delete', require('./routes/tutorReview.routes'));
-
 // app.use('/student', require('./routes/student.routes'));
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
