@@ -33,104 +33,34 @@ router.post('/tutor/review', async (req, res) => {
 // ****************************************************************************************
 router.get('/reviews/:tutorId', (req, res) => {
     const { tutorId } = req.params;
-    console.log('tutorID in the ROUTE', { tutorId: tutorId })
+    // console.log('tutorID in the ROUTE', { tutorId: tutorId })
     const preparedTutorId = mongoose.Types.ObjectId(tutorId);
-    console.log('preparedTutorId in the ROUTE', { tutorId: preparedTutorId })
+    // console.log('preparedTutorId in the ROUTE', { tutorId: preparedTutorId })
     Review.find({ tutor_id: preparedTutorId }).populate('student_id').then(reviewsFromDb => {
-        console.log('getting this for ', { tutor_Id: preparedTutorId }, { reviewsFromDb: reviewsFromDb })
+        // console.log('getting this for ', { tutor_Id: preparedTutorId }, { reviewsFromDb: reviewsFromDb })
         res.status(200).json({ success: true, reviewsFromDb: reviewsFromDb })
     }).catch(err => {
         res.json({ success: false, message: "Reviews not retrieved", err: err })
     })
 })
 
-
-
-
 // ****************************************************************************************
-// GET route to delete a review if it belongs to this user
+// POST route to delete a review if it belongs to this user
 // ****************************************************************************************
-// router.post('/delete/:reviewId/:vin', isLoggedIn, async (req, res) => {
-//   let reviewFromDB;
-//   let reviewCreatorIdFromDB;
-//   const { _id } = req.session.user;
-//   let { reviewId, vin } = req.params;
-//   const { dealerLink, dealerName } = req.body;
-//   req.session.dealerLinkFromGlobalScope = dealerLink;
-
-//   try {
-//     reviewId = mongoose.Types.ObjectId(reviewId);
-//     reviewFromDB = await Review.findById(reviewId);
-//     reviewCreatorIdFromDB = reviewFromDB.user_id.toString();
-//     if (_id === reviewCreatorIdFromDB) {
-//       await Review.findByIdAndRemove(reviewId);
-
-//       await Dealer.findOneAndUpdate(
-//         { dealerName: dealerName },
-//         {
-//           $pull: { reviews: reviewId },
-//         }
-//       );
-//     } else {
-//       req.session.errorDeletion =
-//         'You are not Authorized to Delete this review, you are not a creator of it....';
-//     }
-//   } catch (err) {
-//     console.log('Soemthing went wrong during deletion of the review:', err);
-//   }
-//   console.log('REDIRECTING DELETE');
-//   res.redirect(307, `/vehicles/details/${vin}`);
-// });
-
-// ****************************************************************************************
-// GET route to render the review for editing
-// ****************************************************************************************
-// router.post('/edit/:reviewId/:dealerName/:vin', (req, res) => {
-//   const { reviewId, dealerName, vin } = req.params;
-//   const { dealerLink } = req.body;
-//   Review.findById(reviewId)
-//     .populate('user_id')
-//     .then((foundReview) => {
-//       console.log('My review:', foundReview);
-//       res.render('reviews/update-review-form', {
-//         foundReview: foundReview,
-//         dealerName: dealerName,
-//         reviewId: reviewId,
-//         vin: vin,
-//         dealerLink: dealerLink,
-//       });
-//     });
-// });
-
-// ****************************************************************************************
-// POST route to update the review
-// ****************************************************************************************
-// router.post('/edit/:reviewId/:vin', async (req, res) => {
-//   const { reviewId, vin } = req.params;
-//   const { reviewContent, dealerLink } = req.body;
-//   req.session.dealerLinkFromGlobalScope = dealerLink;
-//   const { _id } = req.session.user;
-//   let reviewFromDB;
-//   let reviewCreatorIdFromDB;
-
-//   try {
-//     reviewFromDB = await Review.findById(reviewId);
-//     reviewCreatorIdFromDB = reviewFromDB.user_id.toString();
-//     if (_id === reviewCreatorIdFromDB) {
-//       await Review.findByIdAndUpdate(
-//         reviewId,
-//         { reviewContent: reviewContent },
-//         { new: true }
-//       );
-//     } else {
-//       req.session.errorDeletion =
-//         'You are not Authorized to EDIT this review, you are not a creator of it....';
-//     }
-//   } catch (err) {
-//     console.log('Soemthing went wrong during editing the review:', err);
-//   }
-//   console.log('REDIRECTING EDIT');
-//   res.redirect(307, `/vehicles/details/${vin}`);
-// });
+router.post('/delete', async (req, res) => {
+    const { studentId, reviewId } = req.body;
+    try {
+        const preparedStudentId = mongoose.Types.ObjectId(studentId);
+        const preparedReviewId = mongoose.Types.ObjectId(reviewId);
+        const thisReview = Review.findById({review_id: preparedReviewId});
+        if(thisReview.student_id === studentId) {
+            // console.log("IDs", thisReview.student_id === studentId)
+            await Review.findByIdAndDelete(preparedReviewId)
+        };
+        res.status(201).json({ success: true, message: "Review Deleted" });
+    } catch (err) {
+        res.json({ success: false, message: 'Review not deleted', err: err })
+    }
+})
 
 module.exports = router;

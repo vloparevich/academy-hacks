@@ -25,7 +25,7 @@ Blue Grey
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  background-image: linear-gradient(70deg,#36B37E, #334E68, #102A43, #1D1F25);
+  background-image: linear-gradient(70deg, #36b37e, #334e68, #102a43, #1d1f25);
   animation: animate 20s linear;
   animation-iteration-count: infinite;
   height: 5rem;
@@ -75,6 +75,18 @@ Blue Grey
   font-family: arial, sans-serif;
   text-decoration: none;
   cursor: pointer;
+}
+
+.dashboard {
+  text-align: left;
+}
+
+.dashboard p {
+  margin: 0;
+}
+
+.dashboard h4 {
+  margin: 0;
 }
 
 @media screen and (max-width: 600px) {

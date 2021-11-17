@@ -24,13 +24,32 @@ class Navbar extends Component {
                 <Link to='/auth/signup'>Sign Up</Link>
               </li>
             </>
+          ) : this.props.user.isTutor ? (
+            <>
+              <li>
+                <Link to='/user'>
+                  <div className='dashboard'>
+                    <p>Hello, {this.props.user.firstName}</p>{' '}
+                    <h4>Tutor Dashboard</h4>
+                  </div>
+                </Link>
+              </li>
+              <li id='logoutBtn' onClick={this.props.handleLogout}>
+                <h4>Logout</h4>
+              </li>
+            </>
           ) : (
             <>
               <li>
-                <Link to='/user'>{this.props.user.firstName}</Link>
+                <Link to='/user'>
+                  <div className='dashboard'>
+                    <p>Hello, {this.props.user.firstName}</p>
+                    <h4>Student Dashboard</h4>
+                  </div>
+                </Link>
               </li>
               <li id='logoutBtn' onClick={this.props.handleLogout}>
-                Logout
+                <h4>Logout</h4>
               </li>
             </>
           )}

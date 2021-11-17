@@ -141,6 +141,42 @@ const tutorsArray = [
       to: 22,
     },
   },
+  {
+    isTutor: true,
+    firstName: 'Obi-Wan',
+    lastName: 'Kenobi',
+    email: 'ben@jedi.com',
+    password: 'lightside1234',
+    profilePic:
+      'https://cdn.onebauer.media/one/media/6061/e2cc/c00d/0792/88b1/0950/obi-wan-kenobi-revenge-of-the-sith.jpg?format=jpg&quality=80&width=440&ratio=16-9&resize=aspectfill',
+    countryOfOrigin: 'Stewjon',
+    teachingExperience: 500,
+    courseName: 'Force',
+    description:
+      "The Force is an energy field created by all life that connects everything in the universe, and is known by a variety of names throughout the galaxy.",
+    timeAvailableInRange: {
+      from: 15,
+      to: 20,
+    },
+  },
+  {
+    isTutor: true,
+    firstName: 'Thomas',
+    lastName: 'Anderson',
+    email: 'neo@matrix.com',
+    password: 'theone01',
+    profilePic:
+      'https://images.immediate.co.uk/production/volatile/sites/3/2019/08/Keanu-Reeves-5939c06.jpg?quality=90&resize=620%2C413',
+    countryOfOrigin: 'United States',
+    teachingExperience: 22,
+    courseName: 'Matrix',
+    description:
+      "Unfortunately, no one can be told what the Matrix is. You have to see it for yourself.",
+    timeAvailableInRange: {
+      from: 0,
+      to: 10,
+    },
+  },
 ];
 
 module.exports = tutorsArray;
