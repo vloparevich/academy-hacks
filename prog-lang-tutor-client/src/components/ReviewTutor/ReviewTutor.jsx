@@ -18,7 +18,7 @@ class ReviewTutor extends Component {
 
     getReviews = () => {
         REVIEW_SERVICE.getAllReviews(this.props.tutorId).then((reviews) => {
-            console.log('tutor', this.props.tutorId)
+            // console.log('tutor', this.props.tutorId)
             this.setState({
                 reviews: reviews.reviewsFromDb
             }, () => console.log('my reviews', this.state.reviews));
@@ -33,9 +33,9 @@ class ReviewTutor extends Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log('hitting review service')
+        // console.log('hitting review service')
         const { studentId, tutorId } = this.props;
-        console.log('details of users', studentId, tutorId)
+        // console.log('details of users', studentId, tutorId)
         const reviewContent = this.state.review;
         REVIEW_SERVICE.createReview(studentId, tutorId, reviewContent).then(() => {
             this.getReviews();

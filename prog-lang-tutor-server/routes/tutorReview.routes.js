@@ -33,11 +33,11 @@ router.post('/tutor/review', async (req, res) => {
 // ****************************************************************************************
 router.get('/reviews/:tutorId', (req, res) => {
     const { tutorId } = req.params;
-    console.log('tutorID in the ROUTE', { tutorId: tutorId })
+    // console.log('tutorID in the ROUTE', { tutorId: tutorId })
     const preparedTutorId = mongoose.Types.ObjectId(tutorId);
-    console.log('preparedTutorId in the ROUTE', { tutorId: preparedTutorId })
+    // console.log('preparedTutorId in the ROUTE', { tutorId: preparedTutorId })
     Review.find({ tutor_id: preparedTutorId }).populate('student_id').then(reviewsFromDb => {
-        console.log('getting this for ', { tutor_Id: preparedTutorId }, { reviewsFromDb: reviewsFromDb })
+        // console.log('getting this for ', { tutor_Id: preparedTutorId }, { reviewsFromDb: reviewsFromDb })
         res.status(200).json({ success: true, reviewsFromDb: reviewsFromDb })
     }).catch(err => {
         res.json({ success: false, message: "Reviews not retrieved", err: err })
@@ -54,7 +54,7 @@ router.post('/delete', async (req, res) => {
         const preparedReviewId = mongoose.Types.ObjectId(reviewId);
         const thisReview = Review.findById({review_id: preparedReviewId});
         if(thisReview.student_id === studentId) {
-            console.log("IDs", thisReview.student_id === studentId)
+            // console.log("IDs", thisReview.student_id === studentId)
             await Review.findByIdAndDelete(preparedReviewId)
         };
         res.status(201).json({ success: true, message: "Review Deleted" });
