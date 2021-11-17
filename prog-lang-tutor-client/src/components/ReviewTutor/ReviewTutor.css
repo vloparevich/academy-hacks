@@ -4,10 +4,17 @@
 }
 
 #addReviewButton {
-  margin-left: 4rem;
+  margin-left: 0rem;
   height: 3rem;
   width: 7rem;
   background-color: #b2e89a;
+}
+
+#deleteReviewButton {
+  margin-left: 0rem;
+  height: 2rem;
+  width: 7rem;
+  background-color: #d03939;
 }
 
 .reviewList {

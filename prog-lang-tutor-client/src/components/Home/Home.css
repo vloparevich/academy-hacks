@@ -41,13 +41,14 @@ Blue Grey
 }
 
 .logo {
-  width: 15vw;
-  height: 3vh;
+  width: 25vw;
+  height: 5vh;
   display: flex;
   justify-content: space-evenly;
 }
 
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+}
 
 .landingPageImg {
   background-image: url(https://p0.piqsels.com/preview/428/871/775/school-coding-data-software-development.jpg);
@@ -72,7 +73,7 @@ table,
 th,
 td {
   width: 60vw;
-  height: 10vh;
+  height: 15vh;
   border-collapse: collapse;
 }
 
@@ -100,20 +101,32 @@ table tr td:last-child {
 table {
   border-collapse: collapse;
   margin: 0 auto;
-  background-color: rgba(111, 109, 109, 0.8);
+  background-color: #0c172d;
+  border: 10px #7b8da6;
   border-radius: 10px;
   box-shadow: 5px 10px 8px #88888863;
+  color: #7788a7;
+}
+td:hover {
+  background-color: #1a253c;
 }
 
 a {
   text-decoration: none;
-  color: white;
-}
-
-a:hover {
-  color: #36b37e;
+  color: #7788a7;
 }
 
 td {
   align-content: center;
+}
+
+.programingDescription {
+  /* width: 15vw;
+  text-align: left; */
+  padding-bottom: 20px;
+  font-size: 0.75rem;
+  color: #7788a7;
+  position: relative;
+  /* top: 50px;
+  right: 150px; */
 }

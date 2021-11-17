@@ -11,7 +11,7 @@ export default class SearchBar extends Component {
           autoFocus
           autoComplete='off'
           name='searchInput'
-          placeholder='Search for the langugae you are willing to learn'
+          placeholder='Search for the language you are willing to learn'
           onChange={(event) =>
             this.props.onSearchQueryChange(event.target.value)
           }

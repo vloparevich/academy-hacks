@@ -48,7 +48,14 @@ class TutorList extends Component {
     return (
       <div className='tutorList'>
         <div className='title-list'>
-          <h1>Courses</h1>
+          <div class='floating'></div>
+          <div className='text-gradient-mint-blue-dark'>
+            {/* <div
+              className='floating'
+              style='height: 50px; width: 50px; background: rgb(200,200,200);'
+            ></div> */}
+            <h1 id='courses'>Courses/</h1>
+          </div>
         </div>
         <div>
           {this.state.filteredTutors?.map((tutorInfo) => (
@@ -60,22 +67,43 @@ class TutorList extends Component {
                     src={tutorInfo.profilePic}
                     alt='profile'
                   ></img>
-                  <div className='tutorDescription'>
+                  <div>
                     <h1>
                       {tutorInfo.firstName} {tutorInfo.lastName}{' '}
                       <CountryFlag
                         countryOfOrigin={tutorInfo?.countryOfOrigin}
                       />
                     </h1>
-                    <h3>
-                      Course(s): {tutorInfo.coursesTaught.courses[0].courseName}{' '}
-                    </h3>
-                    <h3>
-                      {' '}
-                      Teaching Experince: {tutorInfo.teachingExperience} years
-                    </h3>{' '}
-                    <h3>{tutorInfo.coursesTaught.courses[0].description}</h3>
-                    {/* <button href='tutor/:id'>Book Lesson</button> */}
+                    <div className='tutorDescription'>
+                      <p>
+                        Course(s):{' '}
+                        {tutorInfo.coursesTaught.courses[0].courseName}{' '}
+                      </p>
+                      <p>
+                        {' '}
+                        Teaching Experince: {tutorInfo.teachingExperience} years
+                      </p>{' '}
+                      <p className='descriptionTutorList'>
+                        {tutorInfo.coursesTaught.courses[0].description}
+                      </p>
+                      {/* <Link to='/tutor/{{:_id}}'>
+                        <b>Book a Lesson</b>
+                      </Link> */}
+                      {/* <Redirect>
+            exact
+            path={PATHS.TUTOR_DETAILS}
+            authenticate={this.authenticate}
+            component={TutorDetails}
+            user={this.state.user}
+          /> */}
+                      {/* <Link
+                        to={{
+                          pathname: PATHS.TUTOR_DETAILS,
+                          toBeRedirectedBack: this.props.location,
+                        }}
+                      /> */}
+                      <Link to='/tutor/:id'>Book Lesson</Link>
+                    </div>
                   </div>
                 </div>
               </div>

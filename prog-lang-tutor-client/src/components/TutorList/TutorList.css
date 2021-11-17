@@ -24,33 +24,30 @@ Blue Grey
 */
 
 .work {
-  color: white;
+  color: #7788a7;
   width: 900px;
-  background-color: red;
 }
 .tutorListPic {
-  width: 21%;
-  height: 60%;
+  max-width: 15rem;
+  max-height: 10rem;
+  border-radius: 5px;
   padding: 20px;
-  border-radius: 15%;
-}
-.tutorList {
-  /* background-color: #1d2025; */
 }
 
 .tutorlistInfo {
   display: flex;
   justify-content: space-evenly;
   width: 50vw;
-  /* background-color: #243b53; */
-  /* border-radius: 2%; */
-  color: white;
+  background-color: #0c172d;
+  border-radius: 2%;
+  color: #8193b2;
   /* border: solid #36b37e; */
-  border-width: 3px;
+  border-width: 0.01px;
   border-style: solid;
-  border-image: linear-gradient(to bottom, #36b37e, rgba(0, 0, 0, 0)) 1 100%;
-  line-height: 0.05vh;
+
+  /* line-height: 0.05vh; */
 }
+
 .tutorListContainer {
   display: flex;
   justify-content: center;
@@ -61,4 +58,27 @@ Blue Grey
   display: flex;
   flex-direction: column;
   text-align: left;
+}
+#courses {
+  font-size: 5em;
+} /* ////////////////////////////////////////////////////////////////////////////////*/
+.floating {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  from {
+    transform: translate(0, 0px);
+  }
+  65% {
+    transform: translate(0, 15px);
+  }
+  to {
+    transform: translate(0, -0px);
+  }
 }

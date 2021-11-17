@@ -76,7 +76,7 @@ class Home extends Component {
                 <td>
                   <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' />
-
+                    <p>JavaScript tutors</p>
                     <Link
                       // to={javascript}
                       to={{
@@ -84,35 +84,44 @@ class Home extends Component {
                         courseName: 'javascript',
                       }}
                     >
-                      JavaScript tutors
+                      {/* JavaScript tutors */}
+                      <p className='programingDescription'>
+                        The Swift Programming
+                      </p>
                     </Link>
                   </div>
                 </td>
                 <td>
                   <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' />
-
+                    <p>Java tutors</p>
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'java',
                       }}
                     >
-                      Java tutors
+                      {/* Java tutors */}
+                      <p className='programingDescription'>
+                        The Swift Programming
+                      </p>
                     </Link>
                   </div>
                 </td>
                 <td>
                   <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' />
-
+                    <p>PHP tutors</p>
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'php',
                       }}
                     >
-                      PHP tutors
+                      {/* PHP tutors */}
+                      <p className='programingDescription'>
+                        The Swift Programming
+                      </p>
                     </Link>
                   </div>
                 </td>
@@ -121,14 +130,17 @@ class Home extends Component {
                 <td>
                   <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg' />
-
+                    <p>C tutors</p>
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'c',
                       }}
                     >
-                      C tutors
+                      {/* C tutors */}
+                      <p className='programingDescription'>
+                        The Swift Programming
+                      </p>
                     </Link>
                   </div>
                 </td>
@@ -136,28 +148,34 @@ class Home extends Component {
                 <td>
                   <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg' />
-
+                    <p>Ruby tutors</p>
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'ruby',
                       }}
                     >
-                      Ruby tutors
+                      {/* Ruby tutors */}
+                      <p className='programingDescription'>
+                        The Swift Programming
+                      </p>
                     </Link>
                   </div>
                 </td>
                 <td>
                   <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg' />
-
+                    <p>SWIFT tutors</p>
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'swift',
                       }}
                     >
-                      SWIFT tutors
+                      {/* SWIFT tutors */}
+                      <p className='programingDescription'>
+                        The Swift Programming
+                      </p>
                     </Link>
                   </div>
                 </td>
@@ -166,35 +184,43 @@ class Home extends Component {
                 <td>
                   <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg' />
-
+                    <p>Rails tutors</p>
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'rails',
                       }}
                     >
-                      Rails tutors
+                      <div className='programingDescription'>
+                        The Swift Programming
+                      </div>
+                      <p className='programingDescription'>
+                        {/* The Swift Programming */}
+                      </p>
                     </Link>
                   </div>
                 </td>
                 <td>
                   <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg' />
-
+                    <p>Kotlin tutors</p>
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'kotlin',
                       }}
                     >
-                      Kotlin tutors
+                      {/* Kotlin tutors */}
+                      <p className='programingDescription'>
+                        The Swift Programming
+                      </p>
                     </Link>
                   </div>
                 </td>
                 <td>
                   <div className='logo'>
                     <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg' />
-
+                    <p>Scala tutors</p>
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
@@ -202,7 +228,10 @@ class Home extends Component {
                       }}
                     >
                       {' '}
-                      Scala tutors
+                      {/* Scala tutors */}
+                      <p className='programingDescription'>
+                        The Swift Programming
+                      </p>
                     </Link>
                   </div>
                 </td>
