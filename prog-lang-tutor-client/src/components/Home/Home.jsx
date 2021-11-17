@@ -49,10 +49,6 @@ class Home extends Component {
   };
 
   render() {
-    const javascript = {
-      pathname: '/tutor/list/courses',
-      courseName: 'javascript',
-    };
     return (
       <div className='homepage-container'>
         {/* <HomeNavbar user={this.state.user} loading={this.state.loading} /> */}
@@ -74,166 +70,175 @@ class Home extends Component {
             <table>
               <tr>
                 <td>
-                  <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' />
-                    <p>JavaScript tutors</p>
-                    <Link
-                      // to={javascript}
-                      to={{
-                        pathname: '/tutor/list/courses',
-                        courseName: 'javascript',
-                      }}
-                    >
+                  <Link
+                    // to={javascript}
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'javascript',
+                    }}
+                  >
+                    <div className='logo'>
+                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' />
+                      <p>JavaScript tutors</p>
+
                       {/* JavaScript tutors */}
                       <p className='programingDescription'>
                         The Swift Programming
                       </p>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 </td>
                 <td>
-                  <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' />
-                    <p>Java tutors</p>
-                    <Link
-                      to={{
-                        pathname: '/tutor/list/courses',
-                        courseName: 'java',
-                      }}
-                    >
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'java',
+                    }}
+                  >
+                    <div className='logo'>
+                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' />
+                      <p>Java tutors</p>
+
                       {/* Java tutors */}
                       <p className='programingDescription'>
                         The Swift Programming
                       </p>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 </td>
                 <td>
-                  <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' />
-                    <p>PHP tutors</p>
-                    <Link
-                      to={{
-                        pathname: '/tutor/list/courses',
-                        courseName: 'php',
-                      }}
-                    >
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'php',
+                    }}
+                  >
+                    <div className='logo'>
+                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' />
+                      <p>PHP tutors</p>
+
                       {/* PHP tutors */}
                       <p className='programingDescription'>
                         The Swift Programming
                       </p>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg' />
-                    <p>C tutors</p>
-                    <Link
-                      to={{
-                        pathname: '/tutor/list/courses',
-                        courseName: 'c',
-                      }}
-                    >
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'c',
+                    }}
+                  >
+                    <div className='logo'>
+                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg' />
+                      <p>C tutors</p>
+
                       {/* C tutors */}
                       <p className='programingDescription'>
                         The Swift Programming
                       </p>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 </td>
 
                 <td>
-                  <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg' />
-                    <p>Ruby tutors</p>
-                    <Link
-                      to={{
-                        pathname: '/tutor/list/courses',
-                        courseName: 'ruby',
-                      }}
-                    >
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'ruby',
+                    }}
+                  >
+                    <div className='logo'>
+                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg' />
+                      <p>Ruby tutors</p>
+
                       {/* Ruby tutors */}
                       <p className='programingDescription'>
                         The Swift Programming
                       </p>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 </td>
                 <td>
-                  <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg' />
-                    <p>SWIFT tutors</p>
-                    <Link
-                      to={{
-                        pathname: '/tutor/list/courses',
-                        courseName: 'swift',
-                      }}
-                    >
+                  {' '}
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'swift',
+                    }}
+                  >
+                    <div className='logo'>
+                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg' />
+                      <p>SWIFT tutors</p>
+
                       {/* SWIFT tutors */}
                       <p className='programingDescription'>
                         The Swift Programming
                       </p>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg' />
-                    <p>Rails tutors</p>
-                    <Link
-                      to={{
-                        pathname: '/tutor/list/courses',
-                        courseName: 'rails',
-                      }}
-                    >
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'rails',
+                    }}
+                  >
+                    <div className='logo'>
+                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg' />
+                      <p>Rails tutors</p>
+
                       <div className='programingDescription'>
                         The Swift Programming
                       </div>
                       <p className='programingDescription'>
                         {/* The Swift Programming */}
                       </p>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 </td>
                 <td>
-                  <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg' />
-                    <p>Kotlin tutors</p>
-                    <Link
-                      to={{
-                        pathname: '/tutor/list/courses',
-                        courseName: 'kotlin',
-                      }}
-                    >
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'kotlin',
+                    }}
+                  >
+                    <div className='logo'>
+                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg' />
+                      <p>Kotlin tutors</p>
+
                       {/* Kotlin tutors */}
                       <p className='programingDescription'>
                         The Swift Programming
                       </p>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 </td>
                 <td>
-                  <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg' />
-                    <p>Scala tutors</p>
-                    <Link
-                      to={{
-                        pathname: '/tutor/list/courses',
-                        courseName: 'scala',
-                      }}
-                    >
-                      {' '}
+                  <Link
+                    to={{
+                      pathname: '/tutor/list/courses',
+                      courseName: 'scala',
+                    }}
+                  >
+                    <div className='logo'>
+                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg' />
+                      <p>Scala tutors</p>
+
                       {/* Scala tutors */}
                       <p className='programingDescription'>
                         The Swift Programming
                       </p>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 </td>
               </tr>
             </table>
