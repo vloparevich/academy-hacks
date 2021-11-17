@@ -297,9 +297,14 @@ class TutorProfile extends Component {
                 <div className='plainUserDetails'>
                   <div id='navBarTutorProfile'>
                     <ul className='profile-tabs'>
-                      <li onClick={this.handleDetailsTabButton}>Details</li>
+                      <li onClick={this.handleDetailsTabButton}>
+                        <button>📄 Details</button>
+                      </li>
                       <li onClick={this.handleMyScheduleTabButton}>
-                        My schedule
+                        <button>🗓 My Schedule</button>
+                      </li>
+                      <li onClick={this.handleEditButton}>
+                        <button>✎ Edit My Details</button>
                       </li>
                     </ul>
                   </div>
@@ -369,7 +374,7 @@ class TutorProfile extends Component {
                 )}
             </div>
           </div>
-          <button
+          {/* <button
             style={{
               backgroundColor: this.state.isEditProfileClicked && '#F47174',
               color: this.state.isEditProfileClicked && '#fff',
@@ -380,7 +385,7 @@ class TutorProfile extends Component {
             {this.state.isEditProfileClicked
               ? 'Hide control buttons'
               : 'Edit my profile'}
-          </button>
+          </button> */}
         </div>
       </>
     );
