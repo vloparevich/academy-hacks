@@ -92,20 +92,15 @@ export default class Timeslot extends Component {
     const shortDateValue = moment(event).format('MM/DD/YYYY');
     BOOKING_SERVICE.getMyScheduleForThisDay(shortDateValue, this.props.tutorId)
       .then((responseFromApi) => {
-        console.log('FRONT END just hit the backend', responseFromApi.data);
-
         let singleDayBookings = [];
         responseFromApi.data.thisDateWithBookings &&
           (singleDayBookings =
             responseFromApi.data.thisDateWithBookings?.bookedSlots[0]
               .bookedTime);
 
-        this.setState(
-          {
-            alreadyBookedSlots: singleDayBookings,
-          },
-          () => console.log(this.state.alreadyBookedSlots)
-        );
+        this.setState({
+          alreadyBookedSlots: singleDayBookings,
+        });
       })
       .catch((err) => console.log(err));
 
@@ -128,7 +123,6 @@ export default class Timeslot extends Component {
     const pickedTimeslots = this.state.pickedTimeSlots;
     const studentId = this.props.studentId;
     const tutorId = this.props.tutorId;
-    console.log('studentId, tutorId', studentId, tutorId);
     BOOKING_SERVICE.createBookingsOnStudent(
       calendarDate,
       pickedTimeslots,

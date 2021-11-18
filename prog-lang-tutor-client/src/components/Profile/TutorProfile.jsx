@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './Profile.css';
 import PROFILE_SERVICE from '../../services/ProfileServices';
 import USER_SERVICE from '../../services/UserServices';
 import CountryFlag from '../CountryFlag/CountryFlag';
 import * as PATHS from '../../utils/paths';
 import MySchedule from './../MySchedule/MySchedule';
+import Modal from '../Modal/Modal';
 
 class TutorProfile extends Component {
   state = {
@@ -21,12 +21,32 @@ class TutorProfile extends Component {
     isEditProfileClicked: false,
     isDetailsShownClicked: true,
     isMyScheduleShownClicked: false,
+    show: false,
+    detailsTabShown: true,
+  };
+
+  showModal = (e) => {
+    this.setState(
+      {
+        show: !this.state.show,
+      },
+      () => console.log('set modal value to ', this.state.show)
+    );
+  };
+
+  handleDeleteButton = () => {
+    USER_SERVICE.deleteTutor(this.state.user._id).then((responseFromApi) => {
+      console.log('Tutor after deletion', responseFromApi);
+      this.props.history.push(PATHS.HOMEPAGE);
+    });
+    this.props.handleLogout();
   };
 
   handleDetailsTabButton = () => {
     this.setState({
       isDetailsShownClicked: true,
       isMyScheduleShownClicked: false,
+      detailsTabShown: true,
     });
   };
 
@@ -46,6 +66,7 @@ class TutorProfile extends Component {
 
   handleDeleteButton = () => {
     USER_SERVICE.deleteTutor(this.state.user._id).then((responseFromApi) => {
+      console.log('handleDeleteButton triggered');
       this.props.history.push(PATHS.HOMEPAGE);
     });
     this.props.handleLogout();
@@ -65,9 +86,7 @@ class TutorProfile extends Component {
   getUser = () => {
     USER_SERVICE.getSpecificTutor(this.state.user._id).then(
       (responseFromApi) => {
-        console.log('this is coming from BE', responseFromApi.tutor);
         const { tutor } = responseFromApi;
-        console.log({ user: tutor });
         this.setState({
           firstName: tutor.firstName,
           lastName: tutor.lastName,
@@ -172,7 +191,28 @@ class TutorProfile extends Component {
               </label>
             )}
           </div>
+
           <div className='userDetailsSection'>
+            <div id='navBarTutorProfile'>
+              <ul className='profile-tabs'>
+                <li
+                  onClick={this.handleDetailsTabButton}
+                  // style={{
+                  //   backgroundColor: this.state.detailsTabShown
+                  //     ? '#32CD32'
+                  //     : '#19324A',
+                  // }}
+                >
+                  <button>📄 Details</button>
+                </li>
+                <li onClick={this.handleMyScheduleTabButton}>
+                  <button>🗓 My Schedule</button>
+                </li>
+                <li onClick={this.handleEditButton}>
+                  <button>✎ Edit My Details</button>
+                </li>
+              </ul>
+            </div>
             <div className='controlButtonsUserDetails'>
               {this.state.isEditDetailsClicked ? (
                 <>
@@ -284,30 +324,27 @@ class TutorProfile extends Component {
                     >
                       Save
                     </button>
+                    <button
+                      id='cancelChangesButton'
+                      onClick={this.handleCancelOfUpdate}
+                      className='formControlButtons'
+                    >
+                      Cancel
+                    </button>
                   </form>
-                  <button
-                    id='cancelChangesButton'
-                    onClick={this.handleCancelOfUpdate}
-                    className='formControlButtons'
-                  >
-                    Cancel
+                  <button id='deleteProfileButton' onClick={this.showModal}>
+                    Delete my profile
                   </button>
+                  <Modal
+                    onClose={this.showModal}
+                    show={this.state.show}
+                    onConfirm={this.handleDeleteButton}
+                  >
+                    Are you sure you want to delete your profile?
+                  </Modal>
                 </>
               ) : (
                 <div className='plainUserDetails'>
-                  <div id='navBarTutorProfile'>
-                    <ul className='profile-tabs'>
-                      <li onClick={this.handleDetailsTabButton}>
-                        <button>📄 Details</button>
-                      </li>
-                      <li onClick={this.handleMyScheduleTabButton}>
-                        <button>🗓 My Schedule</button>
-                      </li>
-                      <li onClick={this.handleEditButton}>
-                        <button>✎ Edit My Details</button>
-                      </li>
-                    </ul>
-                  </div>
                   {this.state.isDetailsShownClicked && (
                     <>
                       <div>
@@ -331,27 +368,11 @@ class TutorProfile extends Component {
                       </div>
                     </>
                   )}
-                  {this.state.isEditProfileClicked &&
-                    !this.state.isEditDetailsClicked && (
-                      <>
-                        <button
-                          id='editMyDetailsButton'
-                          onClick={this.handleEditButton}
-                        >
-                          Edit my details
-                        </button>
-                        <button
-                          id='deleteProfileButton'
-                          onClick={this.handleDeleteButton}
-                        >
-                          Delete my profile
-                        </button>
-                      </>
-                    )}
                 </div>
               )}
               {this.state.isMyScheduleShownClicked &&
-                !this.state.isEditProfileClicked && (
+                !this.state.isEditProfileClicked &&
+                !this.state.isEditDetailsClicked && (
                   <>
                     <div>
                       <div>
@@ -365,7 +386,7 @@ class TutorProfile extends Component {
                         </p>
                         <div id='myScheduleCmp'>
                           <MySchedule
-                            mySchedule={this.state.mySchedule.bookedSlots}
+                            mySchedule={this.state.mySchedule?.bookedSlots}
                           />
                         </div>
                       </div>
@@ -374,18 +395,6 @@ class TutorProfile extends Component {
                 )}
             </div>
           </div>
-          {/* <button
-            style={{
-              backgroundColor: this.state.isEditProfileClicked && '#F47174',
-              color: this.state.isEditProfileClicked && '#fff',
-            }}
-            id='editMyProfileButton'
-            onClick={this.handleEditProfileButton}
-          >
-            {this.state.isEditProfileClicked
-              ? 'Hide control buttons'
-              : 'Edit my profile'}
-          </button> */}
         </div>
       </>
     );
