@@ -75,8 +75,8 @@ class Home extends Component {
               <tr>
                 <td>
                   <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' />
-                    <p>JavaScript tutors</p>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' width="20px" /> */}
+
                     <Link
                       // to={javascript}
                       to={{
@@ -84,43 +84,55 @@ class Home extends Component {
                         courseName: 'javascript',
                       }}
                     >
-                      {/* JavaScript tutors */}
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg'
+                        width='20px'
+                      />{' '}
+                      JavaScript tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        The programming language of the Web
                       </p>
                     </Link>
                   </div>
                 </td>
                 <td>
                   <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' />
-                    <p>Java tutors</p>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' width="20px"/> */}
+
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'java',
                       }}
                     >
-                      {/* Java tutors */}
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg'
+                        width='35vw'
+                      />{' '}
+                      Java tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        A simple, efficient, general-purpose language
                       </p>
                     </Link>
                   </div>
                 </td>
                 <td>
                   <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' />
-                    <p>PHP tutors</p>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' width="20px"/> */}
+
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'php',
                       }}
                     >
-                      {/* PHP tutors */}
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg'
+                        width='35vw'
+                      />{' '}
+                      PHP tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        A popular general-purpose scripting language
                       </p>
                     </Link>
                   </div>
@@ -129,17 +141,22 @@ class Home extends Component {
               <tr>
                 <td>
                   <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg' />
-                    <p>C tutors</p>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg' width="20px"/> */}
+
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'c',
                       }}
                     >
-                      {/* C tutors */}
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg'
+                        width='35vw'
+                      />{' '}
+                      C tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        Structured programming, lexical variable scope, and
+                        recursion
                       </p>
                     </Link>
                   </div>
@@ -147,34 +164,43 @@ class Home extends Component {
 
                 <td>
                   <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg' />
-                    <p>Ruby tutors</p>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg' width="20px" /> */}
+
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'ruby',
                       }}
                     >
-                      {/* Ruby tutors */}
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg'
+                        width='35vw'
+                      />{' '}
+                      Ruby tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        Allows developers to alter how the language itself works
                       </p>
                     </Link>
                   </div>
                 </td>
                 <td>
                   <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg' />
-                    <p>SWIFT tutors</p>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg' width="20px" /> */}
+
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'swift',
                       }}
                     >
-                      {/* SWIFT tutors */}
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg'
+                        width='35vw'
+                      />{' '}
+                      SWIFT tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        Programming language for iOS, iPadOS, macOS, tvOS, and
+                        watchOS
                       </p>
                     </Link>
                   </div>
@@ -183,44 +209,52 @@ class Home extends Component {
               <tr>
                 <td>
                   <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg' />
-                    <p>Rails tutors</p>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg' width="20px"/> */}
+
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'rails',
                       }}
                     >
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg'
+                        width='35vw'
+                      />{' '}
+                      &nbsp; Rails tutors
                       <div className='programingDescription'>
-                        The Swift Programming
+                        Software library that extends the Ruby programming
+                        language
                       </div>
-                      <p className='programingDescription'>
-                        {/* The Swift Programming */}
-                      </p>
                     </Link>
                   </div>
                 </td>
                 <td>
                   <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg' />
-                    <p>Kotlin tutors</p>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg' /> */}
+
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
                         courseName: 'kotlin',
                       }}
                     >
-                      {/* Kotlin tutors */}
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg'
+                        width='25vw'
+                      />{' '}
+                      &nbsp; Kotlin tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        Free, open source, statically typed “pragmatic”
+                        programming language
                       </p>
                     </Link>
                   </div>
                 </td>
                 <td>
                   <div className='logo'>
-                    <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg' />
-                    <p>Scala tutors</p>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg'   width='20px'/> */}
+
                     <Link
                       to={{
                         pathname: '/tutor/list/courses',
@@ -228,9 +262,14 @@ class Home extends Component {
                       }}
                     >
                       {' '}
-                      {/* Scala tutors */}
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg'
+                        width='25vw'
+                      />{' '}
+                      &nbsp; Scala tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        Used in Data processing, distributed computing, and web
+                        development
                       </p>
                     </Link>
                   </div>

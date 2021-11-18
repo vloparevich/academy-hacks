@@ -5,6 +5,8 @@ import USER_SERVICE from '../../services/UserServices';
 import Navbar from '../Navbar/Navbar';
 import { Link } from 'react-router-dom';
 import CountryFlag from '../CountryFlag/CountryFlag';
+// import TutorDetails from '../TutorDetails/TutorDetails';
+// import * as PATHS from '../../utils/paths';
 
 class TutorList extends Component {
   state = { courseName: this.props.location.courseName };
@@ -25,6 +27,9 @@ class TutorList extends Component {
 
   getTutorsbyCoursename = (searchInput) => {
     let filteredTutors = [];
+    this.setState({
+      filteredTutors: filteredTutors,
+    });
 
     for (let i = 0; i < this.state.tutorsFromApi?.length; i++) {
       const courses = this.state.tutorsFromApi[i].coursesTaught?.courses
@@ -38,10 +43,6 @@ class TutorList extends Component {
 
     searchInput && filteredTutors.length === 0 && (filteredTutors = []);
     searchInput.length === 0 && (filteredTutors = []);
-
-    this.setState({
-      filteredTutors: filteredTutors,
-    });
   };
 
   render() {
@@ -102,7 +103,20 @@ class TutorList extends Component {
                           toBeRedirectedBack: this.props.location,
                         }}
                       /> */}
-                      <Link to='/tutor/:id'>Book Lesson</Link>
+                      {/* <Link to='/tutor/:id'>Book Lesson</Link> */}
+                      <Link
+                      // to={{
+                      //   pathname: '/tutor/:id',
+                      //   id: '',
+                      // }}
+                      // path={PATHS.TUTOR_DETAILS}
+                      // authenticate={this.authenticate}
+                      // component={TutorDetails}
+
+                      // user={this.state.user}
+                      >
+                        Book Lesson
+                      </Link>
                     </div>
                   </div>
                 </div>
