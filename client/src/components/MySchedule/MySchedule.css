@@ -1,4 +1,4 @@
-#myScheduleCmp {
+/* #myScheduleCmp {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -6,7 +6,7 @@
     width: 90%;
     margin: 0 auto;
     padding-top: 1rem;
-}
+} */
 
 .myLessonCard li {
     list-style-type: none;
