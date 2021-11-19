@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const service = axios.create({
-  baseURL: 'http://localhost:5000/api/lesson',
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/lesson`,
 });
 
 const STUDENT_LESSON_SERVICE = {
