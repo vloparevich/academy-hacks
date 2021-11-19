@@ -39,6 +39,7 @@ export default class MyLessons extends Component {
         studentBookingId: el._id,
         tutorId: el.tutorId?._id,
         courseName: el.tutorId?.coursesTaught.courses[0].courseName,
+        profilePic: el.tutorId?.profilePic,
       });
     });
     const sortedByDate = [...data].sort((a, b) => (a.date > b.date ? 1 : -1));
@@ -71,6 +72,11 @@ export default class MyLessons extends Component {
             {this.getMyBookings()?.map((el) => (
               <div className='myLessonCard' key={el.studentBookingId}>
                 <p>{el.date}</p>
+                <img
+                  src={el.profilePic}
+                  id='myLessonsTutorPic'
+                  alt='profile pic'
+                />
                 <p id='myLessonCourseName'>
                   <span id='myLessonSubjectName'>{el.courseName}</span>
                 </p>

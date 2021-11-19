@@ -70,175 +70,205 @@ class Home extends Component {
             <table>
               <tr>
                 <td>
-                  <Link
-                    // to={javascript}
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'javascript',
-                    }}
-                  >
-                    <div className='logo'>
-                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' />
-                      <p>JavaScript tutors</p>
+                  <div className='logo'>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg' width="20px" /> */}
 
-                      {/* JavaScript tutors */}
+                    <Link
+                      // to={javascript}
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'javascript',
+                      }}
+                    >
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg'
+                        width='20px'
+                      />{' '}
+                      JavaScript tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        The programming language of the Web
                       </p>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </td>
                 <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'java',
-                    }}
-                  >
-                    <div className='logo'>
-                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' />
-                      <p>Java tutors</p>
+                  <div className='logo'>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg' width="20px"/> */}
 
-                      {/* Java tutors */}
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'java',
+                      }}
+                    >
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain-wordmark.svg'
+                        width='35vw'
+                      />{' '}
+                      Java tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        A simple, efficient, general-purpose language
                       </p>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </td>
                 <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'php',
-                    }}
-                  >
-                    <div className='logo'>
-                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' />
-                      <p>PHP tutors</p>
+                  <div className='logo'>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg' width="20px"/> */}
 
-                      {/* PHP tutors */}
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'php',
+                      }}
+                    >
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg'
+                        width='35vw'
+                      />{' '}
+                      PHP tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        A popular general-purpose scripting language
                       </p>
-                    </div>
-                  </Link>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'c',
-                    }}
-                  >
-                    <div className='logo'>
-                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg' />
-                      <p>C tutors</p>
-
-                      {/* C tutors */}
-                      <p className='programingDescription'>
-                        The Swift Programming
-                      </p>
-                    </div>
-                  </Link>
-                </td>
-
-                <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'ruby',
-                    }}
-                  >
-                    <div className='logo'>
-                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg' />
-                      <p>Ruby tutors</p>
-
-                      {/* Ruby tutors */}
-                      <p className='programingDescription'>
-                        The Swift Programming
-                      </p>
-                    </div>
-                  </Link>
-                </td>
-                <td>
-                  {' '}
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'swift',
-                    }}
-                  >
-                    <div className='logo'>
-                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg' />
-                      <p>SWIFT tutors</p>
-
-                      {/* SWIFT tutors */}
-                      <p className='programingDescription'>
-                        The Swift Programming
-                      </p>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'rails',
-                    }}
-                  >
-                    <div className='logo'>
-                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg' />
-                      <p>Rails tutors</p>
+                  <div className='logo'>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg' width="20px"/> */}
 
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'c',
+                      }}
+                    >
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-line.svg'
+                        width='35vw'
+                      />{' '}
+                      C tutors
+                      <p className='programingDescription'>
+                        Structured programming, lexical variable scope, and
+                        recursion
+                      </p>
+                    </Link>
+                  </div>
+                </td>
+
+                <td>
+                  <div className='logo'>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg' width="20px" /> */}
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'ruby',
+                      }}
+                    >
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain-wordmark.svg'
+                        width='35vw'
+                      />{' '}
+                      Ruby tutors
+                      <p className='programingDescription'>
+                        Allows developers to alter how the language itself works
+                      </p>
+                    </Link>
+                  </div>
+                </td>
+                <td>
+                  <div className='logo'>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg' width="20px" /> */}
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'swift',
+                      }}
+                    >
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg'
+                        width='35vw'
+                      />{' '}
+                      SWIFT tutors
+                      <p className='programingDescription'>
+                        Programming language for iOS, iPadOS, macOS, tvOS, and
+                        watchOS
+                      </p>
+                    </Link>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div className='logo'>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg' width="20px"/> */}
+
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'rails',
+                      }}
+                    >
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-plain.svg'
+                        width='35vw'
+                      />{' '}
+                      &nbsp; Rails tutors
                       <div className='programingDescription'>
-                        The Swift Programming
+                        Software library that extends the Ruby programming
+                        language
                       </div>
-                      <p className='programingDescription'>
-                        {/* The Swift Programming */}
-                      </p>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </td>
                 <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'kotlin',
-                    }}
-                  >
-                    <div className='logo'>
-                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg' />
-                      <p>Kotlin tutors</p>
+                  <div className='logo'>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg' /> */}
 
-                      {/* Kotlin tutors */}
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'kotlin',
+                      }}
+                    >
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-plain.svg'
+                        width='25vw'
+                      />{' '}
+                      &nbsp; Kotlin tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        Free, open source, statically typed “pragmatic”
+                        programming language
                       </p>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </td>
                 <td>
-                  <Link
-                    to={{
-                      pathname: '/tutor/list/courses',
-                      courseName: 'scala',
-                    }}
-                  >
-                    <div className='logo'>
-                      <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg' />
-                      <p>Scala tutors</p>
+                  <div className='logo'>
+                    {/* <img src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg'   width='20px'/> */}
 
-                      {/* Scala tutors */}
+                    <Link
+                      to={{
+                        pathname: '/tutor/list/courses',
+                        courseName: 'scala',
+                      }}
+                    >
+                      {' '}
+                      <img
+                        src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-plain.svg'
+                        width='25vw'
+                      />{' '}
+                      &nbsp; Scala tutors
                       <p className='programingDescription'>
-                        The Swift Programming
+                        Used in Data processing, distributed computing, and web
+                        development
                       </p>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 </td>
               </tr>
             </table>

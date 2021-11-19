@@ -192,7 +192,7 @@ class TutorProfile extends Component {
             )}
           </div>
 
-          <div className='userDetailsSection'>
+          <div className='userTutorDetailsSection'>
             <div id='navBarTutorProfile'>
               <ul className='profile-tabs'>
                 <li
