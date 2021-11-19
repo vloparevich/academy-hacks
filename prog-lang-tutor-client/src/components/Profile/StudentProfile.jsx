@@ -160,7 +160,7 @@ class StudentProfile extends Component {
                 </label>
               )}
             </div>
-            <div className='userDetailsSection'>
+            <div className='userStudentDetailsSection'>
               <div className='controlButtonsUserDetails'>
                 {this.state.isEditDetailsClicked ? (
                   <>
@@ -240,14 +240,11 @@ class StudentProfile extends Component {
                   <div className='plainUserDetails'>
                     <div>
                       <h3>
-                        {this.state.firstName} {this.state.lastName}{' '}
-                        <CountryFlag
+                        {this.state.firstName} {this.state.lastName}
+                        {/* <CountryFlag
                           countryOfOrigin={this.state.countryOfOrigin}
-                        />
+                        /> */}
                       </h3>
-                    </div>
-                    <div>
-                      <p>{this.state.aboutMe}</p>
                     </div>
                   </div>
                 )}

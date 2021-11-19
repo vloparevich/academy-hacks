@@ -172,7 +172,7 @@ class TutorProfile extends Component {
               </label>
             )}
           </div>
-          <div className='userDetailsSection'>
+          <div className='userTutorDetailsSection'>
             <div className='controlButtonsUserDetails'>
               {this.state.isEditDetailsClicked ? (
                 <>
