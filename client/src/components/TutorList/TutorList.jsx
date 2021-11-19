@@ -36,13 +36,17 @@ class TutorList extends Component {
         ? this.state.tutorsFromApi[i].coursesTaught?.courses
         : 0;
       for (let j = 0; j < courses.length; j++) {
-        courses[j].courseName.toLowerCase() === searchInput.toLowerCase() &&
+        courses[j].courseName?.toLowerCase() === searchInput?.toLowerCase() &&
           filteredTutors.push(this.state.tutorsFromApi[i]);
       }
     }
 
     searchInput && filteredTutors.length === 0 && (filteredTutors = []);
-    searchInput.length === 0 && (filteredTutors = []);
+    searchInput?.length === 0 && (filteredTutors = []);
+
+    this.setState({
+      filteredTutors: filteredTutors,
+    });
   };
 
   render() {
@@ -50,13 +54,7 @@ class TutorList extends Component {
       <div className='tutorList'>
         <div className='title-list'>
           <div class='floating'></div>
-          <div className='text-gradient-mint-blue-dark'>
-            {/* <div
-              className='floating'
-              style='height: 50px; width: 50px; background: rgb(200,200,200);'
-            ></div> */}
-            <h1 id='courses'>Courses/</h1>
-          </div>
+          <div className='text-gradient-mint-blue-dark'></div>
         </div>
         <div>
           {this.state.filteredTutors?.map((tutorInfo) => (
@@ -87,36 +85,7 @@ class TutorList extends Component {
                       <p className='descriptionTutorList'>
                         {tutorInfo.coursesTaught.courses[0].description}
                       </p>
-                      {/* <Link to='/tutor/{{:_id}}'>
-                        <b>Book a Lesson</b>
-                      </Link> */}
-                      {/* <Redirect>
-            exact
-            path={PATHS.TUTOR_DETAILS}
-            authenticate={this.authenticate}
-            component={TutorDetails}
-            user={this.state.user}
-          /> */}
-                      {/* <Link
-                        to={{
-                          pathname: PATHS.TUTOR_DETAILS,
-                          toBeRedirectedBack: this.props.location,
-                        }}
-                      /> */}
-                      {/* <Link to='/tutor/:id'>Book Lesson</Link> */}
-                      <Link
-                      // to={{
-                      //   pathname: '/tutor/:id',
-                      //   id: '',
-                      // }}
-                      // path={PATHS.TUTOR_DETAILS}
-                      // authenticate={this.authenticate}
-                      // component={TutorDetails}
-
-                      // user={this.state.user}
-                      >
-                        Book Lesson
-                      </Link>
+                      <Link to={`/tutor/${tutorInfo._id}`}>Book Lesson</Link>
                     </div>
                   </div>
                 </div>

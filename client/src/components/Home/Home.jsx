@@ -49,10 +49,6 @@ class Home extends Component {
   };
 
   render() {
-    const javascript = {
-      pathname: '/tutor/list/courses',
-      courseName: 'javascript',
-    };
     return (
       <div className='homepage-container'>
         {/* <HomeNavbar user={this.state.user} loading={this.state.loading} /> */}
