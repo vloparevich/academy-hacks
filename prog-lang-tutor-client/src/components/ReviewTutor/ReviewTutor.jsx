@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import REVIEW_SERVICE from '../../services/ReviewService';
+import { Link } from 'react-router-dom';
 import '../ReviewTutor/ReviewTutor.css'
 
 class ReviewTutor extends Component {
@@ -33,9 +34,7 @@ class ReviewTutor extends Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
-        // console.log('hitting review service')
         const { studentId, tutorId } = this.props;
-        // console.log('details of users', studentId, tutorId)
         const reviewContent = this.state.review;
         REVIEW_SERVICE.createReview(studentId, tutorId, reviewContent).then(() => {
             this.getReviews();
@@ -56,8 +55,26 @@ class ReviewTutor extends Component {
         return (
             <div className='reviewArea'>
                 <h1>Reviews</h1>
-                <button id="addReviewButton" onClick={() => this.setState({ showing: !showing })}>Add Your Review</button>
 
+                {!this.state.currentUser?.isTutor ? (
+                <>
+                <button id="addReviewButton" onClick={() => this.setState({ showing: !showing })}>Add Your Review</button>
+                </>
+              ) : (
+                <div className='TutorDetailsScheduleNotLoggedIn'>
+                  <span>
+                    ⚠ Please{' '}
+                    <Link to='/auth/login'>
+                      <b>log in</b>
+                    </Link>{' '}
+                    or{' '}
+                    <Link to='/auth/signup'>
+                      <b>sign up as a student</b>
+                    </Link>{' '}
+                    to book a class or leave a review.
+                  </span>
+                </div>
+              )}
 
                 {showing ? this.props.studentId && (
                     <form onSubmit={(e) => this.handleFormSubmit(e)}>
@@ -87,3 +104,5 @@ class ReviewTutor extends Component {
 }
 
 export default ReviewTutor;
+
+
