@@ -153,7 +153,7 @@ const tutorsArray = [
     teachingExperience: 500,
     courseName: 'Force',
     description:
-      'The Force is an energy field created by all life that connects everything in the universe, and is known by a variety of names throughout the galaxy.',
+      "The Force is an energy field created by all life that connects everything in the universe, and is known by a variety of names throughout the galaxy.",
     timeAvailableInRange: {
       from: 15,
       to: 20,
@@ -171,136 +171,10 @@ const tutorsArray = [
     teachingExperience: 22,
     courseName: 'Matrix',
     description:
-      'Unfortunately, no one can be told what the Matrix is. You have to see it for yourself.',
+      "Unfortunately, no one can be told what the Matrix is. You have to see it for yourself.",
     timeAvailableInRange: {
       from: 0,
       to: 10,
-    },
-  },
-  {
-    isTutor: true,
-    firstName: 'Elon',
-    lastName: 'Musk',
-    email: 'elon@musk.com',
-    password: 'spacex999',
-    profilePic:
-      'https://cdn.vox-cdn.com/thumbor/05Fm-f6FL70DdyFKmh6jd7sz0TI=/0x0:4000x2840/1200x800/filters:focal(2335x1426:2975x2066)/cdn.vox-cdn.com/uploads/chorus_image/image/69001757/1229901940.0.jpg',
-    countryOfOrigin: 'South Africa',
-    teachingExperience: 30,
-    courseName: 'Python',
-    description:
-      'The series is designed to take you from no computer science background whatsoever to proficiency in the basics of computing and programming, specifically in the popular programming language Python. Rated as one of the most in-demand and beginner-friendly programming languages, Python training will give you a solid foundation not only for Python code but for further studies in computer science.',
-    timeAvailableInRange: {
-      from: 0,
-      to: 14,
-    },
-  },
-  {
-    isTutor: true,
-    firstName: 'Lex',
-    lastName: 'Fridman',
-    email: 'lex@fridman.com',
-    password: 'tensorflow34983#$#',
-    profilePic:
-      'https://www.rev.ai/Content/curve/img/revai/home/lex.jpg?v=CDA704DF447FFFC6C20E0EFC09E0559F',
-    countryOfOrigin: 'Russia',
-    teachingExperience: 16,
-    courseName: 'Tensorflow',
-    description:
-      'TensorFlow is a free and open-source software library for machine learning and artificial intelligence. It can be used across a range of tasks but has a particular focus on training and inference of deep neural networks.',
-    timeAvailableInRange: {
-      from: 0,
-      to: 20,
-    },
-  },
-  {
-    isTutor: true,
-    firstName: 'George',
-    lastName: 'Hotz',
-    email: 'george@hotz.com',
-    password: 'clang34983#$#',
-    profilePic:
-      'https://upload.wikimedia.org/wikipedia/commons/6/6c/George_Hotz_at_TechCrunch_Disrupt.jpg',
-    countryOfOrigin: 'United States',
-    teachingExperience: 14,
-    courseName: 'C',
-    description:
-      "C is probably the most widely known programming language. It is used as the reference language for computer science courses all over the world, and it's probably the language that people learn the most in school along with Python and Java.",
-    timeAvailableInRange: {
-      from: 0,
-      to: 20,
-    },
-  },
-  {
-    isTutor: true,
-    firstName: 'Vitalik',
-    lastName: 'Buterin',
-    email: 'vitalik@buterin.com',
-    password: 'solidity34983#$#',
-    profilePic:
-      'https://api.time.com/wp-content/uploads/2020/09/vitalik-buterin-time-100-2021.jpg',
-    countryOfOrigin: 'Russia',
-    teachingExperience: 12,
-    courseName: 'Solidity',
-    description:
-      'Solidity is an object-oriented programming language for writing smart contracts. It is used for implementing smart contracts on various blockchain platforms, most notably, Ethereum.',
-    timeAvailableInRange: {
-      from: 0,
-      to: 12,
-    },
-  },
-  {
-    isTutor: true,
-    firstName: 'Stefan',
-    lastName: 'Culafic',
-    email: 'stefan@culafic.com',
-    password: 'javascript3$',
-    profilePic:
-      'https://media-exp1.licdn.com/dms/image/C5603AQHs7mH6SYezYQ/profile-displayphoto-shrink_800_800/0/1580751420466?e=1642636800&v=beta&t=Pp4chJ-KiDYXRa1a3bPzPL89Xam8rq4SaxyWJMbzUQo',
-    countryOfOrigin: 'Montenegro',
-    teachingExperience: 5,
-    courseName: 'Javascript',
-    description:
-      'JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled and multi-paradigm. It has dynamic typing, prototype-based object-orientation and first-class functions.',
-    timeAvailableInRange: {
-      from: 0,
-      to: 16,
-    },
-  },
-  {
-    isTutor: true,
-    firstName: 'Aleksandra',
-    lastName: 'Boskovic',
-    email: 'Aleksandra@Boskovic.com',
-    password: 'reactjs3$',
-    profilePic:
-      'https://media-exp1.licdn.com/dms/image/C4E03AQE6j9EFXF-19w/profile-displayphoto-shrink_800_800/0/1550808945544?e=1642636800&v=beta&t=OxWaYjDAd0rv8jqFl00RJNR7W2n4vklzjfn6m21aHIg',
-    countryOfOrigin: 'Serbia',
-    teachingExperience: 6,
-    courseName: 'ReactJS',
-    description:
-      'React is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta and a community of individual developers and companies. React can be used as a base in the development of single-page or mobile applications.',
-    timeAvailableInRange: {
-      from: 0,
-      to: 18,
-    },
-  },
-  {
-    isTutor: true,
-    firstName: 'Marcos',
-    lastName: 'Palacios',
-    email: 'marcos@palacios.com',
-    password: 'htmlandcss3$',
-    profilePic:
-      'https://media-exp1.licdn.com/dms/image/C4D03AQH_GonWLjAtyQ/profile-displayphoto-shrink_800_800/0/1517598430277?e=1642636800&v=beta&t=UYSI9N9NweYXqHLX-rnoxwSrgLzAy1--mSE1O307PIA',
-    countryOfOrigin: 'United States',
-    teachingExperience: 6,
-    courseName: 'CSS',
-    description:
-      'Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. CSS is a cornerstone technology of the World Wide Web, alongside HTML and JavaScript.',
-    timeAvailableInRange: {
-      from: 4,
-      to: 12,
     },
   },
 ];

@@ -122,3 +122,22 @@ td {
   /* top: 50px;
   right: 150px; */
 }
+
+@media only screen and (max-width: 600px) {
+  /* For mobile: */
+  .homepage-container {
+    padding-left: 80px;
+  }
+
+  .text-gradient-mint-blue-dark {
+    position: relative;
+    right: 240px;
+  }
+  table {
+    /* width: 40vw;
+    height: 5vh; */
+
+    position: relative;
+    right: 140px;
+  }
+}
