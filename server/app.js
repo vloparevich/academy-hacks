@@ -33,16 +33,16 @@ app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
 app.use((req, res, next) => {
   console.log('HITTING THE ACCES-CONTROL...');
-  res.setHeader(
+  res.header(
     'Access-Control-Allow-Origin',
     'https://the-academy-hacks.netlify.app'
   );
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader(
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
   );
-  res.setHeader(
+  res.header(
     'Access-Control-Allow-Methods',
     'GET, POST, OPTIONS, PUT, PATCH, DELETE'
   );
