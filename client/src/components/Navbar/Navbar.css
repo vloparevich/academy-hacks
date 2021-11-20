@@ -89,15 +89,9 @@ Blue Grey
   margin: 0;
 }
 
-@media screen and (max-width: 600px) {
-  #mainNavComponent .responsive {
-    position: relative;
-  }
-
-  #mainNavComponent .responsive .logo {
-    position: absolute;
-    right: 0;
-    top: 0;
+@media only screen and (max-width: 600px) {
+  #mainNavComponent {
+    width: 100%;
   }
 }
 

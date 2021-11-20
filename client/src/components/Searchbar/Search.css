@@ -18,16 +18,17 @@ Blue Grey
 
 .searchContainer {
   display: flex;
+  justify-content: center;
   width: 60rem;
-  padding: .5rem;
+  padding: 0.5rem;
   margin-bottom: 5rem;
 }
 
 .searchContainer input {
-  width: 100%;
+  width: 80vw;
   height: 3rem;
   border-style: solid;
-  border-color: #627D98;
+  border-color: #627d98;
   border-width: 0.1rem;
   border-radius: 0.3rem;
   background-color: transparent;
@@ -35,12 +36,16 @@ Blue Grey
   box-shadow: 3px 3px 3px #36b37f3a;
 }
 
-/* fieldset {
-  border: 1px solid #b2e89a;
-  border: 0px;
-  width: 100%;
-} */
-
-/* legend {
-  margin-right: 50%;
-} */
+@media only screen and (max-width: 600px) {
+  .searchBar {
+    /* width: 70vw; */
+    position: relative;
+    right: 130px;
+    /* display: flex;
+    justify-content: center; */
+  }
+  .searchBar input {
+    height: 5vh;
+    width: 70vw;
+  }
+}
