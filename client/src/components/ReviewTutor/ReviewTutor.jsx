@@ -104,5 +104,3 @@ class ReviewTutor extends Component {
 }
 
 export default ReviewTutor;
-
-
