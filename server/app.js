@@ -31,6 +31,9 @@ const capitalized = (string) =>
 
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
+const cors = require('cors');
+app.use(cors());
+
 app.use((req, res, next) => {
   console.log('HITTING THE ACCES-CONTROL...');
   res.header(
