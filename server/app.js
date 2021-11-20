@@ -31,20 +31,6 @@ const capitalized = (string) =>
 
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
-// NEW - Add CORS headers - see https://enable-cors.org/server_expressjs.html
-app.use((req, res, next) => {
-  res.header(
-    'Access-Control-Allow-Origin',
-    'https://the-academy-hacks.netlify.app'
-  );
-  res.header('Access-Control-Allow-Credentials', 'true');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
-
 // 👇 Start handling routes here
 const index = require('./routes/index');
 app.use('/', index);
