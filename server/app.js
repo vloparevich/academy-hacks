@@ -31,54 +31,6 @@ const capitalized = (string) =>
 
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
-// app.use((req, res, next) => {
-//   console.log('HITTING THE ACCES-CONTROL...');
-//   res.header(
-//     'Access-Control-Allow-Origin',
-//     'https://the-academy-hacks.netlify.app'
-//   );
-//   res.header('Access-Control-Allow-Credentials', 'true');
-//   res.header(
-//     'Access-Control-Allow-Headers',
-//     'Origin, X-Requested-With, Content-Type, Accept'
-//   );
-//   res.header(
-//     'Access-Control-Allow-Methods',
-//     'GET, POST, OPTIONS, PUT, PATCH, DELETE'
-//   );
-//   next();
-// });
-// const cors = require('cors');
-// corsOption = {
-//   origin: ['https://the-academy-hacks.netlify.app', 'http://localhost:3000'],
-//   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTION'],
-//   credentials: true,
-// };
-// app.use(cors(corsOption));
-//header("Access-Control-Allow-Headers: *, X-Requested-With, Content-Type");
-
-// app.use(
-//   cors({
-//     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTION'],
-//   })
-// );
-
-// app.use(function (req, res, next) {
-//   console.log('origin headers-->', req.headers.origin);
-//   res.header('Access-Control-Allow-Credentials', true);
-//   res.header('Access-Control-Allow-Origin', req.headers.origin);
-//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//   res.header(
-//     'Access-Control-Allow-Headers',
-//     'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'
-//   );
-//   if ('OPTIONS' == req.method) {
-//     res.send(200);
-//   } else {
-//     next();
-//   }
-// });
-
 // 👇 Start handling routes here
 const index = require('./routes/index');
 app.use('/', index);
