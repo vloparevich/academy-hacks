@@ -48,13 +48,13 @@ app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 //   );
 //   next();
 // });
-const cors = require('cors');
-corsOption = {
-  origin: ['https://the-academy-hacks.netlify.app', 'http://localhost:3000'],
-  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTION'],
-  credentials: true,
-};
-app.use(cors(corsOption));
+// const cors = require('cors');
+// corsOption = {
+//   origin: ['https://the-academy-hacks.netlify.app', 'http://localhost:3000'],
+//   methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTION'],
+//   credentials: true,
+// };
+// app.use(cors(corsOption));
 //header("Access-Control-Allow-Headers: *, X-Requested-With, Content-Type");
 
 // app.use(
@@ -62,6 +62,22 @@ app.use(cors(corsOption));
 //     methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTION'],
 //   })
 // );
+
+app.use(function (req, res, next) {
+  console.log('origin headers-->', req.headers.origin);
+  res.header('Access-Control-Allow-Credentials', true);
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept'
+  );
+  if ('OPTIONS' == req.method) {
+    res.send(200);
+  } else {
+    next();
+  }
+});
 
 // 👇 Start handling routes here
 const index = require('./routes/index');
