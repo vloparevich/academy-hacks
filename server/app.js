@@ -37,6 +37,7 @@ app.use((req, res, next) => {
     'Access-Control-Allow-Origin',
     'https://the-academy-hacks.netlify.app'
   );
+  res.header('Access-Control-Allow-Credentials', 'true');
   res.header(
     'Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept'
