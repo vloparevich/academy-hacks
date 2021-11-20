@@ -27,6 +27,17 @@ Blue Grey
   color: #7788a7;
   width: 900px;
 }
+.bookTutorButton {
+  background-color: #102a43;
+  text-align: center;
+  padding: 0.75rem;
+  margin-bottom: 20px;
+  border-radius: 0.5rem;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
+}
+
 .tutorListPic {
   max-width: 15rem;
   max-height: 10rem;
