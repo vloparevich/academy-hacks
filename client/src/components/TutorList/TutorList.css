@@ -1,0 +1,98 @@
+/*Green 300 #36B37E
+Green 200 #B1EC98
+dark blueBackGround Color:  #1d2025;
+900 Blue Grey NavBar color: #102A43
+Accent/borders Green colors: #36B37E
+
+*/
+/*
+Green 300: #36B37E
+Green 200: #B1EC98
+=======================
+=======================
+Blue Grey
+50 = #F0F4F8 <== lightest
+100 = #D9E2EC
+200 = #BCCCDC
+300 = #9FB3C8
+400 = #829AB1
+500 = #627D98 <== main
+600 = #486581
+700 = #334E68
+800 = #243B53
+900 = #102A43 <== darkest
+*/
+
+.work {
+  color: #7788a7;
+  width: 900px;
+}
+.bookTutorButton {
+  background-color: #102a43;
+  text-align: center;
+  padding: 0.75rem;
+  margin-bottom: 20px;
+  border-radius: 0.5rem;
+  border-color: #627d98;
+  border-style: solid;
+  border-width: 0.01rem;
+}
+
+.tutorListPic {
+  max-width: 15rem;
+  max-height: 10rem;
+  border-radius: 5px;
+  padding: 20px;
+  /* margin: .7rem auto auto;
+  border-radius: 5px;
+  max-width: 17rem; */
+}
+
+.tutorlistInfo {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50vw;
+  background-color: #0c172d;
+  border-radius: 2%;
+  color: #8193b2;
+  /* border: solid #36b37e; */
+  border-width: 0.01px;
+  border-style: solid;
+
+  /* line-height: 0.05vh; */
+}
+
+.tutorListContainer {
+  display: flex;
+  justify-content: center;
+
+  margin: 60px;
+}
+.tutorDescription {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+#courses {
+  font-size: 5em;
+} /* ////////////////////////////////////////////////////////////////////////////////*/
+.floating {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-left: 30px;
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  from {
+    transform: translate(0, 0px);
+  }
+  65% {
+    transform: translate(0, 15px);
+  }
+  to {
+    transform: translate(0, -0px);
+  }
+}
