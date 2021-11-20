@@ -34,7 +34,7 @@ app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 app.use((req, res, next) => {
   res.header(
     'Access-Control-Allow-Origin',
-    'https://shrouded-cliffs-54229.herokuapp.com/https://the-academy-hacks-server.herokuapp.com/api/auth/signup'
+    'https://the-academy-hacks.netlify.app'
   );
   next();
 });
