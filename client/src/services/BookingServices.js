@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const service = axios.create({
-  baseURL: 'http://localhost:5000/api/booking',
+  baseURL: `${process.env.REACT_APP_SERVER_URL}/booking`,
 });
 
 const BOOKING_SERVICE = {
@@ -18,6 +18,7 @@ const BOOKING_SERVICE = {
       .catch((err) => console.log(err));
   },
   createBookingsOnStudent: (date, pickedSlots, studentId, tutorId) => {
+    console.log('createBookingsOnStudent=>>');
     return service
       .post('/saveBookingsOnStudent', {
         date: date,
@@ -25,7 +26,10 @@ const BOOKING_SERVICE = {
         studentId: studentId,
         tutorId: tutorId,
       })
-      .then((responseFromApi) => responseFromApi)
+      .then((responseFromApi) => {
+        console.log('createBookingsOnStudent=responmse', responseFromApi);
+        return responseFromApi;
+      })
       .catch((err) => console.log(err));
   },
 };
