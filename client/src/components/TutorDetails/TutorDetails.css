@@ -23,7 +23,8 @@ Blue Grey
   flex-direction: column;
   justify-content: center;
   height: auto;
-  margin: 5rem 30rem 1.5rem 30rem;
+  margin: 5rem auto;
+  min-width: 400px;
 }
 
 .TutorProfilePicture {
@@ -53,6 +54,7 @@ Blue Grey
   text-align: left;
   background-color: #243b53;
   margin: 1rem 0;
+  min-width: 30rem;
 }
 
 .TutorDetailsScheduleContainer {
@@ -60,6 +62,7 @@ Blue Grey
   text-align: left;
   background-color: #243b53;
   margin: 1rem 0;
+  min-width: 30rem;
 }
 
 .TutorDetailsScheduleNotLoggedIn {
@@ -78,6 +81,7 @@ Blue Grey
   text-align: left;
   background-color: #243b53;
   margin: 1rem 0;
+  min-width: 30rem;
 }
 
 #bookLessonButton {
