@@ -31,6 +31,14 @@ const capitalized = (string) =>
 
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
+app.use((req, res, next) => {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'https://shrouded-cliffs-54229.herokuapp.com/https://the-academy-hacks-server.herokuapp.com/api/auth/signup'
+  );
+  next();
+});
+
 // 👇 Start handling routes here
 const index = require('./routes/index');
 app.use('/', index);
