@@ -35,8 +35,7 @@ app.use((req, res, next) => {
   console.log('HITTING THE ACCES-CONTROL...');
   res.header(
     'Access-Control-Allow-Origin',
-    'http://localhost:3000'
-    // 'https://the-academy-hacks.netlify.app'
+    'https://the-academy-hacks.netlify.app'
   );
   next();
 });
