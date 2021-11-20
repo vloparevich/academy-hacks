@@ -69,8 +69,11 @@ module.exports = (app) => {
   app.use(
     cors({
       credentials: true,
-      // origin: ['http://localhost:3000'], // <== this will be the URL of our React app (it will be running on port 3000)
-      origin: true, // <== this will be the URL of our React app (it will be running on port 3000)
+      origin: [
+        'https://the-academy-hacks.netlify.app',
+        'http://localhost:3000',
+      ], // <== this will be the URL of our React app (it will be running on port 3000)
+      // origin: true, // <== this will be the URL of our React app (it will be running on port 3000)
     })
   );
 };
