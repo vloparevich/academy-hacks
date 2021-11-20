@@ -32,9 +32,11 @@ const capitalized = (string) =>
 app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 
 app.use((req, res, next) => {
+  console.log('HITTING THE ACCES-CONTROL...');
   res.header(
     'Access-Control-Allow-Origin',
-    'https://the-academy-hacks.netlify.app'
+    'http://localhost:3000'
+    // 'https://the-academy-hacks.netlify.app'
   );
   next();
 });
