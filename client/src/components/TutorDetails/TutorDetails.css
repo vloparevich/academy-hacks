@@ -63,6 +63,7 @@ Blue Grey
   background-color: #243b53;
   margin: 1rem 0;
   min-width: 30rem;
+  max-width: 40rem;
 }
 
 .TutorDetailsScheduleNotLoggedIn {
