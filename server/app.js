@@ -49,11 +49,13 @@ app.locals.title = `${capitalized(projectName)} created with IronLauncher`;
 //   next();
 // });
 const cors = require('cors');
-app.use(
-  cors({
-    origin: ['https://the-academy-hacks.netlify.app', 'http://localhost:3000'],
-  })
-);
+corsOption = {
+  origin: ['https://the-academy-hacks.netlify.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTION'],
+  credentials: true,
+};
+app.use(cors(corsOption));
+//header("Access-Control-Allow-Headers: *, X-Requested-With, Content-Type");
 
 // app.use(
 //   cors({
