@@ -153,7 +153,7 @@ const tutorsArray = [
     teachingExperience: 500,
     courseName: 'Force',
     description:
-      "The Force is an energy field created by all life that connects everything in the universe, and is known by a variety of names throughout the galaxy.",
+      'The Force is an energy field created by all life that connects everything in the universe, and is known by a variety of names throughout the galaxy.',
     timeAvailableInRange: {
       from: 15,
       to: 20,
@@ -171,10 +171,29 @@ const tutorsArray = [
     teachingExperience: 22,
     courseName: 'Matrix',
     description:
-      "Unfortunately, no one can be told what the Matrix is. You have to see it for yourself.",
+      'Unfortunately, no one can be told what the Matrix is. You have to see it for yourself.',
     timeAvailableInRange: {
       from: 0,
       to: 10,
+    },
+  },
+
+  {
+    firstName: 'David',
+    isTutor: true,
+    email: 'David@Hansson.com ',
+    password: 'Test456@',
+    lastName: 'Hansson ',
+    profilePic:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/David_Heinemeier_Hansson_Driver_of_Abu_Dhabi_Proton_Racing%27s_Porsche_911_RSR_%2827225732035%29_%28cropped%29.jpg/1024px-David_Heinemeier_Hansson_Driver_of_Abu_Dhabi_Proton_Racing%27s_Porsche_911_RSR_%2827225732035%29_%28cropped%29.jpg',
+    countryOfOrigin: 'Denmark',
+    teachingExperience: 20,
+    courseName: 'rails',
+    description:
+      'I am the creator of Ruby on Rails and I enjoy race car driving amongst many hobbies',
+    timeAvailableInRange: {
+      from: 3,
+      to: 12,
     },
   },
 ];

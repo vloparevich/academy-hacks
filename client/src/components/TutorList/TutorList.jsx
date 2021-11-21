@@ -86,7 +86,9 @@ class TutorList extends Component {
                         {tutorInfo.coursesTaught.courses[0].description}
                       </p>
                       <div className='bookTutorButton'>
-                        <Link to={`/tutor/${tutorInfo._id}`}>Book Lesson</Link>
+                        <Link to={`/tutor/${tutorInfo._id}`}>
+                          <button>Book Lesson</button>
+                        </Link>
                       </div>
                     </div>
                   </div>
