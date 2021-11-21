@@ -162,7 +162,7 @@ export default class Timeslot extends Component {
             </button>
           ) : (
             <div id='NoLessonsLeftBanner'>
-              This date is sold, try a different one...
+              This date is booked, try a different one...
             </div>
           )}
         </div>
