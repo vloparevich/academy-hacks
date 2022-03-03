@@ -135,7 +135,7 @@ class StudentProfile extends Component {
   render() {
     return (
       <>
-        <div>
+        <div id='profileModule'>
           <div className='profileContainer'>
             <div className='imageSection'>
               {this.state.profilePic && (
@@ -271,18 +271,20 @@ class StudentProfile extends Component {
                   )}
               </div>
             </div>
-            <button
-              style={{
-                backgroundColor: this.state.isEditProfileClicked && '#F47174',
-                color: this.state.isEditProfileClicked && '#fff',
-              }}
-              id='editMyProfileButton'
-              onClick={this.handleEditProfileButton}
-            >
-              {this.state.isEditProfileClicked
-                ? 'Hide control buttons'
-                : 'Edit my profile'}
-            </button>
+            <div>
+              <button
+                style={{
+                  backgroundColor: this.state.isEditProfileClicked && '#F47174',
+                  color: this.state.isEditProfileClicked && '#fff',
+                }}
+                id='editMyProfileButton'
+                onClick={this.handleEditProfileButton}
+              >
+                {this.state.isEditProfileClicked
+                  ? 'Hide control buttons'
+                  : 'Edit my profile'}
+              </button>
+            </div>
           </div>
           <div id='myClassesSection'>
             <button
