@@ -11,51 +11,24 @@ import USER_SERVICE from '../../services/UserServices.js';
 import Modal from '../Modal/Modal';
 
 const StudentProfile = (props) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(props.user);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [profilePic, setProfilePic] = useState('');
   const [aboutMe, setAboutMe] = useState('');
   const [countryOfOrigin, setCountryOfOrigin] = useState('');
-  const [teachingExperience, setTeachingExperience] = useState('');
-  const [timeRangeOfAvailability, setTimeRangeOfAvailability] = useState('');
-  const [coursesTaught, setCoursesTaught] = useState('');
-  const [isEditProfileClicked, seisEditProfileClicked] = useState(false);
+  const [isEditProfileClicked, setIsEditProfileClicked] = useState(false);
   const [isEditDetailsClicked, setIsEditDetailsClicked] = useState(false);
   const [isShowMyBookingsClicked, setIsShowMyBookingsClicked] = useState(false);
-  const [prevCourseName, setPrevCourseName] = useState('');
   const [isModalShowed, setIsModalShowed] = useState(false);
 
   useEffect(() => {
-    console.log('from the props in cdid mount', user._id);
-    setUser(props.user);
-    console.log('first');
+    getUser();
   }, []);
 
-  useEffect(() => {
-    getUser();
-    console.log('second');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    user,
-    firstName,
-    lastName,
-    profilePic,
-    aboutMe,
-    countryOfOrigin,
-    teachingExperience,
-    timeRangeOfAvailability,
-    coursesTaught,
-    isEditProfileClicked,
-    isEditDetailsClicked,
-    isShowMyBookingsClicked,
-    prevCourseName,
-    isModalShowed,
-  ]);
-
   const getUser = () => {
+    setUser(props.user);
     USER_SERVICE.getSpecificStudent(user._id).then((res) => {
-      console.log('RESPONSE', res);
       setFirstName(res.user?.firstName);
       setLastName(res.user?.lastName);
       setCountryOfOrigin(res.user?.countryOfOrigin);
@@ -70,23 +43,19 @@ const StudentProfile = (props) => {
 
   const handleDeleteButton = () => {
     USER_SERVICE.deleteStudent(user._id).then((responseFromApi) => {
-      console.log('Student after deletion', responseFromApi);
       props.history.push(PATHS.HOMEPAGE);
     });
     props.handleLogout();
   };
 
   const handleCancelOfUpdate = () => {
-    seisEditProfileClicked({
-      isEditDetailsClicked: false,
-    });
+    setIsEditProfileClicked(false);
+    setIsEditDetailsClicked(false);
     getUser();
   };
 
   const handleEditProfileButton = () => {
-    seisEditProfileClicked({
-      isEditProfileClicked: !isEditProfileClicked,
-    });
+    setIsEditProfileClicked(!isEditProfileClicked);
     if (isEditProfileClicked) {
       handleCancelOfUpdate();
     }
@@ -120,36 +89,39 @@ const StudentProfile = (props) => {
 
   const handleSavingChanges = (event) => {
     event.preventDefault();
-    PROFILE_SERVICE.handleUpdateStudentDetails(
+    PROFILE_SERVICE.handleUpdateStudentDetails({
       user,
       firstName,
       lastName,
       profilePic,
       aboutMe,
       countryOfOrigin,
-      teachingExperience,
-      timeRangeOfAvailability,
-      coursesTaught,
       isEditProfileClicked,
       isEditDetailsClicked,
       isShowMyBookingsClicked,
-      prevCourseName,
-      isModalShowed
-    ).then(() => {
-      setIsEditDetailsClicked(
-        {
-          isEditDetailsClicked: false,
-        },
-        () => {
-          this.getUser();
-        }
-      );
+      isModalShowed,
+    }).then(() => {
+      setIsEditDetailsClicked(false);
+      getUser();
     });
   };
 
-  const handleFormInput = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
+  const handleFirstNameInput = (event) => {
+    const { value } = event.target;
+    setFirstName(value);
+  };
+  const handleLastNameInput = (event) => {
+    const { value } = event.target;
+    setLastName(value);
+  };
+  const handlecountryOfOriginInput = (event) => {
+    const { value } = event.target;
+    setCountryOfOrigin(value);
+  };
+
+  const handleAboutMeInput = (event) => {
+    const { value } = event.target;
+    setAboutMe(value);
   };
 
   return (
@@ -188,7 +160,7 @@ const StudentProfile = (props) => {
                         name='firstName'
                         id='firstName'
                         value={firstName}
-                        onChange={handleFormInput}
+                        onChange={handleFirstNameInput}
                       />
                       {!firstName && (
                         <span className='requiredField'>
@@ -202,7 +174,7 @@ const StudentProfile = (props) => {
                         name='lastName'
                         id='lastName'
                         value={lastName}
-                        onChange={handleFormInput}
+                        onChange={handleLastNameInput}
                       />
                       {!lastName && (
                         <span className='requiredField'>
@@ -216,7 +188,7 @@ const StudentProfile = (props) => {
                         name='countryOfOrigin'
                         id='country'
                         value={countryOfOrigin}
-                        onChange={handleFormInput}
+                        onChange={handlecountryOfOriginInput}
                       />
                       {!countryOfOrigin && (
                         <span className='requiredField'>
@@ -231,7 +203,7 @@ const StudentProfile = (props) => {
                         name='aboutMe'
                         id='description'
                         value={aboutMe}
-                        onChange={handleFormInput}
+                        onChange={handleAboutMeInput}
                       />
                     </div>
                     <button
@@ -254,9 +226,7 @@ const StudentProfile = (props) => {
                   <div>
                     <h3>
                       {firstName} {lastName}
-                      {/* <CountryFlag
-                      countryOfOrigin={this.state.countryOfOrigin}
-                    /> */}
+                      <CountryFlag countryOfOrigin={countryOfOrigin} />
                     </h3>
                   </div>
                 </div>
