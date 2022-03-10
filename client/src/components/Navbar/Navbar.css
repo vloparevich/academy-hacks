@@ -49,7 +49,7 @@ Blue Grey
   justify-content: flex-end;
 }
 
-.navbarSignupBorder {
+.navbarActiveButton {
   background-color: #102a43;
   padding: 0.75rem;
   border-radius: 0.5rem;
