@@ -62,9 +62,7 @@ const StudentProfile = (props) => {
   };
 
   const handleShowBookingsButton = () => {
-    setIsShowMyBookingsClicked({
-      isShowMyBookingsClicked: !isShowMyBookingsClicked,
-    });
+    setIsShowMyBookingsClicked(!isShowMyBookingsClicked);
   };
 
   const getUserWithUpdatedProfilePicture = (event) => {
