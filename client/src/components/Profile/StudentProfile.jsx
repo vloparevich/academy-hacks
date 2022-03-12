@@ -1,7 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { Component, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 import './Profile.css';
 import PROFILE_SERVICE from '../../services/ProfileServices';
 import * as PATHS from '../../utils/paths.js';
@@ -9,6 +7,7 @@ import CountryFlag from '../CountryFlag/CountryFlag';
 import MyLessons from '../MyLessons/MyLessons';
 import USER_SERVICE from '../../services/UserServices.js';
 import Modal from '../Modal/Modal';
+import UserDetails from './UserDetails';
 
 const StudentProfile = (props) => {
   const [user, setUser] = useState(props.user);
@@ -151,35 +150,22 @@ const StudentProfile = (props) => {
                     onSubmit={(event) => handleSavingChanges(event)}
                     autoComplete='off'
                   >
-                    <div>
-                      <label>First name</label>
-                      <input
-                        autoFocus
-                        name='firstName'
-                        id='firstName'
-                        value={firstName}
-                        onChange={handleFirstNameInput}
-                      />
-                      {!firstName && (
-                        <span className='requiredField'>
-                          This field is required
-                        </span>
-                      )}
-                    </div>
-                    <div>
-                      <label>Last name</label>
-                      <input
-                        name='lastName'
-                        id='lastName'
-                        value={lastName}
-                        onChange={handleLastNameInput}
-                      />
-                      {!lastName && (
-                        <span className='requiredField'>
-                          This field is required
-                        </span>
-                      )}
-                    </div>
+                    <UserDetails
+                      labelValue='First name'
+                      autoFocus={true}
+                      name='firstName'
+                      id='firstName'
+                      value={firstName}
+                      onChange={handleFirstNameInput}
+                    />
+                    <UserDetails
+                      labelValue='Last name'
+                      autoFocus={false}
+                      name='lastName'
+                      id='lastName'
+                      value={lastName}
+                      onChange={handleLastNameInput}
+                    />
                     <div>
                       <label>Country</label>
                       <input
