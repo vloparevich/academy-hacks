@@ -4,13 +4,14 @@ import './LanguageQuickCards.css';
 
 export default function LanguageQuickCard(props) {
   return (
-    <div className='languageCard'>
-      <Link
-        to={{
-          pathname: '/tutor/list/courses',
-          courseName: `${props.langName}`,
-        }}
-      >
+    <Link
+      to={{
+        pathname: '/tutor/list/courses',
+        courseName: `${props.langName.toLowerCase()}`,
+      }}
+      className='languageCard'
+    >
+      <div>
         <img
           className='langIcon'
           src={props.urlToImg}
@@ -19,7 +20,7 @@ export default function LanguageQuickCard(props) {
         />
         {props.langName[0].toUpperCase() + props.langName.slice(1)} tutors
         <p className='programingDescription'>{props.shortLangDescription}</p>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }
