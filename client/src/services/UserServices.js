@@ -7,13 +7,11 @@ const service = axios.create({
 const USER_SERVICE = {
   getAllTutors: () => {
     return service.get('/tutor/list').then((tutors) => {
-      console.log('server side', tutors);
       return tutors.data.tutors;
     });
   },
   getSpecificTutor: (id) => {
     return service.get(`/tutor/${id}`).then((tutor) => {
-      console.log('my tutor is back from backend', tutor);
       return tutor.data;
     });
   },
@@ -22,13 +20,11 @@ const USER_SERVICE = {
   },
   deleteTutor: (id) => {
     return service.delete(`/tutor/${id}`).then((respnseFromApi) => {
-      console.log(respnseFromApi);
       return respnseFromApi.data;
     });
   },
   deleteStudent: (id) => {
     return service.delete(`/student/${id}`).then((respnseFromApi) => {
-      console.log(respnseFromApi);
       return respnseFromApi.data;
     });
   },
