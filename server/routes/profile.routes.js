@@ -105,7 +105,6 @@ router.patch('/tutor/:userId', async (req, res) => {
 // PATCH route to update student's details
 // ****************************************************************************************
 router.patch('/student/:userId', async (req, res) => {
-  console.log('STUDENT IS BEING UPDATED');
   const { userId } = req.params;
   const dataToBeSaved = req.body;
   const userIdPrepared = mongoose.Types.ObjectId(userId);
@@ -123,7 +122,6 @@ router.patch('/student/:userId', async (req, res) => {
     );
     res.status(201).json({ success: true, updatedUser: updatedStudent });
   } catch (err) {
-    console.log({ err: err });
     res.json({
       success: false,
       message: 'User details were not updated',

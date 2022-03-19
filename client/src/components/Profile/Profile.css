@@ -17,9 +17,9 @@ Blue Grey
 */
 
 #profileModule {
-  height: 70vh;
   display: flex;
   flex-direction: column;
+  margin-top: 3rem;
   justify-content: space-evenly;
 }
 
@@ -34,10 +34,6 @@ Blue Grey
   margin: 0 auto;
 }
 
-#myClassesSection {
-  width: 60rem;
-}
-
 @media screen and (max-width: 1000px) {
   #profileModule {
     height: 90vh;
@@ -46,11 +42,12 @@ Blue Grey
   .profileContainer {
     flex-direction: column;
     width: 90%;
-    margin: 1.5rem auto 1rem auto;
+    margin: 7.5rem auto 1rem auto;
   }
 
   #myClassesSection {
     width: 90%;
+    margin-top: 1rem;
   }
 }
 
@@ -251,9 +248,9 @@ textarea {
   display: flex;
   flex-direction: column;
   background-color: #243B53;
-
+  width: 60rem;
   height: auto;
-  margin: 0 auto;
+  margin: 1rem auto 0 auto;
   border-radius: 5px;
   padding: 1rem 0;
   max-width: 60rem;
@@ -275,5 +272,5 @@ textarea {
 }
 
 #editMyProfileButton {
-  margin-top: 5rem !important;
+  margin-top: 1rem !important;
 }

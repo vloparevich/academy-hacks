@@ -1,0 +1,23 @@
+.langIcon {
+    margin: 0 .55rem;
+}
+
+.languageCardsContianer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 65vw;
+    justify-content: center;
+}
+
+.languageCard {
+    flex: 0 0 29%;
+    background-color: #0c172d;
+    box-shadow: 2px 5px 15px #88888863;
+    margin: .05rem;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+.languageCard:hover {
+    background-color: #1a253c;
+}
