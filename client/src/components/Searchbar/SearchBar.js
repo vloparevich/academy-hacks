@@ -5,8 +5,6 @@ export default class SearchBar extends Component {
   render() {
     return (
       <div className='searchContainer'>
-        {/* <p>Search</p> */}
-        {/* <fieldset> */}
         <input
           autoFocus
           autoComplete='off'
@@ -16,8 +14,6 @@ export default class SearchBar extends Component {
             this.props.onSearchQueryChange(event.target.value)
           }
         />
-        {/* <legend>SEARCH</legend> */}
-        {/* </fieldset> */}
       </div>
     );
   }

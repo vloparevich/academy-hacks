@@ -47,8 +47,7 @@ Blue Grey
   justify-content: space-evenly;
 }
 
-@media only screen and (max-width: 600px) {
-}
+@media only screen and (max-width: 600px) {}
 
 .searchBar {
   display: flex;
@@ -99,6 +98,7 @@ table {
   box-shadow: 5px 10px 8px #88888863;
   color: #7788a7;
 }
+
 td:hover {
   background-color: #1a253c;
 }
@@ -124,6 +124,7 @@ td {
 }
 
 @media only screen and (max-width: 600px) {
+
   /* For mobile: */
   .homepage-container {
     padding-left: 80px;
@@ -133,6 +134,7 @@ td {
     position: relative;
     right: 240px;
   }
+
   table {
     /* width: 40vw;
     height: 5vh; */
