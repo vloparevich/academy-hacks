@@ -43,7 +43,6 @@ class TutorList extends Component {
 
     searchInput && filteredTutors.length === 0 && (filteredTutors = []);
     searchInput?.length === 0 && (filteredTutors = []);
-
     this.setState({
       filteredTutors: filteredTutors,
     });

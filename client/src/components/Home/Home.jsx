@@ -76,9 +76,6 @@ class Home extends Component {
             />
           ))}
         </div>
-        <div className='tableContainer'>
-          <div className='courseTable'></div>
-        </div>
       </div>
     );
   }
