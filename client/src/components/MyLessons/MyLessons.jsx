@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './MyLessons.css';
 import STUDENT_LESSON_SERVICE from '../../services/StudentLessonServices';
+import LessonCardDetails from './LessonCardDetails';
 
 export default function MyLessons(props) {
   const [userAndTutorDetails, setUserAndTutorDetails] = useState('');
+  const [myBookings, setMyBookings] = useState([]);
 
   useEffect(() => {
     getStudentWithLessons();
   }, []);
+
+  useEffect(() => {
+    setMyBookings(getMyBookings());
+  }, [userAndTutorDetails]);
 
   const getStudentWithLessons = () => {
     const studentId = props.match?.params.id
@@ -22,9 +28,7 @@ export default function MyLessons(props) {
 
   const getMyBookings = () => {
     let data = [];
-    console.log('long =>' + userAndTutorDetails);
     const details = userAndTutorDetails?.myBookings;
-
     details?.forEach((el) => {
       data.push({
         date: el.date,
@@ -59,48 +63,18 @@ export default function MyLessons(props) {
   };
   return (
     <React.Fragment>
-      {getMyBookings().length > 0 && (
-        <div id='myLessonsCmp'>
-          {getMyBookings()?.map(
-            (el) =>
-              el.courseName && (
-                <div className='myLessonCard' key={el.studentBookingId}>
-                  <p>{el.date}</p>
-                  <img
-                    src={el.profilePic}
-                    id='myLessonsTutorPic'
-                    alt='profile pic'
-                  />
-                  <p id='myLessonCourseName'>
-                    <span id='myLessonSubjectName'>{el.courseName}</span>
-                  </p>
-                  <p id='myLessonTutorName'>{el.tutorFullName}</p>
-                  <ul>
-                    {el.pickedSlots.map((scheduledHour, i) => (
-                      <li key={i}>
-                        {scheduledHour}:00{' '}
-                        <button
-                          className='myLesson_cancel_btn'
-                          onClick={() =>
-                            handleLessonDeletion(
-                              el.studentBookingId,
-                              el.date,
-                              scheduledHour,
-                              userAndTutorDetails._id,
-                              el.tutorId
-                            )
-                          }
-                        >
-                          Cancel
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-          )}
-        </div>
-      )}
+      <div id='myLessonsCmp'>
+        {myBookings?.map(
+          (el) =>
+            el.courseName && (
+              <LessonCardDetails
+                details={el}
+                userAndTutorDetails={userAndTutorDetails}
+                handleLessonDeletion={handleLessonDeletion}
+              />
+            )
+        )}
+      </div>
     </React.Fragment>
   );
 }
