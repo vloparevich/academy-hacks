@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NavBarButtonsUserAuthorized(props) {
+const NavBarButtonsUserAuthorized = (props) => {
   return (
     <ul>
       <li>
@@ -16,4 +16,6 @@ export default function NavBarButtonsUserAuthorized(props) {
       </li>
     </ul>
   );
-}
+};
+
+export default NavBarButtonsUserAuthorized;
