@@ -2,22 +2,30 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function NavBarButtonsNotAuth() {
-  const [navBarClicked, setNavbarClicked] = useState(false);
-  const applyStyle = () => {
-    setNavbarClicked(!navBarClicked);
+  const [signUpActive, setSignUpActive] = useState(false);
+  const [loginActive, setLoginActive] = useState(false);
+
+  const handleLoginClick = () => {
+    setLoginActive(true);
+    setSignUpActive(false);
+  };
+
+  const handleSignUpClick = () => {
+    setSignUpActive(true);
+    setLoginActive(false);
   };
 
   return (
     <ul>
       <li
-        className={navBarClicked && 'navbarActiveButton'}
-        onClick={applyStyle}
+        className={loginActive && 'navbarActiveButton'}
+        onClick={handleLoginClick}
       >
         <Link to='/auth/login'>Login</Link>
       </li>
       <li
-        className={!navBarClicked && 'navbarActiveButton'}
-        onClick={applyStyle}
+        className={signUpActive && 'navbarActiveButton'}
+        onClick={handleSignUpClick}
       >
         <Link to='/auth/signup'>Sign Up</Link>
       </li>
