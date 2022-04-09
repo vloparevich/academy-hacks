@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { signup } from '../../services/auth-service';
 import './Auth.css';
 import * as USER_HELPERS from '../../utils/userToken';
@@ -6,6 +6,7 @@ import * as PATHS from '../../utils/paths';
 import { Link } from 'react-router-dom';
 import StudentSignUpForm from './StudentSignUpForm';
 import TutorSignUpForm from './TutorSignUpForm';
+import ErrorMessageModal from './ErrorModal';
 
 export default class Signup extends Component {
   state = {
@@ -16,6 +17,7 @@ export default class Signup extends Component {
     countryOfOrigin: '',
     teachingExperience: '',
     isTutor: false,
+    response: '',
   };
 
   changeHandler = (e) => {
@@ -38,10 +40,11 @@ export default class Signup extends Component {
 
     signup(signingDetails).then((res) => {
       // successful signup
-      console.log(res);
       if (!res.status) {
-        console.log('REDIRECTING to SIGNUPPAGE');
         this.props.history.push(PATHS.SIGNUPPAGE);
+        this.setState({
+          response: res,
+        });
       } else {
         USER_HELPERS.setUserToken(res.data.accessToken);
         this.props.authenticate(res.data?.user);
@@ -62,9 +65,17 @@ export default class Signup extends Component {
     });
   };
 
+  errorMessageHandler = () => {
+    this.setState({ response: '' });
+  };
+
   render() {
     return (
-      <>
+      <React.Fragment>
+        <ErrorMessageModal
+          message={this.state.response?.errorMessage}
+          resetErrorMessage={this.errorMessageHandler}
+        />
         <div className='auth-container'>
           <ul className='auth-top-bar'>
             <>
@@ -116,7 +127,7 @@ export default class Signup extends Component {
             <b>Log In</b>
           </Link>
         </div>
-      </>
+      </React.Fragment>
     );
   }
 }

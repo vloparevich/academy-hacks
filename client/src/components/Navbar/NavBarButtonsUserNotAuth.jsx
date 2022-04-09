@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function NavBarButtonsNotAuth() {
-  const [signUpActive, setSignUpActive] = useState(false);
   const [loginActive, setLoginActive] = useState(false);
+  const [signUpActive, setSignUpActive] = useState(false);
 
   const handleLoginClick = () => {
     setLoginActive(true);
