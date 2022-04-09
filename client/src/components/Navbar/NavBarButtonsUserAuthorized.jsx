@@ -11,7 +11,7 @@ const NavBarButtonsUserAuthorized = (props) => {
           </div>
         </Link>
       </li>
-      <li id='logoutBtn' onClick={() => props.handleLogout()}>
+      <li id='logoutBtn' onClick={props.handleLogout}>
         <h4>Logout</h4>
       </li>
     </ul>

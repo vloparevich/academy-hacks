@@ -15,7 +15,6 @@ export default function Navbar(props) {
         <img id='logo' src='../logo.png' alt='logo' />
       </Link>
       <Time />
-
       {props.user ? (
         <NavBarButtonsUserAuthorized
           path='/user'
