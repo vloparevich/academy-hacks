@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { signup } from '../../services/auth-service';
 import './Auth.css';
 import * as USER_HELPERS from '../../utils/userToken';
@@ -8,126 +8,131 @@ import StudentSignUpForm from './StudentSignUpForm';
 import TutorSignUpForm from './TutorSignUpForm';
 import ErrorMessageModal from './ErrorModal';
 
-export default class Signup extends Component {
-  state = {
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    countryOfOrigin: '',
-    teachingExperience: '',
-    isTutor: false,
-    response: '',
+export default function Signup(props) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [countryOfOrigin, setCountryOfOrigin] = useState('');
+  const [teachingExperience, setTeachinExperience] = useState('');
+  const [response, setResponse] = useState('');
+  const [isTutor, setIsTutor] = useState(false);
+
+  const onChangeHandler = (e) => {
+    const property = e.target.name;
+    const value = e.target.value;
+    switch (property) {
+      case 'email':
+        setEmail(value);
+        break;
+      case 'password':
+        setPassword(value);
+        break;
+      case 'firstName':
+        setFirstName(value);
+        break;
+      case 'lastName':
+        setLastName(value);
+        break;
+      case 'countryOfOrigin':
+        setCountryOfOrigin(value);
+        break;
+      case 'teachingExperience':
+        setTeachinExperience((value) => value);
+        break;
+      default:
+        break;
+    }
   };
 
-  changeHandler = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  handleFormSubmission = (event) => {
+  const handleFormSubmission = (event) => {
     event.preventDefault();
     const signingDetails = {
-      email: this.state.email,
-      password: this.state.password,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      isTutor: this.state.isTutor,
-      countryOfOrigin: this.state.countryOfOrigin,
-      teachingExperience: this.state.teachingExperience,
+      email: email,
+      password: password,
+      firstName: firstName,
+      lastName: lastName,
+      isTutor: isTutor,
+      countryOfOrigin: countryOfOrigin,
+      teachingExperience: teachingExperience,
     };
 
     signup(signingDetails).then((res) => {
       // successful signup
       if (!res.status) {
-        this.props.history.push(PATHS.SIGNUPPAGE);
-        this.setState({
-          response: res,
-        });
+        props.history.push(PATHS.SIGNUPPAGE);
+        setResponse((response) => response);
       } else {
         USER_HELPERS.setUserToken(res.data.accessToken);
-        this.props.authenticate(res.data?.user);
-        this.props.history.push(PATHS.HOMEPAGE);
+        props.authenticate(res.data?.user);
+        props.history.push(PATHS.HOMEPAGE);
       }
     });
   };
 
-  handleTutorSelection = () => {
-    this.setState({
-      isTutor: true,
-    });
-  };
+  const handleTutorSelection = () => setIsTutor(() => true);
 
-  handleStudentSelection = () => {
-    this.setState({
-      isTutor: false,
-    });
-  };
+  const handleStudentSelection = () => setIsTutor(() => false);
 
-  errorMessageHandler = () => {
-    this.setState({ response: '' });
-  };
+  const errorMessageHandler = () => setResponse(() => '');
 
-  render() {
-    return (
-      <React.Fragment>
-        <ErrorMessageModal
-          message={this.state.response?.errorMessage}
-          resetErrorMessage={this.errorMessageHandler}
-        />
-        <div className='auth-container'>
-          <ul className='auth-top-bar'>
-            <>
-              <button
-                onClick={this.handleStudentSelection}
-                id={
-                  this.state.isTutor
-                    ? 'inactive-student-signup-toggle'
-                    : 'active-student-signup-toggle'
-                }
-              >
-                Student
-              </button>
-              <button
-                onClick={this.handleTutorSelection}
-                id={
-                  this.state.isTutor
-                    ? 'active-student-signup-toggle'
-                    : 'inactive-student-signup-toggle'
-                }
-              >
-                Tutor
-              </button>
-            </>
-          </ul>
-          {this.state.isTutor ? (
-            <TutorSignUpForm
-              firstName={this.state.firstName}
-              lastName={this.state.lastName}
-              email={this.state.email}
-              pasword={this.state.password}
-              handleFormSubmission={this.handleFormSubmission}
-              onChange={this.changeHandler}
-            />
-          ) : (
-            <StudentSignUpForm
-              firstName={this.state.firstName}
-              lastName={this.state.lastName}
-              email={this.state.email}
-              pasword={this.state.password}
-              handleFormSubmission={this.handleFormSubmission}
-              onChange={this.changeHandler}
-            />
-          )}
-        </div>
-        <div className='authCreateAccountContainer'>
-          Already have an Academy Hacks account?{' '}
-          <Link to='/auth/login'>
-            <b>Log In</b>
-          </Link>
-        </div>
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      <ErrorMessageModal
+        message={response?.errorMessage}
+        resetErrorMessage={errorMessageHandler}
+      />
+      <div className='auth-container'>
+        <ul className='auth-top-bar'>
+          <React.Fragment>
+            <button
+              onClick={handleStudentSelection}
+              id={
+                isTutor
+                  ? 'inactive-student-signup-toggle'
+                  : 'active-student-signup-toggle'
+              }
+            >
+              Student
+            </button>
+            <button
+              onClick={handleTutorSelection}
+              id={
+                isTutor
+                  ? 'active-student-signup-toggle'
+                  : 'inactive-student-signup-toggle'
+              }
+            >
+              Tutor
+            </button>
+          </React.Fragment>
+        </ul>
+        {isTutor ? (
+          <TutorSignUpForm
+            firstName={firstName}
+            lastName={lastName}
+            email={email}
+            pasword={password}
+            handleFormSubmission={handleFormSubmission}
+            onChange={onChangeHandler}
+          />
+        ) : (
+          <StudentSignUpForm
+            firstName={firstName}
+            lastName={lastName}
+            email={email}
+            pasword={password}
+            handleFormSubmission={handleFormSubmission}
+            onChange={onChangeHandler}
+          />
+        )}
+      </div>
+      <div className='authCreateAccountContainer'>
+        Already have an Academy Hacks account?
+        <Link to='/auth/login'>
+          <b> Log In</b>
+        </Link>
+      </div>
+    </React.Fragment>
+  );
 }
