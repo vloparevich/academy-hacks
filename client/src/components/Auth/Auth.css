@@ -134,7 +134,7 @@ h3 {
   padding-bottom: 2rem;
 }
 
-.auth-form-container input {
+/* .auth-form-container input {
   background-color: #102a43;
   margin: 0.5rem;
   color: #F0F4F8;
@@ -144,7 +144,7 @@ h3 {
   border-width: 0.01rem;
   font-weight: bold;
   padding: 0.5rem;
-}
+} */
 
 .auth-form-container label {
   margin-top: 2rem;

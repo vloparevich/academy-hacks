@@ -160,11 +160,11 @@ label {
   display: block;
 }
 
-form input,
+/* form input,
 .plainUserDetails input {
   margin-top: 0.1rem;
   width: 375px;
-}
+} */
 
 .profile-tabs {
   list-style: none;

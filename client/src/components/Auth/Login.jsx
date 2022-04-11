@@ -4,6 +4,7 @@ import * as PATHS from '../../utils/paths';
 import * as USER_HELPERS from '../../utils/userToken';
 import './Auth.css';
 import { Link } from 'react-router-dom';
+import classes from './Auth.module.css';
 
 export default function Login(props) {
   const [email, setEmail] = useState('');
@@ -39,16 +40,18 @@ export default function Login(props) {
       <div className='auth-container'>
         <h2>Sign in to Academy Hacks</h2>
         <form onSubmit={handleFormSubmission} className='auth-form-container'>
-          <label>Enter your email</label>
+          {/* <label>Enter your email</label> */}
           <input
+            className={classes['signup-input']}
             type='email'
             name='email'
             placeholder='Enter your email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label>Enter your password</label>
+          {/* <label>Enter your password</label> */}
           <input
+            className={classes['signup-input']}
             type='password'
             name='password'
             placeholder='Enter your password'

@@ -1,4 +1,5 @@
 import React from 'react';
+import InputSignup from './InputSignup';
 
 export default function StudentSignUpForm(props) {
   const {
@@ -10,46 +11,48 @@ export default function StudentSignUpForm(props) {
     onChange,
   } = props;
 
+  const inputDetails = [
+    {
+      type: 'text',
+      name: 'firstName',
+      placeholder: 'First Name',
+      value: firstName,
+    },
+    {
+      type: 'text',
+      name: 'lastName',
+      placeholder: 'Last Name',
+      value: lastName,
+    },
+    {
+      type: 'email',
+      name: 'email',
+      placeholder: 'Enter your email',
+      value: email,
+    },
+    {
+      type: 'password',
+      name: 'password',
+      placeholder: 'Create a password',
+      autoComplete: 'current-password',
+      value: password,
+    },
+  ];
+
   return (
     <form onSubmit={handleFormSubmission} className='auth-form-container'>
       <h3>Sign up as a student</h3>
       <h2>Let's begin your next adventure</h2>
-      <label>First Name</label>
-      <input
-        type='text'
-        name='firstName'
-        placeholder='First Name'
-        value={firstName}
-        onChange={onChange}
-      />
-
-      <label>Last Name</label>
-      <input
-        type='text'
-        name='lastName'
-        placeholder='Last Name'
-        value={lastName}
-        onChange={onChange}
-      />
-
-      <label>Enter your email</label>
-      <input
-        type='email'
-        name='email'
-        placeholder='Enter your email'
-        value={email}
-        onChange={onChange}
-      />
-
-      <label>Create a password</label>
-      <input
-        type='password'
-        name='password'
-        placeholder='Create a password'
-        autoComplete='current-password'
-        value={password}
-        onChange={onChange}
-      />
+      {inputDetails.map((thisInput) => (
+        <InputSignup
+          type={thisInput.type}
+          name={thisInput.name}
+          placeholder={thisInput.placeholder}
+          value={thisInput.value}
+          autoComplete={thisInput.autoComplete}
+          onChange={onChange}
+        />
+      ))}
       <button type='submit' value='Create account' className='auth-button'>
         Create a student account
       </button>
