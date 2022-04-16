@@ -6,9 +6,16 @@ const service = axios.create({
 
 const USER_SERVICE = {
   getAllTutors: () => {
-    return service.get('/tutor/list').then((tutors) => {
-      return tutors.data.tutors;
-    });
+    return service
+      .get('/tutor/list')
+      .then((tutors) => {
+        return tutors.data.tutors;
+      })
+      .catch((err) => {
+        return {
+          serviceError: err,
+        };
+      });
   },
   getSpecificTutor: (id) => {
     return service.get(`/tutor/${id}`).then((tutor) => {

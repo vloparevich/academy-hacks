@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from '../Searchbar/SearchBar';
 import TutorRow from '../TutorRow/TutorRow';
@@ -7,78 +7,65 @@ import './Home.css';
 import USER_SERVICE from '../../services/UserServices';
 import languagesData from './LanguagesData';
 
-class Home extends Component {
-  state = {
-    filteredTutors: [],
-    tutorsFromApi: [],
-  };
+const Home = () => {
+  const [filteredTutors, setFilteredTutors] = useState([]);
+  const [tutorsFromApi, setTutorsFromApi] = useState([]);
 
-  fetchTutors = () => {
-    USER_SERVICE.getAllTutors()
-      .then((tutors) => {
-        this.setState({ tutorsFromApi: tutors });
-      })
-      .catch((err) => console.log(err));
-  };
+  useEffect(() => {
+    USER_SERVICE.getAllTutors().then((tutors) => {
+      if (!tutors.serviceError) {
+        setTutorsFromApi(tutors);
+      }
+    });
+  }, []);
 
-  componentDidMount = () => {
-    this.fetchTutors();
-  };
-
-  onSearchInputChange = (searchInput) => {
+  const onSearchInputChange = (searchInput) => {
     let filteredTutors = [];
-    console.log(this.state.tutorsFromApi);
-    for (let i = 0; i < this.state.tutorsFromApi.length; i++) {
-      const courses = this.state.tutorsFromApi[i].coursesTaught?.courses
-        ? this.state.tutorsFromApi[i].coursesTaught?.courses
+    for (let i = 0; i < tutorsFromApi.length; i++) {
+      const courses = tutorsFromApi[i].coursesTaught?.courses
+        ? tutorsFromApi[i].coursesTaught?.courses
         : 0;
       for (let j = 0; j < courses.length; j++) {
         courses[j].courseName
           .toLowerCase()
           .includes(searchInput.toLowerCase()) &&
-          filteredTutors.push(this.state.tutorsFromApi[i]);
+          filteredTutors.push(tutorsFromApi[i]);
       }
     }
 
     searchInput && filteredTutors.length === 0 && (filteredTutors = []);
-    searchInput.length === 0 && (filteredTutors = []);
+    !searchInput && (filteredTutors = []);
 
-    console.log('after filtering', filteredTutors);
-    this.setState({
-      filteredTutors: filteredTutors,
-    });
+    setFilteredTutors(() => filteredTutors);
   };
 
-  render() {
-    return (
-      <div className='homepage-container'>
-        {/* <HomeNavbar user={this.state.user} loading={this.state.loading} /> */}
-        <div className='landingPageImg'></div>
-        <div className='text-gradient-mint-blue-dark'>
-          <h1 className='home-page-h1'>What are you going to learn today?</h1>
-          <h2>At Academy Hacks, we put you in control of your lessons →</h2>
-        </div>
-        <div className='searchBar'>
-          <SearchBar onSearchQueryChange={this.onSearchInputChange} />
-          {this.state.filteredTutors.map((tutor) => (
-            <Link to={`/tutor/${tutor._id}`} key={tutor._id}>
-              <TutorRow tutor={tutor} />
-            </Link>
-          ))}
-        </div>
-        <div className='languageCardsContianer'>
-          {languagesData.map((lang, i) => (
-            <LanguageQuickCard
-              key={lang.urlToImg}
-              langName={lang.langName}
-              shortLangDescription={lang.shortLangDescription}
-              urlToImg={lang.urlToImg}
-            />
-          ))}
-        </div>
+  return (
+    <div className='homepage-container'>
+      <div className='landingPageImg'></div>
+      <div className='text-gradient-mint-blue-dark'>
+        <h1 className='home-page-h1'>What are you going to learn today?</h1>
+        <h2>At Academy Hacks, we put you in control of your lessons →</h2>
       </div>
-    );
-  }
-}
+      <div className='searchBar'>
+        <SearchBar onSearchQueryChange={onSearchInputChange} />
+        {filteredTutors.map((tutor) => (
+          <Link to={`/tutor/${tutor._id}`} key={tutor._id}>
+            <TutorRow tutor={tutor} />
+          </Link>
+        ))}
+      </div>
+      <div className='languageCardsContianer'>
+        {languagesData.map((lang, i) => (
+          <LanguageQuickCard
+            key={lang.urlToImg}
+            langName={lang.langName}
+            shortLangDescription={lang.shortLangDescription}
+            urlToImg={lang.urlToImg}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default Home;
